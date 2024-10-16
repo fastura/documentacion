@@ -1,9 +1,0 @@
-{
-  "label": "Ventas",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "slug": "ventas",
-    "description": "Encuentra ayuda sobre el módulo de Ventas."
-  }
-}
