@@ -1,9 +1,0 @@
-{
-  "label": "Compras",
-  "position": 7,
-  "link": {
-    "type": "generated-index",
-    "slug": "compras",
-    "description": "Encuentra ayuda sobre el módulo de Compras."
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "label": "POS",
-  "position": 3,
-  "link": {
-    "type": "generated-index",
-    "slug": "pos",
-    "description": "Encuentra ayuda sobre el módulo de POS."
-  }
-}
