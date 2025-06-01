@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Lista de Productos
 
 ## Gestión de Productos
