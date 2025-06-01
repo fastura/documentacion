@@ -7,6 +7,12 @@ title: Checkout de Huéspedes
 
 Hemos optimizado la funcionalidad de checkout en el módulo de hotel para que sea más rápida, eficiente y te permita gestionar las salidas de tus huéspedes sin contratiempos.
 
+![alt text](img/checkout-de-huespedes-1.png)
+
+---
+
+![alt text](img/checkout-de-huespedes-2.png)
+
 ## Mejoras Implementadas
 
 - Proceso de checkout optimizado

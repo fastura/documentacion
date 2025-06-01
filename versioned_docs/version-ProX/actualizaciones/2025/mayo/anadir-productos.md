@@ -7,6 +7,12 @@ title: Añadir Productos
 
 ¡Ahora puedes agregar productos y servicios al consumo de tus huéspedes! El módulo de hotel permite sumar cargos adicionales a la cuenta de la habitación de forma fácil y rápida.
 
+![alt text](img/añadir-productos-hotel-1.png)
+
+---
+
+![alt text](img/añadir-productos-hotel-2.png)
+
 ## Características Principales
 
 - Adición de productos a la cuenta

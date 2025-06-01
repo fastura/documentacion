@@ -5,7 +5,25 @@ title: Agentes
 
 # Módulo Agentes: ¡Habilitado y Funcionando!
 
-El Módulo Agentes ya está disponible y sin errores. Accede ahora para gestionar a tus agentes y sus operaciones de manera eficiente.
+El submodulo  Agentes ya está disponible y sin errores. Accede ahora para gestionar a tus agentes y sus operaciones de manera eficiente.
+
+## ¿Cómo activar el submódulo de Agentes?
+
+Para habilitar el submódulo de Agentes, sigue estos pasos:
+
+1. Ve a **Configuración** > **Empresa** > **Avanzado** > **POS**.
+2. Activa la opción correspondiente a **Agentes**.
+
+Esto permitirá gestionar agentes desde el módulo de operaciones.
+
+![Ruta de activación](img/ruta-activacion-agentes.png)
+
+---
+
+
+![Opción de agentes](img/opcion-agentes-pos.png)
+
+
 
 ## Características Principales
 
