@@ -1,7 +1,7 @@
 ---
 title: Novedades y Nuevas Funciones en Pro X
 description: "Descubre los últimos cambios y mejoras en el sistema de facturación Pro X."
-sidebar_position: 1
+sidebar_position: 0
 ---
 
 # 🚀 Novedades y Nuevas Funciones en Pro X

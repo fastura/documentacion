@@ -37,7 +37,8 @@ import {
   ConciergeBell,
   UtensilsCrossed ,
   MessageCircleQuestion,
-  CircleX  
+  CircleX,
+  Newspaper   
 } from 'lucide-react';
 
 function getIconForItem(item) {
@@ -96,6 +97,10 @@ function getIconForItem(item) {
     // Errores Sunat 
 
     if (item.label.includes('Errores Sunat')) return <CircleX size={18} />;
+
+    // Pro X novedades
+
+    if (item.label.includes('Nuevas Funciones')) return <Newspaper size={18} />;
 
      
 

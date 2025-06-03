@@ -1,0 +1,9 @@
+{
+  "label": "Preguntas Comunes",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "slug": "preguntas-comunes",
+    "description": "Cuestionario de las preguntas mas comunes"
+  }
+}
