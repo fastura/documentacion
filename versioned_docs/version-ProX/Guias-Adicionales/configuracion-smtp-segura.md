@@ -165,4 +165,4 @@ Nunca utilices configuraciones inseguras como SSL 3.0 o puertos sin autenticaci�
 
 :::tip RECOMENDACIÓN FINAL
 Mantén siempre actualizadas las configuraciones de seguridad y revisa regularmente las mejores prácticas para el envío de correos electrónicos. La seguridad en las comunicaciones es fundamental para proteger tanto tu aplicación como los datos de tus usuarios.
-:::
+::: 
