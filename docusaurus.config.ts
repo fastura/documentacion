@@ -58,11 +58,12 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
-
   plugins: [
     'plugin-image-zoom',
 
+    /* Comentado el buscador anterior
     require.resolve('docusaurus-lunr-search'),
+    */
 
     [
       'docusaurus-plugin-openapi-docs',
@@ -194,10 +195,12 @@ const config: Config = {
       },
     ]
   ],
-
   themes: [
-    // ... Your other themes.
     'docusaurus-theme-openapi-docs',
+    ['@docusaurus/theme-search-algolia', {
+      id: 'algolia-search'
+    }]
+    // Otros temas comentados
     /*[
       require.resolve("@easyops-cn/docusaurus-search-local"),
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
@@ -210,10 +213,22 @@ const config: Config = {
     ],*/
     
   ],
-
   themeConfig: {
     // Replace with your project's social card
     image: 'img/logo_buho.png',
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'ZS76FDL76H',
+      // Public API key
+      apiKey: 'ffbc9009abea68c80e8952c51c45702a',
+      indexName: 'manual-uio',
+      // Optional: see doc section below
+      
+      // Optional: Algolia search parameters
+      searchParameters: {},
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+    },
       navbar: {
         title: 'Manual de uso',
         logo: {

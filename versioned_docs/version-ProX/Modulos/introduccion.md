@@ -24,7 +24,7 @@ Pro X es la versión más avanzada de nuestra plataforma integral, diseñada par
 <DocsCards>
   <DocsCard 
     header="Dashboard"
-    href="/ProX/modulos/dashboard"
+    href="/ProX/dashboard"
   >
     <p>Resumen general de ventas, compras, productos por agotarse y gestión multi-establecimiento.</p>
   </DocsCard>
