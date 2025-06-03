@@ -222,10 +222,26 @@ const config: Config = {
       // Public API key
       apiKey: 'ffbc9009abea68c80e8952c51c45702a',
       indexName: 'manual-uio',
-      // Optional: see doc section below
-      
-      // Optional: Algolia search parameters
-      searchParameters: {},
+      // Configuración para búsqueda global
+      contextualSearch: false,
+      searchParameters: {
+        attributesToRetrieve: [
+          'hierarchy.lvl0',
+          'hierarchy.lvl1',
+          'hierarchy.lvl2',
+          'hierarchy.lvl3',
+          'hierarchy.lvl4',
+          'hierarchy.lvl5',
+          'hierarchy.lvl6',
+          'content',
+          'anchor',
+          'url',
+          'url_without_anchor',
+          'type'
+        ],
+        distinct: true,
+        hitsPerPage: 10
+      },
       // Optional: path for search page that enabled by default (`false` to disable it)
       searchPagePath: 'search',
     },
