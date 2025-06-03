@@ -98,6 +98,6 @@ Mantente atento a futuras actualizaciones y revisa periódicamente esta sección
 ---
 
 ¿Quieres conocer más detalles o necesitas ayuda con alguna función?  
-Visita nuestras [guías de clientes](/ProX/Modulos/Esenciales/Clientes/1-Clientes), [productos](/ProX/Modulos/Esenciales/productos-servicios/02-Productos-Creacion-avanzada) o [inventarios](/ProX/Modulos/Esenciales/Productos-Servicios/4-Inventarios-por-almacenes) para información detallada y ejemplos prácticos.
+Visita nuestras [guías de clientes](/ProX/clientes-x), [productos](/ProX/productos-servicios-x) o [inventarios](/ProX/inventario-x) para información detallada y ejemplos prácticos.
 
 ---
