@@ -16,6 +16,12 @@ En la parte superior derecha selecciona el botón **Nuevo**. Aparecerá el sigui
 * **Categoría:** Selecciona la categoría.
 * **Piso:** Selecciona el piso de la habitación.
 * **Detalles:** Inserta el detalle.
+
+:::danger Importante
+El detalle no puede tener más de 50 caracteres.
+:::
+
+
 * **Mostrar habitación:** Selecciona el interruptor si desea mostrar el piso.
 
 Seguido selecciona el botón **Guardar**.

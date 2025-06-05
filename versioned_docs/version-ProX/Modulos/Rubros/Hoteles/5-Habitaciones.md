@@ -49,7 +49,11 @@ Para agregar una nueva habitación:
    - **Nombre de la habitación**: Ingresa el nombre o número de la habitación.  
    - **Categoría**: Selecciona la categoría correspondiente.  
    - **Piso**: Selecciona el piso donde se ubica la habitación.  
-   - **Detalles**: Añade cualquier detalle adicional necesario.  
+   - **Detalles**: Añade cualquier detalle adicional necesario. 
+
+:::danger Importante
+El detalle no puede tener más de 50 caracteres.
+::: 
    - **Mostrar habitación**: Activa o desactiva esta opción según sea necesario.  
 
 ![Formulario Crear Piso](img/crear_piso_Habitacion.jpg)  
