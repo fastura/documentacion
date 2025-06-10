@@ -243,7 +243,7 @@ const config: Config = {
         hitsPerPage: 10
       },
       // Optional: path for search page that enabled by default (`false` to disable it)
-      searchPagePath: 'search',
+      searchPagePath: false,
     },
       navbar: {
         title: 'Manual de uso',

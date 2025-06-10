@@ -1,0 +1,3 @@
+# Solución de Error en Guías de Remisión con Traslado Itinerante
+
+Se ha corregido un error que impedía generar y enviar correctamente a la SUNAT las Guías de Remisión para "Traslado por Emisor Itinerante". El sistema ahora emite estos documentos sin inconvenientes, asegurando el cumplimiento normativo para sus operaciones de venta en ruta. Le recomendamos reintentar la emisión de cualquier guía que haya fallado por este motivo. 
