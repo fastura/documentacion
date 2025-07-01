@@ -1,39 +1,42 @@
-# Venta rápida
+# Venta Rápida
 
-La funcionalidad de Venta Rápida te permitirá agilizar tus transacciones, reduciendo el tiempo necesario para generar los comprobantes y, como resultado, aumentar tus ventas.
+La funcionalidad de **Venta Rápida** te permite agilizar las transacciones y está especialmente orientada para grifos y minimarkets.
 
-![alt text](img/ventarapida2.jpg)
+## ¿Cómo acceder a la Venta Rápida?
 
-### Visualización de Información del Producto
+![Acceso a Venta Rápida](img/acceso-venta-rapida.png)
 
-En la **Venta Rápida**, se mostrará toda la información necesaria para concretar la venta de un producto. Esto incluye:
+1. Ingresa al menú lateral izquierdo y selecciona la opción **VENTAS**.
+2. Haz clic en **Venta rápida (Grifos y Markets)**.
+3. Se abrirá la pantalla principal de Venta Rápida donde podrás buscar y seleccionar productos de manera inmediata.
 
-- **Código interno**: Identificador único del producto.
-- **Nombre**: El nombre del producto para facilitar su identificación.
-- **Precio**: El precio del producto que se aplicará en la transacción.
-- **Imagen del producto**: Una vista visual del artículo que ayudará en su reconocimiento rápido.
+---
 
-## Pasos para Activar la Venta Rápida
+## Productos visibles en Venta Rápida
 
-Sigue los pasos a continuación para activar la opción de venta rápida en tu sistema:
-
-1. Accede a **Configuraciones**.
-2. Dirígete a **Configuraciones y más**, en el submodulo ubica **Empresa** y luego selecciona **Avanzado**.
-
-![alt text](img/multipleprecio5.jpg)
-
-3. Haz clic en la opción **Visual**.
-4. Activa la opción **Buscar/Agregar productos en formulario principal**.
-
-![alt text](img/ventarapida3.jpg)
-
-## Beneficios de la Venta Rápida
-
-Una vez activada esta funcionalidad, podrás seleccionar los productos de manera más rápida desde el formulario principal, facilitando el proceso de venta y mejorando la eficiencia en la atención al cliente.
-
-
-:::info
-
-En este tipo de venta, no se podrá agregar series, descuentos u otros, si cuenta con alguno de ellos tendra que realizarlo desde **Agregar Producto**
-
+:::info Importante
+La funcionalidad de **Venta Rápida** está especialmente orientada para grifos y minimarkets, donde la agilidad y simplicidad en la selección de productos es fundamental.
 :::
+
+En este apartado, **solo aparecerán automáticamente** los productos que cumplan con al menos una de estas condiciones:
+
+![Productos visibles en Venta Rápida](img/productos-visibles-venta-rapida.png)
+
+- Tienen como tipo de unidad una unidad relacionada a combustibles **galones**
+.
+- Tienen activada la opción **Calcular cantidad por precio** en su configuración.
+
+Esto permite que, al ingresar a la pantalla de Venta Rápida, puedas ver y seleccionar de forma inmediata los productos más usados en este tipo de negocios, facilitando la venta de productos que se comercializan por volumen o importe.
+
+> **Nota:**  
+> Los demás productos que no cumplan con estas condiciones **no se mostrarán por defecto** en la pantalla principal de Venta Rápida. Sin embargo, puedes encontrarlos y agregarlos fácilmente utilizando la barra de búsqueda.
+
+---
+
+**Ejemplo visual:**  
+En la pantalla de creación de productos, asegúrate de marcar la casilla **Calcular cantidad por precio** o seleccionar la unidad adecuada (como **galones**) para que el producto esté disponible en la Venta Rápida.
+
+
+En el módulo de **Venta Rápida**, estos productos aparecerán listados para su selección directa, optimizando el proceso de venta.
+
+![Pantalla de Venta Rápida](img/ejemplo-venta-rapida.png)
