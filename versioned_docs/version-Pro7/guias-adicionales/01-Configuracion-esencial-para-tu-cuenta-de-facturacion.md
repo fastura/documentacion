@@ -1,179 +1,151 @@
-# Configuración esencial para tu cuenta de facturación
+# 📘 Guía de Configuración Esencial - Sistema de Facturación
 
-En este artículo te enseñaremos los pasos esenciales para configurar tu plataforma de facturación, conectarte a SUNAT y empezar a facturar:
+Bienvenido(a) al sistema de facturación. Esta guía te llevará paso a paso para configurar tu plataforma, conectarte a SUNAT y comenzar a facturar de manera oficial.
 
-1. **Conectar tu cuenta con SUNAT:** Pasar de DEMO a PRODUCCIÓN.
-2. **Configurar el validador de documentos.**
-3. **Configuración para las guías electrónicas.**
-4. **Configuración para el envió automático de boletas y facturas.**
-5. **Agregar productos.**
-6. **Agregar clientes.**
-7. **Configurar tu establecimientos y series.**
-8. **Selecciona tu plantilla PDF.**
-9. **Configuración ingreso de dinero.**
+## ✅ Paso 1: Conectar tu cuenta con SUNAT (DEMO → PRODUCCIÓN)
 
-## 1.  Conectar a Sunat : DEMO A PRODUCCIÓN
+**¿Por qué es importante?** El sistema inicia en modo DEMO para pruebas. Para facturar oficialmente, debes cambiar a PRODUCCIÓN.
 
-Este paso es necesario para poder enviar tus comprobantes y sean aceptados por SUNAT. Sigue estos pasos para realizarlo:
+**Configuración necesaria:**
+1. Ve a **Configuraciones Globales** → **Empresa** → **Empresa**
 
-Ingresa al módulo de **configuración**,luego a la sección **empresa** y selecciona subcategoría **empresa**.
+![Configuracion necesaria](img/configuracion-empresa.png)
 
-![Alt text](img/1_conf.jpg)
+2. En "Entorno de sistema" configura:
 
-Nos dirigimos a la sección entorno de sistema, en esta sección realizaremos:
+![Configuracion necesaria](img/configuracion-empresa-demo-prod.png)
 
-* Cambio de SOAP tipo **Demo a Producción**.
-Escoger SOAP envío **Sunat**.
-Colocar SOAP usuario y contraseña del **usuario secundario** creado previamente(Sigue los pasos en este **[video](https://www.youtube.com/watch?v=PZ028aDpR3A&ab_channel=DigitalBuho)**), tener en cuenta que al colocar el usuario debe agregar el RUC previamente, como la imagen indicada.
+   1.- Cambiar SOAP tipo de **Demo a Producción**
+   2.- Escoger SOAP envío **SUNAT**
+   3.- Agregar **usuario secundario SOL** (RUC + usuario)
+   4.- Ingresar **contraseña del usuario secundario**
 
-![Alt text](img/entornoalsistema.jpg)
+**⚠️ Importante al crear usuario secundario:**
+- NO uses palabras relacionadas con el nombre de tu empresa
+- Ejemplo: Si tu empresa es "Constructora Juan", usa "C6NSJU4N" (no "CONSJUAN")
+- Usa contraseñas con números, letras y mayúsculas
+- Puedes generar contraseñas seguras en: [clavesegura.org](https://www.clavesegura.org/es/)
 
-:::danger importante
+**Certificado Digital:**
 
-* Al crear un usuario secundario no utilizar palabras que contengan parte de nombre
-de la empresa.
+![Mi imagen](img/certificado-digital-empresa.png)
 
-  * Ejemplo:
-    * Nombre de la Empresa: Constructora Juan.
-    * Usuario Secundario: CONSJUAN (Error).
-    * **Usuario Secundario: C6NSJU4N (Correcto)**.
-* Al generar la contraseña secundario asegúrese de usar contraseñas que
-contengan números y letras con mayúsculas, y que no usen palabras de la
-empresa. Para generarla puede utilizar herramientas externas como: **[https://www.clavesegura.org/es/](https://www.clavesegura.org/es/)**
+- Sube tu archivo .pfx proporcionado por SUNAT
+- SUNAT ofrece 2 certificados digitales gratuitos
 
+## ✅ Paso 2: Configurar el Validador de Documentos
+
+**¿Para qué sirve?** Te permite regularizar el estado de tus comprobantes ante eventualidades con SUNAT.
+
+**Configuración:**
+- Agrega los tokens del validador en la sección correspondiente
+- Esto te dará respaldo ante problemas de conexión con SUNAT
+
+## ✅ Paso 3: Configuración de Guías Electrónicas
+
+**Si emites guías de remisión:**
+
+![Guias de Remision](img/guias-de-remision.png)
+
+- Ve a **Configuración** → **Empresa** → **Empresa**
+- Sigue la configuración específica para guías electrónicas
+- Esto es necesario para que SUNAT acepte tus guías
+
+## ✅ Paso 4: Activar Envío Automático de Comprobantes
+
+**Configuración recomendada:**
+
+![Envio Automatico](img/envio-automatico-comprobantes-config.png)
+
+1. Ve a **Configuración** → **Empresa** → **Avanzado**
+
+![Envio Automatico Avanzado](img/envio-automatico-comprobantes-config-avanzado.png)
+
+2. Activa las opciones de envío automático (deben estar en "Sí")
+
+**💡 Consejo:** Si SUNAT presenta problemas de conexión, desactiva temporalmente el envío automático y reenvía manualmente desde "Comprobantes no enviados".
+
+## 📦 Paso 5: Agregar tus Productos/Servicios
+
+**Ve a:** **Productos/Servicios** → **Productos**
+
+**Dos opciones:**
+- **Individual:** Crear productos uno por uno
+- **Masiva:** Importar múltiples productos con imágenes
+
+**Datos importantes:** Nombre, precio, tipo de IGV, código, stock (si aplica)
+
+:::note
+Para más información acerca de la gestión de productos, puede revisar la sección correspondiente del *[manual](https://manual.uio.la/Pro7/productos-servicios)*.
 :::
 
-Para completar la conexión con SUNAT es necesario subir el certificado digital. En esta sección adjuntamos el archivo .pfx que nos brinda SUNAT.
+## 👥 Paso 6: Registrar tus Clientes
 
-Para descargarlos sigue los pasos en este  **[video](https://www.youtube.com/watch?v=N8fse05yda8&ab_channel=DigitalBuho)**.
+**Ve a:** **Clientes** → **Clientes**
 
-![Alt text](img/4_conf.png)
+**Dos opciones:**
+- **Individual:** Crear clientes uno por uno
+- **Masiva:** Importar múltiples clientes
 
-## 2. Configurar el validador de documentos
+**Datos importantes:** RUC/DNI, razón social, dirección, correo electrónico
 
-Se requiere configurar el validador de documentos para que ante cualquier eventualidad con SUNAT se puedan regularizar el estado de sus comprobantes. Sigue los pasos en este **[video](https://www.youtube.com/watch?v=6YqtOrIjaDY&t=3s&ab_channel=DigitalBuho)**. Agrega los token como en la imagen mostrada.
-
-![Alt text](img/datosempresaa4.jpg)
-
-## 3. Configuración para las guías electrónicas
-
-Este paso es necesario para poder enviar tus guías y sean aceptados por **SUNAT**. Sigue estos pasos para realizarlo:
-
-Ingresa al módulo de **configuración**,luego a la sección **empresa** y selecciona subcategoría **empresa**.
-
-Sigue todos los pasos en este **[artículo](https://manual.uio.la/Pro7/Modulos/Complementarios/guias-de-remision/Configuracion-previa-guia-remision)**.
-
-## 4. Configuración para el envió automático de boletas y facturas a SUNAT
-
-Este paso es necesario para que tus boletas y facturas se envíen de manera automática hacia **SUNAT**.
-
-Ingresa al módulo **Configuración** y luego en la subcategoría Empresa, selecciona **Avanzado**.
-
-![Alt text](img/confiavanzado.jpg)
-
-Tendrá que activar las siguientes opciones:
-
-![Alt text](img/avanzado22.jpg)
-
-Tienen que permanecer en el **Si**.
-
-:::info importante
-
-Si **SUNAT** presenta alguna mala conexión en su plataforma, es recomendable desactivarla, hasta que la conexión se establezca. Una vez restablecida la conexión debe enviar sus comprobantes electrónicos de manera manual, en los tres puntos al lado derecho y selecciona **Reenviar** o también desde **Comprobantes no enviados**, selecciona el **botón azul con la flecha hacia arriba**.
-
+:::note
+Para más información acerca de la gestión de clientes, puede revisar la sección correspondiente del *[manual](https://manual.uio.la/Pro7/clientes)*.
 :::
 
-## 5. Como crear productos
+## 🏢 Paso 7: Configurar Establecimientos y Series
 
-Ingresa al módulo de **Productos/Servicios**, luego a sección **Productos**.
+**¿Cuándo es necesario?** Si tienes más de un local o establecimiento.
 
-Existen dos maneras para agregar productos en el sistema:
+**Configuración:**
+1. Ve a **Configuraciones y más** → **Sucursales & Series**
+2. Agrega las series correspondientes a cada establecimiento
 
-* De manera individual, sigue los pasos en este **[artículo](https://manual.uio.la/Pro7/Modulos/Esenciales/productos-servicios/Productos-Creacion-basica)**.
-* De manera masiva, sigue los pasos en este **[artículo](https://manual.uio.la/Pro7/Modulos/Esenciales/productos-servicios/Productos-Importar-productos-con-imagen-masivamente)**.
-
-## 6.  Agregar clientes
-
-Ingresa al módulo de **Clientes**, luego a sección **Clientes**.
-
-Existen dos maneras para agregar productos en el sistema:
-
-* De manera individual, sigue los pasos en este **[artículo](https://manual.uio.la/Pro7/Modulos/Esenciales/clientes/Clientes-creacion-individual)**.
-* De manera masiva, sigue los pasos en este **[artículo](https://manual.uio.la/Pro7/Modulos/Esenciales/clientes/Clientes-Importaci%C3%B3n-Masiva)**.
-
-## 7.  Establecimientos y series
-
-En caso de contar con más de un local o establecimiento, debe configurar las series de los comprobantes correspondientes con cada uno. Sigue estos pasos para realizarlo.
-
-Ingresa al módulo de **Configuraciones y más**, selecciona el módulo de  **Sucursales & Series**.
-
-Para agregar las series, los pasos están este **[artículo](https://fastura.github.io/documentacion/usuarios-locales-series/Crear-establecimiento-y-gestionar-series)**.
-
-:::info IMPORTANTE
-
-Si estas migrando desde otro proveedor a nuestra plataforma, para poder continuar con la numeración del correlativo de tus comprobantes,tenemos esta opción para ti:
-
+:::note
+Para más información acerca de la gestión de establecimientos (sucursales), puede revisar la sección correspondiente del *[manual](https://manual.uio.la/Pro7/usuarios-locales-series)*.
 :::
 
-Ingresa al módulo de configuración ,luego selecciona numeración de facturación.
+**🔄 Migración desde otro proveedor:**
+Si vienes de otro sistema, puedes continuar tu numeración:
+1. Ve a **Configuración** → **Numeración de facturación**
+2. Selecciona **Nuevo** y configura:
+   - Tipo de comprobante
+   - Serie
+   - Número (correlativo desde donde continuar)
 
-![Alt text](img/11_conf.jpg)
+## 🎨 Paso 8: Seleccionar Plantilla PDF
 
-Por consiguiente seleccionamos el botón **Nuevo**, donde nos aparecerá el formulario.
+**Personaliza tus comprobantes:**
+1. Ve a **Configuración** → **PDF plantillas**
+2. Elige la plantilla que mejor se adapte a tu empresa
+3. Selecciona el **establecimiento** y **activa la plantilla**
 
-![Alt text](img/numeracion-nuevo.jpg)
+## 💰 Paso 9: Configurar Ingresos de Dinero
 
-Se llenarán los siguientes datos:
+**Para registrar el dinero de tus ventas, configura:**
 
-* Tipo de comprobante
-* Serie
-* Número (Correlativo a iniciar)
+**🏪 Dinero en efectivo (Módulo POS):**
+- Ve a **POS** → **Caja chica POS**
+- Abre cajas para registrar ventas en efectivo
 
-![Alt text](img/12_conf.png)
+**🏦 Cuentas bancarias:**
+1. Ve a **Configuración** → **Listas de cuentas bancarias**
+2. Selecciona **Nuevo** y completa:
+   - Banco
+   - Descripción
+   - Número de cuenta
+   - Tipo de moneda
+   - CCI (Código de Cuenta Interbancaria)
+   - Saldo inicial
 
-Posteriormente al **GUARDAR**, se podrá visualizar la lista de tipos de comprobantes y su **número a iniciar**.
+---
 
-![Alt text](img/13_conf.png)
+## 🎉 ¡Listo para Facturar!
 
-## 8. Selecciona plantilla PDF
+Una vez completados estos pasos, tu sistema estará configurado para:
+- ✅ Emitir facturas electrónicas válidas
+- ✅ Emitir boletas electrónicas
+- ✅ Enviar comprobantes automáticamente a SUNAT
+- ✅ Generar reportes y controlar tu facturación
 
-Ingresa al módulo de configuración ,luego selecciona **PDF plantillas**. Elige la que más se adecue a tu empresa.
-
-![Alt text](img/19_conf.jpg)
-
-Selecciona el **establecimiento** y **activa la plantilla** que utilizará en sus comprobantes.
-
-![Alt text](img/20_conf.png)
-
-## 9. Configuración tu ingreso de dinero
-
-Para registrar el dinero que ingresa por las ventas de tus comprobantes o registrar los gastos de tu empresa, es necesario configurar destinos de gastos o ingresos de dinero, en nuestra plataforma contamos con dos destinos:
-
-* **Dinero en efectivo: Módulo POS**
-
-Ingresa al módulo de **POS** ,luego selecciona **Caja chica POS**, para abrir las cajas y los reportes revisa el siguiente **[artículo](https://fastura.github.io/documentacion/pos/Abrir-una-caja-y-exportar-reportes)**.
-
-* **Dinero en cuentas bancarias**
-
-Ingresa al módulo de **Configuración** ,luego selecciona listas de cuentas bancarias.
-
-![Alt text](img/24_conf.jpg)
-
-Selecciona el botón **Nuevo** donde nos aparecerá el formulario:
-
-![Alt text](img/formulario_de-cuentas.jpg)
-
-Se llenarán los siguientes datos:
-
-* Banco
-* Descripción
-* Número de cuenta bancaria
-* Tipo de moneda
-* Número de cuenta interbancaria (CCI)
-* Saldo inicial
-
-![Alt text](img/form_de_cuentas_bancarias.png)
-
-Después selecciona el botón **GUARDAR**, y se visualizará la lista de cuentas bancarias.
-
-![Alt text](img/26_conf.png)
+**📞 ¿Necesitas ayuda adicional?** Consulta los videos tutoriales específicos mencionados en cada sección o contacta al soporte técnico.

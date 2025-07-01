@@ -1,5 +1,10 @@
 # Emitir comprobantes por anticipo y su deducción
 
+:::danger IMPORTANTE
+Puedes aumentar el monto de los anticipos para que se muestren los comprobantes de deducción disponibles. Recuerda que solo aparecerán aquellos comprobantes de deducción que se encuentren en estado **aceptado** por SUNAT. Si el comprobante aún no ha sido aceptado, no estará disponible para la deducción del anticipo.
+:::
+
+
 En esta área podrás crear tus comprobantes electrónicos por anticipo, en casos donde el cliente realice un pago por adelantado de un producto o servicio, también podrás realizar la deducción y llevar una mejor contabilidad.
 
 Sigue estos pasos para realizarlo:
