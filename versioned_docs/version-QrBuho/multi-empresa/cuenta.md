@@ -36,3 +36,22 @@ Para registrar una nueva cuenta de empresa en el sistema, sigue estos pasos deta
    - Si decides cancelar, puedes hacer clic en `Close`.
 
 Con estos pasos, puedes registrar empresas de manera rápida y eficiente, asegurando una correcta configuración de los accesos y permisos desde el inicio.
+
+---
+
+Si al crear un cliente nuevo te aparece un error o la página/sistema del cliente no carga correctamente, sigue estos pasos para solucionarlo:
+
+1. Accede a tu servidor por SSH:
+   ```bash
+   ssh [usuario]@[ip]
+   ```
+
+2. Ingresa a la carpeta donde está instalado tu sistema (normalmente llamada `qrapi`).
+
+3. Reinicia los contenedores de Docker ejecutando los siguientes comandos:
+   ```bash
+   docker-compose down
+   docker-compose up -d
+   ```
+
+Esto detendrá y volverá a levantar los contenedores, lo que suele resolver problemas de carga o errores tras la creación de un nuevo cliente.

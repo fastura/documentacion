@@ -38,7 +38,11 @@ import {
   UtensilsCrossed ,
   MessageCircleQuestion,
   CircleX,
-  Newspaper   
+  Newspaper,
+  Monitor,
+  ShieldCheck,
+  Server,
+  RotateCw 
 } from 'lucide-react';
 
 function getIconForItem(item) {
@@ -101,6 +105,13 @@ function getIconForItem(item) {
     // Pro X novedades
 
     if (item.label.includes('Nuevas Funciones')) return <Newspaper size={18} />;
+
+    if (item.label.includes('Windows')) return <Monitor size={18} />;
+    if (item.label.includes('Docker') || item.label.includes('Linux')) return <Boxes size={18} />;
+    if (item.label.includes('Plugin API')) return <Plug size={18} />;
+    if (item.label.includes('SSL')) return <ShieldCheck size={18} />;
+    if (item.label.includes('cPanel')) return <Server size={18} />;
+    if (item.label.includes('Guía para Actualizar o Migrar el Sistema')) return <RotateCw size={18} />;
 
      
 
