@@ -14,7 +14,7 @@ El certificado SSL solo tiene una duración de 30 días, por lo tanto una vez pa
  ```
 2. Luego ingrese este comando para descargar el script. 
  ```bash
- curl https://gitlab.buho.la/-/snippets/12/raw/main/newSSL.sh -o updateFirstSSL.sh && chmod +x updateFirstSSL.sh && ./updateFirstSSL.sh
+ curl https://git.buho.la/-/snippets/12/raw/main/newSSL.sh -o updateFirstSSL.sh && chmod +x updateFirstSSL.sh && ./updateFirstSSL.sh
  ```
 3. Se le preguntará sobre el dominio para instalar el certificado SSL (si no lo coloca, entonces el script termina)
     
@@ -46,6 +46,6 @@ El certificado SSL solo tiene una duración de 30 días, por lo tanto una vez pa
  ```
 2. Luego ingrese este comando para descargar el script. 
  ```bash
- curl https://gitlab.buho.la/-/snippets/13/raw/main/updateSSL.sh -o updateSSL.sh && chmod +x updateSSL.sh && ./updateFirstSSL.sh
+ curl https://git.buho.la/-/snippets/13/raw/main/updateSSL.sh -o updateSSL.sh && chmod +x updateSSL.sh && ./updateFirstSSL.sh
  ```
 3. Desde este punto, es lo mismo que se muestra en la sección de la instalación de Primera vez del SSL desdel el paso 3

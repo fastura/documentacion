@@ -1,10 +1,18 @@
 # Windows
 
+:::danger ¡IMPORTANTE - Migración de Servidor GitLab!
+**Hemos migrado nuestro servidor de GitLab.** Si aún no has cambiado la URL del sistema (del git para descargar los cambios, etc.), te sugerimos verificar primero.
+
+**Nueva URL:** `git.buho.la`
+
+Para más información sobre cómo actualizar la URL del repositorio, consulta nuestra **[guía de actualización y migración](https://manual.uio.la/Pro7/devs/instalacion/Actualizar-Migrar)**.
+:::
+
 Se explicará como poder descargar y poder ejecutar el facturador dentro de su máquina windows.
 
-Antes de instalar, se tiene que tener presente que hay dos proyectos de facturador: **Pro6** y **ProX**, de las cuales cada uno tiene sus propios requisitos previos
+Antes de instalar, se tiene que tener presente que hay dos proyectos de facturador: **Pro7** y **ProX**, de las cuales cada uno tiene sus propios requisitos previos
 
-## Requisitos previos del Pro6
+## Requisitos previos del Pro7
 
 | Tecnología | Versión |
 |------------|---------|
@@ -98,7 +106,7 @@ En laragon crea un dominio, puede cambiarlo a su gusto, por ejemplo **\{name\}.t
 ![alt text](img/terminal-laragon.png)
 
 2. Ahora se debe clonar el proyecto en tu máquina: 
-   * Entra a tu cuenta que se te brindo y entra al proyecto que elegiste (para este ejemplo se usará el **Pro6**)
+   * Entra a tu cuenta que se te brindo y entra al proyecto que elegiste (para este ejemplo se usará el **Pro7**)
 
      ![alt text](img/gitlab-clone.png)
     En el recuadro donde dice **"Clone with HTTPS"**, copia la URL que se encuentra.
@@ -131,13 +139,13 @@ En laragon crea un dominio, puede cambiarlo a su gusto, por ejemplo **\{name\}.t
 
 
 
-4. Una vez descargado el proyecto, tendra que tener el archivo **pro6**.
-  Para verificar si tienes la carpeta pro6, hazlo con el comando ```ls```
+4. Una vez descargado el proyecto, tendra que tener el archivo **Pro7**.
+  Para verificar si tienes la carpeta Pro7, hazlo con el comando ```ls```
 
-   * Ingresa a la carpeta pro6
+   * Ingresa a la carpeta Pro7
 
     ```bash
-    cd pro6
+    cd Pro7
     ```
    * Ahora, coloca este comando para crear un archivo .**env**
 
@@ -187,5 +195,5 @@ Se le mostrará la pagina de login, las credenciales son:
  * Correo electrónico: **admin@gmail.com**
  * Contraseña: **123456**
 
-![Alt text](img/login-pro6.png)
+![Alt text](img/login-Pro6.png)
 

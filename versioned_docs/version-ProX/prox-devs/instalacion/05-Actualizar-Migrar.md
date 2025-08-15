@@ -14,7 +14,7 @@ Antes de comenzar, asegúrate de tener:
 - Acceso SSH al servidor
 - Credenciales válidas de GitLab (usuario y token)
 - Permisos para ejecutar comandos Docker
-- Una suscripción activa para migrar de Pro6 a Pro7
+- Una suscripción activa para migrar su sistema ProX
 
 ---
 
@@ -58,7 +58,7 @@ git remote -v
 
 Si necesitas actualizar la URL:
 ```bash
-git remote set-url origin https://git.buho.la/facturaloperu/facturador/pro7.git
+git remote set-url origin https://git.buho.la/facturaloperu/facturador/pro-x.git
 ```
 
 ---
@@ -94,14 +94,14 @@ php artisan migrate && php artisan tenancy:migrate && php artisan config:cache &
 
 ---
 
-## 4. Migración de Pro6 a Pro7
+## 4. Migración del sistema ProX
 
 > **⚠️ Importante:** Debes tener una **suscripción activa** para realizar esta migración. Si tu suscripción no está vigente, contacta al área comercial antes de continuar.
 
 ### 4.1 Respaldo de seguridad
 Antes de migrar, realiza copias de seguridad de:
 - Base de datos completa
-- Archivos del sistema Pro6
+- Archivos del sistema 
 - Configuraciones personalizadas
 
 ### 4.2 Verificar requisitos del sistema
@@ -113,7 +113,7 @@ Confirma que tu servidor cumple con:
 ### 4.3 Proceso de migración
 1. **Cambiar repositorio remoto:**
    ```bash
-   git remote set-url origin https://git.buho.la/facturaloperu/facturador/pro7.git
+   git remote set-url origin https://git.buho.la/facturaloperu/facturador/pro-x.git
    ```
 
 2. **Verificar configuración:**

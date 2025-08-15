@@ -2,6 +2,14 @@
 
 Se explicará como poder descargar y poder ejecutar el facturador dentro de su máquina Ubuntu
 
+:::danger ¡IMPORTANTE - Migración de Servidor GitLab!
+**Hemos migrado nuestro servidor de GitLab.** Si aún no has cambiado la URL del sistema (del git para descargar los cambios, etc.), te sugerimos verificar primero.
+
+**Nueva URL:** `git.buho.la`
+
+Para más información sobre cómo actualizar la URL del repositorio, consulta nuestra **[guía de actualización y migración](https://manual.uio.la/Pro7/devs/instalacion/Actualizar-Migrar)**.
+:::
+
 ## Requisitos previos
 
 1.	Tener acceso a su servidor, VPS, máquina virtual o local vía SSH
@@ -18,7 +26,7 @@ Se explicará como poder descargar y poder ejecutar el facturador dentro de su m
 
 2. Ejecutar este comando en la terminal 
  ```bash
- curl https://gitlab.buho.la/-/snippets/14/raw/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh 
+ curl https://git.buho.la/-/snippets/14/raw/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh 
  ```
 
 3. Una vez ejecutado el script se le pedirá que ingrese algunos valores

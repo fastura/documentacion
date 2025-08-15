@@ -1,7 +1,15 @@
 # Instalación de Mozo en cPanel
 
+:::danger ¡IMPORTANTE - Migración de Servidor GitLab!
+**Hemos migrado nuestro servidor de GitLab.** Si aún no has cambiado la URL del sistema (del git para descargar los cambios, etc.), te sugerimos verificar primero.
+
+**Nueva URL:** `git.buho.la`
+
+Para más información sobre cómo actualizar la URL del repositorio, consulta nuestra **[guía de actualización y migración](https://manual.uio.la/Pro7/devs/instalacion/Actualizar-Migrar)**.
+:::
+
 ## Requisitos Previos
-- **[Compilado-Mozo](https://gitlab.buho.la/mozo/compilado)**.
+- **[Compilado-Mozo](https://git.buho.la/mozo/compilado)**.
 - Acceso a cuenta cPanel con privilegios de administrador.
 
 ## Proceso de Instalación Paso a Paso
