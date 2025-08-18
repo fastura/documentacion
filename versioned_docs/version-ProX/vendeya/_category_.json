@@ -1,0 +1,9 @@
+{
+  "label": "VendeYa",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "slug": "vendeya",
+    "description": "Documentacion del sistema de venta rapida VendeYa"
+  }
+}

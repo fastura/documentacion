@@ -6,7 +6,7 @@ Si al instalar el facturador, elegiste la opción de no descargar el certificado
 El certificado SSL solo tiene una duración de 30 días, por lo tanto una vez pasado este tiempo, deberá actualizarlo.
 ::: 
 
-## Primara vez instalando SSL
+## Primera vez instalando SSL
 
 1. Ingrese a su VPS e inserte este comando. 
  ```bash
