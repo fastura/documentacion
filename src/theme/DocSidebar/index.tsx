@@ -113,6 +113,9 @@ function getIconForItem(item) {
     if (item.label.includes('cPanel')) return <Server size={18} />;
     if (item.label.includes('Guía para Actualizar o Migrar el Sistema')) return <RotateCw size={18} />;
 
+    // Cache Laravel
+    if (item.label.includes('Guía para Limpiar Cache de Laravel')) return <RotateCw size={18} />;
+
      
 
   }
