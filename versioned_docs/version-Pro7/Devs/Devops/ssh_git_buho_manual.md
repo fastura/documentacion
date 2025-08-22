@@ -1,4 +1,4 @@
-# 🔐 Manual de Configuración SSH para git.buho.la
+# Configuración SSH para git.buho.la
 
 > ⚠️ **IMPORTANTE**: Esta guía te permitirá configurar claves SSH para acceder a git.buho.la sin necesidad de introducir contraseñas cada vez que hagas push/pull.
 
