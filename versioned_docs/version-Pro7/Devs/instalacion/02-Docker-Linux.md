@@ -26,8 +26,13 @@ Para más información sobre cómo actualizar la URL del repositorio, consulta n
 
 2. Ejecutar este comando en la terminal 
  ```bash
- curl https://git.buho.la/-/snippets/14/raw/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh 
+ curl https://git.buho.la/-/snippets/41/raw/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh
  ```
+
+:::danger ⚠️ Importante
+Si la instalación del facturador se detiene, por favor vuelva a correr el script de instalación.
+Esto solo puede ocurrir una vez.
+:::
 
 3. Una vez ejecutado el script se le pedirá que ingrese algunos valores
     * Se le preguntará sobre el dominio, aquí es donde se debe colocar el dominio que se ha colocado a la hora de configurar la DNS.

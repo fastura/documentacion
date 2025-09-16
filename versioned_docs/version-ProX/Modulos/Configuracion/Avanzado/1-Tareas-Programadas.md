@@ -1,49 +1,36 @@
-# Tareas Programadas  
-Esta guía describe de manera detallada cómo configurar la sección **Tareas Programadas** en la plataforma. Cada subsección permite gestionar tareas automáticas que optimizan procesos en el sistema.  
+# Tareas programadas
 
-## Acceso Tareas Programadas
-Para gestionar tareas programadas en el sistema, accede a **Configuración > Avanzado > Tareas Programadas**. Esta sección permite programar, ver, editar y eliminar tareas automáticas que se ejecutan en el sistema.  
+En este artículo te enseñaremos a realizar la configuración necesaria para **enviar las boletas mediante un resumen**. Sigue estos pasos para hacerlo correctamente:
 
-![Acceso Tareas](img/Acceso_Tareas.png) 
+---
 
----  
+## Acceso a Tareas programadas
+Ingresa al módulo de **Configuración**, luego en **Avanzado** selecciona la subcategoría **Tareas programadas**.  
 
-## **1. Nueva Tarea**  
-> ### ➕ Crear Nueva Tarea  
-Configura y programa nuevas tareas automáticamente.  
+![Acceso Tareas](img/Acceso_Tareas.png "Alt text")
 
-![Nueva Tarea](img/nueva_tarea.png)  
-- **Tarea**:  
-  Selecciona la tarea que deseas programar de la lista desplegable.  
-- **Hora de Ejecución**:  
-  Establece la hora específica en la que se ejecutará la tarea programada.  
-- **Guardar**:  
-  Haz clic en **Guardar** para programar la tarea o en **Cancelar** si no deseas hacer cambios.  
+---
 
----  
+## 1. Crear nueva tarea
+Selecciona el botón **Nuevo**, donde aparecerá la ventana general para llenar la **Nueva tarea**.  
 
-## **2. Listado de Tareas Programadas**  
-> ### 📋 Tareas Programadas  
-Visualiza todas las tareas programadas actualmente en el sistema.  
+![Nueva Tarea](img/nueva_tarea.png "Alt text")
 
-![Listado de Tareas](img/listado_tareas.png)  
-- **Clase**:  
-  Muestra el nombre de la clase asociada a la tarea programada.  
-- **Hora de Ejecución**:  
-  Indica la hora a la que está programada cada tarea.  
-- **Última Ejecución**:  
-  Registra la última vez que se ejecutó la tarea.  
-- **Log**:  
-  Proporciona un historial de la ejecución, que puede incluir detalles sobre el resultado de la tarea.  
+Completa los siguientes campos:
 
----  
+- **Tarea**: `SummarySendCommand`  
+- **Hora de ejecución**: Selecciona la hora de ejecución (recomendado en la noche).  
 
-## **3. Acciones Disponibles**  
-> ### ⚙️ Gestión de Tareas  
-Administra las tareas programadas según tus necesidades.  
 
-- **Eliminar**:  
-  Permite eliminar tareas seleccionadas que ya no son necesarias en el sistema. Selecciona la tarea y haz clic en **Eliminar** para borrar la programación.  
+---
 
----  
+## 2. Programar segunda tarea
+Para completar el proceso de envío de boletas a SUNAT, añade una **nueva tarea**:  
 
+- **Tarea**: `SummaryQueryCommand`  
+- **Hora de ejecución**: Se recomienda programarla **una hora después de la tarea anterior**.  
+
+
+---
+
+✅ Con estas dos tareas programadas, el sistema enviará automáticamente los **resúmenes de boletas a SUNAT** y verificará su estado de manera eficiente.
