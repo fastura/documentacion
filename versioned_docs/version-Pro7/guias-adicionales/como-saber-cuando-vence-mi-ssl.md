@@ -54,6 +54,6 @@ Mantener tu certificado SSL actualizado es crucial para la seguridad de tus dato
 
 
 :::danger IMPORTANTE:
-Para mantener tu SSL actualizado y evitar interrupciones en el servicio, puedes seguir las instrucciones detalladas en el siguiente **[articulo](../devs/instalacion/04-Instalar-SSL.md)**
+Para mantener tu SSL actualizado y evitar interrupciones en el servicio, puedes seguir las instrucciones detalladas en el siguiente **[articulo](../Devs/instalacion/04-Instalar-SSL.md)**
 
 :::

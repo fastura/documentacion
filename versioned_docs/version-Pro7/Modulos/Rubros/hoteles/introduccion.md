@@ -23,42 +23,42 @@ El Módulo Hotel de Pro 7 ofrece una solución completa para la gestión hoteler
 <DocsCards>
   <DocsCard 
     header="Configuración Inicial - Hoteles"
-    href="/Pro7/modulos/Rubros/hoteles/Configuracion-inicial-hoteles"
+    href="/Pro7/Modulos/Rubros/hoteles/Configuracion-inicial-hoteles"
   >
     <p>Aprende a configurar tu hotel o cadena de hoteles para comenzar a operar eficientemente.</p>
   </DocsCard>
 
   <DocsCard
     header="Recepción"
-    href="/Pro7/modulos/Rubros/hoteles/Recepcion"
+    href="/Pro7/Modulos/Rubros/hoteles/Recepcion"
   >
     <p>Gestiona el check-in y check-out de clientes con nuestra nueva interfaz visual mejorada.</p>
   </DocsCard>
 
   <DocsCard
     header="Tarifas"
-    href="/Pro7/modulos/Rubros/hoteles/Tarifas"
+    href="/Pro7/Modulos/Rubros/hoteles/Tarifas"
   >
     <p>Configura y personaliza las tarifas de tus habitaciones según temporadas y categorías.</p>
   </DocsCard>
 
   <DocsCard
     header="Pisos"
-    href="/Pro7/modulos/Rubros/hoteles/Pisos"
+    href="/Pro7/Modulos/Rubros/hoteles/Pisos"
   >
     <p>Organiza la estructura de tu hotel definiendo los diferentes pisos disponibles.</p>
   </DocsCard>
 
   <DocsCard
     header="Categorías"
-    href="/Pro7/modulos/Rubros/hoteles/Categorias"
+    href="/Pro7/Modulos/Rubros/hoteles/Categorias"
   >
     <p>Personaliza las categorías de habitaciones según las características de tu propiedad.</p>
   </DocsCard>
 
   <DocsCard
     header="Habitaciones"
-    href="/Pro7/modulos/Rubros/hoteles/Habitaciones"
+    href="/Pro7/Modulos/Rubros/hoteles/Habitaciones"
   >
     <p>Gestiona el inventario de habitaciones con todas sus características y disponibilidad.</p>
   </DocsCard>

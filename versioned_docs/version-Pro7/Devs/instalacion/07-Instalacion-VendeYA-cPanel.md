@@ -1,4 +1,4 @@
-# Instalación de VendeYA en cPanel
+# VendeYA en cPanel
 
 > ⚠️ **IMPORTANTE - Migración de Servidor GitLab**
 > 

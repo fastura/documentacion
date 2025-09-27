@@ -23,35 +23,35 @@ El Módulo de Preventas es una potente herramienta diseñada para gestionar efic
 <DocsCards>
   <DocsCard 
     header="Oportunidades de Venta"
-    href="/Pro7/modulos/Esenciales/Preventa/Oportunidad-de-Venta"
+    href="/Pro7/Modulos/Esenciales/Preventa/Oportunidad-de-Venta"
   >
     <p>Gestiona prospectos comerciales y registra el primer contacto con potenciales clientes.</p>
   </DocsCard>
 
   <DocsCard
     header="Cotizaciones"
-    href="/Pro7/modulos/Esenciales/Preventa/Cotizaciones"
+    href="/Pro7/Modulos/Esenciales/Preventa/Cotizaciones"
   >
     <p>Elabora propuestas formales con precios y condiciones para tus clientes en múltiples formatos.</p>
   </DocsCard>
 
   <DocsCard
     header="Contratos"
-    href="/Pro7/modulos/Esenciales/Preventa/Contratos"
+    href="/Pro7/Modulos/Esenciales/Preventa/Contratos"
   >
     <p>Formaliza acuerdos comerciales con tus clientes antes de la emisión de comprobantes.</p>
   </DocsCard>
 
   <DocsCard
     header="Pedidos"
-    href="/Pro7/modulos/Esenciales/Preventa/Pedidos"
+    href="/Pro7/Modulos/Esenciales/Preventa/Pedidos"
   >
     <p>Registra solicitudes específicas de productos o servicios para su posterior procesamiento.</p>
   </DocsCard>
 
   <DocsCard
     header="Soporte Técnico"
-    href="/Pro7/modulos/Esenciales/Preventa/Servicio-de-soporte-tecnico"
+    href="/Pro7/Modulos/Esenciales/Preventa/Servicio-de-soporte-tecnico"
   >
     <p>Gestiona ingresos de equipos para diagnóstico, reparación o mantenimiento.</p>
   </DocsCard>
