@@ -23,21 +23,21 @@ Mozo.pe es una aplicación especializada para la toma y gestión de pedidos en r
 <DocsCards>
   <DocsCard 
     header="Guía de Inicio Rápido"
-    href="/Pro7/Mozo.pe/Mozo"
+    href="../Mozo.pe/iniciar-sesion-mozo"
   >
     <p>Aprende a configurar tu cuenta y comenzar a utilizar Mozo.pe en minutos.</p>
   </DocsCard>
 
   <DocsCard
     header="Toma de Pedidos"
-    href="/Pro7/Mozo.pe/Pos"
+    href="../Mozo.pe/pos"
   >
     <p>Guía completa para la toma de pedidos rápida y eficiente desde cualquier dispositivo.</p>
   </DocsCard>
 
   <DocsCard
     header="Gestión de Cocina"
-    href="/Pro7/Mozo.pe/Mesas"
+    href="../Mozo.pe/mesas"
   >
     <p>Conoce cómo funciona la interfaz de cocina para preparar y entregar pedidos.</p>
   </DocsCard>
