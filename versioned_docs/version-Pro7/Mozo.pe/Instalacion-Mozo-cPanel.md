@@ -1,6 +1,6 @@
 ---
 title: Mozo en cPanel
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 import DocsCard from '/src/components/global/DocsCard';
