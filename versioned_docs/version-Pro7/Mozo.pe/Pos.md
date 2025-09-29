@@ -2,6 +2,9 @@
 sidebar_position: 4
 ---
 
+import DocsCard from '/src/components/global/DocsCard';
+import DocsCards from '/src/components/global/DocsCards';
+
 # Módulo POS (Punto de Venta)
 
 > 🎯 **Descripción General**
@@ -39,15 +42,51 @@ La pantalla del POS se divide en **dos secciones principales**:
 
 #### 📋 Información por producto:
 - **Cantidad**: Botones `+` y `-` para ajustar unidades
+
+  ![alt text](img/mozo_pos_5.png)
+
 - **Precio unitario**: Editable (solo afecta al comprobante actual)
+
+  ![alt text](img/mozo_pos_6.png)
+
+- **Nombre del Producto**: Editable (solo afecta al comprobante actual)
+
+  ![alt text](img/mozo_pos_10.png)
+
 - **Botón Notas**: Añadir observaciones pre-configuradas
+
+  ![alt text](img/mozo_pos_7.png)
+
+  Recuerde que estas se configuraron en el paso de **Mozo: Configuración Previa**, puede verificarlo en el siguiente [articulo](https://manual.uio.la/Pro7/Mozo.pe/mozo_config_previa#-notas-r%C3%A1pidas)
+
+    ![alt text](img/mozo_pos_8.png)
+
 - **Botón Eliminar**: Retirar producto del carrito
 
+    ![alt text](img/mozo_pos_9.png)
+
 #### 💰 Panel de totales:
-- **TOTAL acumulado** de la venta en tiempo real
-- **Dos botones principales de acción:**
-  - 🍽️ **Por Consumo**
-  - ✅ **Finalizar Venta**
+
+El panel inferior muestra el **TOTAL acumulado** de la venta en tiempo real y ofrece **dos opciones para finalizar la transacción**:
+
+<DocsCards>
+  <DocsCard 
+    header="🍽️ Por Consumo"
+    href="#%EF%B8%8F-botón-por-consumo"
+  >
+    <p>Genera un comprobante simplificado con un solo ítem que agrupa todos los productos del carrito. Ideal para ventas rápidas donde no se requiere detalle.</p>
+  </DocsCard>
+
+  <DocsCard
+    header="✅ Finalizar Venta"
+    href="#-botón-finalizar-venta"
+  >
+    <p>Genera un comprobante detallado con cada producto listado individualmente, preservando cantidades, precios y notas específicas.</p>
+  </DocsCard>
+</DocsCards>
+
+![Botones de finalización](img/mozo_pos_11.png)
+![Pantalla de finalización](img/mozo_pos_12.png)
 
 ---
 
@@ -74,8 +113,22 @@ La pantalla del POS se divide en **dos secciones principales**:
 - **Conversión automática**: Transforma todos los ítems del carrito en un producto único
 - **Comprobante simplificado** que muestra:
   - Un solo ítem denominado **"Por Consumo"**
+
+![Comprobante Por Consumo](img/mozo_pos_13.png)
+
   - El total general de todos los productos sumados
-- ⚠️ **Importante**: Una vez activado, no se pueden editar precios individuales
+
+![Total Por Consumo](img/mozo_pos_14.png)
+
+::::danger Importante
+Una vez activado, no se pueden editar precios individuales
+::::
+
+**¿Cuándo usar este botón?**
+- Ventas rápidas en mostrador
+- Cuando el cliente no requiere detalle de productos
+- Para agilizar el proceso de facturación
+- Comprobantes simplificados para consumo interno
 
 ### ✅ Botón "Finalizar Venta"
 **Generación de comprobante detallado:**
@@ -83,6 +136,14 @@ La pantalla del POS se divide en **dos secciones principales**:
 - **Listado completo**: Cada producto aparece de manera individual
 - **Información preservada**: Mantiene cantidades, precios modificados y notas
 - **Comprobante profesional**: Formato estándar con todos los detalles de venta
+
+![Comprobante Detallado](img/mozo_pos_15.png)
+
+**¿Cuándo usar este botón?**
+- Ventas que requieren desglose de productos
+- Cuando el cliente solicita factura detallada
+- Para mantener registro preciso del inventario
+- Comprobantes con notas o modificaciones de precio
 
 ---
 
