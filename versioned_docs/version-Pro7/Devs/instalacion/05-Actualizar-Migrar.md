@@ -1,3 +1,12 @@
+---
+title: Actualizar o Migrar el Sistema
+description: "Guía para actualizar el sistema Pro7 o migrar desde Pro6."
+sidebar_position: 1
+---
+
+import DocsCard from '/src/components/global/DocsCard';
+import DocsCards from '/src/components/global/DocsCards';
+
 # Guía para Actualizar o Migrar el Sistema
 
 ## ⚠️ Migración de Servidor GitLab
@@ -15,6 +24,33 @@ Antes de comenzar, asegúrate de tener:
 - Credenciales válidas de GitLab (usuario y token)
 - Permisos para ejecutar comandos Docker
 - Una suscripción activa para migrar de Pro6 a Pro7
+
+---
+
+## Guías Disponibles
+
+<DocsCards>
+  <DocsCard 
+    header="Actualización Estándar"
+    href="#3-actualización-estándar"
+  >
+    <p>Para usuarios que ya tienen Pro7 y solo necesitan actualizar a la última versión.</p>
+  </DocsCard>
+
+  <DocsCard
+    header="Migración Pro6 → Pro7"
+    href="#4-migración-de-pro6-a-pro7"
+  >
+    <p>Para clientes que desean migrar desde Pro6 a la nueva versión Pro7. Requiere suscripción activa.</p>
+  </DocsCard>
+
+  <DocsCard 
+    header="Solución de Problemas"
+    href="#5-solución-de-problemas-comunes"
+  >
+    <p>Ayuda para resolver errores comunes durante el proceso de actualización.</p>
+  </DocsCard>
+</DocsCards>
 
 ---
 
@@ -98,38 +134,25 @@ php artisan migrate && php artisan tenancy:migrate && php artisan config:cache &
 
 > **⚠️ Importante:** Debes tener una **suscripción activa** para realizar esta migración. Si tu suscripción no está vigente, contacta al área comercial antes de continuar.
 
-### 4.1 Respaldo de seguridad
-Antes de migrar, realiza copias de seguridad de:
-- Base de datos completa
-- Archivos del sistema Pro6
-- Configuraciones personalizadas
+### 4.1 Cambiar repositorio remoto
+```bash
+git remote set-url origin https://git.buho.la/facturaloperu/facturador/pro7.git
+```
 
-### 4.2 Verificar requisitos del sistema
-Confirma que tu servidor cumple con:
-- Versión mínima de PHP requerida
-- Extensiones PHP necesarias
-- Recursos de memoria y almacenamiento
+### 4.2 Verificar configuración
+```bash
+git remote -v
+```
 
-### 4.3 Proceso de migración
-1. **Cambiar repositorio remoto:**
-   ```bash
-   git remote set-url origin https://git.buho.la/facturaloperu/facturador/pro7.git
-   ```
-
-2. **Verificar configuración:**
-   ```bash
-   git remote -v
-   ```
-
-3. **Realizar migración completa:**
-   ```bash
-   git status
-   git add .
-   git stash
-   git pull origin main
-   git reset --hard origin/main
-   git stash apply
-   ```
+### 4.3 Proceso de migración completa
+```bash
+git status
+git add .
+git stash
+git pull origin main
+git reset --hard origin/main
+git stash apply
+```
 
 ### 4.4 Verificación post-migración
 - Confirma que todos los datos se migraron correctamente
@@ -149,29 +172,9 @@ git add .                     # Agregar cambios resueltos
 git commit -m "Resolver conflictos de merge"
 ```
 
-### Problemas de permisos
-Si tienes problemas de permisos:
-```bash
-sudo chown -R www-data:www-data storage/
-sudo chmod -R 755 storage/
-```
-
-### Errores de dependencias
-Para actualizar dependencias:
-```bash
-composer update --no-dev
-npm install && npm run production
-```
-
 ---
 
-## 6. Buenas Prácticas y Recomendaciones
-
-### ✅ Hacer siempre
-- Crear respaldos antes de cualquier migración
-- Revisar logs de error durante el proceso
-- Probar funcionalidades críticas después de actualizar
-- Documentar cambios personalizados
+## Precauciones y Recomendaciones
 
 ### ⚠️ Precauciones
 - El comando `git reset --hard origin/main` eliminará **todos** los cambios locales no guardados
@@ -182,4 +185,6 @@ npm install && npm run production
 - Actualizar en horarios de alta demanda
 - Saltar el proceso de respaldo
 - Ignorar mensajes de advertencia
+
+---
 
