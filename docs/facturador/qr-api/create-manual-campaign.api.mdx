@@ -1,0 +1,71 @@
+---
+id: create-manual-campaign
+title: "Crear Campaña Manual"
+description: "Crea una campaña de mensajería masiva"
+sidebar_label: "Crear Campaña Manual"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVk1vGzcQ/SvE5JIYK0s20MvenKQfSRokdVz4IAvJiDuWmOySDDl0oi72B/WQQ9Gf4D9WDHdlrwQlTWsIsEQOH4fz3jyyBcZVhHIOT7DxaFY2wqKAiqIOxrNxFkp4EghVsqi0xNz+haoi1ZCN+J7C7RdUDUZzg1CA8xRQVj2roAQdCJleok1Yb+GhgEg6BcMbKOctLAkDhbPEayjni24h0+GGQsyzKdRQwprZx3I6bWNaVq4x1rgOJDTQx0SRH7tqA2Wbf5pAFZQcEhWgnWWyLFPofW10Tm36PsqpWoh6TQ3KN954ghLc8j1phmIENAc2XBMUsAou+QgFNBQjrkjK5IMcmA3FjJIj7+EiB2NXUAB9xsbLVF/koYA+JFoidHfQ9ysxBNxAAYapGY8by7SiIGvuMOcnxemiu0/rm/v/4mosFEUmRVElu2XxPp9jAZfKVKmmt8iH8K5daGQGKmSasGloZ5PT2ekPk5PZZHaiTmblTD4Cisyo1299dX0I06a6xqWsF+66rtiWM6tvX0XnPfHQdRIZKHpnY8/C6exE/u0peFt3kWQlSv3f2tjlPCatKY45WjpXE1o5cYX8HRCmOszwV+Qk9DByigeZtqkR0XqyVT/ig5ME+x/aCUVMlZCIpqYKRDrsGOu3g4C+ordIlv8lpEf8ZtCY1q0hdP2fKJjXTnzDu5jLhGIKMEVvpnrrTtMmC2FkI2+Eqn67sZncbS7uAb2mm0xQDoJi+PLTVszPLy9g3/ku3Aey6vnlhXJLJmsqpyqqFdnKO2NZ2qZ2K5PZRm9e0GZv835QWlng1oRV3tpiM8x+yLO7u569fqZe0EZ5DKhQBOZUZQJpdrmEItLze+v7cdt57W5xd33m3mayY4wM47tcYc8UDjb5bo+PBGvstRun99u5HPGp06khy7nzDhYhF2BFkc3t31ayuVwjxzPvlXZWYfiYDJPmFFA1qWYzYbJo+fjKXtkHD9TT/q6IV3aijo7OKVJdU5ieVY2xR0elete22+uke6cm6ufRTj1SLJSv0VJUG9ny2qxSQJ1jVmQpYN1jX+ToAXN0S2XYV3IpauMEhqInffvl2miMso3GCpWuDVkm9bAy0bto2Ny4WGxZiMXdvRsfDSc7S2JeRve5XNlfUUm9Epva/IHqcVa26tX78PnlxaNBSzvLjtWrJd/+aRXVinNoQ5VByeSQxpV2oXfaKqd7fCWkyVXdE3ZyPDueDc6KOjvrIPOe7jfJexc4K1g6vEE7ihGXD+pOty+3Xb4jivbetv/Do2RoRabPPPU19t2aXxbt4DFz6URJ/e4NVMDgM4sC1mJH5RzadomRfg9118nwx0RB3jCLAm4wmP7ymoufDm0uDxhp7xKe9FlPLiQTCa9T3/57F09XbFecaU2evxm7GDnm61dvxLyWw0OocZWsCfhJHjP4CUrIjzNZnY0yj7VQo12l3gN6TOEGdx1szy7zqbbmZjejDNu2j8iq6zoohqNkaUG36LruH2smoFE=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Crear Campaña Manual"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/campaigns/manual"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Crea una campaña de mensajería masiva
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["title","groups","message"],"properties":{"title":{"type":"string","example":"Campaña de prueba"},"groups":{"type":"array","items":{"type":"integer"},"example":[1,2]},"message":{"type":"string","example":"Hola, este es un mensaje de prueba."},"schedule_at":{"type":"string","format":"date-time","example":"2025-10-01 10:00:00"},"attach_pdf":{"type":"string","nullable":true}},"title":"CreateManualCampaignRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Campaña creada","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean"},"data":{"type":"object","properties":{"id":{"type":"integer"},"title":{"type":"string"},"status":{"type":"string","enum":["pending","processing","completed","failed"]},"total_messages":{"type":"integer"},"sent_messages":{"type":"integer"},"failed_messages":{"type":"integer"}},"title":"Campaign"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

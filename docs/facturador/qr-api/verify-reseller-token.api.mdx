@@ -1,0 +1,71 @@
+---
+id: verify-reseller-token
+title: "Verificar Token"
+description: "Verifica la validez de un token JWT"
+sidebar_label: "Verificar Token"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVs1uGzcQfpUBU0C2sZacoqcNclB+ESWok0iNC1hGPeKOJSa7JE1yZSuLfZgee8ih6CP4xYohV7Yku2mB6iJpdzjzzcw337ARAede5KdiWIcFHMJH8lSW5MRZJgry0ikblNEiF5/IqQslEUqEJZaqoK9QENQagvlCGkYnE5EJY8khn3hTiFws+cxq7XPCdiITnmTtVFiJ/LQRM0JHjqOL/PSsPcuEo8uafHhmipXIm/hXOSpEHlxNmZBGB9KBX6G1pZIx3OCzZ5SN8HJBFfKvsLIkcmFmn0kGkW04OhVo1W8RNudpHaMOinxyun5158MHp/Rc7JbkZQmV8pXpKnBZE3gC0subbwikgUpYEBbkgPMzTn2NWEUbP4zIW6N9ivvj0RF/bUeIJYPlze+lKoz4H8lv5xj7t2E2M6Yk5N7QNVa2pFTsNhO1J3ff3zqBn44e/xNmpTvUYICurXJYGMFnrg+lKWgcw/hIgRL1XORihEscRz8iEyXOqBS5eEVBLpgzpnaSEUijfegK/hR6tBod0a9DdaxGbz89/qDePR8tZq+l6vf7vSdTPdXJfl1peAp4hSrABfvd6y1CsD4fDJqmMJXSyrTtAK0aYB0Wg8TeRIZeBs1UA1QUFqbIoff+eDzpZfwotdjnyQCgt9XsXg7nzyLH4YcmumrPs87weerm4WRlqZdDb7elvbXhUEqy4UETtmij3cwUqxxG4+Of+4mv6mK118Atn/Ouau3+VLf7T9alKTDgbVnWdeqz7z02EjySKWuRC2t8ZBPyuIqHSxUn3C3Jpe7Wjvt4W+h1ne8N05jcUhXG3UrQYFhUir0t0SmclYm63flEuwusyyBycen6s3ph+iXec/si2YN1SktlsYSCSvDKB54UZvE9iL6e/TvKCWnUYRfd3dFtgAVVpv8dlOPbcxFeSM7blou/lssxD3cKsymat7PJ+Ln20YyHOhqJrPvxyrgKGUsS6odmdnQyATMLpHlsGQfpwhqlAwt9aeZKizZjgXxLq53g6aHIhGJ3aSREJjRW3dsv8e121OH7N/CWVmDRIaCU5A0UypEMSSqYhB/vtsHLtTZtifRanFuOfRHrHlRgM/HhI0d4YWRdkQ5Jex/CEOPPyQd185fmXE8WGPzQWpBGA7rLWgWSoXYIVV0GdZj602d9efQIOor5qT6Eg4Nt+h4c5HC+oS7ncAivNyIlTz4DW6ImDysOeaHmtUMZbeakyWGZfCfSdT43aBrdHvPqlcqwG/KW5M033teew0gsEGSpSAeCvUJ5a7wKaml8BhVpj5/JZyCxsnjzJ/r9LrNhzfqkZMIy1e8QuF51UKX6itDpWiLP3uhkst+1cutYH45n4eaPuA6TAlVUKGQkD1EMpHFJhooItz+NGkDOp4Y97h/1j7pViDKuwo5lqd3j2lrjQiQQy1WFesNmfYvpUO/SobnbsP/xwtPxP9B1GNgS04hEQWk6mYy3DZEJFsqUyZ1UnmViwZKan4qmmaGnX1zZtvz4sibHN6SzO4WJF6RsPVysrTxUudhcI1GQyjoN3c4FgaUunUj75Lu2m6rPu451pLuRVabgMw6v+FaFVyIX8ebHp6M8xWdpr9c4Z9vkk1uC27qxI1Ixq7Wk6NUGwqZJFrFtLQtzSiXVsT1r2/ZvZUvIKg==
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Verificar Token"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/auth/verify_token"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Verifica la validez de un token JWT
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["api_token"],"properties":{"api_token":{"type":"string","description":"El mismo token que se envía en el header Authorization"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Token válido","content":{"application/json":{"schema":{"type":"object","properties":{"valid":{"type":"boolean","example":true},"user":{"type":"object"}}}}}},"401":{"description":"Token inválido o expirado"}}}
+>
+  
+</StatusCodes>
+
+
+      

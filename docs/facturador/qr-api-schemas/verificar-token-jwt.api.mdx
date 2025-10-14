@@ -1,0 +1,71 @@
+---
+id: verificar-token-jwt
+title: "Verificar token JWT"
+description: "Valida si un token JWT es válido"
+sidebar_label: "Verificar token JWT"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVM1u2zAMfhWBZzdOh518WrofoL0sa7L2kAYDY7OxWllSKTltYORh9gx7hL3YQNlpgmYD5ksc6+NHfuRHdRBxHaBYwKSNNSwzqCiUrH3UzkIBN2h0hSpo1VoV3SNZdXU7VxTU5vdPoysHGTA9tRTihau2UHTpr2aqoIjcUgals5FslCP03ugShTt/CJKgg1DW1KC8xa0nKMCtHqiMA29PtAD0+kdKLyV6dp44ago96f7owBEia7uGt2rmrwJQbYj1vS6RYZceyRe8s6FnfTcey8/f4vfKdxm8H5//C6XtgFNO0YvXjBKyy6ChWLsKCvAuiEyPsYYCcvQ6xzbWeapsO2jKIBBviGVGHbRsoIA6Rl/keVe5Rlvtdic6Z8QbXTlWnrUttUcDGWyQNa5ML28I7Yu/x9ZEKOCJR6u2diODJ4yferyqyKgwsEvjllJf2bKO21TgBSETJy8Vi+Xx8Uzm3Cc/Br2OTESJ2gSDAlYJBNnw8sVxg1Lk1e08tVH8c31w3ucXbLyhN4bYG2GXgbb3SW7UUWDw7XoyvVRnalI12ubXFMgYYjWZXp6IF2BFCgWpQ2Qs9e9fVnlkVEwbshVVjikIKNGO1J2dEjc6klpTEBpk5Q1aCpmKZNHGoLZKbIyldpbCEXvUGwyjO5m9DL6v4Xw0Ho2h3yYs0zZZTI2aOe84DpkhA2pQi0sS4YejmUrXxHMN2qPwm/0eHNb7bQO6ww7/14UwTDTSS8y9QW2l/8m63eD2tNCQgfi9l3lw/DKDWjajWEDXrTDQdza7nXx+aonFZsuDmZPLMqgJK+LkwEfaQgEf+4LP5lKKwE0rJZ1cQOLQ14Wcfp2J9tVwkTWukhjGZ7mM8BkKgAxcakrycfrWgUG7bnEt2J5Tnj9Q9tvw
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api-schemas/qrapi-admin-reseller-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Verificar token JWT"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/auth/verify_token"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Valida si un token JWT es válido
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["api_token"],"properties":{"api_token":{"type":"string","description":"Token JWT a verificar"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Token válido"},"401":{"description":"Token inválido o expirado"}}}
+>
+  
+</StatusCodes>
+
+
+      

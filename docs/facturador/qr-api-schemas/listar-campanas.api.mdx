@@ -1,0 +1,63 @@
+---
+id: listar-campanas
+title: "Listar campañas"
+description: "Obtiene lista de campañas creadas"
+sidebar_label: "Listar campañas"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVM1uGzkMfhWBpxaY2tk9zs1b7BZtF9jsxkUOqRHQEm0rmZFUkWPUGMwj9bDPkBcrqHFsJw6Kdi4jiX8fyY/sQXDNUN/AW2wT+nVgWFTgiG32SXwMUMM/S/EUyDSeBY0jY1X34X9kYzOhQ4YKMnGKgYmh7uH3iwv9PXXz95k5VGBjEAqi2phS4y2q9vSO1aQHthtqUU+ySwQ1YM64gwq8UMsn73F5R1aggpRjoix+BOLdiY4PQmvKMFQgXho6EbFkH9YqYUHp+FxUAYWu1UolCm58STlaYh4vNrapISEHFazQN+RgoZGiYHObyfrkKQi/jIcpyK2N3ViJc/no8EcaWinXNXSL8hL4VcytSsCh0BvxLamRtk/I/YLNsXYHxsBQvgpakk10UMOaSidQNlDDFJOf2kd2TZVEoAnnLWVlXg9dbqCGjUjiejrtuVu62Prg4wDPqXhFeetdzMZRY4QCBnW2xexx2YwtP5qPFFxh15QkqI2TL3my7DZx0uC564OdIU5kH76tvI2ngYZhWChy22UvuwL9D8JMedZppjeLU/GVMndEdKp0qLKmC2PbWr0vixJU+8Nfj7X/cD0/gzqP9xTMh+u5iUuh4N0Is4lrH7Sts+Q/0u5ZQCyPOjrqYkPoSriA7V56X6RPI80u35t72pmEGQ2F7cO3aJzPZEVDmpYC4x1x4YUPq1LyR378+59avzHzUj0zu3z/ovviWmcWrY+BWP2OBWfzitqUiZFfT8wl5dYLmTWxWmM2znOK7MVvI1fmc6Cw9ZgPoEyK2VxvUHiWktkZdNpdloz5uIImn4MSiDKPiH6bXEwu9nsJbRmLfYWuYopZyJS0SsIpsrQYTnTKistPFtyThPvjvvu5rbrvndBXmaYGx/aWeen383WjrVPAh/1dQZmxRQWbyKIafb9Epk+5GQZ9/tJRVvoujpNT2Fs9skKZrWyoYWYtpXHEmm7kybMlrZw/DP67P+cwDN8Byrc0wA==
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api-schemas/qrapi-tenant-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar campañas"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/campaigns/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene lista de campañas creadas
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de campañas","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"integer"},"title":{"type":"string"},"status":{"type":"string","enum":["pending","processing","completed","failed"]},"total_recipients":{"type":"integer"},"sent_count":{"type":"integer"},"failed_count":{"type":"integer"},"schedule_at":{"type":"string","format":"date-time"},"created_at":{"type":"string","format":"date-time"}},"title":"Campaign"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

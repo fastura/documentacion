@@ -1,0 +1,71 @@
+---
+id: create-plan
+title: "Registrar Plan"
+description: "Crea un nuevo plan de servicio"
+sidebar_label: "Registrar Plan"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVs1uGzcQfhWCuSTGWpIL9+C9OUlbJClq13bhgy0kI3IkTcIlaZLrWBH2YXrsoYeij+AXK4aUZP0YcdBTDz1ZXs7PN+Q338xcJphEWV/JUwM2ymElNUYVyCdyVtbyVUAQrRW2xVsnvAErNIqI4ZYUOVlJ5zEAG7/RspYqICTkWLKSEVUbKM1kfTWXI4SA4bhNU1lfDbthJQPetBjTS6dnsp7nfymglnUKLVZSOZvQJj4C7w2pnKX/MTKuuYxqig3wrzTzKGvpRh9RJVmtBbqSFhqUlfSBFHJxPjDeRBjZM58+RIgpkJ3ISuIdNN7wJ65EnAZsqG1kV0mK78cB151GzhnM5a68xmAidsusD6a2bUYYZCXHLjSQZC3HxkFadz086h0ddVuP8CRA5axITkMUBqIYt1aRs2BIg8bIsA01lN5rvCVVKl8EJJtwkiGtIh4MVvYNxgiTpxy+HwweXPjRQKUncwwGXVfJRCkX8WrFmrPCCdl1fB4wemdjQfDd4ID/bNKzlB8QtBN4R8lFaNAmfvN/zZ9NjsRWKYzxkRfnZ4L0DSFIP3EdXfU/Ff8jVMzS1XWFf4eDwS7lXkNyUZC9vf/dkHa5qMPHuPmLE9AmF+gLaCc5XoNp6lgmvYuZJsBqKPvgqc/S2g84oZgyQpZYDDFrZxuMrOU0JR/rfn+uXUOWXCe3xfqcZVm7IM4wojEY+se6ISbELQSCkSkXuPAviMfQGn7/m9AbtVPXM7AT9nWxFz6QVeTBCI1GREbaAF9WtQMxtqOnUV6gBZu20T24bgLU2LjeV1Cer/wyvFSCdx2PmuUkOuemL2nW59GKIIyf7z6bcUdlI1ktfvy4bJa3lxc7+S/cJ7Ti7eWFcKOElnTBgVZ7Rzbx2DRuQlk3wNM7nG0lLx9lJYnDTRF0Tl2UgU8/5dPNrMenb8Q7nAkPAQSwVDmhKaBKhXIsd2cPg/aHJe+Xw29TVtZUJSvHSjiyGGzn/oaG3+n3g8FuS3Pb7nbtQWlmsuNMhGWD/nrGJb92qmWhz5r+6KXkC5lgTHT/d95ZLqeQ4rH3GTGEm5YSqtQGEE1rEu0XwvSu7bV99kwsOB+v7b7Y29vsp729WnyYr9qw+yD2xU9rmUqkWOV1CaOYccoxTdoAKttM0GIAU2KXLljEXOubHPaEtyu+UYwCo0d1/+eYFEROo0CDUIZ43onnmqJ3kRLduliJBm2EjxgroaDxcP8XxBeLyo5bHoukCpZr+zMIvq82kaEvIF5mpovC5udvLy9eLLi14dYTJ6N0/4cV3GnZtEFNwEge47xQLpRhrjPc3nUWJQyxPNhBb9AbLGY2qLRGz/Lc5633LqTMaNbOBuyazVlWzQBBLBbPrZG12gSe3mYXrZjwLrEil27N2jZfqPUVdyJrd0m1UuxhJaes6vWVnM9HEPG3YLqOP9+0GHgHHj4IXV6Bq2WPs8Rzb9fyVUG6f8Ew2Ny0pfe39hdW3OJxrBT69FXb4drgOT05Z+UaLXbuxmn2CfCZS4HPspZ5pWfvrJL521wasJMWJmxbYvJDwKZ8bWllrmqpbHa2hnA+LxaZYh3Ph1JK5pHshl3X/QNk8V8n
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Registrar Plan"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/plan/register"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Crea un nuevo plan de servicio
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["name","price"],"properties":{"name":{"type":"string","example":"Plan Premium"},"is_free":{"type":"boolean","example":false},"price":{"type":"number","format":"float","example":49.99},"description":{"type":"string","example":"Plan con todas las funcionalidades"},"limit_devices":{"type":"integer","example":10},"limit_messages":{"type":"integer","example":5000},"limit_contacts":{"type":"integer","example":1000}},"title":"CreatePlanRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Plan creado exitosamente","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean"},"data":{"type":"object","properties":{"id":{"type":"integer","example":1},"name":{"type":"string","example":"Plan Premium"},"is_free":{"type":"boolean","example":false},"price":{"type":"number","format":"float","example":49.99},"description":{"type":"string","example":"Plan con todas las funcionalidades"},"limit_devices":{"type":"integer","example":10},"limit_messages":{"type":"integer","example":5000},"limit_contacts":{"type":"integer","example":1000}},"title":"Plan"}}}}}},"400":{"description":"Datos inválidos"},"401":{"description":"No autorizado"}}}
+>
+  
+</StatusCodes>
+
+
+      

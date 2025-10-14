@@ -191,6 +191,18 @@ const config: Config = {
               // groupPathsBy: "retencion",
             },
           },
+          qr_api_schemas:{
+            specPath: "apifacturador/qr-api-schemas",  
+            outputDir: "docs/facturador/qr-api-schemas",  
+            baseUrl: "/facturador",
+            sidebarOptions: {},
+          },  
+          qr_api:{
+            specPath: "apifacturador/qr_api",  
+            outputDir: "docs/facturador/qr-api",  
+            baseUrl: "/facturador",
+            sidebarOptions: {},
+          },          
         }
       },
     ]

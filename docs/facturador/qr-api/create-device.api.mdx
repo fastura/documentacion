@@ -1,0 +1,71 @@
+---
+id: create-device
+title: "Crear Dispositivo"
+description: "Registra un nuevo dispositivo WhatsApp"
+sidebar_label: "Crear Dispositivo"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VttuGzcQ/RVi8pIYa8tOm172TbHbIpfCiazCD7LQjMixRGeXpEmuEnWxH9SHPhT5BP9YMeQqXqlGEKBAnySRw7mec0YtRFwGKGdwRmstKcC8AEVBeu2itgZKmNBSh+hRNEaYhtZWKB2cDTrqtRWXK4xh7BwUYB155EcvFJQgPWGk7BUKCCQbr+MGylkLC0JPftzEFZSzeTfna78mH9Jt4ysoYRWjC+Vo1IZmoWytjbYdsKmn24ZCfG7VBso2/dSeFJTRN1SAtCaSiXyFzlVappRGN4GLaSHIFdXI3+LGEZRgFzckIxQDRzMwWHPSbmUNcUec5+KipsAv0+29hxC9NksogD5i7So++lWLs/smQbd19cVHz05+/OH77559+83TE+i6AqKO6fx00MlJLh66ji08BWdNyFk9PT7hj93hDbIQPBFl4T+0aLcNoZGSQhgYLqytCA3XqzB+hQutBjbaRFqSH/bkpCv+l24XECLGJjz4xDQ1Y0JaY0hGUlCA0mH405FRbDwfBrg3GA6zJ0RXwK3/XVr1YJa7Mzy9+6T00oq3E+HQo1hrI5sKvaBqSMWEiQSLmuLKMgedDannyESDETo9Upnmo0zPATEveOp5KkN6fk6O+cjmyYxnnYyg6L/8bH2NEUp4eTn9VwVT+56MeHk5FXYRyWhlhaJKkFHOahOFIlHZpU7AQadf0WYveD6EAjS7WxGqFDpDg2/fp9vdqOM3L8Qr2uSmIWOVpcuTjDaNhPE+uReTn7aT2xJ8H1efYbWPHW2ubUq2n/HbCYc+s7KpycRErgeTS4ktKUR998lwE7ZiKqQ1Av1toyPJ2HgUdVNFfRjJoIlHV+bKPHokzrIqhitzKA4OJhSoqsiPxqrW5uCgFO/adiuc3TtxKH4ZRMqeQiFchYaC2HDIa71sPMpksyRDHqvse5qse58DPU5uz1n2pbbshoIjeffXtZYYOIxEhUJWmkwk8XgA1lCImkzAGwqFkFg7vPsbw5O+snHD+qRlzuXKvEbB/WqirvQfKJ4nxImMqscvL6dP+hnvPDsS54t496dhmsRkWpPSyJk8hD0hrc96qlK6R1c8NF5KeWAnR8dHx714oowDmORxXzTOWR8Tsph3NZqBDWu430PTDiDae1X++o3bsyPSxzhyFWYCpfXZ9qSfMTlSrLzdi34vs1StWB3KGbTtAgP95quu4+Pbhjyv6XkBa/QaF4zp2bwrtrzjHc18K+E0p3w45TzYvGoyH/eWSldsX4ylJBe/aDsfCNib8wtWk0W/6+ukl+DxA+9r/AAlpP8d/DopVzproUKzbHDJttknDwV3JWVPv1JVW7Uxm0GGbZstEty6Doq+lIQp6OZd1/0DzxQ4CQ==
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Crear Dispositivo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/devices/create"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Registra un nuevo dispositivo WhatsApp
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["name","phone"],"properties":{"name":{"type":"string","example":"Mi Dispositivo"},"phone":{"type":"string","example":"51987654321"}},"title":"CreateDeviceRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Dispositivo creado","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean"},"data":{"type":"object","properties":{"id":{"type":"integer","example":1},"name":{"type":"string","example":"Mi Dispositivo"},"phone":{"type":"string","example":"51987654321"},"status":{"type":"string","enum":["connected","disconnected","pending"],"example":"connected"}},"title":"Device"},"qr_code":{"type":"string","description":"Código QR para vincular el dispositivo"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

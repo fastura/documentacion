@@ -1,0 +1,63 @@
+---
+id: list-campaigns
+title: "Listar Campañas"
+description: "Obtiene todas las campañas del tenant"
+sidebar_label: "Listar Campañas"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVcFu3DYQ/RVickkM2ev2qNs2aYM4AdwmDnywF80sNd6lQ5EMZ2R0K+iDeuihyCf4x4KhZFvrGk33spLm8c2Q8+axB8ENQ30BL7FN6DaBYVVBQ2yzS+JigBpO1+IokJHYIBuPbKyCb/9BNg15IxQwCFQQE2XURW8aqME7lgfWCphsl53soL7oYU2YKS872UJ9sRpWGs43lLlEu+yhhq1I4nqx6LlbN7F1wcUBFJqJUwxMDHUPPx4f699+ye8cC5qGHiqFCmwMQkEUjSl5Z0uti2vWJT2w3VKL+iS7RFBDXF+T1X2lrDsTNybkzlpingHXMXrCAEMFDcqcAnPGHVTghFr+PrVrZhgXhDaUlVWceJqFWLILG42woHT871AFFLpWG5soNOOXlKMWPr7Y2CZPQg1UcIXOUwMrzRQF/e8tMeOG+OlqmIJ8BzIy/ifoYVv32oNh+lXQkmyjqmhD5ZhQhQILTG5h7zS1UIXNhPVBGzgmm8vrPrXqSeEFpm0rIKimh19iblGghpPzM3g8A2fxMwVzcn5m4loouCYW6VNoUnRBVGo+blzRACb3lnaPko8fVQpKtyVsSuqA7RT9XKL7WZe/vjFvaWcSZjSosoumcZmsxHKALlzFkmM6yN/e64pX0XYtBSnyfpKz8G2Ixd1+DVr7+RaFlykZG4PB/KVzQla6jKbtvLjDccSPLsNlePbMvBqHkS/DoTk4eE9M3lNeLJvWhYOD2nzq+7t5HT6ZQ/N6lmlk4sokj4HY7DTlldt0GW3BbChQRj9ynxX0xDmzgUJ7qnZjXVQa4kT29u8rZ4spGYsNGusdBSHzvHGcIjtxN5Er01JgvCauHtzhxbSzZacO4exYy2V4h0bPqxPn3Z9ofipCMaMYnp+cn72YWrO37MicruX2r2DUGwu0pcahVvKUZIyNeXS0ppR7dKlNUy8cG/bD0fHR8WRfaIt9TaoZ2/2hSylmKYJIkaXFMMMUJ8zm5cwH9/TQP9ji/zf6SdNCf8gieRxlX0y7n0b1QiWtRc8ugDKuqwq2kUURfb9Gpo/ZD4N+/tJR1sthVcENZodrlfSFmtI0LXoz6JTUsLSWkhZyg74b5+eRn+s1ce8hr3/Wgcb9gXw0/YX9blbDbsbd9yOidH0YoJqKKK2FYTUMwzc3446A
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar Campañas"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/campaigns/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene todas las campañas del tenant
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de campañas","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean"},"data":{"type":"array","items":{"type":"object","properties":{"id":{"type":"integer"},"title":{"type":"string"},"status":{"type":"string","enum":["pending","processing","completed","failed"]},"total_messages":{"type":"integer"},"sent_messages":{"type":"integer"},"failed_messages":{"type":"integer"}},"title":"Campaign"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

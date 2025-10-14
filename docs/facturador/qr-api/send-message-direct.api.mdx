@@ -1,0 +1,71 @@
+---
+id: send-message-direct
+title: "Enviar Mensaje Directo"
+description: "Envía mensajes usando API Key (sin autenticación JWT)"
+sidebar_label: "Enviar Mensaje Directo"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVc1uGzcQfhVicrGNtWWnKODszandNkkTp7YKH2QBGS3HEp1dkiG5dtTFPkFPfYKec8ih6K1XvVAfoRhyV392ggK9SEty/uebbxoIOPWQj+A1eY9T8jDOQJIvnLJBGQ05nOm7xWcUFWmPt+RF7VFLI07evhCvaC52vNIC60A6qAILtfhLi5dXw13IwFhyyFZeSMjBk5adl1PlqAiQgaeidirMIR81gFa9ovlJHWaQj8btmJ/dHTkfX2tXQg6zEKzPB4PG1xNpKqWVaYFFLTqsKPTSGiuCHHRdTchBBoozsRhmkIGjD7VyJCEPrqbtdN8s/q7IGSFJBCoXn26M5kMppPLWeBXUneHIixlVCHkDYW7ZlQ9O6Sm0HAx7IB+eGzlniW2HhdFcLn5Ca0tVxCINbj0H0Dw0bSa3qVwrQ6P0xnnPS4OS22YdFzwo8ivd7fAyIF1XrM/tGNLHwJr0EStbUtekeNuuTD8SyKarrsqPOVsa/vbo2dNnh8fHR98cs+3APr6q8KMpUUjykgSVYoqB7nEu/vnj99+gbVs2oUIUvNzG1UWqfifmyFujfYr06eEh/212/HVCtiB9p1AaYK2Kwswwaq3xMWGGTg4DtGrANRo0Kel2DcSX3LfkZ0LoyCUoL5Nk7PbI4XMSgqz7+N64CgPk8PJqCNuoHJr3FOdKmEkgrWTCJGlpjdKB0VqaqdJc2/U5WjpPl/0kzAhldN3NCVr1Pr5ueu1nnIdLYFGQN0LGGqcqMWIvVlg/65u36msPpw009XjZAEWPia83nuO/MdFD1/6fLzjKU1PUFekQJ+nRPGIOU/IhMpQkcTXD4E+sFYXRAt2HWgUqQu1QVHUZ1H4gjTocXOtr/eSJOE1k46/1vtjbuyBPZUlucCIrpff2cvGuaXo+at+JffHDmqdkyWfClqjJizm7vFHT2nV8OSVNDstkexilO5trNBfNnjOlFsqwGfKWisXnG1WgZzcFShRFqUgHEjtrdOWzJXtnosDK4uJP9LtdZicb3H2tf8LI7XVQpfoVxfMITpEAuMPM3sFhQ+1AnE/C4pPmloUoWpFUyJE8BlNRGJcGU8ZwD665acz1qWFHB4cHh5CYEovIFB1SU7sva2uNCxEQPKEV6jWZMx5kJ/q5Pu0Qu4WKZsXD/2PHdUBn7A5siWkC465qOtIY8XRFmtASMsg79I8zmDG35CNomgl6+sWVbcvXH2pyvBHHGdyhUzhhnI8akMrzt4T8Bku/vbjW09m56BbFrviP6+zRNHrq0MwMd1jWfIIMmCqWu7Udt1nPJxxlevwuxbI/TFuqV36w7nhbLrn27fklM9+kW5uVkazj8J5XH94n5ybmG1k23jVQop7WOGXZZJNRgQ/oLxFc98GRPpreUjDlwb9t9gXZpkms2rZL+fT0RY0l7yZpLvO4bdt/ATkfUt0=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar Mensaje Directo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/send/{number}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía mensajes usando API Key (sin autenticación JWT)
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"number","in":"path","required":true,"description":"Número de teléfono del dispositivo","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["type","payload"],"properties":{"type":{"type":"string","enum":["sendText"],"example":"sendText"},"payload":{"type":"object","properties":{"number":{"type":"string","example":"51929088138"},"text":{"type":"string","example":"Hola desde el gateway 👋"}}}},"title":"SendMessageDirectRequest"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Mensaje enviado"}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: list-tenants
+title: "Listar Tenants"
+description: "Obtiene la lista de tenants/clientes"
+sidebar_label: "Listar Tenants"
+hide_title: true
+hide_table_of_contents: true
+api: eJytV01vGzcQ/SsEc0mM1Ydju411c+EkyAfqNHHgg20ks+RIYsIlGZJrRBX2x/TYQw9Fb736jxXD3ZVWH5DcorpYWM/Me8t5fDOa8wiTwEfX/BINmBj4bcYlBuGVi8oaPuIXeVRokGlgWoUITCKLdfBAaIUmYuAZtw49UMoryUecItuKGQ8oSq/ijI+u5zxH8OjPyjjlo+vb6jbjDjwUGNGHFGCgQD7iSvKMK2LwrUQ/4+u8Pn58dc4k6oYMwYgpFsBHcx5njkqE6JWZ8IyPrS8g8hEvSyV5VWULFGkLUGY30gulowfPnPVM2kIZZXegdauDiOoOH14dQwRpWUrbipFbqxHMCoiDiTIQ98D8fP93gd5S9zyGUhNQSKDu/jcqsA1OmYgT9KnYGEod+ejwpKKeeQzOmoCBop8Oh/RnFfDtmlh4xoU1EU2kWHBOK5EEM/gSKGG+CW/zLyios86TvKKq4UIpBIaw7VgyLiF2S4D3QIehIhZhf2kl98sn4/gdCqcp5Ojw2fHJs9NnvRyO895xfnLay0+PnvbgB3l0/OPRUIiTE2JVt2qz8rLS88J5DHCOhU2vUetyZ4rEwva/+X5eTm1fA6U1gts8mU5e9CVWGXcazL88kKUcFsUOH/Ry7zQY9s5jocqCaKrwaexxD88x6JCIeiW6oaYs8kRi0ZaxthC7qcen/dPTau0K7CUorGHRSghMQ2Dj0ghlDWglQWIg2loVKn6SeKcEhj3nMlzEFxgCTPYlnAyHyxS6KCDiXozhsKoyHlVcvATvPqgdmFfNJ+MFxqklf55gajWQCfMBODWob+mAjDs5tr9r/bj0mo/4NEYXRoPBvHHAasNhPqC/U9J69h4Dao1+cCaL5K134BXkuj6C1kGTYTSmwjsqXi97Xscz55URyoFOph9UiGQWVXLCNYqhzPezvGzHxgq7ZeoqwfW7tlF2kdedSVXyynb8fSB/q2G6Q3DRYuLfunC6EymIZ82XF63cX19dbuBf2q9o2OurS2bziEbJmgca6awykXxY24lKFglOvcHZGnj9sJ0hUwSZoNtB5tRX3BwqZ+9esTc4YzTBGZArWyaVRxFtEqIy43SOrSB/eU8Z51aUBZqY3H9rzVRvgiGq+78Mcb+aQgxnzqU7Cv5bqSKKWHpgRamj6tXn3b8xN+bRI9ZIJtyYHjs4WJXjwcGIfZ4vVFx9Zj32soPUTKuMkT9iYDOCHKtJ6UGkmAka9KDr2rWImpod2aWyF7QSkYdgYBgcivs/xkpAIBgBElizPrHHUgVng6KpHzJWoAnwBUPGBBQO7v+E8KR5s7OSBqgSNZcb8xYYnVcZlVa/AvspCYXVYnj8+urySdOalbQ+u8jj/e+GkVBTaIFSATHZJhkmrK/HvUx0+zfpTqMPdcMO+8P+sJnuINJ0b1RTt/tD6Zz1MQnC2RCLeu40MWlNaG9jWFfDfLkzPHQRbfQc8XscOA215JNBzBvDuyY5U2TrAMn0bjM+tSHSv+fzHAJ+9Lqq6HG9UJEVShXIKWQznHaQ3dxOt/KiS9WsunegSwrgZGgPB9q+nO4AW2y8/wPg+r66A3axCv9H2IfsrzvgO0vyksDt0vzTb5Gs9T3qdZ13JgS62MnaWFypymKuvnxO1gyr1rrm46l667pm1qk9n9cR6f5WNLtqEumS8uq2qqp/ACcuuxc=
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar Tenants"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/tenant/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene la lista de tenants/clientes
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"query","description":"UUID del tenant","schema":{"type":"string","format":"uuid"}},{"name":"domain","in":"query","description":"Filtrar por dominio","schema":{"type":"string"}},{"name":"active","in":"query","description":"Filtrar por estado activo","schema":{"type":"boolean"}},{"name":"paginate","in":"query","description":"Número de resultados por página","schema":{"type":"integer","default":15}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de tenants","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean"},"data":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid","example":"31845898-ba4b-4b59-b932-a6d34730cc55"},"name":{"type":"string","example":"EmpresaDemo"},"domain":{"type":"string","example":"demo.qr.buho.la"},"active":{"type":"boolean","example":true},"plan":{"type":"object","properties":{"id":{"type":"integer","example":1},"name":{"type":"string","example":"Plan Premium"},"is_free":{"type":"boolean","example":false},"price":{"type":"number","format":"float","example":49.99},"description":{"type":"string","example":"Plan con todas las funcionalidades"},"limit_devices":{"type":"integer","example":10},"limit_messages":{"type":"integer","example":5000},"limit_contacts":{"type":"integer","example":1000}},"title":"Plan"}},"title":"Tenant"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

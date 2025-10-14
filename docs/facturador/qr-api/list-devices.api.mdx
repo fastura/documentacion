@@ -1,0 +1,63 @@
+---
+id: list-devices
+title: "Listar Dispositivos"
+description: "Obtiene todos los dispositivos del tenant"
+sidebar_label: "Listar Dispositivos"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVcFu3DYQ/RVickkM2WunTdrqtoXbIE4Kt4kLH3YXyCw13h1HIhlyZGQr6INy6KHoJ/jHiqG0sWwYCLqXlcQ3b4acN48dCG4SlAs4pRu2lGBVQEXJRg7C3kEJ52thcmTEVz6Z2idTcQo+sfCNvlBthBw6gQJ8oIga97qCEmpOsqctIJFtI8sOykUHa8JIcd7KFsrFql/pcryhmPJqG2soYSsSUjmbdaldV75hx74HhUZKwbtECcoOnh8f69/9mt9yEjQV3SsVCrDeCTnRAAyhZpuLnV0njeog2S01qE+yCwQl+PU1Wd1YiLo14SFnaq2llCbAtfc1oYO+gAplSoEx4g4KYKEmfZuaqwmGndCGIhRAn7EJNUF50hfgsKEJKklkt5mC4Dc2p3c716rC1rtvBL04+enHH16++P675ycakQSlTY+GuLZRyVjvHFmhCgqoOE1fA7lKwatpgjtA3xcgLPnroBDox18BDcnWq342lM8HVSQww8CzalDTTJU1kdR77dtwflNhfa1claTwDNNuZRAU48OvPjYoUMLZ5QU8lP+F/0jOnF1eGL8Wclz5LHlyVfDsREVW+w3n1mPgN7R7kHz4qApQui1hlVMPTdTVj3n1ftb576/NG9qZgBENqtq8qTiSFZ8Pj92VzznGQ/zjnUacets25CSr+lHOzLehJHz7r9PaL7coaR6Csd4ZjJ9aFrLSRjRNWwsfDqN9tHRL9+SJOR3GMC3doTk4eEeJ6pribF417A4OSvOh6/aT2n8wh+bVJNPAlAoTanSUzE5TXvGmjWgzZkOOItYD90VGj5wTA8i052ozlr3SUApkb/++YotqRsZihcbWTE7IPJ3Of2EacgmvKRXGYhPw9h9Mz8adzVs1BrZDLUv3Fo2eVytc819ofs5CMYMYnp5dXjwbW3Mv7Micr+X2izPqiRnaUMWolTwmGWN9HLysyuUeLbVp6oJDw06Ojo+OR9dCm11rVM3Q7vdtCD5KFkTwSRp0E0z2wDj1gfRQEt2dIf4vmx+VLfRZZqHGQfzZtLtxXBcq7Jxub/95ZFcFbH0SXe+6NSb6M9Z9r58/tRT1algVcIORca2yXqz6Yj8xei/opJQwt5aClnGDdTvM0AMr10viq4u8+kWHGu8P5QMHyOz7eXW7CXfXDYjc+b6HYiwitxf6Vd/3/wHG84iH
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar Dispositivos"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/devices/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene todos los dispositivos del tenant
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de dispositivos","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean"},"data":{"type":"array","items":{"type":"object","properties":{"id":{"type":"integer","example":1},"name":{"type":"string","example":"Mi Dispositivo"},"phone":{"type":"string","example":"51987654321"},"status":{"type":"string","enum":["connected","disconnected","pending"],"example":"connected"}},"title":"Device"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

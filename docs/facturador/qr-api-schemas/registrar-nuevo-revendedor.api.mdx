@@ -1,0 +1,71 @@
+---
+id: registrar-nuevo-revendedor
+title: "Registrar nuevo revendedor"
+description: "Registrar nuevo revendedor"
+sidebar_label: "Registrar nuevo revendedor"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNlNtO20AQhl9lNdcmAUpPviK0VKKqVApUvQiomngn8VJ7d5ldB6IoT9VH6ItVs3YSQyiqb2JvZv85fTNLiDgLkI9h1MQSbjIIVDRs4gLy8U0GTHcNhXji9ALyZfo0TBryyA1lUDgbyUb5C72vTIHRODu8Dc7KWShKqlHe4sIT5OAmt1REyHpCY6AaTQUZWKwJMvAYwr1j3Xv9WTg7NVwndQnSs/PE0VAQ8VZg6yVENnYGGUyd3IF844IesPaV2Giq3fvjmZwPClfDqvP/jMqTS2K6ifElp71EamO/kJ3FEvJ3fcGDw1dHr9+8fdfXfJzsfzp4TjI9UurgnQ1tqQ73D+RHUyjY+NYDXNCcrCbtWDHNTIiM2il6MNEFrMlGkviODg93r54yO1aa1Bwro7Ewf35bEK9PPbSyrGxDc6d441GKQ7F0WvJxIaauS51giN4MsYnlsA2KxDYQz4kF2CU0XEEOZYw+Hw6X2tXGGreCp74viedGcvNsbGE8CghzZIOTqi1Kd7XNbopNJcW948GkKd2gwh3Fj6290lSp0KlLuXvTcynkt+onhEycxmvbTIla0klmkMMkGUHWvXxat/jzj6tUTpmoi+0snq7bvYF/B+g1zx20fWa3jPyTukdkGjtNxYkmJsS+XYzOz9SeGuna2OEFBaoqYjU6P9splRhqUiiWiYBEiPLI2IOAghgl2YG6tufEtYmkZhREBln5Ci2FTEWyaGNQCyXzj4VxlkJPPZo5hsG1lQ4Thy6Vwf5gH9plhUVaVl1pLp13HDvPMkVdLZPgcY8AaYHQWaPtXX+R6kd12PQ90kMc+gqNlcImgpcd8GNAbyADQT5tyA76mwxKGYx8DMvlBAN952q1kuO7hrjb02ue5WuVQUmoidOU/KIF5PChXdR7VxKGmFeNhLOztIXhzTyef728EiS75V87LXcY7yU8vIccIAOXUkykp7MlVGhnDc7EttWU5y8//zOe
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api-schemas/qrapi-admin-reseller-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Registrar nuevo revendedor"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/auth/register"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Registrar nuevo revendedor
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["email","name","password","password_confirmation"],"properties":{"email":{"type":"string","format":"email","example":"demo9@gmail.com"},"name":{"type":"string","example":"demo9"},"password":{"type":"string","format":"password","minLength":8,"example":"12345678"},"password_confirmation":{"type":"string","format":"password","example":"12345678"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Revendedor registrado exitosamente"},"422":{"description":"Error de validación"}}}
+>
+  
+</StatusCodes>
+
+
+      

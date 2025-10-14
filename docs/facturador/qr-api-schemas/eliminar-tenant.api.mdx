@@ -1,0 +1,71 @@
+---
+id: eliminar-tenant
+title: "Eliminar tenant"
+description: "Eliminar tenant"
+sidebar_label: "Eliminar tenant"
+hide_title: true
+hide_table_of_contents: true
+api: eJx1VMtu2zAQ/BViTwnAWm6Rk051YRdw0UOaB3pIfFib63hRilSWlBFD0Ff1E/pjxUpy6iTNSRQ5nH3MLFvI+JCgvIMbChhygpWFGgUryiR60ELAiqAEdmCBA5RQY96BBaHHhoUclFkasuAobYTrzFFBy7lx5E3uac3Z7e1yfg4W0mZHFULZQj7USpuycHgAC9soFWYooWnYQdetNEKqY0iUFP9pOtXPyyhD1oY8VxzQRUNPnGPCikIm6CxcTC/evRWiobCJIQu6CF33uoTFwCpjEWChoryLDkpw5CkT2KEXJRRYczHAiuGsaNl1WjDJ/tjJRjyUsMu5LouidbHiwFFBL+Nek+zZRTG1cNhwjR4s7FEY137oxXh1qGyLjde+Pcpk3ezixOMbxvmA7xVJIzt0fY8TbRrhfOgT/EIoJLNGa7pbnR5fq25D8FPQs4xa1FFe/V/3ILDj4utR3G8/b/pOc9j26WfOXvE/rmaXS/PBzFzFobiiRN6TmNnl8k0xCnRkUJGcsuCG//wORl1rhPYUHLkolBTU007MfbgkqTiTeaCkNCim9hgo2VHcZA4m1qRkMVA6Yc+8xzS5D6oBSRpy+DiZTqZgQd2Dm6yVjGNyHesoeYwMFqhCVtV7ws8nGmkX6phyheHk+lvPvSj+ud+ZnnJRe+SgLu+N1Y5mvAOsGSycMIxmLdnpfO9iygpr2zUmuhXfdbr92JCoDVb/zNabwnHStYNyiz69HvS27wEFFffsanwSzs074//f7MdNDIfe577RP7Dwiw7Du9OtupPZmy++L24W0HV/AeBbnaU=
+sidebar_class_name: "delete api-method"
+info_path: facturador/qr-api-schemas/qrapi-admin-reseller-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Eliminar tenant"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/api/tenant/delete/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Eliminar tenant
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"description":"ID del tenant (UUID)","schema":{"type":"string","format":"uuid"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Tenant eliminado exitosamente"},"404":{"description":"Tenant no encontrado"}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: crear-dispositivo-whats-app
+title: "Crear dispositivo WhatsApp"
+description: "Registra un nuevo dispositivo para envío de mensajes"
+sidebar_label: "Crear dispositivo WhatsApp"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVU1vGzcQ/SvEnFp0Ldlu0o+9KR8FnKKNa6vwQRGKETmSaO+SNDmrWBD2B/WQQ9Fbr/pjxXAlS7KcHOKLV/yYefPmzeMKGGcJyhG8oYXVlGBcgKGkow1svYMSrmhmE0dUjVOuoYVXxqbgk2W78CpgREVusf7klSFVk0t4SwkKiHTfUOJX3iyhXOWfNpKBkmNDBWjvmBzLFoZQWY2Sr3+bJOkKkp5TjfLFy0BQgp/ckuZN3C7QCBzWBAWEuXckyEP0gSJbSnIz7+4iJI7WzaAAesA6VLL0m1VvdsXA09J/9/UkkrKGHNup1Wh8VIaqfQag3eb/YqaXZz//9OMPL198f352nGb9X00x88dUrf+eeucVOTX1sUb2yjqm6FBb77BSyTpFlfoO2rYAtpzDd927cKFhaFvZiZSCd6lj4vz0TP4dpt2rXOlIaLyiB8s+YU2Ohdev7tFhH6w55qYtPtOez9PZFpAYuUnPMu2aWhSBmu1CsFv3+Gls0t450kwGxm0BUi2T+Qv5uVAd7VCCQaYTtjU9Q/WG5Rfn58fEvo0x60QtsLIGtV3/63KImnjuDZQQfMo0Ic+hhD4G2zfd/PU7bFBAorigKLO5giZWUMKcOaSy31+lZmJ8bZ317ZGYriku7FanTA6dZFpgtDipun7srnfYp9hUuV6qfe8+9ibN3PcqPA79eE9RCqTXn6ZW+/1EbduOBbluouVlhv6KMFIcNFLpaLy/fS3y6RDtH3psiJQrPORjUMIkH4Ji8/HLtk3vboZHUIf+jpx6dzNUfsLkrOlgVn5mnQhpEOyvtHySEPNi1o6kJzQ5XadT2b3Lu4eZBpcX6o6Wh0ZoI2k+NETpvwzO1c4W327dYWtVx360GYUD+2gF4DT3bqvJP64Exoka5jaoweXFszgzRpnM7CWUOseRK0l9Q3WIlDB921OXFGvLpGaU5DbGfcNLhfrgyC0sxsfqVPBR3cyR0yAEtVRoRCbyakSlsQ64/gdT74MTJVJMHaKz3mnvdOMyqHmPhmsffGRSuazMnAxMjW7vzOtIh7ge8z8tfbXzsa9+zDYKYXrgfqiwE1GeytVmikcikJy6e0e3LiPP0lzGvRzBajXBRH/Gqm1l+b6hKEMy3s1nnpFiqz2ZH9FcCa+7Ck6GgkOOV02nySeu3BbbGwOtKfAXz473HOny/bVM0WTzWtfeyJ2IH+XFxY9QAhTgM6N5YvPaCip0swZncraLKX//AydM5pQ=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api-schemas/qrapi-tenant-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Crear dispositivo WhatsApp"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/devices/create"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Registra un nuevo dispositivo para envío de mensajes
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["name","phone"],"properties":{"name":{"type":"string","example":"Mi Dispositivo","description":"Nombre identificador del dispositivo"},"phone":{"type":"string","example":"51987654321","description":"Número de teléfono en formato internacional sin el +"}},"title":"DeviceInput"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Dispositivo creado exitosamente","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"phone":{"type":"string"},"status":{"type":"string","enum":["active","inactive","disconnected"]},"created_at":{"type":"string","format":"date-time"}},"title":"Device"}}}},"422":{"description":"Error de validación"}}}
+>
+  
+</StatusCodes>
+
+
+      

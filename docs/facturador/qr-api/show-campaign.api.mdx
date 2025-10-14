@@ -1,0 +1,71 @@
+---
+id: show-campaign
+title: "Detalles de Campaña"
+description: "Obtiene información detallada de una campaña específica"
+sidebar_label: "Detalles de Campaña"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVc1uIzcMfhWBe0mCSZz2ODd30y42WyBt1kUOdtClJdpWViMpEidtOpgH6qGHoo+QFyuoGTvOT7cF6otnhhRJkd/3sQPGdYZ6Dm+xiWjXPsN1BYayTjayDR5quFiyJU/K+lVIDWr78JdXhhidQ4PKkGo9Ki0BHv5ERTmSfvhjZTVCBSFSQgn03kANeRN+2WaCCjLpNlm+h3rewZIwUZq2vIF6ft1fizndUcrF2iYHNWyYY64nky63SxMa623oQVwjJmyIt94eG4IarIEKrNwhIm+ggkS3rU1koObUUgVZb6hBqDvg+1hOeKY1JeglaKIcg8+UxeHr01P5e9qas9IFytIE99gDqEAHz+RZjmCMzurShMlNlnPdy8RheUOaoYKYpGVsh6y51Zpy3nNchuAIPfQVGOT/EMKa1+5XAVt2tGfKnKxfiyUzcptfmiog3zaClkjeDF9iClLg8KJDEx0xSdtXaB0ZuJZMgdH93FDOuKb8ejWZPP+LyxDxi06P19oBGvrhV0FDvAmCwjWVLgkkaphgtBO9Rf9EEDrprOn34PlRhjUk3AfpLr2gEkYwlREVJ6jGh++ENQw1nF/N4Dm5ZuEzeXV+NVNhyeStCcqQU+RNDNZzAVZY2zJvjPYD3T9LPnzc4nxDaErqkQEY7edifZp1+sN79YHuldBGoUAsKGMTaQ6liUL1kmNs5o+XcuIs6LYhzwXKr8Ys8daUedQIdbVBztMYlQ5eYbptLZPmNqFqWsf2mMmj55OFX/g3b9TZQOm88Mfq6OiSMjlHaTI1jfVHR7X61HVb1vef1LF6t5dpiJQrFR16yupeUq7suk2jYq3JU0I3xJ4V7zHmnpiUsBeiWdoGCbOnZoXlWiRPO0ueSR0Ym2PIlu1dyJVqyGe8oVzthCAfjjebtqIGVg+1LPz3qKRfLVtnf0P1TQGKGsBwcH41OxxH8+TYibpY8sPvXpFTXFwbMhalktcgo3RIg4SZUu7JQoYmijoM7KuT05PTUapQF6kaUTOM+2MbY0hcABFD5gb9ns++9L191L0nmOgeZfD/bZER60y/8iQ6HOhQVkI38nguUJfL7PZYVbYNVFBbI0ttEzKLX9ctMdNPyfW9fL5tKckCuq7gDpPFpQB+3oGxWZ4N1Ct0mb5ws4PLcascqn8qdctVL1S8Q9fKG1Qg3CxrqhedHMkr2QfDVGuKvHfkxSqRNbXTtXffir7gU314JkYl+qvldN3gUUDY97vqCtKkwL7/Gxhw34M=
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-documentation
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Detalles de Campaña"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/campaigns/show/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene información detallada de una campaña específica
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Detalles de la campaña","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean"},"data":{"type":"object","properties":{"id":{"type":"integer"},"title":{"type":"string"},"status":{"type":"string","enum":["pending","processing","completed","failed"]},"total_messages":{"type":"integer"},"sent_messages":{"type":"integer"},"failed_messages":{"type":"integer"}},"title":"Campaign"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

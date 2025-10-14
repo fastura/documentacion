@@ -1,0 +1,63 @@
+---
+id: listar-dispositivos
+title: "Listar dispositivos"
+description: "Obtiene lista de dispositivos registrados"
+sidebar_label: "Listar dispositivos"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVEtuI0cMvUqBqwTokZwse6cgH8wkQJxYgRceIaCqaKns7qoaki1EEPpIs8gZfLGA1bIs29pEGzWKv8fHRx5AcSPQ3sGPtIueBFYNBBLPsWjMCVr4fa2RErkuiqIL5EKUkiVq3GVxTJsoyhiyQANMUnISEmgP8P3Vlf29zvbbpSzQgM9JKakFYCld9GgB8wexqAOI31KP9qX7QtACMuMeGohKvZy95/UDeYUGCudCrHHCEsOZjyjHtIGxgYQ9XTSUbU6XLaKog7w3NUBp6I1J9Bp3ZNjS6TNE8Tkl8koBVmMDngmVwt+ol1LdZ+7NAgGVPmjsCcaxAY3amd80Kxjrr4GedJsDtLCh2jnqFlqYY4nzME11bsODBoR4R2zzPsDAHbSwVS3SzucHGdYh9zHFPMJbCdwQ72LI7AJ1TilhsmQ75IjrbiL4JXya+T0OXW2A+jz7wrP1sM2zDt+nPsU5kkL+6et99Pm80DiOK0PuB466r9B/IGTixWB93q3OzTemkwnRudOJYWvXeKhu0MK6OkFz/Pj5mfdPt8t3UJf5kZL7dLt0ea2UYphgdnkTkyljUeKvtH9TEOtjFYOVJwy13CQ8sz5W6+tKi+uP7pH2riCjo7R7+ppdiExeraTrKQk+kFRNxHRfKX/Wxh9/WvQHt6zsucX1x4vpa2rbEPQxJxLLOxEu7hvqC5OgfDtz18R9VHIbEotGfrW4jfucKO0i8gmUK5nd7RZVFqW4vcNg07UTwc5jX/DpX5TZ52QCIpYJ0Xezq9nV8QqgrytxZOgml8xKrrZVGy5ZtMd05lNvCr+9KK96PrwcmP910I5TVPpH56XDadB1cw7HPbuzIdZy0/1soO7aqoFtFjX74bBGob+4G0d7/jIQm4xXLxtUVdw8q8MUbqpoYeE9lWnVumHSy5vTaNo/rf8vPy1hHP8DtEcGeg==
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api-schemas/qrapi-tenant-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar dispositivos"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/devices/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene lista de dispositivos registrados
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de dispositivos","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"phone":{"type":"string"},"status":{"type":"string","enum":["active","inactive","disconnected"]},"created_at":{"type":"string","format":"date-time"}},"title":"Device"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
