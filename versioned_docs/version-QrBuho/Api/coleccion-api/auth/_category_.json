@@ -1,0 +1,10 @@
+{
+    "label": "Auth",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "slug": "auth",
+      "description": "Manual de como funciona la autenticación en la API QR Buho"
+    }
+  }
+  

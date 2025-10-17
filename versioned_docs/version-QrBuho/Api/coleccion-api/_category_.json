@@ -1,0 +1,10 @@
+{
+    "label": "Colección API",
+    "position": 3,
+    "link": {
+      "type": "generated-index",
+      "slug": "coleccion-api",
+      "description": "Documentación de cómo trabajan las colecciones de api QR Buho"
+    }
+  }
+  

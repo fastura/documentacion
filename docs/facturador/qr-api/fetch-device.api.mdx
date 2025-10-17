@@ -1,0 +1,63 @@
+---
+id: fetch-device
+title: "Obtener dispositivo actual"
+description: "Obtiene información del dispositivo activo"
+sidebar_label: "Obtener dispositivo actual"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVc1uGzcQfhViTi1AS26OexOaHzhpkDRW4YMtBCNyrKXNJWlyVqgg7CPlUPQR/GLFcNe2oggFctpdzs83nPnm2z0wbgo01/Cats5QgZUGS8Vkl9jFAA18WrOjQMqF25g7NO7x36AseWVdSbE4dtuo0MgDNMREGSXywkIDt8SmHTODhkJ5S1nQ9tBnDw20zKk08/m+9GsbOxdcHEDDFrPDtacCzR5eTPJl6RZ7z9AAU8DAs4c8W/dtnHmEYRhWGjKVFEMZg1+dn49Rhze6+J+bgAYTA1NgicOUvDP1PvO7IsF7KKalDuWNd4mggbi+I8OgIWW5PbsR2tkDHxeYNpRh0BCwowNL4ezCRgypjeG0pTByX340aaDQdzI9E0Mgw2RBg3Xl8DNRsOK8GjQ85K8m2hMgGkLvvfQcGs49DRpMJmSyX5FPudcOyhgsMp2x60gK7ZP9yZhBAzsW2ImBMkU57YjbKBzaUO0tcgsNzDG5uR2pOq/sqrwyfXa8q8RaE2bKi17cr1dCiCfzpQxunM2h03OdQkbJVt2gmZxATy9vn6p/f7WE4yVZxnsK6v3VUsU1U3A2VmL5uHFBGoPJfaDdEeB4CBqcpGgJbYUbCSLW+2r9Hmnx+UJ9oJ1KmFFhL0x15onLLpNhrF2Vda1YU3f//CKRZ+rSFaYOlSX1kULBO8qP31BdtchlkdJJPBO75IlxBN1Q4Wl1VHcihTIxqBJTzEyq6z27s2lXb8JN+AOVpEyUO8c0JosBc3MTztTi6D6kvlAh7ykXtVPLmqWI42ePgYo4lL5WWwPE8u6guilA/WK8o8BUfhWP1y/bXp6LFsObsH38Fg+uVaF+xy7h4z9Y0TrM98QubG6C6BTlMnbpt9n57HzSDjSV/dMYL6dG1P6DPhK+79RLQ4qFOwwH4Z+ETpSPxbZHfzyp/Ytw/aRmT3Rk+pvnyePI2Frnftq7a2FjBRx/EnpUdvlZtLGwOOz3ayz0V/bDIMcPPWVZyNWLmtd91E88l10VfjewMIYSV9n3/cj8I9WVLX7Wg3dvljAM/wHK0l5H
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-sistema-de-mensajeria-whatsapp
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Obtener dispositivo actual"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/devices/fetch"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene información del dispositivo activo
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Información del dispositivo","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"integer"},"name":{"type":"string"},"phone":{"type":"string"},"status":{"type":"string","enum":["connected","disconnected","pending"]},"qr_code":{"type":"string","nullable":true},"created_at":{"type":"string","format":"date-time"},"updated_at":{"type":"string","format":"date-time"}},"title":"Device"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

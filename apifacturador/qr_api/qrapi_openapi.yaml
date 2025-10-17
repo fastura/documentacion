@@ -1,68 +1,884 @@
 openapi: 3.0.3
 info:
-  title: QRAPI Documentation
+  title: QRAPI - Sistema de Mensajería WhatsApp
   description: |
-    API para gestión de WhatsApp con arquitectura multi-tenant.
+    API completa para gestión de mensajería WhatsApp con soporte multi-tenant.
     
-    ## Dominios
-    - **Reseller/Admin**: `{{dominio}}` - Gestión de tenants, planes y configuración general
-    - **Tenant**: `{{subdominio}}` - Operaciones específicas de cada cliente (dispositivos, mensajes, campañas)
-    
-    ## Autenticación
-    La API utiliza Bearer Token (JWT) para autenticación. Obtén el token mediante el endpoint de login correspondiente.
+    La API permite gestionar:
+    - Autenticación de Resellers y Tenants
+    - Planes de suscripción
+    - Gestión de Tenants (clientes)
+    - Dispositivos WhatsApp
+    - Envío de mensajes
+    - Campañas de marketing
   version: 1.0.0
   contact:
-    name: QRAPI Support
-    
+    name: Soporte QRAPI
+    url: https://qr.buho.la
+
 servers:
-  - url: https://{dominio}
-    description: Servidor Reseller/Admin
+  - url: http://{dominio}
+    description: Servidor Reseller
     variables:
       dominio:
         default: qr.buho.la
-        description: Dominio principal del sistema
+        description: Dominio del servidor reseller
   - url: https://{subdominio}
     description: Servidor Tenant
     variables:
       subdominio:
-        default: demo.qr.buho.la
+        default: tenant.qr.buho.la
         description: Subdominio del tenant
 
 tags:
   - name: Auth - Reseller
-    description: Autenticación para administradores y resellers
-    x-displayName: 🔐 Auth Reseller
+    description: Autenticación para resellers
   - name: Auth - Tenant
-    description: Autenticación para usuarios tenant
-    x-displayName: 🔐 Auth Tenant
+    description: Autenticación para tenants
   - name: Plans
-    description: Gestión de planes de servicio
-    x-displayName: 📋 Planes
+    description: Gestión de planes de suscripción
   - name: Tenants
-    description: Gestión de clientes/tenants
-    x-displayName: 🏢 Tenants
+    description: Gestión de tenants (clientes)
   - name: Devices
     description: Gestión de dispositivos WhatsApp
-    x-displayName: 📱 Dispositivos
   - name: Messages
     description: Envío de mensajes
-    x-displayName: 💬 Mensajes
   - name: Campaigns
-    description: Gestión de campañas masivas
-    x-displayName: 📢 Campañas
+    description: Gestión de campañas de marketing
 
-x-tagGroups:
-  - name: Administración
-    tags:
-      - Auth - Reseller
-      - Plans
-      - Tenants
-  - name: Operaciones Tenant
-    tags:
-      - Auth - Tenant
-      - Devices
-      - Messages
-      - Campaigns
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth - Reseller
+      summary: Login de Reseller
+      description: Autentica un usuario reseller y retorna un token JWT
+      operationId: resellerLogin
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+            example:
+              email: admin@qr.buho.la
+              password: bh0yJj2C
+      responses:
+        '200':
+          description: Login exitoso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+      x-codeSamples:
+        - lang: javascript
+          label: Fetch
+          source: |
+            const url = 'http://qr.buho.la/auth/login';
+            
+            const data = {
+              email: 'admin@qr.buho.la',
+              password: 'bh0yJj2C'
+            };
+            
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        
+        - lang: python
+          label: Requests
+          source: |
+            import requests
+            
+            url = "http://qr.buho.la/auth/login"
+            
+            data = {
+                "email": "admin@qr.buho.la",
+                "password": "bh0yJj2C"
+            }
+            
+            response = requests.post(url, json=data, headers={'Accept': 'application/json'})
+            print(response.json())
+        
+        - lang: php
+          label: cURL
+          source: |
+            <?php
+            $url = 'http://qr.buho.la/auth/login';
+            
+            $data = [
+                'email' => 'admin@qr.buho.la',
+                'password' => 'bh0yJj2C'
+            ];
+            
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Accept: application/json',
+                'Content-Type: application/json'
+            ]);
+            
+            $response = curl_exec($ch);
+            curl_close($ch);
+            echo $response;
+            ?>
+
+  /api/auth/verify_token:
+    post:
+      tags:
+        - Auth - Reseller
+      summary: Verificar token de Reseller
+      description: Verifica la validez de un token JWT
+      operationId: resellerVerifyToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - api_token
+              properties:
+                api_token:
+                  type: string
+                  description: Token JWT a verificar
+            example:
+              api_token: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...
+      responses:
+        '200':
+          description: Token válido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/auth/register:
+    post:
+      tags:
+        - Auth - Reseller
+      summary: Registrar Reseller
+      description: Crea una nueva cuenta de reseller
+      operationId: resellerRegister
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+            example:
+              email: demo9@gmail.com
+              name: demo9
+              password: '12345678'
+              password_confirmation: '12345678'
+      responses:
+        '201':
+          description: Registro exitoso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/auth/logout:
+    get:
+      tags:
+        - Auth - Reseller
+      summary: Logout de Reseller
+      description: Cierra la sesión del reseller
+      operationId: resellerLogout
+      responses:
+        '200':
+          description: Logout exitoso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Logout exitoso
+
+  /api/login:
+    post:
+      tags:
+        - Auth - Tenant
+      summary: Login de Tenant
+      description: Autentica un usuario tenant y retorna un token JWT
+      operationId: tenantLogin
+      security: []
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+            example:
+              email: demo@gmail.com
+              password: '123456'
+      responses:
+        '200':
+          description: Login exitoso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/verify_token:
+    post:
+      tags:
+        - Auth - Tenant
+      summary: Verificar token de Tenant
+      description: Verifica la validez de un token JWT de tenant
+      operationId: tenantVerifyToken
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - api_token
+              properties:
+                api_token:
+                  type: string
+      responses:
+        '200':
+          description: Token válido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/User'
+
+  /api/plan/list:
+    get:
+      tags:
+        - Plans
+      summary: Listar planes
+      description: |
+        Obtiene la lista de planes disponibles. 
+        Puede filtrarse por ID, nombre, descripción o paginación.
+      operationId: listPlans
+      parameters:
+        - name: id
+          in: query
+          description: ID del plan
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Nombre del plan
+          schema:
+            type: string
+        - name: description
+          in: query
+          description: Descripción del plan
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          description: Número de resultados por página
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Lista de planes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plan'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+
+  /api/plan/register:
+    post:
+      tags:
+        - Plans
+      summary: Registrar plan
+      description: Crea un nuevo plan de suscripción
+      operationId: registerPlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanRequest'
+            example:
+              name: Plan Premium
+              is_free: true
+              price: 49.99
+              description: Plan con todas las funcionalidades
+              limit_devices: 10
+              limit_messages: 5000
+              limit_contacts: 1000
+      responses:
+        '201':
+          description: Plan creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/tenant/list:
+    get:
+      tags:
+        - Tenants
+      summary: Listar tenants
+      description: Obtiene la lista de tenants (clientes)
+      operationId: listTenants
+      parameters:
+        - name: id
+          in: query
+          description: UUID del tenant
+          schema:
+            type: string
+            format: uuid
+        - name: domain
+          in: query
+          description: Dominio del tenant
+          schema:
+            type: string
+        - name: active
+          in: query
+          description: Estado del tenant
+          schema:
+            type: boolean
+        - name: paginate
+          in: query
+          description: Número de resultados por página
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Lista de tenants
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tenant'
+                  meta:
+                    $ref: '#/components/schemas/PaginationMeta'
+
+  /api/tenant/register:
+    post:
+      tags:
+        - Tenants
+      summary: Registrar tenant
+      description: Crea un nuevo tenant (cliente)
+      operationId: registerTenant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantRequest'
+            example:
+              name: EmpresaDemo
+              domain: demooooo
+              email: admin@empresa.com
+              password: '123456'
+              plan_id: 1
+      responses:
+        '201':
+          description: Tenant creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+
+  /api/tenant/delete/{id}:
+    delete:
+      tags:
+        - Tenants
+      summary: Eliminar tenant
+      description: Elimina un tenant por su UUID
+      operationId: deleteTenant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: UUID del tenant
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Tenant eliminado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Tenant eliminado exitosamente
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /api/devices/create:
+    post:
+      tags:
+        - Devices
+      summary: Crear dispositivo
+      description: Crea un nuevo dispositivo WhatsApp
+      operationId: createDevice
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceRequest'
+            example:
+              name: Mi Dispositivo
+              phone: '51987654321'
+      responses:
+        '201':
+          description: Dispositivo creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+      x-codeSamples:
+        - lang: javascript
+          label: Fetch
+          source: |
+            const url = 'https://tenant.qr.buho.la/api/devices/create';
+            const token = 'YOUR_JWT_TOKEN';
+            
+            const data = {
+              name: 'Mi Dispositivo',
+              phone: '51987654321'
+            };
+            
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+  /api/devices/list:
+    get:
+      tags:
+        - Devices
+      summary: Listar dispositivos
+      description: Obtiene la lista de dispositivos del tenant
+      operationId: listDevices
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      responses:
+        '200':
+          description: Lista de dispositivos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+
+  /api/devices/delete/{id}:
+    delete:
+      tags:
+        - Devices
+      summary: Eliminar dispositivo
+      description: Elimina un dispositivo por su ID
+      operationId: deleteDevice
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del dispositivo
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Dispositivo eliminado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Dispositivo eliminado exitosamente
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /api/devices/fetch:
+    get:
+      tags:
+        - Devices
+      summary: Obtener dispositivo actual
+      description: Obtiene información del dispositivo activo
+      operationId: fetchDevice
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      responses:
+        '200':
+          description: Información del dispositivo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+
+  /api/message/sendText:
+    post:
+      tags:
+        - Messages
+      summary: Enviar mensaje de texto
+      description: Envía un mensaje de texto a un número de WhatsApp
+      operationId: sendText
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendTextRequest'
+            example:
+              number: '51929088138'
+              text: Hola hola
+      responses:
+        '200':
+          description: Mensaje enviado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+      x-codeSamples:
+        - lang: javascript
+          label: Fetch
+          source: |
+            const url = 'https://tenant.qr.buho.la/api/message/sendText';
+            const token = 'YOUR_JWT_TOKEN';
+            
+            const data = {
+              number: '51929088138',
+              text: 'Hola hola'
+            };
+            
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+        
+        - lang: nodejs
+          label: Axios
+          source: |
+            const axios = require('axios');
+            
+            const url = 'https://tenant.qr.buho.la/api/message/sendText';
+            const token = 'YOUR_JWT_TOKEN';
+            
+            const data = {
+              number: '51929088138',
+              text: 'Hola hola'
+            };
+            
+            axios.post(url, data, {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json'
+              }
+            })
+            .then(response => console.log(response.data))
+            .catch(error => console.error(error));
+        
+        - lang: python
+          label: Requests
+          source: |
+            import requests
+            
+            url = "https://tenant.qr.buho.la/api/message/sendText"
+            token = "YOUR_JWT_TOKEN"
+            
+            headers = {
+                "Authorization": f"Bearer {token}",
+                "Accept": "application/json"
+            }
+            
+            data = {
+                "number": "51929088138",
+                "text": "Hola hola"
+            }
+            
+            response = requests.post(url, json=data, headers=headers)
+            print(response.json())
+        
+        - lang: php
+          label: cURL
+          source: |
+            <?php
+            $url = 'https://tenant.qr.buho.la/api/message/sendText';
+            $token = 'YOUR_JWT_TOKEN';
+            
+            $data = [
+                'number' => '51929088138',
+                'text' => 'Hola hola'
+            ];
+            
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $token,
+                'Accept: application/json',
+                'Content-Type: application/json'
+            ]);
+            
+            $response = curl_exec($ch);
+            curl_close($ch);
+            echo $response;
+            ?>
+
+  /api/send/{number}:
+    post:
+      tags:
+        - Messages
+      summary: Enviar mensaje directo (API Key)
+      description: |
+        Envía un mensaje directamente usando API Key en lugar de Bearer token.
+        Soporta diferentes tipos de mensajes según el campo `type`.
+      operationId: sendMessageDirect
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      security:
+        - apiKeyAuth: []
+      parameters:
+        - name: number
+          in: path
+          required: true
+          description: Número de teléfono del dispositivo
+          schema:
+            type: string
+            example: '51987654321'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendDirectRequest'
+            example:
+              type: sendText
+              payload:
+                number: '51929088138'
+                text: Hola desde el gateway 👋
+      responses:
+        '200':
+          description: Mensaje enviado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /api/campaigns/manual:
+    post:
+      tags:
+        - Campaigns
+      summary: Crear campaña manual
+      description: Crea una campaña de mensajes para grupos específicos
+      operationId: createManualCampaign
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManualCampaignRequest'
+            example:
+              title: Campaña de prueba
+              groups: [1, 2]
+              message: Hola, este es un mensaje de prueba.
+              schedule_at: '2025-10-01 10:00:00'
+              attach_pdf: null
+      responses:
+        '201':
+          description: Campaña creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+      x-codeSamples:
+        - lang: javascript
+          label: Fetch
+          source: |
+            const url = 'https://tenant.qr.buho.la/api/campaigns/manual';
+            const token = 'YOUR_JWT_TOKEN';
+            
+            const data = {
+              title: 'Campaña de prueba',
+              groups: [1, 2],
+              message: 'Hola, este es un mensaje de prueba.',
+              schedule_at: '2025-10-01 10:00:00',
+              attach_pdf: null
+            };
+            
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+  /api/campaigns/list:
+    get:
+      tags:
+        - Campaigns
+      summary: Listar campañas
+      description: Obtiene la lista de campañas creadas
+      operationId: listCampaigns
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      responses:
+        '200':
+          description: Lista de campañas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Campaign'
+
+  /api/campaigns/show/{id}:
+    get:
+      tags:
+        - Campaigns
+      summary: Detalles de campaña
+      description: Obtiene los detalles de una campaña específica
+      operationId: showCampaign
+      servers:
+        - url: https://{subdominio}
+          variables:
+            subdominio:
+              default: tenant.qr.buho.la
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la campaña
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detalles de la campaña
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignDetail'
+        '404':
+          $ref: '#/components/responses/NotFound'
 
 components:
   securitySchemes:
@@ -70,12 +886,13 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: Token JWT obtenido del endpoint de login
+      description: Token JWT obtenido del login
+    
     apiKeyAuth:
       type: apiKey
       in: header
       name: apikey
-      description: API Key para acceso directo
+      description: API Key para autenticación directa
 
   schemas:
     LoginRequest:
@@ -91,61 +908,93 @@ components:
         password:
           type: string
           format: password
-          example: bh0yJj2C
+          example: password123
 
     LoginResponse:
       type: object
       properties:
-        success:
-          type: boolean
-          example: true
-        api_token:
+        access_token:
           type: string
-          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...
+          description: Token JWT
+        token_type:
+          type: string
+          example: Bearer
+        expires_in:
+          type: integer
+          description: Tiempo de expiración en segundos
         user:
-          type: object
-          properties:
-            id:
-              type: integer
-            name:
-              type: string
-            email:
-              type: string
+          $ref: '#/components/schemas/User'
+
+    RegisterRequest:
+      type: object
+      required:
+        - email
+        - name
+        - password
+        - password_confirmation
+      properties:
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        password:
+          type: string
+          format: password
+          minLength: 8
+        password_confirmation:
+          type: string
+          format: password
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
 
     Plan:
       type: object
       properties:
         id:
           type: integer
-          example: 1
         name:
           type: string
-          example: Plan Premium
+        description:
+          type: string
         is_free:
           type: boolean
-          example: false
         price:
           type: number
           format: float
-          example: 49.99
-        description:
-          type: string
-          example: Plan con todas las funcionalidades
         limit_devices:
           type: integer
-          example: 10
         limit_messages:
           type: integer
-          example: 5000
         limit_contacts:
           type: integer
-          example: 1000
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
 
-    CreatePlanRequest:
+    PlanRequest:
       type: object
       required:
         - name
-        - price
+        - is_free
       properties:
         name:
           type: string
@@ -176,20 +1025,27 @@ components:
         id:
           type: string
           format: uuid
-          example: 31845898-ba4b-4b59-b932-a6d34730cc55
         name:
           type: string
-          example: EmpresaDemo
         domain:
           type: string
-          example: demo.qr.buho.la
+        email:
+          type: string
+          format: email
+        plan_id:
+          type: integer
         active:
           type: boolean
-          example: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
         plan:
           $ref: '#/components/schemas/Plan'
 
-    CreateTenantRequest:
+    TenantRequest:
       type: object
       required:
         - name
@@ -203,8 +1059,8 @@ components:
           example: EmpresaDemo
         domain:
           type: string
-          example: demo
-          description: Subdominio (se agregará automáticamente .qr.buho.la)
+          example: demooooo
+          description: Subdominio único del tenant
         email:
           type: string
           format: email
@@ -212,7 +1068,7 @@ components:
         password:
           type: string
           format: password
-          example: "123456"
+          minLength: 6
         plan_id:
           type: integer
           example: 1
@@ -222,19 +1078,24 @@ components:
       properties:
         id:
           type: integer
-          example: 1
         name:
           type: string
-          example: Mi Dispositivo
         phone:
           type: string
-          example: "51987654321"
         status:
           type: string
           enum: [connected, disconnected, pending]
-          example: connected
+        qr_code:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
 
-    CreateDeviceRequest:
+    DeviceRequest:
       type: object
       required:
         - name
@@ -245,7 +1106,8 @@ components:
           example: Mi Dispositivo
         phone:
           type: string
-          example: "51987654321"
+          example: '51987654321'
+          pattern: '^\d{11,15}$'
 
     SendTextRequest:
       type: object
@@ -255,12 +1117,14 @@ components:
       properties:
         number:
           type: string
-          example: "51929088138"
+          example: '51929088138'
+          description: Número de WhatsApp destino
         text:
           type: string
-          example: Hola desde la API
+          example: Hola hola
+          description: Mensaje de texto a enviar
 
-    SendMessageDirectRequest:
+    SendDirectRequest:
       type: object
       required:
         - type
@@ -268,36 +1132,29 @@ components:
       properties:
         type:
           type: string
-          enum: [sendText]
+          enum: [sendText, sendImage, sendDocument, sendAudio, sendVideo]
           example: sendText
+          description: Tipo de mensaje a enviar
         payload:
           type: object
-          properties:
-            number:
-              type: string
-              example: "51929088138"
-            text:
-              type: string
-              example: Hola desde el gateway 👋
+          description: Datos específicos según el tipo de mensaje
 
-    Campaign:
+    MessageResponse:
       type: object
       properties:
-        id:
-          type: integer
-        title:
+        success:
+          type: boolean
+          example: true
+        message_id:
           type: string
         status:
           type: string
-          enum: [pending, processing, completed, failed]
-        total_messages:
-          type: integer
-        sent_messages:
-          type: integer
-        failed_messages:
-          type: integer
+          enum: [sent, pending, failed]
+        timestamp:
+          type: string
+          format: date-time
 
-    CreateManualCampaignRequest:
+    ManualCampaignRequest:
       type: object
       required:
         - title
@@ -312,16 +1169,87 @@ components:
           items:
             type: integer
           example: [1, 2]
+          description: IDs de los grupos destinatarios
         message:
           type: string
           example: Hola, este es un mensaje de prueba.
         schedule_at:
           type: string
           format: date-time
-          example: "2025-10-01 10:00:00"
+          example: '2025-10-01 10:00:00'
+          nullable: true
+          description: Fecha y hora de programación (null para envío inmediato)
         attach_pdf:
           type: string
           nullable: true
+          description: URL o path del PDF adjunto
+
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        message:
+          type: string
+        status:
+          type: string
+          enum: [pending, processing, completed, failed]
+        schedule_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    CampaignDetail:
+      allOf:
+        - $ref: '#/components/schemas/Campaign'
+        - type: object
+          properties:
+            groups:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  contacts_count:
+                    type: integer
+            statistics:
+              type: object
+              properties:
+                total_messages:
+                  type: integer
+                sent:
+                  type: integer
+                failed:
+                  type: integer
+                pending:
+                  type: integer
+
+    PaginationMeta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        from:
+          type: integer
+        last_page:
+          type: integer
+        per_page:
+          type: integer
+        to:
+          type: integer
+        total:
+          type: integer
 
     Error:
       type: object
@@ -331,787 +1259,45 @@ components:
           example: false
         message:
           type: string
-          example: Error description
         errors:
           type: object
-          additionalProperties: true
+          additionalProperties:
+            type: array
+            items:
+              type: string
 
-paths:
-  # ==========================================
-  # AUTH - RESELLER
-  # ==========================================
-  /auth/login:
-    post:
-      tags:
-        - Auth - Reseller
-      summary: Login Reseller
-      description: Autenticación para administradores y resellers
-      operationId: resellerLogin
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LoginRequest'
-      responses:
-        '200':
-          description: Login exitoso
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LoginResponse'
-        '401':
-          description: Credenciales inválidas
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-      x-codeSamples:
-        - lang: JavaScript
-          label: Fetch
-          source: |
-            const response = await fetch('https://{{dominio}}/auth/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({
-                email: 'admin@qr.buho.la',
-                password: 'bh0yJj2C'
-              })
-            });
-            const data = await response.json();
-            console.log(data.api_token);
-        - lang: JavaScript
-          label: Axios
-          source: |
-            const axios = require('axios');
-            
-            const { data } = await axios.post('https://{{dominio}}/auth/login', {
-              email: 'admin@qr.buho.la',
-              password: 'bh0yJj2C'
-            }, {
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              }
-            });
-            console.log(data.api_token);
-        - lang: Node.js
-          source: |
-            const https = require('https');
-            
-            const postData = JSON.stringify({
-              email: 'admin@qr.buho.la',
-              password: 'bh0yJj2C'
-            });
-            
-            const options = {
-              hostname: '{{dominio}}',
-              path: '/auth/login',
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'Content-Length': postData.length
-              }
-            };
-            
-            const req = https.request(options, (res) => {
-              let data = '';
-              res.on('data', (chunk) => { data += chunk; });
-              res.on('end', () => {
-                const response = JSON.parse(data);
-                console.log(response.api_token);
-              });
-            });
-            
-            req.write(postData);
-            req.end();
-        - lang: PHP
-          source: |
-            <?php
-            $url = 'https://{{dominio}}/auth/login';
-            $data = [
-                'email' => 'admin@qr.buho.la',
-                'password' => 'bh0yJj2C'
-            ];
-            
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Content-Type: application/json',
-                'Accept: application/json'
-            ]);
-            
-            $response = curl_exec($ch);
-            curl_close($ch);
-            
-            $result = json_decode($response, true);
-            echo $result['api_token'];
-        - lang: Python
-          source: |
-            import requests
-            
-            url = 'https://{{dominio}}/auth/login'
-            data = {
-                'email': 'admin@qr.buho.la',
-                'password': 'bh0yJj2C'
-            }
-            
-            response = requests.post(url, json=data, headers={
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            })
-            
-            result = response.json()
-            print(result['api_token'])
-
-  /api/auth/verify_token:
-    post:
-      tags:
-        - Auth - Reseller
-      summary: Verificar Token
-      description: Verifica la validez de un token JWT
-      operationId: verifyResellerToken
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - api_token
-              properties:
-                api_token:
-                  type: string
-                  description: El mismo token que se envía en el header Authorization
-      responses:
-        '200':
-          description: Token válido
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  valid:
-                    type: boolean
-                    example: true
-                  user:
-                    type: object
-        '401':
-          description: Token inválido o expirado
-      x-codeSamples:
-        - lang: JavaScript
-          label: Fetch
-          source: |
-            const token = 'eyJ0eXAiOiJKV1QiLCJhbGci...';
-            
-            const response = await fetch('https://{{dominio}}/api/auth/verify_token', {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({ api_token: token })
-            });
-            const data = await response.json();
-
-  /api/auth/logout:
-    get:
-      tags:
-        - Auth - Reseller
-      summary: Logout
-      description: Invalida el token actual
-      operationId: resellerLogout
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Logout exitoso
-        '401':
-          description: No autorizado
-
-  # ==========================================
-  # AUTH - TENANT
-  # ==========================================
-  /api/login:
-    post:
-      tags:
-        - Auth - Tenant
-      summary: Login Tenant
-      description: Autenticación para usuarios tenant
-      operationId: tenantLogin
-      servers:
-        - url: https://{subdominio}
-          variables:
-            subdominio:
-              default: demo.qr.buho.la
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/LoginRequest'
-            example:
-              email: demo@gmail.com
-              password: "123456"
-      responses:
-        '200':
-          description: Login exitoso
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LoginResponse'
-        '401':
-          description: Credenciales inválidas
-      x-codeSamples:
-        - lang: JavaScript
-          label: Fetch
-          source: |
-            const response = await fetch('https://{{subdominio}}/api/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({
-                email: 'demo@gmail.com',
-                password: '123456'
-              })
-            });
-            const data = await response.json();
-        - lang: PHP
-          source: |
-            <?php
-            $url = 'https://{{subdominio}}/api/login';
-            $data = [
-                'email' => 'demo@gmail.com',
-                'password' => '123456'
-            ];
-            
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Content-Type: application/json',
-                'Accept: application/json'
-            ]);
-            
-            $response = curl_exec($ch);
-            curl_close($ch);
-            
-            $result = json_decode($response, true);
-        - lang: Python
-          source: |
-            import requests
-            
-            url = 'https://{{subdominio}}/api/login'
-            data = {
-                'email': 'demo@gmail.com',
-                'password': '123456'
-            }
-            
-            response = requests.post(url, json=data)
-            result = response.json()
-
-  # ==========================================
-  # PLANS
-  # ==========================================
-  /api/plan/list:
-    get:
-      tags:
-        - Plans
-      summary: Listar Planes
-      description: Obtiene la lista de planes disponibles
-      operationId: listPlans
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: query
-          description: ID específico del plan
+  responses:
+    Unauthorized:
+      description: No autorizado - Token inválido o ausente
+      content:
+        application/json:
           schema:
-            type: integer
-        - name: name
-          in: query
-          description: Filtrar por nombre
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            message: No autorizado
+
+    NotFound:
+      description: Recurso no encontrado
+      content:
+        application/json:
           schema:
-            type: string
-        - name: description
-          in: query
-          description: Filtrar por descripción
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            message: Recurso no encontrado
+
+    ValidationError:
+      description: Error de validación
+      content:
+        application/json:
           schema:
-            type: string
-        - name: paginate
-          in: query
-          description: Número de resultados por página
-          schema:
-            type: integer
-            default: 15
-      responses:
-        '200':
-          description: Lista de planes
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Plan'
-        '401':
-          description: No autorizado
-
-  /api/plan/register:
-    post:
-      tags:
-        - Plans
-      summary: Registrar Plan
-      description: Crea un nuevo plan de servicio
-      operationId: createPlan
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlanRequest'
-      responses:
-        '201':
-          description: Plan creado exitosamente
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    $ref: '#/components/schemas/Plan'
-        '400':
-          description: Datos inválidos
-        '401':
-          description: No autorizado
-
-  # ==========================================
-  # TENANTS
-  # ==========================================
-  /api/tenant/list:
-    get:
-      tags:
-        - Tenants
-      summary: Listar Tenants
-      description: Obtiene la lista de tenants/clientes
-      operationId: listTenants
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: query
-          description: UUID del tenant
-          schema:
-            type: string
-            format: uuid
-        - name: domain
-          in: query
-          description: Filtrar por dominio
-          schema:
-            type: string
-        - name: active
-          in: query
-          description: Filtrar por estado activo
-          schema:
-            type: boolean
-        - name: paginate
-          in: query
-          description: Número de resultados por página
-          schema:
-            type: integer
-            default: 15
-      responses:
-        '200':
-          description: Lista de tenants
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Tenant'
-
-  /api/tenant/register:
-    post:
-      tags:
-        - Tenants
-      summary: Registrar Tenant
-      description: Crea un nuevo tenant/cliente
-      operationId: createTenant
-      security:
-        - bearerAuth: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateTenantRequest'
-      responses:
-        '201':
-          description: Tenant creado exitosamente
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    $ref: '#/components/schemas/Tenant'
-        '400':
-          description: Datos inválidos
-        '401':
-          description: No autorizado
-
-  /api/tenant/delete/{id}:
-    delete:
-      tags:
-        - Tenants
-      summary: Eliminar Tenant
-      description: Elimina un tenant y todos sus datos asociados
-      operationId: deleteTenant
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: UUID del tenant
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: Tenant eliminado exitosamente
-        '404':
-          description: Tenant no encontrado
-        '401':
-          description: No autorizado
-
-  # ==========================================
-  # DEVICES
-  # ==========================================
-  /api/devices/create:
-    post:
-      tags:
-        - Devices
-      summary: Crear Dispositivo
-      description: Registra un nuevo dispositivo WhatsApp
-      operationId: createDevice
-      security:
-        - bearerAuth: []
-      servers:
-        - url: https://{subdominio}
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateDeviceRequest'
-      responses:
-        '201':
-          description: Dispositivo creado
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    $ref: '#/components/schemas/Device'
-                  qr_code:
-                    type: string
-                    description: Código QR para vincular el dispositivo
-
-  /api/devices/list:
-    get:
-      tags:
-        - Devices
-      summary: Listar Dispositivos
-      description: Obtiene todos los dispositivos del tenant
-      operationId: listDevices
-      security:
-        - bearerAuth: []
-      servers:
-        - url: https://{subdominio}
-      responses:
-        '200':
-          description: Lista de dispositivos
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Device'
-
-  /api/devices/delete/{id}:
-    delete:
-      tags:
-        - Devices
-      summary: Eliminar Dispositivo
-      description: Elimina un dispositivo
-      operationId: deleteDevice
-      security:
-        - bearerAuth: []
-      servers:
-        - url: https://{subdominio}
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Dispositivo eliminado
-
-  /api/devices/fetch:
-    get:
-      tags:
-        - Devices
-      summary: Obtener Estado de Dispositivos
-      description: Obtiene el estado actual de todos los dispositivos
-      operationId: fetchDevices
-      security:
-        - bearerAuth: []
-      servers:
-        - url: https://{subdominio}
-      responses:
-        '200':
-          description: Estado de dispositivos
-
-  # ==========================================
-  # MESSAGES
-  # ==========================================
-  /api/message/sendText:
-    post:
-      tags:
-        - Messages
-      summary: Enviar Mensaje de Texto
-      description: Envía un mensaje de texto a un número
-      operationId: sendText
-      security:
-        - bearerAuth: []
-      servers:
-        - url: https://{subdominio}
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SendTextRequest'
-      responses:
-        '200':
-          description: Mensaje enviado
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  message_id:
-                    type: string
-      x-codeSamples:
-        - lang: JavaScript
-          source: |
-            const token = 'YOUR_TOKEN';
-            
-            const response = await fetch('https://{{subdominio}}/api/message/sendText', {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                number: '51929088138',
-                text: 'Hola desde la API'
-              })
-            });
-        - lang: PHP
-          source: |
-            <?php
-            $token = 'YOUR_TOKEN';
-            $url = 'https://{{subdominio}}/api/message/sendText';
-            
-            $data = [
-                'number' => '51929088138',
-                'text' => 'Hola desde la API'
-            ];
-            
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Authorization: Bearer ' . $token,
-                'Content-Type: application/json'
-            ]);
-            
-            $response = curl_exec($ch);
-            curl_close($ch);
-        - lang: Python
-          source: |
-            import requests
-            
-            token = 'YOUR_TOKEN'
-            url = 'https://{{subdominio}}/api/message/sendText'
-            
-            headers = {
-                'Authorization': f'Bearer {token}',
-                'Content-Type': 'application/json'
-            }
-            
-            data = {
-                'number': '51929088138',
-                'text': 'Hola desde la API'
-            }
-            
-            response = requests.post(url, json=data, headers=headers)
-
-  /api/send/{number}:
-    post:
-      tags:
-        - Messages
-      summary: Enviar Mensaje Directo
-      description: Envía mensajes usando API Key (sin autenticación JWT)
-      operationId: sendMessageDirect
-      security:
-        - apiKeyAuth: []
-      servers:
-        - url: https://{subdominio}
-      parameters:
-        - name: number
-          in: path
-          required: true
-          description: Número de teléfono del dispositivo
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SendMessageDirectRequest'
-      responses:
-        '200':
-          description: Mensaje enviado
-
-  # ==========================================
-  # CAMPAIGNS
-  # ==========================================
-  /api/campaigns/manual:
-    post:
-      tags:
-        - Campaigns
-      summary: Crear Campaña Manual
-      description: Crea una campaña de mensajería masiva
-      operationId: createManualCampaign
-      security:
-        - bearerAuth: []
-      servers:
-        - url: https://{subdominio}
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreateManualCampaignRequest'
-      responses:
-        '201':
-          description: Campaña creada
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    $ref: '#/components/schemas/Campaign'
-
-  /api/campaigns/list:
-    get:
-      tags:
-        - Campaigns
-      summary: Listar Campañas
-      description: Obtiene todas las campañas del tenant
-      operationId: listCampaigns
-      security:
-        - bearerAuth: []
-      servers:
-        - url: https://{subdominio}
-      responses:
-        '200':
-          description: Lista de campañas
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Campaign'
-
-  /api/campaigns/show/{id}:
-    get:
-      tags:
-        - Campaigns
-      summary: Detalles de Campaña
-      description: Obtiene información detallada de una campaña específica
-      operationId: showCampaign
-      security:
-        - bearerAuth: []
-      servers:
-        - url: https://{subdominio}
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Detalles de la campaña
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  data:
-                    $ref: '#/components/schemas/Campaign'
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            message: Los datos proporcionados son inválidos
+            errors:
+              email:
+                - El campo email es obligatorio
+              password:
+                - El campo password debe tener al menos 8 caracteres

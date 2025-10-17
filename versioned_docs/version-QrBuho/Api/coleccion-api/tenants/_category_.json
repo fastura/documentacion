@@ -1,0 +1,10 @@
+{
+    "label": "Tenants",
+    "position": 3,
+    "link": {
+      "type": "generated-index",
+      "slug": "tenants",
+      "description": "Manual de como funciona la gestión de tenants en la API QR Buho"
+    }
+  }
+  
