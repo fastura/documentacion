@@ -1,0 +1,9 @@
+{
+    "label": "Cotizacion",
+    "position": 4,
+    "link": {
+      "type": "generated-index",
+      "slug": "cotizacion",
+      "description": "Encuentra información sobre acerca de como Generar Cotizaciones via API."
+    }
+}

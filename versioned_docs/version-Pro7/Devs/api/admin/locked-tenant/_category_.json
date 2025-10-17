@@ -1,0 +1,9 @@
+{
+    "label": "Locked Tenant",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "slug": "locked-tenant",
+      "description": "Encuentra ayuda sobre la API de Locked Tenant"
+    }
+  }

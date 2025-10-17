@@ -1,0 +1,9 @@
+{
+    "label": "Factura",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "slug": "factura",
+      "description": "Encuentra información sobre acerca de como Generar Facturas via API."
+    }
+}

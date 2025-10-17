@@ -1,9 +1,0 @@
-{
-    "label": "Inventario",
-    "position": 10,
-    "link": {
-      "type": "generated-index",
-      "slug": "inventario-api",
-      "description": "Encuentra ayuda sobre acerca del Inventario."
-    }
-  }

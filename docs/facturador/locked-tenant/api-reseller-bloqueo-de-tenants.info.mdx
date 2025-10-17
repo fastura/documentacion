@@ -1,0 +1,101 @@
+---
+id: api-reseller-bloqueo-de-tenants
+title: "API Reseller - Bloqueo de Tenants"
+description: "API para gestionar el bloqueo y desbloqueo de tenants (clientes) en el sistema de facturación."
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0.0"}
+>
+</span>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"API Reseller - Bloqueo de Tenants"}
+>
+</Heading>
+
+
+
+API para gestionar el bloqueo y desbloqueo de tenants (clientes) en el sistema de facturación.
+
+Cuando se bloquea un tenant, queda marcado como inactivo tanto en la base de datos principal 
+como en su propia base de datos (tenant DB).
+
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"bearerAuth"}
+    >
+      
+      
+      Token de autenticación de API. 
+      
+      Ejemplo: `JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE`
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                http
+              </td>
+            </tr><tr>
+              <th>
+                HTTP Authorization Scheme:
+              </th><td>
+                bearer
+              </td>
+            </tr><tr>
+              <th>
+                Bearer format:
+              </th><td>
+                JWT
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div><div
+  style={{"display":"flex","flexDirection":"column","marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3
+    style={{"marginBottom":"0.25rem"}}
+  >
+    Contact
+  </h3><span>
+    Soporte API: 
+  </span><span>
+    URL: [https://fact01.uio.la](https://fact01.uio.la)
+  </span>
+</div>
+      

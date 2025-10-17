@@ -1,0 +1,543 @@
+openapi: 3.0.3
+info:
+  title: API Reseller - Bloqueo de Tenants
+  description: |
+    API para gestionar el bloqueo y desbloqueo de tenants (clientes) en el sistema de facturación.
+    
+    Cuando se bloquea un tenant, queda marcado como inactivo tanto en la base de datos principal 
+    como en su propia base de datos (tenant DB).
+  version: 1.0.0
+  contact:
+    name: Soporte API
+    url: https://fact01.uio.la
+
+servers:
+  - url: https://fact01.uio.la/api
+    description: Servidor de producción
+  - url: https://empresa1.demo3pro6.ibu.pe/api
+    description: Servidor de demo
+
+security:
+  - bearerAuth: []
+
+paths:
+  /reseller/lockedTenant:
+    post:
+      tags:
+        - Reseller
+      summary: Bloquear o desbloquear tenant
+      description: |
+        Permite bloquear o desbloquear un tenant (cliente) en el sistema.
+        
+        **Notas:**
+        - El campo `locked_tenant` se sincroniza entre la base de datos principal (`clients`) 
+          y la base de datos del tenant (`configurations`).
+        - Solo usuarios con permisos de reseller o administradores pueden usar este endpoint.
+        - Los cambios se aplican inmediatamente en la configuración del tenant.
+      operationId: lockedTenant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LockedTenantRequest'
+            examples:
+              bloquear:
+                summary: Bloquear tenant
+                value:
+                  id: 1
+                  locked_tenant: true
+              desbloquear:
+                summary: Desbloquear tenant
+                value:
+                  id: 1
+                  locked_tenant: false
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+              examples:
+                bloqueado:
+                  summary: Cuenta bloqueada
+                  value:
+                    success: true
+                    message: "Cuenta bloqueada"
+                desbloqueado:
+                  summary: Cuenta desbloqueada
+                  value:
+                    success: true
+                    message: "Cuenta desbloqueada"
+        '401':
+          description: Token inválido o ausente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                message: "No autorizado. Token inválido o ausente."
+        '404':
+          description: Cliente no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                message: "Cliente no encontrado"
+        '500':
+          description: Error interno del servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                message: "Error interno del servidor"
+      x-codeSamples:
+        - lang: javascript
+          label: Fetch
+          source: |
+            const url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const data = {
+              id: 1,
+              locked_tenant: true
+            };
+            
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        
+        - lang: javascript
+          label: jQuery
+          source: |
+            const url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $.ajax({
+              url: url,
+              type: 'POST',
+              headers: {
+                'Authorization': 'Bearer ' + token,
+                'Accept': 'application/json'
+              },
+              contentType: 'application/json',
+              data: JSON.stringify({
+                id: 1,
+                locked_tenant: true
+              }),
+              success: function(response) {
+                console.log(response);
+              },
+              error: function(xhr, status, error) {
+                console.error('Error:', error);
+              }
+            });
+        
+        - lang: javascript
+          label: XHR
+          source: |
+            const xhr = new XMLHttpRequest();
+            const url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            
+            xhr.onload = function() {
+              if (xhr.status === 200) {
+                console.log(JSON.parse(xhr.responseText));
+              } else {
+                console.error('Error:', xhr.status);
+              }
+            };
+            
+            const data = JSON.stringify({
+              id: 1,
+              locked_tenant: true
+            });
+            
+            xhr.send(data);
+        
+        - lang: nodejs
+          label: Axios
+          source: |
+            const axios = require('axios');
+            
+            const url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const data = {
+              id: 1,
+              locked_tenant: true
+            };
+            
+            axios.post(url, data, {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => {
+              console.log('Status:', response.status);
+              console.log('Response:', response.data);
+            })
+            .catch(error => {
+              console.error('Error:', error.message);
+            });
+        
+        - lang: nodejs
+          label: Native
+          source: |
+            const https = require('https');
+            
+            const data = JSON.stringify({
+              id: 1,
+              locked_tenant: true
+            });
+            
+            const options = {
+              hostname: 'fact01.uio.la',
+              port: 443,
+              path: '/api/reseller/lockedTenant',
+              method: 'POST',
+              headers: {
+                'Authorization': 'Bearer JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Content-Length': data.length
+              }
+            };
+            
+            const req = https.request(options, (res) => {
+              let body = '';
+              
+              res.on('data', (chunk) => {
+                body += chunk;
+              });
+              
+              res.on('end', () => {
+                console.log('Status:', res.statusCode);
+                console.log('Response:', JSON.parse(body));
+              });
+            });
+            
+            req.on('error', (error) => {
+              console.error('Error:', error);
+            });
+            
+            req.write(data);
+            req.end();
+        
+        - lang: nodejs
+          label: Request
+          source: |
+            const request = require('request');
+            
+            const url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const options = {
+              url: url,
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              json: {
+                id: 1,
+                locked_tenant: true
+              }
+            };
+            
+            request(options, (error, response, body) => {
+              if (error) {
+                console.error('Error:', error);
+                return;
+              }
+              console.log('Status:', response.statusCode);
+              console.log('Response:', body);
+            });
+        
+        - lang: nodejs
+          label: Unirest
+          source: |
+            const unirest = require('unirest');
+            
+            const url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            unirest.post(url)
+              .headers({
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              })
+              .send({
+                id: 1,
+                locked_tenant: true
+              })
+              .end((response) => {
+                console.log('Status:', response.status);
+                console.log('Response:', response.body);
+              });
+        
+        - lang: php
+          label: cURL
+          source: |
+            <?php
+            $url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $data = [
+                'id' => 1,
+                'locked_tenant' => true
+            ];
+            
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $token,
+                'Accept: application/json',
+                'Content-Type: application/json'
+            ]);
+            
+            $response = curl_exec($ch);
+            $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            
+            echo "Status: " . $statusCode . "\n";
+            echo "Response: " . $response . "\n";
+            ?>
+        
+        - lang: php
+          label: Guzzle
+          source: |
+            <?php
+            require 'vendor/autoload.php';
+            
+            use GuzzleHttp\Client;
+            
+            $client = new Client();
+            $url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            try {
+                $response = $client->post($url, [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $token,
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json'
+                    ],
+                    'json' => [
+                        'id' => 1,
+                        'locked_tenant' => true
+                    ]
+                ]);
+                
+                echo "Status: " . $response->getStatusCode() . "\n";
+                echo "Response: " . $response->getBody() . "\n";
+            } catch (\Exception $e) {
+                echo "Error: " . $e->getMessage() . "\n";
+            }
+            ?>
+        
+        - lang: php
+          label: HTTP_Request2
+          source: |
+            <?php
+            require_once 'HTTP/Request2.php';
+            
+            $url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $request = new HTTP_Request2($url, HTTP_Request2::METHOD_POST);
+            $request->setHeader([
+                'Authorization' => 'Bearer ' . $token,
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
+            ]);
+            
+            $data = [
+                'id' => 1,
+                'locked_tenant' => true
+            ];
+            
+            $request->setBody(json_encode($data));
+            
+            try {
+                $response = $request->send();
+                echo "Status: " . $response->getStatus() . "\n";
+                echo "Response: " . $response->getBody() . "\n";
+            } catch (HTTP_Request2_Exception $e) {
+                echo "Error: " . $e->getMessage() . "\n";
+            }
+            ?>
+        
+        - lang: php
+          label: pecl_http
+          source: |
+            <?php
+            $url = 'https://fact01.uio.la/api/reseller/lockedTenant';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $data = [
+                'id' => 1,
+                'locked_tenant' => true
+            ];
+            
+            $request = new HttpRequest($url, HttpRequest::METH_POST);
+            $request->setHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
+            ]);
+            $request->setBody(json_encode($data));
+            
+            try {
+                $response = $request->send();
+                echo "Status: " . $response->getResponseCode() . "\n";
+                echo "Response: " . $response->getBody() . "\n";
+            } catch (HttpException $e) {
+                echo "Error: " . $e->getMessage() . "\n";
+            }
+            ?>
+        
+        - lang: python
+          label: http.client
+          source: |
+            import http.client
+            import json
+            
+            conn = http.client.HTTPSConnection("fact01.uio.la")
+            
+            token = "JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE"
+            
+            headers = {
+                'Authorization': f'Bearer {token}',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+            
+            data = {
+                "id": 1,
+                "locked_tenant": True
+            }
+            
+            payload = json.dumps(data)
+            
+            conn.request("POST", "/api/reseller/lockedTenant", payload, headers)
+            
+            response = conn.getresponse()
+            print(f"Status: {response.status}")
+            print(f"Response: {response.read().decode()}")
+            
+            conn.close()
+        
+        - lang: python
+          label: Requests
+          source: |
+            import requests
+            
+            url = "https://fact01.uio.la/api/reseller/lockedTenant"
+            token = "JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE"
+            
+            headers = {
+                "Authorization": f"Bearer {token}",
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+            
+            data = {
+                "id": 1,
+                "locked_tenant": True
+            }
+            
+            response = requests.post(url, json=data, headers=headers)
+            
+            print(f"Status: {response.status_code}")
+            print(f"Response: {response.json()}")
+        
+        - lang: shell
+          label: cURL
+          source: |
+            curl -X POST https://fact01.uio.la/api/reseller/lockedTenant \
+              -H "Authorization: Bearer JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE" \
+              -H "Accept: application/json" \
+              -H "Content-Type: application/json" \
+              -d '{
+                "id": 1,
+                "locked_tenant": true
+              }'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Token de autenticación de API. 
+        
+        Ejemplo: `JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE`
+
+  schemas:
+    LockedTenantRequest:
+      type: object
+      required:
+        - id
+        - locked_tenant
+      properties:
+        id:
+          type: integer
+          description: ID del cliente (tabla `clients`)
+          example: 1
+          minimum: 1
+        locked_tenant:
+          type: boolean
+          description: Estado del tenant (true = bloqueado, false = desbloqueado)
+          example: true
+
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: "Cuenta bloqueada"
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: "Error en la operación"
+
+tags:
+  - name: Reseller
+    description: Operaciones para gestión de tenants por revendedores

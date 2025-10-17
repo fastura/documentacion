@@ -1,0 +1,9 @@
+{
+    "label": "Guia de Remision",
+    "position": 6,
+    "link": {
+      "type": "generated-index",
+      "slug": "guia-de-remision",
+      "description": "Encuentra información sobre acerca de las Guias de Remision via API."
+    }
+  }
