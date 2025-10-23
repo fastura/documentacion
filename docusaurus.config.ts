@@ -203,6 +203,24 @@ const config: Config = {
             baseUrl: "/facturador",
             sidebarOptions: {},
           },
+          api_spec:{
+            specPath: "apifacturador/api_spec",  
+            outputDir: "docs/facturador/api-spec",  
+            baseUrl: "/facturador",
+            sidebarOptions: {},
+          },
+          gestion_tenants:{
+            specPath: "apifacturador/gestion_tenants",  
+            outputDir: "docs/facturador/gestion_tenants",  
+            baseUrl: "/facturador",
+            sidebarOptions: {},
+          },
+          locked_admin:{
+            specPath: "apifacturador/lockedAdmin",  
+            outputDir: "docs/facturador/locked-admin",  
+            baseUrl: "/facturador",
+            sidebarOptions: {},
+          },
 
         }
       },

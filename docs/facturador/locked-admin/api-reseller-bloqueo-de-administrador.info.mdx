@@ -1,0 +1,121 @@
+---
+id: api-reseller-bloqueo-de-administrador
+title: "API Reseller - Bloqueo de Administrador"
+description: "API para bloquear y desbloquear el acceso del administrador principal de un tenant."
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0.0"}
+>
+</span>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"API Reseller - Bloqueo de Administrador"}
+>
+</Heading>
+
+
+
+API para bloquear y desbloquear el acceso del administrador principal de un tenant.
+
+**Funcionalidades:**
+- Bloquear acceso del administrador principal
+- Desbloquear acceso del administrador principal
+- Control granular por tenant
+- Efecto inmediato en la autenticación
+
+**Importante:**
+- Solo afecta al usuario administrador principal
+- No afecta al estado general del tenant
+- No afecta a usuarios secundarios
+
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"bearerAuth"}
+    >
+      
+      
+      Token de API Bearer para autenticación.
+      
+      **Formato del header:**
+      ```
+      Authorization: Bearer <API_TOKEN>
+      ```
+      
+      **Ejemplo:**
+      ```
+      Authorization: Bearer JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE
+      ```
+      
+      **Permisos requeridos:**
+      - Reseller
+      - Administrador global
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                http
+              </td>
+            </tr><tr>
+              <th>
+                HTTP Authorization Scheme:
+              </th><td>
+                bearer
+              </td>
+            </tr><tr>
+              <th>
+                Bearer format:
+              </th><td>
+                JWT
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div><div
+  style={{"display":"flex","flexDirection":"column","marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3
+    style={{"marginBottom":"0.25rem"}}
+  >
+    Contact
+  </h3><span>
+    Soporte Técnico: 
+  </span><span>
+    URL: [https://fact01.uio.la](https://fact01.uio.la)
+  </span>
+</div>
+      

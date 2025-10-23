@@ -1,0 +1,688 @@
+openapi: 3.0.3
+info:
+  title: API Reseller - Gestión de Tenants
+  description: |
+    API para obtener información detallada de todos los tenants (clientes o subcuentas) 
+    asociados a una cuenta de reseller.
+    
+    Esta API proporciona:
+    - Listado completo de tenants con información detallada
+    - Estado de bloqueo y restricciones
+    - Información de planes asignados
+    - Límites y uso de recursos
+    - Estadísticas de ventas mensuales
+  version: 1.0.0
+  contact:
+    name: Soporte Técnico
+    url: https://fact01.uio.la
+
+servers:
+  - url: https://fact01.uio.la
+    description: Servidor de Producción
+
+tags:
+  - name: Reseller
+    description: Endpoints para gestión de resellers y tenants
+
+security:
+  - bearerAuth: []
+
+paths:
+  /api/reseller/detail:
+    post:
+      tags:
+        - Reseller
+      summary: Obtener detalles de tenants
+      description: |
+        Obtiene el listado completo de tenants (clientes o subcuentas) con información 
+        detallada sobre cada uno, incluyendo estado de bloqueo, plan asignado, límites, 
+        uso de recursos y ventas acumuladas.
+        
+        **Requisitos:**
+        - Token de API válido con permisos de reseller o administrador
+        - El endpoint devuelve todos los tenants asociados al reseller autenticado
+        
+        **Casos de uso:**
+        - Obtener lista de todos los clientes
+        - Monitorear el estado de bloqueo de tenants
+        - Verificar límites y uso de recursos
+        - Consultar ventas mensuales acumuladas
+      operationId: getResellerDetail
+      requestBody:
+        required: true
+        description: Cuerpo vacío requerido (se envía objeto JSON vacío)
+        content:
+          application/json:
+            schema:
+              type: object
+              example: {}
+      responses:
+        '200':
+          description: Lista de tenants obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TenantDetail'
+              examples:
+                success:
+                  summary: Respuesta exitosa
+                  value:
+                    data:
+                      - id: 2
+                        hostname: empresa01.fact01.uio.la
+                        name: empresa01
+                        email: empresa01@gmail.com
+                        token: MpfPPOPmzSK1bNQjpf7MEIm1SOoXPgNNkyivVz6gFoCbbsHHKi
+                        number: '20584878889'
+                        plan: Ilimitado
+                        locked: false
+                        locked_emission: false
+                        locked_users: false
+                        locked_tenant: false
+                        count_doc: 0
+                        count_user: 1
+                        max_users: 0
+                        max_documents: 0
+                        created_at: '2025-10-16 15:55:15'
+                        updated_at: '2025-10-21 11:51:10'
+                        monthly_sales_total: '0.00'
+                        sales_unlimited: true
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codeSamples:
+        - lang: javascript
+          label: Fetch
+          source: |
+            const url = 'https://fact01.uio.la/api/reseller/detail';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({})
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log('Tenants:', data.data);
+              data.data.forEach(tenant => {
+                console.log(`${tenant.name} - Bloqueado: ${tenant.locked_tenant ? 'Sí' : 'No'}`);
+              });
+            })
+            .catch(error => console.error('Error:', error));
+        
+        - lang: javascript
+          label: jQuery
+          source: |
+            const url = 'https://fact01.uio.la/api/reseller/detail';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $.ajax({
+              url: url,
+              type: 'POST',
+              headers: {
+                'Authorization': 'Bearer ' + token,
+                'Accept': 'application/json'
+              },
+              contentType: 'application/json',
+              data: JSON.stringify({}),
+              success: function(data) {
+                console.log('Tenants:', data.data);
+                $.each(data.data, function(index, tenant) {
+                  console.log(tenant.name + ' - Plan: ' + tenant.plan);
+                });
+              },
+              error: function(xhr, status, error) {
+                console.error('Error:', error);
+              }
+            });
+        
+        - lang: javascript
+          label: XMLHttpRequest
+          source: |
+            const url = 'https://fact01.uio.la/api/reseller/detail';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            
+            xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                  const data = JSON.parse(xhr.responseText);
+                  console.log('Tenants:', data.data);
+                } else {
+                  console.error('Error:', xhr.status, xhr.statusText);
+                }
+              }
+            };
+            
+            xhr.send(JSON.stringify({}));
+        
+        - lang: nodejs
+          label: Axios
+          source: |
+            const axios = require('axios');
+            
+            const url = 'https://fact01.uio.la/api/reseller/detail';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            axios.post(url, {}, {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => {
+              console.log('Status:', response.status);
+              console.log('Tenants:', response.data.data);
+              
+              response.data.data.forEach(tenant => {
+                console.log(`Tenant: ${tenant.name}`);
+                console.log(`  - Plan: ${tenant.plan}`);
+                console.log(`  - Documentos: ${tenant.count_doc}`);
+                console.log(`  - Usuarios: ${tenant.count_user}`);
+              });
+            })
+            .catch(error => {
+              console.error('Error:', error.response ? error.response.data : error.message);
+            });
+        
+        - lang: nodejs
+          label: Native (https)
+          source: |
+            const https = require('https');
+            
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            const data = JSON.stringify({});
+            
+            const options = {
+              hostname: 'fact01.uio.la',
+              path: '/api/reseller/detail',
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Content-Length': data.length
+              }
+            };
+            
+            const req = https.request(options, (res) => {
+              let body = '';
+              
+              res.on('data', (chunk) => {
+                body += chunk;
+              });
+              
+              res.on('end', () => {
+                console.log('Status:', res.statusCode);
+                const response = JSON.parse(body);
+                console.log('Tenants:', response.data);
+              });
+            });
+            
+            req.on('error', (error) => {
+              console.error('Error:', error);
+            });
+            
+            req.write(data);
+            req.end();
+        
+        - lang: nodejs
+          label: Request
+          source: |
+            const request = require('request');
+            
+            const url = 'https://fact01.uio.la/api/reseller/detail';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const options = {
+              url: url,
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              json: {}
+            };
+            
+            request(options, (error, response, body) => {
+              if (error) {
+                console.error('Error:', error);
+                return;
+              }
+              
+              console.log('Status:', response.statusCode);
+              console.log('Tenants:', body.data);
+            });
+        
+        - lang: nodejs
+          label: Unirest
+          source: |
+            const unirest = require('unirest');
+            
+            const url = 'https://fact01.uio.la/api/reseller/detail';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            unirest('POST', url)
+              .headers({
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              })
+              .send(JSON.stringify({}))
+              .end((res) => {
+                if (res.error) {
+                  console.error('Error:', res.error);
+                  return;
+                }
+                
+                console.log('Status:', res.status);
+                console.log('Tenants:', res.body.data);
+              });
+        
+        - lang: php
+          label: cURL
+          source: |
+            <?php
+            $url = 'https://fact01.uio.la/api/reseller/detail';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([]));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $token,
+                'Accept: application/json',
+                'Content-Type: application/json'
+            ]);
+            
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            
+            echo "Status: $httpCode\n";
+            
+            $data = json_decode($response, true);
+            echo "Tenants:\n";
+            
+            foreach ($data['data'] as $tenant) {
+                echo "- {$tenant['name']} ({$tenant['email']})\n";
+                echo "  Plan: {$tenant['plan']}\n";
+                echo "  Bloqueado: " . ($tenant['locked_tenant'] ? 'Sí' : 'No') . "\n";
+            }
+            ?>
+        
+        - lang: php
+          label: Guzzle
+          source: |
+            <?php
+            require 'vendor/autoload.php';
+            
+            use GuzzleHttp\Client;
+            
+            $url = 'https://fact01.uio.la/api/reseller/detail';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $client = new Client();
+            
+            try {
+                $response = $client->post($url, [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $token,
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json'
+                    ],
+                    'json' => []
+                ]);
+                
+                $statusCode = $response->getStatusCode();
+                $body = json_decode($response->getBody(), true);
+                
+                echo "Status: $statusCode\n";
+                echo "Total tenants: " . count($body['data']) . "\n";
+                
+                foreach ($body['data'] as $tenant) {
+                    echo "\nTenant: {$tenant['name']}\n";
+                    echo "Email: {$tenant['email']}\n";
+                    echo "Plan: {$tenant['plan']}\n";
+                }
+                
+            } catch (\GuzzleHttp\Exception\RequestException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            ?>
+        
+        - lang: php
+          label: HTTP_Request2
+          source: |
+            <?php
+            require_once 'HTTP/Request2.php';
+            
+            $url = 'https://fact01.uio.la/api/reseller/detail';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $request = new HTTP_Request2($url, HTTP_Request2::METHOD_POST);
+            $request->setHeader([
+                'Authorization' => 'Bearer ' . $token,
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
+            ]);
+            $request->setBody(json_encode([]));
+            
+            try {
+                $response = $request->send();
+                $statusCode = $response->getStatus();
+                $body = json_decode($response->getBody(), true);
+                
+                echo "Status: $statusCode\n";
+                echo "Tenants: " . print_r($body['data'], true);
+                
+            } catch (HTTP_Request2_Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            ?>
+        
+        - lang: php
+          label: PECL HTTP
+          source: |
+            <?php
+            $url = 'https://fact01.uio.la/api/reseller/detail';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $request = new HttpRequest($url, HttpRequest::METH_POST);
+            $request->setHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
+            ]);
+            $request->setBody(json_encode([]));
+            
+            try {
+                $response = $request->send();
+                $statusCode = $response->getResponseCode();
+                $body = json_decode($response->getBody(), true);
+                
+                echo "Status: $statusCode\n";
+                echo "Total tenants: " . count($body['data']) . "\n";
+                
+                foreach ($body['data'] as $tenant) {
+                    echo "{$tenant['name']} - {$tenant['plan']}\n";
+                }
+                
+            } catch (HttpException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            ?>
+        
+        - lang: python
+          label: http.client
+          source: |
+            import http.client
+            import json
+            
+            conn = http.client.HTTPSConnection("fact01.uio.la")
+            
+            token = "JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE"
+            
+            headers = {
+                'Authorization': f'Bearer {token}',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+            
+            payload = json.dumps({})
+            
+            conn.request("POST", "/api/reseller/detail", payload, headers)
+            res = conn.getresponse()
+            data = res.read()
+            
+            print("Status:", res.status)
+            
+            response = json.loads(data.decode("utf-8"))
+            print("\nTenants:")
+            for tenant in response['data']:
+                print(f"- {tenant['name']} ({tenant['email']})")
+                print(f"  Plan: {tenant['plan']}")
+                print(f"  Documentos: {tenant['count_doc']}")
+                print(f"  Usuarios: {tenant['count_user']}")
+                print()
+        
+        - lang: python
+          label: Requests
+          source: |
+            import requests
+            import json
+            
+            url = "https://fact01.uio.la/api/reseller/detail"
+            token = "JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE"
+            
+            headers = {
+                "Authorization": f"Bearer {token}",
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+            
+            data = {}
+            
+            response = requests.post(url, json=data, headers=headers)
+            
+            print("Status:", response.status_code)
+            
+            if response.status_code == 200:
+                result = response.json()
+                print(f"\nTotal de tenants: {len(result['data'])}")
+                
+                for tenant in result['data']:
+                    print(f"\n{'='*50}")
+                    print(f"Tenant: {tenant['name']}")
+                    print(f"Email: {tenant['email']}")
+                    print(f"Hostname: {tenant['hostname']}")
+                    print(f"Plan: {tenant['plan']}")
+                    print(f"RUC/ID: {tenant['number']}")
+                    print(f"Bloqueado: {'Sí' if tenant['locked_tenant'] else 'No'}")
+                    print(f"Documentos emitidos: {tenant['count_doc']}")
+                    print(f"Usuarios activos: {tenant['count_user']}")
+                    print(f"Ventas mensuales: ${tenant['monthly_sales_total']}")
+                    print(f"Creado: {tenant['created_at']}")
+            else:
+                print("Error:", response.text)
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Token de API Bearer para autenticación.
+        
+        **Formato del header:**
+        ```
+        Authorization: Bearer <API_TOKEN>
+        ```
+        
+        **Ejemplo:**
+        ```
+        Authorization: Bearer JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE
+        ```
+
+  schemas:
+    TenantDetail:
+      type: object
+      description: Información detallada de un tenant
+      properties:
+        id:
+          type: integer
+          description: Identificador único del tenant
+          example: 2
+        hostname:
+          type: string
+          description: Subdominio asignado al tenant
+          example: empresa01.fact01.uio.la
+        name:
+          type: string
+          description: Nombre del tenant
+          example: empresa01
+        email:
+          type: string
+          format: email
+          description: Correo electrónico de contacto
+          example: empresa01@gmail.com
+        token:
+          type: string
+          description: Token de API del tenant
+          example: MpfPPOPmzSK1bNQjpf7MEIm1SOoXPgNNkyivVz6gFoCbbsHHKi
+        number:
+          type: string
+          description: Número de RUC o identificación fiscal
+          example: '20584878889'
+        plan:
+          type: string
+          description: Tipo de plan asignado
+          example: Ilimitado
+          enum:
+            - Ilimitado
+            - Básico
+            - Premium
+            - Profesional
+        locked:
+          type: boolean
+          description: Indica si el tenant está bloqueado (campo deprecated)
+          example: false
+          deprecated: true
+        locked_emission:
+          type: boolean
+          description: Indica si la emisión de documentos está bloqueada
+          example: false
+        locked_users:
+          type: boolean
+          description: Indica si la creación de usuarios está bloqueada
+          example: false
+        locked_tenant:
+          type: boolean
+          description: Indica si el tenant está bloqueado completamente
+          example: false
+        count_doc:
+          type: integer
+          description: Total de documentos emitidos por el tenant
+          example: 0
+          minimum: 0
+        count_user:
+          type: integer
+          description: Cantidad de usuarios activos
+          example: 1
+          minimum: 0
+        max_users:
+          type: integer
+          description: Límite máximo de usuarios permitidos (0 = ilimitado)
+          example: 0
+          minimum: 0
+        max_documents:
+          type: integer
+          description: Límite máximo de documentos permitidos (0 = ilimitado)
+          example: 0
+          minimum: 0
+        created_at:
+          type: string
+          format: date-time
+          description: Fecha y hora de creación del tenant
+          example: '2025-10-16 15:55:15'
+        updated_at:
+          type: string
+          format: date-time
+          description: Fecha y hora de última actualización
+          example: '2025-10-21 11:51:10'
+        monthly_sales_total:
+          type: string
+          format: decimal
+          description: Total de ventas acumuladas en el mes actual
+          example: '0.00'
+        sales_unlimited:
+          type: boolean
+          description: Indica si las ventas son ilimitadas
+          example: true
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Mensaje descriptivo del error
+        error:
+          type: string
+          description: Código o tipo de error
+
+  responses:
+    Unauthorized:
+      description: Token inválido o ausente
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            tokenMissing:
+              summary: Token ausente
+              value:
+                message: No se proporcionó el token de autenticación
+                error: unauthorized
+            tokenInvalid:
+              summary: Token inválido
+              value:
+                message: El token proporcionado no es válido
+                error: invalid_token
+
+    Forbidden:
+      description: Acceso denegado - permisos insuficientes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            noPermissions:
+              summary: Sin permisos
+              value:
+                message: No tienes permisos para acceder a este recurso
+                error: forbidden
+            notReseller:
+              summary: No es reseller
+              value:
+                message: Solo usuarios con permisos de reseller pueden acceder
+                error: not_reseller
+
+    InternalServerError:
+      description: Error interno del servidor
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            serverError:
+              summary: Error del servidor
+              value:
+                message: Ha ocurrido un error interno en el servidor
+                error: internal_server_error
+            databaseError:
+              summary: Error de base de datos
+              value:
+                message: Error al consultar la base de datos
+                error: database_error

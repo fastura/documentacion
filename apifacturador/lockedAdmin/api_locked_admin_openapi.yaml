@@ -1,0 +1,734 @@
+openapi: 3.0.3
+info:
+  title: API Reseller - Bloqueo de Administrador
+  description: |
+    API para bloquear y desbloquear el acceso del administrador principal de un tenant.
+    
+    **Funcionalidades:**
+    - Bloquear acceso del administrador principal
+    - Desbloquear acceso del administrador principal
+    - Control granular por tenant
+    - Efecto inmediato en la autenticación
+    
+    **Importante:**
+    - Solo afecta al usuario administrador principal
+    - No afecta al estado general del tenant
+    - No afecta a usuarios secundarios
+  version: 1.0.0
+  contact:
+    name: Soporte Técnico
+    url: https://fact01.uio.la
+
+servers:
+  - url: https://fact01.uio.la
+    description: Servidor de Producción
+
+tags:
+  - name: Reseller - Admin Control
+    description: Control de acceso de administradores
+
+security:
+  - bearerAuth: []
+
+paths:
+  /api/reseller/lockedAdmin:
+    post:
+      tags:
+        - Reseller - Admin Control
+      summary: Bloquear/Desbloquear administrador
+      description: |
+        Permite bloquear o desbloquear el acceso del administrador principal de un tenant.
+        
+        **Comportamiento:**
+        - Cuando `locked_admin = true`: El administrador no podrá acceder al panel del tenant
+        - Cuando `locked_admin = false`: El administrador recupera el acceso completo
+        - Los cambios tienen efecto inmediato
+        - La cuenta del tenant permanece activa
+        
+        **Casos de uso:**
+        - Suspensión temporal de acceso por falta de pago
+        - Bloqueo preventivo por actividad sospechosa
+        - Control de acceso durante mantenimiento
+        - Gestión de sanciones temporales
+        
+        **Requisitos:**
+        - Token de API con permisos de reseller o administrador global
+        - ID válido del tenant
+        - Estado de bloqueo deseado (true/false)
+      operationId: lockedAdmin
+      requestBody:
+        required: true
+        description: |
+          Datos para bloquear o desbloquear al administrador principal.
+          
+          **Campos requeridos:**
+          - `id`: ID del tenant
+          - `locked_admin`: Estado de bloqueo (true = bloqueado, false = desbloqueado)
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LockedAdminRequest'
+            examples:
+              bloquear:
+                summary: Bloquear administrador
+                description: Bloquea el acceso del administrador principal del tenant
+                value:
+                  id: 1
+                  locked_admin: true
+              desbloquear:
+                summary: Desbloquear administrador
+                description: Restaura el acceso del administrador principal del tenant
+                value:
+                  id: 1
+                  locked_admin: false
+              bloqueMultiple:
+                summary: Ejemplo con tenant ID mayor
+                description: Bloquear administrador de otro tenant
+                value:
+                  id: 15
+                  locked_admin: true
+      responses:
+        '200':
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LockedAdminResponse'
+              examples:
+                bloqueado:
+                  summary: Administrador bloqueado
+                  description: Respuesta cuando se bloquea exitosamente
+                  value:
+                    success: true
+                    message: Cuenta bloqueada
+                desbloqueado:
+                  summary: Administrador desbloqueado
+                  description: Respuesta cuando se desbloquea exitosamente
+                  value:
+                    success: true
+                    message: Cuenta desbloqueada
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      x-codeSamples:
+        - lang: javascript
+          label: Fetch
+          source: |
+            const url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const data = {
+              id: 1,
+              locked_admin: true
+            };
+            
+            fetch(url, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+              console.log('Success:', data.success);
+              console.log('Message:', data.message);
+            })
+            .catch(error => console.error('Error:', error));
+        
+        - lang: javascript
+          label: jQuery
+          source: |
+            const url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $.ajax({
+              url: url,
+              type: 'POST',
+              headers: {
+                'Authorization': 'Bearer ' + token,
+                'Accept': 'application/json'
+              },
+              contentType: 'application/json',
+              data: JSON.stringify({
+                id: 1,
+                locked_admin: true
+              }),
+              success: function(response) {
+                console.log('Estado:', response.message);
+                alert(response.message);
+              },
+              error: function(xhr, status, error) {
+                console.error('Error:', error);
+                alert('Error al procesar la solicitud');
+              }
+            });
+        
+        - lang: javascript
+          label: XMLHttpRequest
+          source: |
+            const url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+            xhr.setRequestHeader('Accept', 'application/json');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            
+            xhr.onreadystatechange = function() {
+              if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                  const data = JSON.parse(xhr.responseText);
+                  console.log('Mensaje:', data.message);
+                  console.log('Éxito:', data.success);
+                } else {
+                  console.error('Error:', xhr.status, xhr.statusText);
+                }
+              }
+            };
+            
+            xhr.send(JSON.stringify({
+              id: 1,
+              locked_admin: true
+            }));
+        
+        - lang: nodejs
+          label: Axios
+          source: |
+            const axios = require('axios');
+            
+            const url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const data = {
+              id: 1,
+              locked_admin: true
+            };
+            
+            axios.post(url, data, {
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(response => {
+              console.log('Status:', response.status);
+              console.log('Success:', response.data.success);
+              console.log('Message:', response.data.message);
+              
+              if (response.data.success) {
+                console.log('✓ Operación completada exitosamente');
+              }
+            })
+            .catch(error => {
+              if (error.response) {
+                console.error('Error:', error.response.status);
+                console.error('Data:', error.response.data);
+              } else {
+                console.error('Error:', error.message);
+              }
+            });
+        
+        - lang: nodejs
+          label: Native (https)
+          source: |
+            const https = require('https');
+            
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            const postData = JSON.stringify({
+              id: 1,
+              locked_admin: true
+            });
+            
+            const options = {
+              hostname: 'fact01.uio.la',
+              path: '/api/reseller/lockedAdmin',
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(postData)
+              }
+            };
+            
+            const req = https.request(options, (res) => {
+              let body = '';
+              
+              res.on('data', (chunk) => {
+                body += chunk;
+              });
+              
+              res.on('end', () => {
+                console.log('Status:', res.statusCode);
+                const response = JSON.parse(body);
+                console.log('Message:', response.message);
+                console.log('Success:', response.success);
+              });
+            });
+            
+            req.on('error', (error) => {
+              console.error('Error:', error);
+            });
+            
+            req.write(postData);
+            req.end();
+        
+        - lang: nodejs
+          label: Request
+          source: |
+            const request = require('request');
+            
+            const url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            const options = {
+              url: url,
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              json: {
+                id: 1,
+                locked_admin: true
+              }
+            };
+            
+            request(options, (error, response, body) => {
+              if (error) {
+                console.error('Error:', error);
+                return;
+              }
+              
+              console.log('Status:', response.statusCode);
+              console.log('Response:', body);
+              
+              if (body.success) {
+                console.log('✓', body.message);
+              }
+            });
+        
+        - lang: nodejs
+          label: Unirest
+          source: |
+            const unirest = require('unirest');
+            
+            const url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            const token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            unirest('POST', url)
+              .headers({
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              })
+              .send(JSON.stringify({
+                id: 1,
+                locked_admin: true
+              }))
+              .end((res) => {
+                if (res.error) {
+                  console.error('Error:', res.error);
+                  return;
+                }
+                
+                console.log('Status:', res.status);
+                console.log('Body:', res.body);
+              });
+        
+        - lang: php
+          label: cURL
+          source: |
+            <?php
+            $url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $data = [
+                'id' => 1,
+                'locked_admin' => true
+            ];
+            
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $token,
+                'Accept: application/json',
+                'Content-Type: application/json'
+            ]);
+            
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            
+            echo "Status: $httpCode\n";
+            
+            $result = json_decode($response, true);
+            if ($result['success']) {
+                echo "✓ {$result['message']}\n";
+            } else {
+                echo "✗ Error en la operación\n";
+            }
+            ?>
+        
+        - lang: php
+          label: Guzzle
+          source: |
+            <?php
+            require 'vendor/autoload.php';
+            
+            use GuzzleHttp\Client;
+            
+            $url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $client = new Client();
+            
+            try {
+                $response = $client->post($url, [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $token,
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json'
+                    ],
+                    'json' => [
+                        'id' => 1,
+                        'locked_admin' => true
+                    ]
+                ]);
+                
+                $statusCode = $response->getStatusCode();
+                $body = json_decode($response->getBody(), true);
+                
+                echo "Status: $statusCode\n";
+                echo "Success: " . ($body['success'] ? 'true' : 'false') . "\n";
+                echo "Message: {$body['message']}\n";
+                
+            } catch (\GuzzleHttp\Exception\RequestException $e) {
+                echo "Error: " . $e->getMessage() . "\n";
+                if ($e->hasResponse()) {
+                    $errorResponse = json_decode($e->getResponse()->getBody(), true);
+                    echo "Error message: " . ($errorResponse['message'] ?? 'Unknown error') . "\n";
+                }
+            }
+            ?>
+        
+        - lang: php
+          label: HTTP_Request2
+          source: |
+            <?php
+            require_once 'HTTP/Request2.php';
+            
+            $url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $request = new HTTP_Request2($url, HTTP_Request2::METHOD_POST);
+            $request->setHeader([
+                'Authorization' => 'Bearer ' . $token,
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
+            ]);
+            $request->setBody(json_encode([
+                'id' => 1,
+                'locked_admin' => true
+            ]));
+            
+            try {
+                $response = $request->send();
+                $statusCode = $response->getStatus();
+                $body = json_decode($response->getBody(), true);
+                
+                echo "Status: $statusCode\n";
+                echo "Message: {$body['message']}\n";
+                
+            } catch (HTTP_Request2_Exception $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            ?>
+        
+        - lang: php
+          label: PECL HTTP
+          source: |
+            <?php
+            $url = 'https://fact01.uio.la/api/reseller/lockedAdmin';
+            $token = 'JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE';
+            
+            $request = new HttpRequest($url, HttpRequest::METH_POST);
+            $request->setHeaders([
+                'Authorization' => 'Bearer ' . $token,
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json'
+            ]);
+            $request->setBody(json_encode([
+                'id' => 1,
+                'locked_admin' => true
+            ]));
+            
+            try {
+                $response = $request->send();
+                $statusCode = $response->getResponseCode();
+                $body = json_decode($response->getBody(), true);
+                
+                echo "Status: $statusCode\n";
+                
+                if ($body['success']) {
+                    echo "✓ {$body['message']}\n";
+                } else {
+                    echo "✗ Operación fallida\n";
+                }
+                
+            } catch (HttpException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            ?>
+        
+        - lang: python
+          label: http.client
+          source: |
+            import http.client
+            import json
+            
+            conn = http.client.HTTPSConnection("fact01.uio.la")
+            
+            token = "JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE"
+            
+            headers = {
+                'Authorization': f'Bearer {token}',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+            
+            payload = json.dumps({
+                "id": 1,
+                "locked_admin": True
+            })
+            
+            conn.request("POST", "/api/reseller/lockedAdmin", payload, headers)
+            res = conn.getresponse()
+            data = res.read()
+            
+            print("Status:", res.status)
+            
+            response = json.loads(data.decode("utf-8"))
+            print("Success:", response['success'])
+            print("Message:", response['message'])
+            
+            if response['success']:
+                print("✓ Operación completada exitosamente")
+        
+        - lang: python
+          label: Requests
+          source: |
+            import requests
+            import json
+            
+            url = "https://fact01.uio.la/api/reseller/lockedAdmin"
+            token = "JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE"
+            
+            headers = {
+                "Authorization": f"Bearer {token}",
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+            
+            data = {
+                "id": 1,
+                "locked_admin": True
+            }
+            
+            response = requests.post(url, json=data, headers=headers)
+            
+            print("Status:", response.status_code)
+            
+            if response.status_code == 200:
+                result = response.json()
+                print(f"Success: {result['success']}")
+                print(f"Message: {result['message']}")
+                
+                if result['success']:
+                    if result['message'] == 'Cuenta bloqueada':
+                        print("\n✓ El administrador ha sido bloqueado exitosamente")
+                        print("  - No podrá acceder al panel del tenant")
+                        print("  - El tenant permanece activo")
+                    else:
+                        print("\n✓ El administrador ha sido desbloqueado exitosamente")
+                        print("  - Puede acceder nuevamente al panel del tenant")
+            else:
+                print("Error:", response.text)
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Token de API Bearer para autenticación.
+        
+        **Formato del header:**
+        ```
+        Authorization: Bearer <API_TOKEN>
+        ```
+        
+        **Ejemplo:**
+        ```
+        Authorization: Bearer JQcPuJSzMx61DjMBeTJBXH813auyvK22rVJh8aEDP580f2UV33QOLMaHX2yE
+        ```
+        
+        **Permisos requeridos:**
+        - Reseller
+        - Administrador global
+
+  schemas:
+    LockedAdminRequest:
+      type: object
+      required:
+        - id
+        - locked_admin
+      properties:
+        id:
+          type: integer
+          description: ID del tenant cuyo administrador será bloqueado/desbloqueado
+          example: 1
+          minimum: 1
+        locked_admin:
+          type: boolean
+          description: |
+            Estado del bloqueo del administrador:
+            - `true`: Bloquear acceso del administrador
+            - `false`: Desbloquear acceso del administrador
+          example: true
+
+    LockedAdminResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indica si la operación fue exitosa
+          example: true
+        message:
+          type: string
+          description: Mensaje descriptivo del resultado
+          example: Cuenta bloqueada
+          enum:
+            - Cuenta bloqueada
+            - Cuenta desbloqueada
+
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Indica que la operación falló
+          example: false
+        message:
+          type: string
+          description: Mensaje descriptivo del error
+        error:
+          type: string
+          description: Código o tipo de error
+
+  responses:
+    BadRequest:
+      description: Datos faltantes o inválidos
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            missingFields:
+              summary: Campos requeridos faltantes
+              value:
+                success: false
+                message: Los campos 'id' y 'locked_admin' son requeridos
+                error: bad_request
+            invalidId:
+              summary: ID inválido
+              value:
+                success: false
+                message: El campo 'id' debe ser un número entero positivo
+                error: invalid_id
+            invalidLockedAdmin:
+              summary: Valor inválido para locked_admin
+              value:
+                success: false
+                message: El campo 'locked_admin' debe ser un valor booleano (true/false)
+                error: invalid_boolean
+
+    Unauthorized:
+      description: Token inválido o ausente
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            tokenMissing:
+              summary: Token ausente
+              value:
+                success: false
+                message: No se proporcionó el token de autenticación
+                error: unauthorized
+            tokenInvalid:
+              summary: Token inválido
+              value:
+                success: false
+                message: El token proporcionado no es válido
+                error: invalid_token
+            tokenExpired:
+              summary: Token expirado
+              value:
+                success: false
+                message: El token ha expirado
+                error: token_expired
+
+    NotFound:
+      description: Tenant o administrador no encontrado
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            tenantNotFound:
+              summary: Tenant no encontrado
+              value:
+                success: false
+                message: El tenant con ID especificado no existe
+                error: tenant_not_found
+            adminNotFound:
+              summary: Administrador no encontrado
+              value:
+                success: false
+                message: El tenant no tiene un administrador principal asignado
+                error: admin_not_found
+
+    InternalServerError:
+      description: Error interno del servidor
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            serverError:
+              summary: Error del servidor
+              value:
+                success: false
+                message: Ha ocurrido un error interno en el servidor
+                error: internal_server_error
+            databaseError:
+              summary: Error de base de datos
+              value:
+                success: false
+                message: Error al actualizar el estado del administrador
+                error: database_error
