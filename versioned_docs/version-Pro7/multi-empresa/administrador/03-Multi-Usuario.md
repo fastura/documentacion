@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-
+sidebar_label: Multi Usuario
 ---
 
 # Multi-usuario: Guía paso a paso
