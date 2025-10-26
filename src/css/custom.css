@@ -413,3 +413,40 @@ button.aa-DetachedSearchButton {
     var(--ifm-color-emphasis-100) 100%
   );
 }
+
+/* ========================================
+   ENLACE API EN NAVBAR - SOLO PARA PRO7
+   ======================================== */
+
+/* Estilos base del enlace API */
+.navbar__api-link {
+  display: inline-block;
+  margin: 0 15px;
+  padding: 4px 20px;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 20px;
+  background-color: var(--ifm-color-primary);
+  color: white !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.navbar__api-link:hover {
+  background-color: var(--ifm-color-primary-dark);
+  color: white !important;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 996px) {
+  .navbar__api-link {
+    margin: 0 8px;
+    padding: 4px 16px;
+    font-size: 0.9rem;
+  }
+}

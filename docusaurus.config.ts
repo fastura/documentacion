@@ -61,6 +61,8 @@ const config: Config = {
   plugins: [
     'plugin-image-zoom',
 
+    './src/plugins/api-navbar-plugin.js',
+
     /* Comentado el buscador anterior
     require.resolve('docusaurus-lunr-search'),
     */
@@ -283,18 +285,7 @@ const config: Config = {
           src: 'img/manual.svg',
       },
       items: [
-        //{
-        //  type: 'docSidebar',
-        //  sidebarId: 'tutorialSidebar',
-        //  position: 'left',
-        //  label: 'Documentacion',
-        //},
-        {type: 'docsVersionDropdown', position: 'left'},
-        //{
-        //  href: 'https://github.com/facebook/docusaurus',
-        //  label: 'GitHub',
-        //  position: 'right',
-        //},
+        {type: 'docsVersionDropdown', position: 'left'}
       ],
     },
     docs: {
@@ -362,6 +353,7 @@ const config: Config = {
         src: 'https://static.buho.la/fastura/documentacion.js',
         async: true,
       },
+      
       //{
       // Script to reload the page on version change
       //  src: '/js/reload-on-version-change.js',
