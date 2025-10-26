@@ -105,39 +105,71 @@ module.exports = function (context, options) {
                       {
                         id: 'api-navbar-link',
                         text: 'API',
-                        url: \`/\${activeVersion}/Devs/api/introduccion\`,
+                        url: '/QrBuho/Api/api-introduccion',
                         color: '#20c997',
                         hoverColor: '#17a2b8'
                       }
                     ];
-                  } else {
-                    // Pro7 y ProX tienen los mismos 4 enlaces
+                  } else if (activeVersion === 'Pro7') {
+                    // Pro7 tiene 4 enlaces
                     linksToCreate = [
                       {
                         id: 'api-navbar-link',
                         text: 'API',
-                        url: \`/\${activeVersion}/Devs/api/introduccion\`,
+                        url: '/Pro7/Devs/api/introduccion',
                         color: 'var(--ifm-color-primary)',
                         hoverColor: 'var(--ifm-color-primary-dark)'
                       },
                       {
                         id: 'mozo-navbar-link',
                         text: 'Mozo',
-                        url: \`/\${activeVersion}/Mozo.pe/introduccion\`,
+                        url: '/Pro7/Mozo.pe/introduccion',
                         color: '#28a745',
                         hoverColor: '#218838'
                       },
                       {
                         id: 'vendeya-navbar-link',
                         text: 'VendeYA',
-                        url: \`/\${activeVersion}/vendeya/introduccion\`,
+                        url: '/Pro7/vendeya/introduccion',
                         color: '#6f42c1',
                         hoverColor: '#5a32a3'
                       },
                       {
                         id: 'app-navbar-link',
                         text: 'App',
-                        url: \`/\${activeVersion}/app-para-facturacion/introduccion\`,
+                        url: '/Pro7/app-para-facturacion/introduccion',
+                        color: '#fd7e14',
+                        hoverColor: '#e8650e'
+                      }
+                    ];
+                  } else if (activeVersion === 'ProX') {
+                    // ProX tiene los mismos 4 enlaces pero con rutas de ProX
+                    linksToCreate = [
+                      {
+                        id: 'api-navbar-link',
+                        text: 'API',
+                        url: '/ProX/prox-devs/api/introduccion',
+                        color: 'var(--ifm-color-primary)',
+                        hoverColor: 'var(--ifm-color-primary-dark)'
+                      },
+                      {
+                        id: 'mozo-navbar-link',
+                        text: 'Mozo',
+                        url: '/ProX/Mozo.pe/introduccion',
+                        color: '#28a745',
+                        hoverColor: '#218838'
+                      },
+                      {
+                        id: 'vendeya-navbar-link',
+                        text: 'VendeYA',
+                        url: '/ProX/vendeya/introduccion',
+                        color: '#6f42c1',
+                        hoverColor: '#5a32a3'
+                      },
+                      {
+                        id: 'app-navbar-link',
+                        text: 'App',
+                        url: '/ProX/app-para-facturacion/introduccion',
                         color: '#fd7e14',
                         hoverColor: '#e8650e'
                       }
