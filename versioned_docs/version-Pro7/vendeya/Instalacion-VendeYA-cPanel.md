@@ -1,298 +1,109 @@
----
-title: Mozo en cPanel
-sidebar_position: 1
----
+# VendeYA en cPanel
 
-import DocsCard from '/src/components/global/DocsCard';
-import DocsCards from '/src/components/global/DocsCards';
+> ⚠️ **IMPORTANTE - Migración de Servidor GitLab**
+> 
+> **Hemos migrado nuestro servidor de GitLab.** Si aún no has cambiado la URL del sistema (del git para descargar los cambios, etc.), te sugerimos verificar primero.
+>
+> **Nueva URL:** `git.buho.la`
+>
+> Para más información sobre cómo actualizar la URL del repositorio, consulta nuestra **[guía de actualización y migración](https://manual.uio.la/Pro7/devs/instalacion/Actualizar-Migrar)**.
 
-# 🚀 Instalación de Mozo en cPanel
+## Requisitos Previos
 
-## 🔴 Avisos Importantes
+- ✅ **[Compilado VendeYa](https://git.buho.la/vendeya/compilado)** disponible
+- ✅ Acceso a cuenta cPanel con privilegios de administrador
+- ✅ Navegador web actualizado
+- ✅ Conexión a internet estable
 
-::::danger ⚠️ IMPORTANTE - Migración de Servidor GitLab
-**Hemos migrado nuestro servidor de GitLab.** Si aún no has cambiado la URL del sistema (del git para descargar los cambios, etc.), te sugerimos verificar primero.
+## Proceso de Instalación Paso a Paso
 
-**Nueva URL:** **`git.buho.la`**
-::::
+### 1. Creación del Dominio
 
-::::danger ⚠️ IMPORTANTE - Descargar FileZilla
-Para el **Método Recomendado** va a necesitar descargar **FileZilla Client** desde:
+1. **Acceder a cPanel** mediante sus credenciales de administrador
+2. **Navegar** a la sección **Dominios > Crear un Nuevo Dominio**
+3. **Configurar el dominio:**
+   - Ingresar el nombre del dominio deseado
+   - ⚠️ **CRÍTICO**: Desmarcar la casilla de configuración automática
+   - Agregar `/public_html/` al final del campo "nombre de carpeta"
 
-**https://filezilla-project.org/**
-::::
+![Interfaz de creación de dominio VendeYA](../Devs/instalacion/img/crear-dominio-vendeya.jpg)
 
----
+> ⚠️ **NOTA IMPORTANTE**: Es fundamental desmarcar la casilla y agregar `/public_html/` en el nombre de su carpeta para que la instalación funcione correctamente.
 
-## ✅ Requisitos Previos
-
-- 📦 **[Compilado Mozo](https://git.buho.la/mozo/compilado)** disponible
-- 👤 Acceso a cuenta cPanel con privilegios de administrador
-- 🌐 Navegador web actualizado
-- 📡 Conexión a internet estable
-- 🛠️ FileZilla instalado (para método recomendado)
-
----
-
-## 📋 Proceso de Instalación
-
-### 🌍 Paso 1: Creación del Dominio
-
-1. **Acceso a cPanel**
-   - Ingresar con credenciales de administrador
-
-2. **Navegación**
-   - Ir a: **Dominios** → **Crear un Nuevo Dominio**
-
-3. **Configuración del dominio**
-   - ✏️ Ingresar el nombre del dominio deseado
-   - ⚠️ **CRÍTICO:** Desmarcar la casilla de configuración automática
-   - 📁 Agregar `/public_html/` al final del campo "nombre de carpeta"
-
-![Interfaz de creación de dominio](../Devs/instalacion/img/mozo_crear_nuevo_dominio.png)
-
-::::warning NOTA CRÍTICA
-Es fundamental desmarcar la casilla y agregar `/public_html/` para que la instalación funcione correctamente.
-::::
-
----
-
-### 📥 Paso 2: Descarga de Mozo Compilado
+### 2. Descarga de VendeYA Compilado
 
 #### 2.1 Acceso al Repositorio
-1. **Ingreso al portal**
-   - 🔗 Navegar a: **https://git.buho.la/**
+1. **Ingresar** a su perfil en **https://git.buho.la/**
+2. **Localizar** el proyecto `VendeYA/Compilado`
+3. **Descargar** el código compilado:
+   - Hacer clic en el botón azul **"Code"**
+   - Seleccionar **"Download source code"**
+   - Elegir el formato **.zip** para la descarga
 
-2. **Localización del proyecto**
-   - 🔍 Buscar: `Mozo/Compilado`
+![Descargar VendeYA](../Devs/instalacion/img/descargar-vendeya.png)
 
-3. **Descarga del código**
-   - 🔵 Hacer clic en el botón **"Code"**
-   - 📦 Seleccionar **"Download source code"**
-   - 🗜️ Elegir formato **.zip**
+4. **Guardar** el archivo descargado en una carpeta de fácil acceso en su computadora
 
-   ![Descarga del código compilado](../Devs/instalacion/img/mozo_descargar_codigo_compilado.png)
+### 3. Subida de Archivos al Servidor
 
-4. **Almacenamiento local**
-   - 💾 Guardar en carpeta de fácil acceso
+#### 3.1 Navegación en cPanel
+1. En cPanel, **navegar** a la sección **Dominios**
+2. **Acceder** a la ruta del dominio creado anteriormente
+3. **Seleccionar** la opción **"Cargar"** o **"Upload"**
 
----
+![Cargar archivos](../Devs/instalacion/img/cargar-datos-vendeya.png)
 
-### 📤 Paso 3: Subida de Archivos al Servidor
+#### 3.2 Carga del Archivo ZIP
+1. **Seleccionar** el archivo `.zip` descargado desde su computadora
 
-Elige el método que prefieras para subir los archivos. Te recomendamos el **Método FileZilla** para mayor confiabilidad:
+![Seleccionar Archivo](../Devs/instalacion/img/seleccionar-archivo-zip.png)
 
-<DocsCards>
-  <DocsCard 
-    header="🌐 Método cPanel"
-    href="#método-1-cpanel-básico"
-  >
-    <p><strong>Rápido y sencillo</strong></p>
-    <p>Subida directa desde la interfaz de cPanel. Ideal para instalaciones básicas sin personalización.</p>
-    <ul>
-      <li>✅ No requiere software adicional</li>
-      <li>⚠️ Limitaciones con archivos grandes</li>
-      <li>❌ No permite personalizar logos</li>
-    </ul>
-  </DocsCard>
+2. **Esperar** a que la barra de progreso indique "Completado"
+3. Una vez finalizada la carga, **regresar** a la carpeta raíz del dominio
 
-  <DocsCard
-    header="🛠️ Método FileZilla (Recomendado)"
-    href="#método-2-filezilla-recomendado"
-  >
-    <p><strong>Método profesional</strong></p>
-    <p>Subida avanzada con cliente FTP. Recomendado para instalaciones profesionales y personalización.</p>
-    <ul>
-      <li>✅ Mayor confiabilidad</li>
-      <li>✅ Permite personalizar logos</li>
-      <li>✅ Manejo de archivos grandes</li>
-      <li>✅ Control total del proceso</li>
-    </ul>
-  </DocsCard>
-</DocsCards>
+![Regreso Carpeta Raíz](../Devs/instalacion/img/carpeta-raiz-regreso-vendeya.png)
 
----
+### 4. Extracción y Organización de Archivos
 
-## Método 1: cPanel (Básico)
+#### 4.1 Extracción del Archivo ZIP
+1. **Localizar** el archivo ZIP en la carpeta raíz
+2. **Hacer clic derecho** sobre el archivo
+3. **Seleccionar** la opción **"Extract"** (Extraer)
 
-::::note MÉTODO ALTERNATIVO
-En caso de errores con este método, utilice el **Método 2 - FileZilla** que se encuentra más abajo.
-::::
+![Extraer VendeYA Compilado](../Devs/instalacion/img/extraer-vendeya-compilado.png)
 
-### 3.1 Navegación en cPanel
+#### 4.2 Movimiento de Archivos
+1. **Ingresar** a la carpeta `compilado` que se creó tras la extracción
 
-1. **Acceso a dominios**
-   - 🏠 En cPanel → **Dominios**
+![Entrar a la carpeta de compilado](../Devs/instalacion/img/entrar-carpeta-compilado.png)
 
-![Panel de dominios](../Devs/instalacion/img/mozo_panel_dominios.png)
+2. **Seleccionar todos** los archivos de la carpeta:
+   - Usar la opción "Seleccionar todo"
+   - Verificar que todos los archivos estén marcados
 
-2. **Acceso al dominio**
-   - 📂 Ingresar a la ruta del dominio creado
+![Opción seleccionar todo y mover](../Devs/instalacion/img/opcion-seleccionar-todo-mover.png)
 
-![Acceso al dominio](../Devs/instalacion/img/mozo_acceso_dominio.png)
+3. **Mover** los archivos a la carpeta raíz:
+   - Hacer clic en **"Mover"**
+   - En el modal, seleccionar la carpeta raíz del dominio (un nivel arriba: `..`)
 
-3. **Función de carga**
-   - ⬆️ Seleccionar **"Cargar"** o **"Upload"**
+![Mover a Raíz los Archivos](../Devs/instalacion/img/mover-a-raiz-los-archivos.png)
 
-![Función de carga](../Devs/instalacion/img/mozo_funcion_carga.png)
+> 💡 **TIP**: Una vez movidos todos los archivos, puede eliminar la carpeta `compilado` vacía para mantener el orden.
 
-### 3.2 Carga del Archivo ZIP
+### 5. Configuración del Sistema
 
-1. **Selección del archivo**
-   - 📁 Elegir el archivo `.zip` descargado
+#### 5.1 Configuración del Archivo .htaccess
+1. **Crear** un nuevo archivo llamado `.htaccess` en la carpeta raíz
 
-![Selección de archivo](../Devs/instalacion/img/mozo_seleccion_archivo.png)
+![Crear htaccess](../Devs/instalacion/img/Htaccess-Vendeya.png)
 
-2. **Proceso de carga**
-   - ⏳ Esperar que la barra indique "Completado"
-   - 🔄 Regresar a la carpeta raíz del dominio
+2. **Editar** el archivo y agregar la siguiente configuración:
 
-![Proceso completado](../Devs/instalacion/img/mozo_proceso_completado.png)
-
-**👉 Si usaste este método, continúa con el [Paso 4: Extracción y Organización](#paso-4-extracción-y-organización)**
-
----
-
-## Método 2: FileZilla (Recomendado)
-
-::::success MÉTODO RECOMENDADO
-✅ Mayor confiabilidad  
-✅ Permite personalizar logos e imágenes  
-✅ Mejor manejo de errores  
-✅ Control total del proceso
-::::
-
-### Requisitos de Conexión
-
-Antes de comenzar, necesitará obtener de su cPanel:
-
-1. **📡 Shared IP Address** (Dirección IP compartida)
-2. **👤 Usuario actual** de cPanel  
-3. **🔐 Contraseña** de cPanel
-
-### 3.1 Conexión y Configuración
-
-1. **Interfaz de FileZilla**
-
-FileZilla funciona con una interfaz dividida:
-- **📁 Sección izquierda:** Sus archivos locales (PC/laptop)
-- **🌐 Sección derecha:** Carpetas de su cPanel
-
-![Interfaz de FileZilla](../Devs/instalacion/img/mozo_filezilla_interfaz.png)
-
-2. **Localización de la carpeta del dominio**
-
-En su cPanel necesitará buscar la carpeta del dominio que creó:
-- **📍 Recordar:** La creamos con el prefijo `/public_html/`
-- **🎯 Ubicación:** Esto es crucial para localizar correctamente nuestra carpeta de trabajo
-
-![Localización de carpeta](../Devs/instalacion/img/mozo_filezilla_localizacion_carpeta.png)
-
-### 3.2 Acceso y Subida
-
-1. **Acceso a la carpeta del dominio**
-
-- **🖱️ Clic derecho** sobre la carpeta para abrirla
-- **👁️ Visualizar** los dominios disponibles
-- **✅ Seleccionar** el dominio donde instalaremos Mozo Compilado
-
-![Acceso a carpeta de dominio](../Devs/instalacion/img/mozo_filezilla_acceso_carpeta_dominio.png)
-
-2. **Subida de archivos**
-
-::::info PREPARACIÓN PREVIA
-En la sección izquierda debe tener su compilado **ya extraído** (en carpeta, no en ZIP).
-::::
-
-- **📂 Localizar** la carpeta del compilado en la sección izquierda
-- **🖱️ Clic derecho** sobre la carpeta
-- **⬆️ Seleccionar** la opción **"Subir"**
-- **✅ Confirmar** la transferencia
-
-![Subida de archivos](../Devs/instalacion/img/mozo_filezilla_subida_archivos.png)
-
-::::success PROCESO COMPLETADO
-Con esto habrá terminado la subida de archivos a cPanel usando el método recomendado de FileZilla.
-
-**👉 Si usaste este método, ve directamente al [Paso 5: Configuración del Sistema](#paso-5-configuración-del-sistema)**
-::::
-
----
-
-### 📂 Paso 4: Extracción y Organización
-
-::::note SOLO PARA MÉTODO 1
-Si utilizó FileZilla (Método 2), puede omitir este paso ya que los archivos se subieron directamente extraídos. Vaya directamente al [Paso 5](#paso-5-configuración-del-sistema).
-::::
-
-#### 4.1 Extracción del ZIP
-
-1. **Localización del archivo**
-   - 🔍 Buscar el archivo ZIP en la carpeta raíz
-
-2. **Proceso de extracción**
-   - 🖱️ Clic derecho sobre el archivo
-   - 📦 Seleccionar **"Extract"** (Extraer)
-
-![Proceso de extracción](../Devs/instalacion/img/mozo_proceso_extraccion.png)
-
-::::info LIMPIEZA
-Ya puedes eliminar el archivo ZIP tras la extracción.
-::::
-
-#### 4.2 Organización de Archivos
-
-1. **Acceso a la carpeta compilado**
-   - 📁 Ingresar a la carpeta `compilado` creada
-
-![Carpeta compilado](../Devs/instalacion/img/mozo_carpeta_compilado.png)
-
-2. **Selección de archivos**
-   - ☑️ Usar "Seleccionar todo"
-   - ✅ Verificar que todos los archivos estén marcados
-
-3. **Movimiento a raíz**
-   - 🔄 Hacer clic en **"Mover"**
-
-![Mover archivos](../Devs/instalacion/img/mozo_mover_archivos.png)
-
-   - 🎯 En el modal: seleccionar carpeta raíz del dominio
-   - 🧹 Eliminar prefijo `compilado-main` para dejar solo el nombre del dominio
-
-![Selección de destino](../Devs/instalacion/img/mozo_seleccion_destino.png)
-
-::::tip LIMPIEZA
-Elimina la carpeta `compilado` vacía para mantener el orden.
-::::
-
----
-
-### ⚙️ Paso 5: Configuración del Sistema
-
-#### 5.1 Configuración del .htaccess
-
-1. **Creación del archivo**
-   - 📄 Crear archivo `.htaccess` en la carpeta raíz
-
-![Crear htaccess](../Devs/instalacion/img/mozo_crear_htaccess.png)
-
-**Si el archivo no aparece:**
-
-::::note Configuración de visibilidad
-**Solución:** Ir al botón **"Configuración"** (esquina superior derecha) y activar **"Mostrar archivos ocultos"**
-::::
-
-![Configuración de archivos ocultos](../Devs/instalacion/img/mozo_configuracion_archivos_ocultos.png)
-
-![Mostrar archivos ocultos](../Devs/instalacion/img/mozo_mostrar_archivos_ocultos.png)
-
-2. **Contenido del archivo**
-   - ✏️ Editar el archivo y agregar:
-
-![Editar htaccess](../Devs/instalacion/img/mozo_editar_htaccess.png)
+![Editar htaccess](../Devs/instalacion/img/Editar_htaccess_Vendeya.png)
 
 ```apache
-# Archivo necesario para funcionamiento SPA en Apache
+# Archivo necesario para el funcionamiento del SPA en Apache
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
@@ -305,86 +116,51 @@ Elimina la carpeta `compilado` vacía para mantener el orden.
 </IfModule>
 ```
 
-3. **Guardado**
-   - 💾 Guardar cambios y cerrar editor
+3. **Guardar** los cambios y cerrar el editor
 
 #### 5.2 Configuración del config.json
+1. **Localizar y abrir** el archivo `config.json` en la raíz del proyecto
+2. **Verificar** que la ruta principal esté correctamente configurada según su dominio como **"Cliente Final"**
 
-1. **Localización del archivo**
-   - 🔍 Buscar y abrir `config.json` en la raíz
+![Configuración](../Devs/instalacion/img/Config-VendeYA.png)
 
-![Localizar config.json](../Devs/instalacion/img/mozo_localizar_config_json.png)
+3. **Realizar los ajustes** necesarios según su configuración específica
+4. **Guardar** los cambios y cerrar el archivo
 
-2. **Verificación de rutas**
-   - ✅ Verificar que la ruta principal esté configurada según su dominio
+## Verificación de la Instalación
 
-![Configurar config.json](../Devs/instalacion/img/mozo_configurar_config_json.png)
+### Pasos de Verificación
+1. **Acceder** al dominio configurado desde un navegador web
+2. **Verificar** que la aplicación VendeYA se cargue correctamente
+3. **Probar** la navegación entre diferentes secciones
+4. **Confirmar** que no hay errores 404 al navegar
 
-::::danger CRÍTICO - apiUrl
-El `apiUrl` debe apuntar al sistema del cliente final. El cliente debe existir primero antes de configurar Mozo.
-
-**📍 Importante:** Este es el dominio que usted creó cuando configuró al cliente en su panel de administración.
-
-**Ejemplo:** Si su dominio principal es `pro7.com`, el apiUrl del cliente sería `cliente.pro7.com`
-::::
-
-3. **Ajustes finales**
-   - 🔧 Realizar ajustes según configuración específica
-   - 💾 Guardar cambios y cerrar archivo
-
----
-
-## ✅ Verificación de la Instalación
-
-### 🧪 Pasos de Verificación
-1. **Acceso inicial**
-   - 🌐 Ingresar al dominio desde navegador web
-
-2. **Verificación de carga**
-   - ✅ Confirmar que Mozo se carga correctamente
-
-3. **Prueba de navegación**
-   - 🔗 Probar navegación entre secciones
-
-4. **Verificación de errores**
-   - ❌ Confirmar ausencia de errores 404
-
-### 🔐 Ruta de Acceso al Sistema
-
-Una vez completada la instalación exitosamente:
+### 🔗 Ruta de Acceso al Sistema
+Una vez completada la instalación exitosamente, podrá acceder al sistema VendeYA utilizando la siguiente ruta:
 
 ```
 {su_dominio}/auth/login
 ```
 
-**📋 Ejemplos:**
-- `mirestaurante.com` → `https://mirestaurante.com/auth/login`
-- `pedidos.miempresa.com` → `https://pedidos.miempresa.com/auth/login`
+**Ejemplo:**
+- Si su dominio es `mitienda.com`, acceda a: `https://mitienda.com/auth/login`
+- Si su dominio es `ventas.miempresa.com`, acceda a: `https://ventas.miempresa.com/auth/login`
+
+### Solución de Problemas Comunes
+
+| Problema | Posible Causa | Solución |
+|----------|---------------|----------|
+| Error 404 en navegación | `.htaccess` mal configurado | Verificar la configuración del archivo `.htaccess` |
+| Aplicación no carga | Ruta incorrecta en `config.json` | Revisar y corregir las rutas en el archivo de configuración |
+| Archivos no encontrados | Archivos no movidos correctamente | Verificar que todos los archivos estén en la carpeta raíz |
+
+## Notas Finales
+
+- 📋 **Respaldo**: Siempre mantenga una copia de respaldo antes de realizar cambios
+- 🔒 **Seguridad**: Asegúrese de usar credenciales seguras para su cPanel
+- 📞 **Soporte**: En caso de problemas, consulte la documentación oficial o contacte al equipo de soporte
+- 🔄 **Actualizaciones**: Manténgase al día con las actualizaciones del sistema
 
 ---
 
-## 🔧 Solución de Problemas
-
-| 🚨 Problema | 🔍 Posible Causa | 💡 Solución |
-|-------------|------------------|-------------|
-| Error 404 en navegación | `.htaccess` mal configurado | Verificar configuración del archivo `.htaccess` |
-| Aplicación no carga | Ruta incorreta en `config.json` | Revisar y corregir rutas en configuración |
-| Archivos no encontrados | Archivos mal ubicados | Verificar que archivos estén en carpeta raíz |
-| Error de subida en cPanel | Archivo muy grande o timeout | Usar Método 2 - FileZilla |
-
----
-
-## 📝 Notas Finales
-
-::::info Recomendaciones
-- **📋 Respaldo:** Mantener copia de seguridad antes de cambios
-- **🔒 Seguridad:** Usar credenciales seguras para cPanel  
-- **📞 Soporte:** Consultar documentación o equipo de soporte ante problemas
-- **🔄 Actualizaciones:** Mantenerse al día con actualizaciones del sistema
-::::
-
----
-
-::::success ¡Instalación Completada!
-Su sistema Mozo debería estar funcionando correctamente. Si encuentra problemas, revise cada paso o consulte con soporte técnico.
-::::
+> ✅ **¡Instalación Completada!** Su sistema VendeYA debería estar funcionando correctamente. Si encuentra algún problema, revise cada paso de esta guía o consulte con el equipo de soporte técnico.

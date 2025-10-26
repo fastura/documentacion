@@ -1,7 +1,6 @@
 ---
 title: Actualizar o Migrar el Sistema
 description: "Guía para actualizar el sistema Pro7 o migrar desde Pro6."
-sidebar_position: 1
 ---
 
 import DocsCard from '/src/components/global/DocsCard';
