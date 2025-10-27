@@ -54,28 +54,26 @@ module.exports = function (context, options) {
                   return link;
                 }
 
+                // Función para detectar la versión actual
+                function getCurrentVersion(path) {
+                  if (path.includes('/Pro7/') || path.startsWith('/Pro7')) {
+                    return 'Pro7';
+                  } else if (path.includes('/ProX/') || path.startsWith('/ProX')) {
+                    return 'ProX';
+                  } else if (path.includes('/QrBuho/') || path.startsWith('/QrBuho')) {
+                    return 'QrBuho';
+                  }
+                  return null;
+                }
+
                 function addVersionLinks() {
                   console.log('🔨 Ejecutando addVersionLinks');
                   
                   const path = window.location.pathname;
-                  const isPro7 = path.includes('/Pro7/') || path.startsWith('/Pro7');
-                  const isProX = path.includes('/ProX/') || path.startsWith('/ProX');
-                  const isQrBuho = path.includes('/QrBuho/') || path.startsWith('/QrBuho');
+                  const activeVersion = getCurrentVersion(path);
                   
                   console.log('📍 Path:', path);
-                  console.log('✅ Es Pro7:', isPro7);
-                  console.log('✅ Es ProX:', isProX);
-                  console.log('✅ Es QrBuho:', isQrBuho);
-                  
-                  // Determinar versión activa
-                  let activeVersion = null;
-                  if (isPro7) {
-                    activeVersion = 'Pro7';
-                  } else if (isProX) {
-                    activeVersion = 'ProX';
-                  } else if (isQrBuho) {
-                    activeVersion = 'QrBuho';
-                  }
+                  console.log('✅ Versión activa:', activeVersion);
                   
                   // Remover enlaces si no estamos en una versión compatible
                   if (!activeVersion) {
@@ -111,7 +109,6 @@ module.exports = function (context, options) {
                       }
                     ];
                   } else if (activeVersion === 'Pro7') {
-                    // Pro7 tiene 4 enlaces
                     linksToCreate = [
                       {
                         id: 'api-navbar-link',
@@ -143,7 +140,6 @@ module.exports = function (context, options) {
                       }
                     ];
                   } else if (activeVersion === 'ProX') {
-                    // ProX tiene los mismos 4 enlaces pero con rutas de ProX
                     linksToCreate = [
                       {
                         id: 'api-navbar-link',
@@ -190,7 +186,6 @@ module.exports = function (context, options) {
                       );
                       
                       if (index === 0) {
-                        // Primer enlace después del dropdown de versión
                         if (versionDropdown) {
                           versionDropdown.parentNode.insertBefore(link, versionDropdown.nextSibling);
                           console.log(\`✅ Enlace \${linkConfig.text} insertado después del dropdown\`);
@@ -199,7 +194,6 @@ module.exports = function (context, options) {
                           console.log(\`✅ Enlace \${linkConfig.text} insertado al final\`);
                         }
                       } else {
-                        // Enlaces subsiguientes después del último insertado
                         if (lastInsertedElement) {
                           lastInsertedElement.parentNode.insertBefore(link, lastInsertedElement.nextSibling);
                           console.log(\`✅ Enlace \${linkConfig.text} insertado después del anterior\`);
@@ -227,14 +221,50 @@ module.exports = function (context, options) {
                   runMultipleTimes();
                 }
                 
+                // Monitoreo mejorado con detección de cambio de versión
                 let currentPath = window.location.pathname;
+                let currentVersion = getCurrentVersion(currentPath);
+                
                 setInterval(() => {
-                  if (window.location.pathname !== currentPath) {
-                    currentPath = window.location.pathname;
-                    console.log('🔄 URL cambió:', currentPath);
+                  const newPath = window.location.pathname;
+                  const newVersion = getCurrentVersion(newPath);
+                  
+                  if (newPath !== currentPath) {
+                    console.log('🔄 URL cambió:', newPath);
+                    
+                    // Si cambió la versión, forzar recarga completa
+                    if (newVersion !== currentVersion && newVersion !== null && currentVersion !== null) {
+                      console.log(\`🔄 Cambio de versión detectado: \${currentVersion} → \${newVersion}\`);
+                      console.log('🔄 Forzando recarga de página...');
+                      window.location.reload();
+                      return;
+                    }
+                    
+                    currentPath = newPath;
+                    currentVersion = newVersion;
                     setTimeout(addVersionLinks, 100);
                   }
                 }, 500);
+                
+                // Detectar clicks en el dropdown de versiones para forzar recarga
+                document.addEventListener('click', function(e) {
+                  const versionLink = e.target.closest('.navbar__item.dropdown a');
+                  if (versionLink) {
+                    const href = versionLink.getAttribute('href');
+                    if (href) {
+                      const targetVersion = getCurrentVersion(href);
+                      if (targetVersion && targetVersion !== currentVersion) {
+                        console.log(\`🔄 Click en versión detectado: \${currentVersion} → \${targetVersion}\`);
+                        // Dejar que la navegación ocurra naturalmente, pero marcar para recarga
+                        setTimeout(() => {
+                          if (window.location.pathname.includes(targetVersion)) {
+                            window.location.reload();
+                          }
+                        }, 100);
+                      }
+                    }
+                  }
+                }, true);
                 
               })();
               
