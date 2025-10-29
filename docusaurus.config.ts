@@ -1,79 +1,86 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 import type * as Plugin from "@docusaurus/types/src/plugin";
 import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Documentación Facturador electrónico',
-  tagline: 'Guía Absoluta del Facturador Pro: Pro 6, Pro X y Pro 7 para Todos',
-  favicon: 'img/favicon.ico',
+  title: "Documentación Facturador electrónico",
+  tagline: "Guía Absoluta del Facturador Pro: Pro 6, Pro X y Pro 7 para Todos",
+  favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: 'https://manual.uio.la/',
+  url: "https://manual.uio.la/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'fastura', // Usually your GitHub org/user name.
-  projectName: 'documentacion',
+  organizationName: "fastura", // Usually your GitHub org/user name.
+  projectName: "documentacion",
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   trailingSlash: false,
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'es',
-    locales: ['es'],
+    defaultLocale: "es",
+    locales: ["es"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          routeBasePath: '/',
+          sidebarPath: "./sidebars.ts",
+          routeBasePath: "/",
           includeCurrentVersion: false,
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/fastura/documentacion/tree/main/',
-            
+          editUrl: "https://github.com/fastura/documentacion/tree/main/",
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
   ],
   plugins: [
-    'plugin-image-zoom',
+    "plugin-image-zoom",
 
-    './src/plugins/api-navbar-plugin.js',
+    "./src/plugins/api-navbar-plugin.js",
 
     /* Comentado el buscador anterior
     require.resolve('docusaurus-lunr-search'),
     */
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'demo',
+        path: 'Demo',
+        routeBasePath: 'demo',
+        sidebarPath: './demo.ts',
+      }
+    ],
 
     [
-      'docusaurus-plugin-openapi-docs',
+      "docusaurus-plugin-openapi-docs",
       {
         id: "facturador", // plugin id
         docsPluginId: "classic", // configured for preset-classic
         config: {
-          anulacion_boleta : {
+          anulacion_boleta: {
             specPath: "apifacturador/AnulacionBoletas",
             outputDir: "docs/facturador/Anulacion-Boletas",
             baseUrl: "/facturador",
@@ -169,144 +176,146 @@ const config: Config = {
               // groupPathsBy: "retencion",
             },
           },
-          enviar_pdf: { 
-            specPath: "apifacturador/Enviarpdf",  
-            outputDir: "docs/facturador/Enviar-pdf",  
+          enviar_pdf: {
+            specPath: "apifacturador/Enviarpdf",
+            outputDir: "docs/facturador/Enviar-pdf",
             baseUrl: "/facturador",
             sidebarOptions: {
               // groupPathsBy: "retencion",
             },
           },
-          enviar_mensaje: { 
-            specPath: "apifacturador/Enviarmensaje",  
-            outputDir: "docs/facturador/Enviar-mensaje",  
+          enviar_mensaje: {
+            specPath: "apifacturador/Enviarmensaje",
+            outputDir: "docs/facturador/Enviar-mensaje",
             baseUrl: "/facturador",
             sidebarOptions: {
               // groupPathsBy: "retencion",
             },
           },
-          enviar_multimedia: { 
-            specPath: "apifacturador/Enviarmultimedia",  
-            outputDir: "docs/facturador/Enviar-multimedia",  
+          enviar_multimedia: {
+            specPath: "apifacturador/Enviarmultimedia",
+            outputDir: "docs/facturador/Enviar-multimedia",
             baseUrl: "/facturador",
             sidebarOptions: {
               // groupPathsBy: "retencion",
             },
-          },  
-          qr_api:{
-            specPath: "apifacturador/qr_api",  
-            outputDir: "docs/facturador/qr-api",  
+          },
+          qr_api: {
+            specPath: "apifacturador/qr_api",
+            outputDir: "docs/facturador/qr-api",
             baseUrl: "/facturador",
             sidebarOptions: {},
           },
-          locked_tenant:{
-            specPath: "apifacturador/lockedTenant",  
-            outputDir: "docs/facturador/locked-tenant",  
+          locked_tenant: {
+            specPath: "apifacturador/lockedTenant",
+            outputDir: "docs/facturador/locked-tenant",
             baseUrl: "/facturador",
             sidebarOptions: {},
           },
-          api_spec:{
-            specPath: "apifacturador/api_spec",  
-            outputDir: "docs/facturador/api-spec",  
+          api_spec: {
+            specPath: "apifacturador/api_spec",
+            outputDir: "docs/facturador/api-spec",
             baseUrl: "/facturador",
             sidebarOptions: {},
           },
-          gestion_tenants:{
-            specPath: "apifacturador/gestion_tenants",  
-            outputDir: "docs/facturador/gestion_tenants",  
+          gestion_tenants: {
+            specPath: "apifacturador/gestion_tenants",
+            outputDir: "docs/facturador/gestion_tenants",
             baseUrl: "/facturador",
             sidebarOptions: {},
           },
-          locked_admin:{
-            specPath: "apifacturador/lockedAdmin",  
-            outputDir: "docs/facturador/locked-admin",  
+          locked_admin: {
+            specPath: "apifacturador/lockedAdmin",
+            outputDir: "docs/facturador/locked-admin",
             baseUrl: "/facturador",
             sidebarOptions: {},
           },
-
-        }
+        },
       },
-    ]
+    ],
   ],
   themes: [
-    'docusaurus-theme-openapi-docs',
-    ['@docusaurus/theme-search-algolia', {
-      id: 'algolia-search'
-    }]
+    "docusaurus-theme-openapi-docs",
+    [
+      "@docusaurus/theme-search-algolia",
+      {
+        id: "algolia-search",
+      },
+    ],
     // Otros temas comentados
     /*[
       require.resolve("@easyops-cn/docusaurus-search-local"),
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      /*({
+    /*({
         hashed: true,
         indexDocs: true,
         indexPages: true,
         docsRouteBasePath: '/', // Asegura que el buscador indexe correctamente
       }),
     ],*/
-    
   ],
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/logo_buho.png',
+    image: "img/logo_buho.png",
     algolia: {
       // The application ID provided by Algolia
-      appId: 'ZS76FDL76H',
+      appId: "ZS76FDL76H",
       // Public API key
-      apiKey: 'ffbc9009abea68c80e8952c51c45702a',
-      indexName: 'manual-uio',
+      apiKey: "ffbc9009abea68c80e8952c51c45702a",
+      indexName: "manual-uio",
       // Configuración para búsqueda global
       contextualSearch: false,
       searchParameters: {
         attributesToRetrieve: [
-          'hierarchy.lvl0',
-          'hierarchy.lvl1',
-          'hierarchy.lvl2',
-          'hierarchy.lvl3',
-          'hierarchy.lvl4',
-          'hierarchy.lvl5',
-          'hierarchy.lvl6',
-          'content',
-          'anchor',
-          'url',
-          'url_without_anchor',
-          'type'
+          "hierarchy.lvl0",
+          "hierarchy.lvl1",
+          "hierarchy.lvl2",
+          "hierarchy.lvl3",
+          "hierarchy.lvl4",
+          "hierarchy.lvl5",
+          "hierarchy.lvl6",
+          "content",
+          "anchor",
+          "url",
+          "url_without_anchor",
+          "type",
         ],
         distinct: true,
-        hitsPerPage: 10
+        hitsPerPage: 10,
       },
       // Optional: path for search page that enabled by default (`false` to disable it)
       searchPagePath: false,
     },
-      navbar: {
-        title: 'Manual de uso',
-        logo: {
-          alt: 'Manual de uso de diversos sistemas',
-          src: 'img/manual.svg',
+    navbar: {
+      title: "Manual de uso",
+      logo: {
+        alt: "Manual de uso de diversos sistemas",
+        src: "img/manual.svg",
       },
       items: [
-        {type: 'docsVersionDropdown', position: 'left'}
+        { type: "docsVersionDropdown", position: "left" },
+        //{ to: "/demo", label: "demo", position: "left" },
       ],
     },
     docs: {
       sidebar: {
         autoCollapseCategories: true,
-        // hideable: true, 
+        // hideable: true,
       },
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-        //  title: 'Docs',
-        //  items: [
-        //    {
-        //      label: 'Tutorial',
-        //      to: '/docs/intro',
-        //    },
-        //  ],
-        //},
-        /*{
+          //  title: 'Docs',
+          //  items: [
+          //    {
+          //      label: 'Tutorial',
+          //      to: '/docs/intro',
+          //    },
+          //  ],
+          //},
+          /*{
           title: 'Community',
           items: [
             {
@@ -342,18 +351,18 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['php', 'bash', 'yaml', 'nginx'],
+      additionalLanguages: ["php", "bash", "yaml", "nginx"],
     },
     imageZoom: {
       // CSS selector to apply the plugin to, defaults to '.markdown img'
-      selector: '.markdown img',
+      selector: ".markdown img",
     },
     scripts: [
       {
-        src: 'https://static.buho.la/fastura/documentacion.js',
+        src: "https://static.buho.la/fastura/documentacion.js",
         async: true,
       },
-      
+
       //{
       // Script to reload the page on version change
       //  src: '/js/reload-on-version-change.js',

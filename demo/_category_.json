@@ -1,0 +1,9 @@
+{
+  "label": "Demo",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "slug": "demo",
+    "description": "Documentacion del sistema de facturacion Pro X"
+  }
+}
