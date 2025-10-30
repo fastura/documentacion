@@ -1,4 +1,9 @@
-# VendeYA en cPanel
+---
+title: VendeYA en cPanel
+sidebar_position: 9
+---
+
+# 🚀 Instalación de VendeYA en cPanel
 
 > ⚠️ **IMPORTANTE - Migración de Servidor GitLab**
 > 

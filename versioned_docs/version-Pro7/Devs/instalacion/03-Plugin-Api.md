@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # Plugin API
 
 El plugin de facturación electrónica brindará una solución integral para generar comprobantes electrónicos directamente desde una tienda en línea. Además, permite realizar un seguimiento en tiempo real del estado actual de tus comprobantes y sincronizará automáticamente el inventario.

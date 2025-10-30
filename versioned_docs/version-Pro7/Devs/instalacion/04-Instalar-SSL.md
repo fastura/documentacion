@@ -1,3 +1,6 @@
+---
+sidebar_position: 4
+---
 # Instalar - Actualizar el SSL
 
 Si al instalar el facturador, elegiste la opción de no descargar el certificado SSL entonces con estos pasos podrás adquirirlo en tu dominio.

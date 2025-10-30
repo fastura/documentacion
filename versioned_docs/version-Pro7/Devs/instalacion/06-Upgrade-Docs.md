@@ -1,6 +1,6 @@
 ---
-title: Guía para Migrar a Pro7.1 o Superior
-sidebar_position: 1
+title: Migrar a Pro7.1 o Superior
+sidebar_position: 6
 ---
 
 import DocsCard from '/src/components/global/DocsCard';

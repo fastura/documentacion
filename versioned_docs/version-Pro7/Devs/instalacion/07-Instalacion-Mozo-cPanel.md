@@ -1,5 +1,6 @@
 ---
 title: Mozo en cPanel
+sidebar_position: 8
 ---
 # 🚀 Instalación de Mozo en cPanel
 

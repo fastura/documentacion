@@ -111,7 +111,8 @@ function getIconForItem(item) {
     if (item.label.includes('Plugin API')) return <Plug size={18} />;
     if (item.label.includes('SSL')) return <ShieldCheck size={18} />;
     if (item.label.includes('cPanel')) return <Server size={18} />;
-    if (item.label.includes('Guía para Actualizar o Migrar el Sistema')) return <RotateCw size={18} />;
+    if (item.label.includes('Actualizar o Migrar el Sistema')) return <RotateCw size={18} />;
+    if (item.label.includes('Migrar a Pro7.1 o Superior')) return <RotateCw size={18} />;
 
     // Cache Laravel
     if (item.label.includes('Guía para Limpiar Cache de Laravel')) return <RotateCw size={18} />;

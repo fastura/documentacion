@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 # Windows
 
 Se explicará como poder descargar y poder ejecutar el facturador dentro de su máquina windows.
