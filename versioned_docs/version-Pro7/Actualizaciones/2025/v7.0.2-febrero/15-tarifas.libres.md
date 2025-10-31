@@ -1,2 +1,2 @@
-# Corrección: Selección de Tarifas en Habitación de Hotel
+# Corrección: Selección de Tarifa en Habitación de Hotel
 Se ha corregido el error donde, al seleccionar una tarifa en una habitación, la lista seguía mostrando todas las tarifas disponibles. Ahora, una vez seleccionada una tarifa, esta ya no aparecerá en la lista de selección, asegurando que solo se puedan elegir tarifas libres.

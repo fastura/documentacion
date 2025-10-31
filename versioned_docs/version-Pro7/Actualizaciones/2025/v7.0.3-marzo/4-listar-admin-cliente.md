@@ -1,4 +1,4 @@
-# Nueva Implementación: Buscador en Listado de Clientes y Sticky en Hostname  
+# Buscador en Listado de Clientes y Sticky en Hostname  
 
 Se ha implementado un **buscador** en el listado de clientes dentro del panel de administración, permitiendo filtrar por **hostname, nombre y RUC**.  
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: Condicional de Dirección en Plantillas PDF
+title: Condicional de Dirección en formato PDF
 ---
 
 # Condicional Agregado para el Dato Dirección en Plantillas PDF

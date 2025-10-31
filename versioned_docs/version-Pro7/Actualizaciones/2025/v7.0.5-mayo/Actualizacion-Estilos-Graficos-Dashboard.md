@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Actualización de Estilos en Gráficos del Dashboard
+title: Actualización de Estilos en Gráficos
 ---
 
 # Actualización de Estilos en Gráficos del Dashboard

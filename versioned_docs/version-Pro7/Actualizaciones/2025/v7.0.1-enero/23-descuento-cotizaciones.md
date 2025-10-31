@@ -1,4 +1,4 @@
-# Descuento Global en Cotizaciones**
+# Descuento Global en Cotizaciones
 
 ### Descripción
 Se ha implementado la funcionalidad de **Descuento Global** en la sección de Cotizaciones dentro del sistema. Ahora los usuarios pueden aplicar un descuento en monto sobre el total de la cotización.

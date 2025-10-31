@@ -1,4 +1,8 @@
-## Changelog
+---
+sidebar_position: 0
+---
+
+# Changelog
 
 ### Mejoras y Correcciones
 

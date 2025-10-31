@@ -1,4 +1,8 @@
-# Reporte de Recepción - Módulo Hotel
+---
+title: Reporte de Recepciones
+---
+
+# Reporte de Recepción - Módulo Hoteles 
 
 Se añadio la opcion de exportar **Reportes** desde el modulo de **Hoteles**
 

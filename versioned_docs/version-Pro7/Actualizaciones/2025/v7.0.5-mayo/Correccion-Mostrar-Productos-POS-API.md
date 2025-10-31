@@ -1,6 +1,6 @@
 ---
 sidebar_position: 21
-title: Corrección de Mostrar Productos en POS por API
+title: Corrección Mostrar Productos en APP
 ---
 
 # Corrección de Mostrar Productos en POS por API

@@ -1,3 +1,6 @@
+---
+title: Plantilla de Factura 
+---
 # Nueva Implementación: Campo de Moneda en Plantilla de Factura  
 
 Se ha agregado un nuevo campo para mostrar la **moneda** en la plantilla predeterminada de facturas.  

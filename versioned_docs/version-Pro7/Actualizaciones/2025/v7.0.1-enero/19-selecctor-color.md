@@ -1,4 +1,4 @@
-# **Nueva Funcionalidad: Selector de Color de Tema** 🎨  
+# Selector de Color de Tema  
 
 Se ha agregado un **Selector de Color de Tema** en la configuración de estilos y temas del sistema.  
 

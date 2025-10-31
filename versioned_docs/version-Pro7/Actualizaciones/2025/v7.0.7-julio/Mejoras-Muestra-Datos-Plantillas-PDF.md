@@ -1,6 +1,6 @@
 ---
 sidebar_position: 9
-title: Mejoras en Muestra de Datos en Plantillas PDF
+title: Mejoras en Muestra de Datos en PDF
 ---
 
 # Mejoras en Muestra de Datos como Lote y Fec. Venc. en Plantillas PDF

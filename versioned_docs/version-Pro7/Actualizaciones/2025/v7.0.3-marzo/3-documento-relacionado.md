@@ -1,4 +1,4 @@
-# **Corrección: Botón de Documento Relacionado en Guía de Transportista y Remisión**  
+# Botón Doc. Relacionado — Guías 
 
 Se ha corregido la visibilidad y funcionalidad del botón **"Documento relacionado"** en los módulos de **Guía de Transportista** y **Guía de Remisión**.  
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 26
-title: Validación de Total Bultos y Peso en Plantilla PDF
+title: Validación de Total Bultos y Peso en formato PDF
 ---
 
 # Validación para Total Bultos y Total Peso en Plantilla PDF Marca de Agua

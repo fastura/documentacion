@@ -1,6 +1,6 @@
 ---
 sidebar_position: 39
-title: Muestra Referencia de Guía en Plantilla Marca de Agua
+title: Muestra Referencia de Guía en PDF Marca de Agua
 ---
 
 # Muestra Referencia de Guía en Plantilla Marca de Agua

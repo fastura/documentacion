@@ -1,4 +1,4 @@
-# Actualización de Configuraciones de Tienda Virtual y Restaurante
+# Config. Tienda y Restaurante
 
 **1. Unificación de Configuraciones**
 Se han integrado las configuraciones de Tienda Virtual y Restaurante en una sola sección dentro de "Configuración de Empresa" en la pestaña "Avanzado". Esto permite una gestión centralizada de ambas funcionalidades en un mismo lugar.

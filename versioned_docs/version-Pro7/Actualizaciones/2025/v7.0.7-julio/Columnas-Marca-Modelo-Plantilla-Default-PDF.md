@@ -1,6 +1,6 @@
 ---
 sidebar_position: 41
-title: Columnas Marca y Modelo en Plantilla Default PDF
+title: Columnas Marca y Modelo en Default PDF
 ---
 
 # Agregar Columnas Marca y Modelo en Plantilla Default PDF

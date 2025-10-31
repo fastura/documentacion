@@ -1,4 +1,8 @@
-# Style | Logo para Admin, campo teléfono y switch de soporte
+---
+title : Actualización de las Configuraciones del Panel Administrador
+---
+
+# Actualización de la Configuración del Panel Administrador
 
 En este cambio se **añadió la opcion de colocar un logo en el panel administrador**. Además, se **movieron** el campo de teléfono y el switch para el ícono de soporte **del perfil a la sección de configuraciones**, unificando así la gestión de estos elementos y facilitando su administración.
 
