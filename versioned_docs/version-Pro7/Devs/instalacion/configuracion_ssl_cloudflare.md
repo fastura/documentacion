@@ -73,6 +73,15 @@ sudo cp /etc/letsencrypt/live/<dominio>/fullchain.pem <ruta>/certs/<dominio>.crt
 ------------------------------------------------------------------------
 
 ## 🧰 5. Aplicar cambios dentro del contenedor
+
+:::danger[Configuración requerida]
+Antes de continuar, asegúrate de cambiar en el archivo `.env` del facturador el siguiente valor:
+```bash
+FORCE_HTTPS=true
+```
+
+Esto es **obligatorio** para que el SSL funcione correctamente.
+:::
 ``` bash
 docker-compose exec -T fpm_<contenedor-servicio> php artisan config:cache
 docker-compose exec -T fpm_<contenedor-servicio> php artisan cache:clear
