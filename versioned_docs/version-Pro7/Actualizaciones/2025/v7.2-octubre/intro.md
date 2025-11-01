@@ -1,3 +1,6 @@
+---
+slug: /v7.2
+---
 # PRO 7.2 - Octubre
 
 ## Introducción
@@ -139,18 +142,14 @@ Nueva API que permite control remoto sobre el estado de las cuentas empresariale
 
 **Bloqueo de Cuentas**
 ```
-POST /api/accounts/block
+POST /api/reseller/lockedTenant
 - Bloquea el acceso a una empresa específica
-- Registra fecha y motivo del bloqueo
-- Notifica automáticamente al cliente
 ```
 
 **Reactivación de Cuentas**
 ```
-POST /api/accounts/activate
+POST /api/reseller/lockedTenant
 - Reactiva cuentas bloqueadas
-- Restaura acceso completo al sistema
-- Envía confirmación por email
 ```
 
 #### Control de Estado

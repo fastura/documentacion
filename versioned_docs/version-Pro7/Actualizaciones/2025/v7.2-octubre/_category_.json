@@ -1,9 +1,9 @@
 {
-  "label": "V7.2 Octubre",
+  "label": "v7.2 (Octubre)",
   "position": 3,
   "link": {
     "type": "generated-index",
-    "slug": "v7.2-octubre",
+    "slug": "v7.2",
     "description": "Documentacion de la actualizacion V7.2 de Octubre del sistema de facturacion."
   }
 }
