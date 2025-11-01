@@ -1,4 +1,4 @@
-# PRO 7.1 - Código Fuente
+# PRO 7.1 - Setiembre
 
 ## Introducción
 

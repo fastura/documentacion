@@ -1,4 +1,4 @@
-# PRO 7.2 - Código Fuente
+# PRO 7.2 - Octubre
 
 ## Introducción
 
