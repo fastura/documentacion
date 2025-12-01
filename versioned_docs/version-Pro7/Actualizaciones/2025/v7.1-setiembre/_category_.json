@@ -1,9 +1,8 @@
 {
-  "label": "v7.1 (Septiembre)",
+  "label": "v7.1 (setiembre)",
   "position": 4,
   "link": {
-    "type": "generated-index",
-    "slug": "v7.1",
-    "description": "Documentacion de la actualizacion V7.1 de Septiembre del sistema de facturacion."
+    "type": "doc",
+    "id": "Actualizaciones/2025/v7.1-setiembre/intro"
   }
 }

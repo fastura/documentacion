@@ -17,5 +17,5 @@ Con ChatBúho, podrás agilizar la forma en que te comunicas con tus clientes, p
 
 En este video te enseñaremos las configuraciones principales para empezar a utilizar nuestra plataforma de mensajería de  **[Chat Búho.](https://buho.la/chat)**
 
-<p><iframe width="100%" height="505" src="https://www.youtube.com/embed/sv4kggt1Oto" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen"></iframe></p>
+<p><iframe width="100%" height="505" src="https://www.youtube.com/watch?v=xwdFyQc2f2Y&list=PLX6z6QdJHXyinErSCG8z2azudXygtEM64&index=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen"></iframe></p>
 

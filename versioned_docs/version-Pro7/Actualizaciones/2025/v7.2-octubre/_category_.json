@@ -2,8 +2,7 @@
   "label": "v7.2 (Octubre)",
   "position": 3,
   "link": {
-    "type": "generated-index",
-    "slug": "v7.2",
-    "description": "Documentacion de la actualizacion V7.2 de Octubre del sistema de facturacion."
+    "type": "doc",
+    "id": "Actualizaciones/2025/v7.2-octubre/intro"
   }
 }
