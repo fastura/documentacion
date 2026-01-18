@@ -1,0 +1,9 @@
+{
+  "label": "Instalaciones",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "slug": "instalaciones",
+    "description": "Encuentra ayuda sobre las instalaciones de nuestros software "
+  }
+}

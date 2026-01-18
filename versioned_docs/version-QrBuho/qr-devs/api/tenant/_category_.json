@@ -1,0 +1,9 @@
+{
+    "label": "Tenant",
+    "position": 3,
+    "link": {
+      "type": "generated-index",
+      "slug": "tenant",
+      "description": "Encuentra ayuda sobre la API del panel Tenant - Clientes"
+    }
+  }

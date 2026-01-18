@@ -1,0 +1,9 @@
+{
+    "label": "Admin",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "slug": "admin",
+      "description": "Encuentra ayuda sobre la API del panel Administrador"
+    }
+  }
