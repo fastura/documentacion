@@ -28,25 +28,24 @@ Mozo.pe es una aplicación especializada para la toma y gestión de pedidos en r
     <p>Aprende a configurar tu cuenta y comenzar a utilizar Mozo.pe en minutos.</p>
   </DocsCard>
 
-  <DocsCard
-    header="Toma de Pedidos"
-    href="../Mozo.pe/pos"
-  >
+<DocsCard
+header="Toma de Pedidos"
+href="../Mozo.pe/pos"
+
+>
+
     <p>Guía completa para la toma de pedidos rápida y eficiente desde cualquier dispositivo.</p>
+
   </DocsCard>
 
-  <DocsCard
-    header="Gestión de Cocina"
-    href="../Mozo.pe/mesas"
-  >
+<DocsCard
+header="Gestión de Cocina"
+href="../Mozo.pe/mesas"
+
+>
+
     <p>Conoce cómo funciona la interfaz de cocina para preparar y entregar pedidos.</p>
-  </DocsCard>
 
-  <DocsCard
-    header="Facturación"
-    href="/Pro7/Mozo.pe/introduccion#integración-con-pro-7-y-pro-x"
-  >
-    <p>Emisión de comprobantes electrónicos integrados con Pro 7 y Pro X.</p>
   </DocsCard>
 
 </DocsCards>

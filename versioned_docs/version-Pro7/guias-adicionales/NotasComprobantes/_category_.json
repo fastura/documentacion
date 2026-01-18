@@ -1,0 +1,9 @@
+{
+  "label": "Notas y Comprobantes",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "slug": "notas-comprobantes",
+    "description": "Guías sobre notas de crédito y comprobantes."
+  }
+}

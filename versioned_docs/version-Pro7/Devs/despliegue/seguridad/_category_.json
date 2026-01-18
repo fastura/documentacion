@@ -1,0 +1,9 @@
+{
+  "label": "Certificados y SSL",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "slug": "despliegue/seguridad",
+    "description": "Configuración de certificados SSL y seguridad del sitio."
+  }
+}

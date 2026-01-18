@@ -1,0 +1,9 @@
+{
+  "label": "Otros",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "slug": "otros",
+    "description": "Otras guías y temas adicionales."
+  }
+}

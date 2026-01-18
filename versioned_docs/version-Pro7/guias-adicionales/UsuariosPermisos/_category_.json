@@ -1,0 +1,9 @@
+{
+  "label": "Usuarios y Permisos",
+  "position": 6,
+  "link": {
+    "type": "generated-index",
+    "slug": "usuarios-permisos",
+    "description": "Guías sobre gestión de usuarios y permisos del sistema."
+  }
+}

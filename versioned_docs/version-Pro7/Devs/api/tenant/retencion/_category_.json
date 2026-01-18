@@ -1,9 +1,6 @@
 {
-    "label": "Retención",
-    "position": 12,
-    "link": {
-      "type": "generated-index",
-      "slug": "retencion",
-      "description": "Encuentra información sobre acerca del como funcionan las Retenciones via API."
-    }
+  "label": "Retencion",
+  "link": {
+    "type": "generated-index"
   }
+}

@@ -1,9 +1,6 @@
 {
-    "label": "Inventario",
-    "position": 10,
-    "link": {
-      "type": "generated-index",
-      "slug": "inventario-api",
-      "description": "Encuentra información sobre acerca del Inventario via API."
-    }
+  "label": "Inventario",
+  "link": {
+    "type": "generated-index"
   }
+}

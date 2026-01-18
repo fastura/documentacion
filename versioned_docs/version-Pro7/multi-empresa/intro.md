@@ -15,4 +15,4 @@ Nuestra documentación ha sido diseñada teniendo en cuenta tus necesidades, por
 
 Sumérgete en la documentación de Fastura (Reseller) y descubre cómo esta herramienta puede transformar la forma en que administras tus tareas diarias. ¡Estamos emocionados de acompañarte en este viaje hacia una gestión eficiente y exitosa!
 
-![Alt text](Administrador/img/dashboard-fastura-ac4c8529.webp)
+![Alt text](panel-admin/img/dashboard-fastura-ac4c8529.webp)

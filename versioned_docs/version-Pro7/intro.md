@@ -22,35 +22,44 @@ import DocsCards from '/src/components/global/DocsCards';
 
 Pro 7 es un sistema completo de facturación electrónica diseñado específicamente para cumplir con los requerimientos fiscales de SUNAT en Perú. Nuestra plataforma permite emitir comprobantes electrónicos de manera eficiente, gestionar inventarios, controlar ventas y administrar tu negocio desde cualquier dispositivo.
 
-Comienza ahora siguiendo nuestra [Guía de Configuracion esencial para tu cuenta](/Pro7/guias-adicionales/Configuracion-esencial-para-tu-cuenta-de-facturacion) o explorando las funcionalidades principales del sistema.
+Comienza ahora siguiendo nuestra [Guía de Configuracion esencial para tu cuenta](guias-adicionales/Configuracion/01-Configuracion-esencial-para-tu-cuenta-de-facturacion.md) o explorando las funcionalidades principales del sistema.
 
 <DocsCards>
   <DocsCard 
     header="Guía de Instalación"
-    href="/Pro7/instalaciones"
+    href="/Pro7/despliegue"
   >
     <p>Guías paso a paso para configurar e instalar el Sistema de Facturación Pro 7.</p>
   </DocsCard>
 
-  <DocsCard
-    header="Aplicación para Facturación"
-    href="/Pro7/app-para-facturacion"
-  >
+<DocsCard
+header="Aplicación para Facturación"
+href="/Pro7/app-para-facturacion"
+
+>
+
     <p>Manual del aplicativo móvil del sistema de facturación.</p>
+
   </DocsCard>
 
-  <DocsCard
-    header="Manuales Adicionales"
-    href="/Pro7/manuales-adicionales"
-  >
+<DocsCard
+header="Manuales Adicionales"
+href="/Pro7/manuales-adicionales"
+
+>
+
     <p>Guía de configuraciones del sistema, para los procesos de configuración primarios.</p>
+
   </DocsCard>
 
-  <DocsCard 
-    header="Mozo APP" 
-    href="/Pro7/mozo" 
-  >
+<DocsCard
+header="Mozo APP"
+href="/Pro7/mozo"
+
+>
+
     <p>Encuentra ayuda sobre nuestra aplicación Mozo, una extensión del sistema Pro 7 diseñada para restaurantes.</p>
+
   </DocsCard>
 </DocsCards>
 
@@ -103,7 +112,6 @@ Pro 7 es compatible con **VendeYa.pe** y **Mozo.pe**, ampliando sus capacidades 
 ## Comunidad
 
 Pro 7 es desarrollado y mantenido activamente por un equipo central, y su ecosistema está guiado por una comunidad de desarrolladores y contribuyentes que impulsan su crecimiento y adopción. Empresas de todos los tamaños utilizan Pro 7 para gestionar sus operaciones de facturación electrónica en Perú.
-
 
 ## Licencia
 

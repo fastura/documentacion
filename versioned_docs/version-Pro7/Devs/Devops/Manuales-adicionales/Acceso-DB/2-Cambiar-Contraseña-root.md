@@ -1,5 +1,8 @@
-# Change root password in MariaDB Docker container running with docker-compose
+---
+title: Cambiar en MariaDB Docker
+---
 
+# Cambiar contraseña root en contenedor de MariaDB Docker
 
 1. Override the entrypoint in docker-compose.yml for the MariaDB Docker container by adding:
 
@@ -41,12 +44,10 @@ $> docker-compose up -d
 
 7. You can now login to the MariaDB container and connect to the database with the new root password:
 
-
 ```bash
 $> sudo docker exec -ti docker-container-name bash
 $> mysql -u root -p
 ```
-
 
 ### For mariadb:
 

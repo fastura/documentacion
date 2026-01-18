@@ -1,0 +1,9 @@
+{
+  "label": "Configuración",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "slug": "configuracion",
+    "description": "Guías sobre configuración del sistema de facturación."
+  }
+}

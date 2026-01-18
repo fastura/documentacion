@@ -1,0 +1,9 @@
+{
+  "label": "Extras",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "slug": "despliegue/extras",
+    "description": "Configuraciones adicionales y plugins."
+  }
+}

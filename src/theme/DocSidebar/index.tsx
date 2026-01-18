@@ -48,51 +48,19 @@ import {
 function getIconForItem(item) {
   if (item.label && typeof item.label === 'string') {
     // Existing icons
-    if (item.label.includes('Modulos')) return <Boxes size={18} />;
     if (item.label.includes('App Android')) return <Smartphone size={18} />;
     if (item.label.includes('Actualizaciones')) return <DownloadCloud size={18} />;
-    if (item.label.includes('Reseller')) return <Users size={18} />;
     if (item.label.includes('Guias adicionales')) return <BookOpen size={18} />;
     if (item.label.includes('Devs')) return <Code size={18} />;
-    
-    // New icons for remaining sections
-    if (item.label.includes('Esenciales')) return <Star size={18} />;
-    if (item.label.includes('Complementarios')) return <Package size={18} />;
-    if (item.label.includes('Rubro')) return <Folder size={18} />;
-    if (item.label.includes('Específicos')) return <PenTool size={18} />;
-    if (item.label.includes('Configuración')) return <Settings size={18} />;
-    if (item.label.includes('API')) return <Terminal size={18} />;
-    if (item.label.includes('Custom')) return <PenTool size={18} />;
-    if (item.label.includes('Devops')) return <Terminal size={18} />;
-    if (item.label.includes('Manual de Usuario')) return <BookOpen size={18} />;
-    if (item.label.includes('Plugins')) return <Plug size={18} />;
+    if (item.label.includes('Modulos')) return <Boxes size={18} />;
     if (item.label.includes('Mozo.pe')) return <Utensils size={18} />;
-    if (item.label.includes('Plan')) return <ClipboardPen  size={18} />;
-    if (item.label.includes('Instalación en Windows')) return <Package  size={18} />;
-    if (item.label.includes('Crear Cuenta - Cliente')) return <UserRoundPlus  size={18} />;
-    if (item.label.includes('Multi Empresa')) return <Users  size={18} />; 
+    if (item.label.includes('Multi Empresa')) return <Users size={18} />;
     if (item.label.includes('Dashboard')) return <LayoutDashboard  size={18} />;
     if (item.label.includes('Introducción')) return <Sparkles  size={18} />;
-    if (item.label.includes('Instalaciones')) return <MonitorDown  size={18} />;
     if (item.label.includes('Panel de administración')) return <LayoutGrid  size={18} />;
     if (item.label.includes('VendeYa')) return <ShoppingCart  size={18} />;
-    if (item.label.includes('Iniciar Sesión')) return <KeyRound  size={18} />;
-    if (item.label.includes('Navegación')) return <SquaresExclude  size={18} />;
-    if (item.label.includes('Flujo de Venta')) return <CreditCard  size={18} />;
     if (item.label.includes('Sistema de Facturación Pro 7')) return <Package  size={18} />;
     if (item.label.includes('Sistema de Facturación Pro X')) return <Package  size={18} />;
-
-    // Modulo Hotel 
-    if (item.label.includes('Recepción')) return <ConciergeBell    size={18} />;
-    if (item.label.includes('Tarifas')) return <BadgeDollarSign   size={18} />;
-    if (item.label.includes('Pisos')) return <Building   size={18} />;
-    if (item.label.includes('Categorías')) return <Tags  size={18} />;
-    if (item.label.includes('Habitaciones')) return <BedDouble   size={18} />;
-
-    // Mozo.APP
-
-    if (item.label.includes('Mesas')) return <UtensilsCrossed size={18} />;
-    if (item.label.includes('POS')) return <CreditCard size={18} />;
 
     // Preguntas Comunes 
 
@@ -101,23 +69,6 @@ function getIconForItem(item) {
     // Errores Sunat 
 
     if (item.label.includes('Errores Sunat')) return <CircleX size={18} />;
-
-    // Pro X novedades
-
-    if (item.label.includes('Nuevas Funciones')) return <Newspaper size={18} />;
-
-    if (item.label.includes('Windows')) return <Monitor size={18} />;
-    if (item.label.includes('Docker') || item.label.includes('Linux')) return <Boxes size={18} />;
-    if (item.label.includes('Plugin API')) return <Plug size={18} />;
-    if (item.label.includes('SSL')) return <ShieldCheck size={18} />;
-    if (item.label.includes('cPanel')) return <Server size={18} />;
-    if (item.label.includes('Actualizar o Migrar el Sistema')) return <RotateCw size={18} />;
-    if (item.label.includes('Migrar a Pro7.1 o Superior')) return <RotateCw size={18} />;
-
-    // Cache Laravel
-    if (item.label.includes('Guía para Limpiar Cache de Laravel')) return <RotateCw size={18} />;
-
-     
 
   }
   return null;

@@ -1,9 +1,6 @@
 {
-    "label": "Gesión Tenants",
-    "position": 2,
-    "link": {
-      "type": "generated-index",
-      "slug": "gestion-tenants",
-      "description": "Manual de la API para la gestión de tenants en el Facturador Panel Administrativo"
-    }
+  "label": "API Spec",
+  "link": {
+    "type": "generated-index"
   }
+}

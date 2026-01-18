@@ -1,9 +1,6 @@
 {
-    "label": "Productos",
-    "position": 11,
-    "link": {
-      "type": "generated-index",
-      "slug": "productos",
-      "description": "Encuentra información sobre acerca del modulo de Productos via API."
-    }
+  "label": "Productos",
+  "link": {
+    "type": "generated-index"
   }
+}

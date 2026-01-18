@@ -1,0 +1,9 @@
+{
+  "label": "Facturación",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "slug": "facturacion",
+    "description": "Guías sobre facturación y comprobantes electrónicos."
+  }
+}

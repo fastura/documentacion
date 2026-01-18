@@ -1,0 +1,9 @@
+{
+  "label": "Despliegue",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "slug": "despliegue",
+    "description": "Guías de instalación, configuración y mantenimiento del sistema."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "SUNAT Recursos",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "slug": "sunat-recursos",
+    "description": "Guías sobre trámites y procedimientos con SUNAT."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Productos y Precios",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "slug": "productos-precios",
+    "description": "Guías sobre gestión de productos y precios."
+  }
+}

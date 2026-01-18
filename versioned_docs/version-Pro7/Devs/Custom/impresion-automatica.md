@@ -1,7 +1,6 @@
 # Impresión Automática
 ---
 - [QZ Tray](#qz-tray)
-- [Activar configuración](#activar-configuración)
 - [Extra](#extra)
 
 ## QZ Tray

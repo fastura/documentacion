@@ -1,0 +1,9 @@
+{
+  "label": "Por Plataforma",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "slug": "despliegue/plataformas",
+    "description": "Guías de instalación específicas por sistema operativo o entorno."
+  }
+}

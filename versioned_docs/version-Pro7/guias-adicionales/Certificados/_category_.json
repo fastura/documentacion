@@ -1,0 +1,9 @@
+{
+  "label": "Certificados",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "slug": "certificados",
+    "description": "Guías sobre certificados digitales y SSL."
+  }
+}
