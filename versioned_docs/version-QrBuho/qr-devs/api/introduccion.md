@@ -4,48 +4,64 @@ sidebar_position: 1
 
 # API Documentation
 
-Bienvenido a la documentación de la API del Facturador Pro 7.
+Bienvenido a la documentación de la API de **QR Búho**.
 
 ## Introducción
 
-Esta sección contiene toda la documentación necesaria para integrar tu aplicación con nuestro sistema de facturación electrónica.
+Esta documentación describe la **API pública de integración** de QR Búho, diseñada para permitir a sistemas externos operar **mensajería tipo WhatsApp** y **funcionalidades operativas del tenant** de forma programática, segura y escalable.
+
+La API expone una capa **HTTP (REST)** orientada a integraciones *server-to-server*, permitiendo a aplicaciones backend **enviar mensajes, gestionar conversaciones, administrar grupos, etiquetas y dispositivos**, así como **recibir eventos** mediante webhooks, sin depender de interacciones manuales en una interfaz de usuario.
+
+Esta documentación **no cubre funcionalidades de backoffice interno** ni operaciones exclusivas de administración de la plataforma.
 
 ## Características principales
 
-- **Facturación electrónica**: Genera facturas, boletas y otros comprobantes electrónicos
-- **Gestión de productos**: Administra tu catálogo de productos y servicios
-- **Clientes**: Gestiona la información de tus clientes
-- **Inventario**: Controla el stock de tus productos
-- **Reportes**: Obtén información detallada de tus ventas
+- **Mensajería programática**: envío de mensajes de texto, multimedia e interactivos desde sistemas propios.
+- **Gestión de conversaciones**: consulta, organización y control de chats y mensajes.
+- **Administración de contactos y grupos**: verificación de números, gestión de grupos, participantes e invitaciones.
+- **Clasificación operativa mediante etiquetas (labels)**.
+- **Integración por eventos**: recepción de notificaciones mediante webhooks.
+- **Soporte multi-tenant**: cada integración opera dentro del contexto de un tenant y sus dispositivos/instancias.
 
 ## Endpoints disponibles
 
-### Administración
-- [Gestión de Tenants](./admin/api-spec/api-reseller-gestion-de-tenants.info.mdx)
-- [Bloqueo de Administrador](./admin/locked-admin/locked-admin.api.mdx)
-- [Bloqueo de Tenants](./admin/locked-tenant/locked-tenant.api.mdx)
+### API del Tenant (Sistema)
 
-### Facturación
-- [Facturas](./tenant/Factura/introduccion.info.mdx)
-- [Boletas](./tenant/Boleta/introduccion.info.mdx)
-- [Notas de Crédito y Débito](./tenant/Notas/introduccion.info.mdx)
+Endpoints orientados a la **operación del tenant** desde sistemas externos:
 
-### Productos y Clientes
-- [Productos](./tenant/productos/introduccion.info.mdx)
-- [Clientes](./tenant/clientes/_category_.json)
+- Gestión de dispositivos e instancias
+- Configuración operativa
+- Campañas
+- Webhooks
+- Estados y control de sesión
 
-### Inventario
-- [Gestión de Inventario](./tenant/inventario/introduccion.info.mdx)
+### API de Mensajería
 
-### Otros
-- [Cotizaciones](./tenant/Cotizacion/introduccion.info.mdx)
-- [Guías de Remisión](./tenant/Guia-remision/introduccion.info.mdx)
-- [Retenciones](./tenant/retencion/introduccion.info.mdx)
+Endpoints para operar mensajería y conversaciones:
+
+- **Mensajes**
+- **Chats**
+- **Contactos**
+- **Grupos**
+- **Labels**
+- **Presencia**
+- **Estados**
+- **Pruebas y simulaciones**
+
+### API de Administración (limitada)
+
+Endpoints administrativos **expuestos de forma controlada**, exclusivamente para:
+
+- Bloqueo y desbloqueo de tenants
+- Consulta de estado del tenant
+
+> Las operaciones de creación, configuración comercial, branding, planes y subdominios forman parte del **backoffice interno** y no están expuestas como API pública.
 
 ## Autenticación
 
-Para usar la API, necesitarás obtener un token de autenticación. Contacta con nuestro equipo de soporte para obtener las credenciales necesarias.
+El acceso a la API requiere credenciales de autenticación válidas asociadas a un tenant.  
+Los detalles de generación, rotación y uso de tokens se describen en la sección de **Seguridad y Autenticación**.
 
 ## Soporte
 
-Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos a través de nuestro sistema de soporte.
+Para consultas técnicas, incidencias o soporte de integración, contacta con el equipo de soporte de QR Búho a través de los canales oficiales.

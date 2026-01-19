@@ -1,0 +1,119 @@
+openapi: 3.0.3
+
+info:
+  title: QRAPI - Call API
+  description: |
+    API para la gestión y consulta de llamadas (voz/video) en WhatsApp.
+
+    Incluye:
+    - Obtener información sobre llamadas activas o historial
+    - Acciones básicas como rechazar o finalizar llamadas (si la instancia lo soporta)
+
+    Nota: La mayoría de eventos de llamada se manejan vía webhooks (ver sección Integrations).
+  version: 1.0.0
+  contact:
+    name: Soporte QRAPI
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor Tenant (multi-tenant)
+    variables:
+      subdominio:
+        default: tenant
+        description: Subdominio del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Call
+    description: Operaciones relacionadas con llamadas de voz y video en WhatsApp
+
+paths:
+  /api/call/find:
+    get:
+      tags:
+        - Call
+      summary: Listar llamadas
+      description: Obtiene la lista de llamadas activas o historial de llamadas de la instancia.
+      parameters:
+        - name: active
+          in: query
+          schema:
+            type: boolean
+          description: Filtrar solo llamadas activas (true) o todas (false/omitir)
+          required: false
+      responses:
+        '200':
+          description: Lista de llamadas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Call'
+
+  /api/call/reject:
+    post:
+      tags:
+        - Call
+      summary: Rechazar llamada
+      description: Rechaza una llamada entrante activa (si la instancia está en llamada).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                remoteJid:
+                  type: string
+                  description: JID del contacto que llama
+                  example: "51987654321@s.whatsapp.net"
+                callId:
+                  type: string
+                  description: ID de la llamada (si aplica)
+      responses:
+        '200':
+          description: Llamada rechazada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Llamada rechazada"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Call:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único de la llamada
+        remoteJid:
+          type: string
+          description: JID del contacto
+        status:
+          type: string
+          enum: [incoming, outgoing, active, ended, rejected]
+        type:
+          type: string
+          enum: [voice, video]
+        timestamp:
+          type: integer
+        duration:
+          type: integer
+          description: Duración en segundos (si finalizada)

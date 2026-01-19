@@ -1,0 +1,71 @@
+---
+id: actualizar-imagen-del-grupo
+title: "Actualizar imagen del grupo"
+description: "Actualiza la imagen de perfil de un grupo usando una URL."
+sidebar_label: "Actualizar imagen del grupo"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVs1O5EYQfpVWnRbJzAwsRIlPIexmBVophB/lABxq7MLTxO5uqqtZyGgeJs+QR9gXi6ptBsPsZqUkvrjdXb9fVX3tJQg2EcpL+MA+hQjXBdQUK7ZBrHdQwkElCVv7B5oWje2wIWdqMoH4xra6Ss40nII3KaKrvUkOzcXpxwkUwHSXKMpPvn6Ecpk/LVMNpXCiAirvhJzoEYbQ2grV5/Q2quMlxGpBHepKHgNBCX5+S5UMdntDl9Bo3Me2hgIStxp/YB+IxVJU3fX5s50obF0DrzM9emdqaodk3hwfvdvSHOgBu9Cq2s7u7O13b/dme3s/7M92d7/f3/uxmaQIq97zN+1fnH5UvJ5hRENRcN5SRfzS1UIkxHI6HXYmle+mWWlyGxpY5UdhiMG72Oe5O9vR16uUBkdPNazR0IMVH7EjJ6RO/3URXsKcQo1CXwLhOauYqopiXMe/P5tthvye2bOxToidzwWJxPe29vw/RhsFJcWRnPpriLWWpAFsJjLC+9v2O4oRm7EgMuMjFGCFuvgF6z0iYiUjlUE4fXI3HHYkC19DCcHH7BJlASVMMdhp7vJpX4RpsJUkJihAoSPW+V72PbrurGVM89p31lm/mtzxZJ4WftLiRtOeDeCbc3LoxLzpUit2W/LXFhRwj2y1h3tc10b7wt5gagVK6MU3ja/Fc6EHqdVqda2hV4mtPObY54RMfJA04cvr8fGZVrx3PhZa46v5KhBZDMpBCIph8bPnDjXC49/OQUHWTjp9pq33T807JpKvMkHxCuSvjG8B1t1khJ7q/evpwcmR2TY9CZuDk6MNrFQgIGcabiiK/fxXJuJMV9GQUyImJ17HZlykyZW7cifEnRUqr9y2OWRCHvTyt3cxtbLeM4/qSGxlAzqhLLO+Bdh0JFij+DhmS+e7OVNhhpgrja4YeG4rG6i1zlEY+aV18wYbpga5MEydvycuTGA/rGpqGGvkbOODpu0dKj3cW8HKeqcG/FzIUTZw7yvkKVOjG2qT3L0d1A+9u7FNGiL4/GdHwi+zCJ4N3VIXWl8YdMlVNsPRkYt4S9EIdcEzthS3rpw2P3Hsy7MzmU1mA0FhlQnKYe64Mx88C5lc440WGY2etp+OdodupD5Cfn37DgG/7pHlMz3+p2t7GB2hB5mGFq0bXXE96VwCBgtFPxOaU8/+BTxRz3UBC2Wp8hKWyzlGuuB2tdLtu0SsQ339TB15pgtYENbEed5/p0co4bDPZvtc41HxNmUqfU38q+JJ46CqKMg/yl6PiPTkl7NzpYLh/6TzteowftJ/DPwEJUABPqObGSbvLaFF16RM79Db1OdvQYA6Ww==
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Actualizar imagen del grupo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/group/update/picture"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Actualiza la imagen de perfil de un grupo usando una URL.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid","url"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"},"url":{"type":"string","description":"URL de la imagen a establecer.","example":"https://example.com/image.jpg"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Imagen actualizada exitosamente.","content":{"application/json":{"schema":{"type":"object","properties":{"update":{"type":"string","example":"success"}}}}}},"500":{"description":"Error interno del servidor.","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"integer"},"error":{"type":"string"},"response":{"type":"object","properties":{"message":{"type":"array","items":{"type":"string"}}}}},"title":"ErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

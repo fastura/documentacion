@@ -1,0 +1,614 @@
+openapi: 3.0.3
+
+info:
+  title: QRAPI - Groups API
+  description: |
+    API para la gestión de grupos en un entorno multi-tenant.
+
+    Permite:
+    - Crear grupos
+    - Consultar grupos y participantes
+    - Actualizar metadatos del grupo (nombre, descripción, imagen)
+    - Administrar participantes (agregar, remover, promover, degradar)
+    - Gestionar invitaciones (obtener, revocar/regenerar, enviar)
+    - Configurar parámetros del grupo (por ejemplo, anuncios y mensajes temporales)
+  version: 1.0.0
+  contact:
+    name: Soporte QRAPI
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor Tenant (multi-tenant)
+    variables:
+      subdominio:
+        default: tenant
+        description: Subdominio del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Groups
+    description: Operaciones relacionadas con la gestión de grupos.
+
+paths:
+  /api/group/create:
+    post:
+      tags:
+        - Groups
+      summary: Crear un nuevo grupo
+      description: Crea un nuevo grupo con un nombre y participantes iniciales.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - subject
+                - participants
+              properties:
+                subject:
+                  type: string
+                  description: Nombre o asunto del grupo.
+                  example: "Group Name or Subject"
+                participants:
+                  type: array
+                  items:
+                    type: string
+                  description: Lista de números de teléfono de participantes iniciales (sin @s.whatsapp.net).
+                  example: ["51952487999"]
+      responses:
+        '201':
+          description: Grupo creado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groupId:
+                    type: string
+                    description: ID del grupo creado (JID).
+                    example: "120363404495022854@g.us"
+                  participants:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: integer
+                        jid:
+                          type: string
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/group/leave:
+    post:
+      tags:
+        - Groups
+      summary: Abandonar un grupo
+      description: Permite que la instancia abandone un grupo específico.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+      responses:
+        '201':
+          description: Grupo abandonado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  leave:
+                    type: string
+                    example: "success"
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/group/find/all:
+    get:
+      tags:
+        - Groups
+      summary: Obtener todos los grupos
+      description: Retorna una lista de todos los grupos en los que participa la instancia.
+      responses:
+        '200':
+          description: Lista de grupos.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+
+  /api/group/fetch/participants:
+    post:
+      tags:
+        - Groups
+      summary: Obtener participantes de un grupo
+      description: Retorna la lista de participantes de un grupo específico.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+      responses:
+        '200':
+          description: Lista de participantes.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  participants:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Participant'
+
+  /api/group/metadata:
+    post:
+      tags:
+        - Groups
+      summary: Obtener metadatos de un grupo
+      description: Retorna los metadatos detallados de un grupo específico.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+      responses:
+        '200':
+          description: Metadatos del grupo.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMetadata'
+
+  /api/group/update/picture:
+    post:
+      tags:
+        - Groups
+      summary: Actualizar imagen del grupo
+      description: Actualiza la imagen de perfil de un grupo usando una URL.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+                - url
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+                url:
+                  type: string
+                  description: URL de la imagen a establecer.
+                  example: "https://example.com/image.jpg"
+      responses:
+        '201':
+          description: Imagen actualizada exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  update:
+                    type: string
+                    example: "success"
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/group/update/name:
+    post:
+      tags:
+        - Groups
+      summary: Actualizar nombre del grupo
+      description: Actualiza el nombre o asunto de un grupo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+                - subject
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+                subject:
+                  type: string
+                  description: Nuevo nombre del grupo.
+                  example: "Group Name or Subject"
+      responses:
+        '201':
+          description: Nombre actualizado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  update:
+                    type: string
+                    example: "success"
+        '500':
+          description: Error interno del servidor.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/group/update/description:
+    post:
+      tags:
+        - Groups
+      summary: Actualizar descripción del grupo
+      description: Actualiza la descripción de un grupo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+                - description
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+                description:
+                  type: string
+                  description: Nueva descripción del grupo.
+                  example: "Test in group created by gateway"
+      responses:
+        '201':
+          description: Descripción actualizada exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  update:
+                    type: string
+                    example: "success"
+
+  /api/group/participant/update:
+    post:
+      tags:
+        - Groups
+      summary: Actualizar participantes del grupo
+      description: Realiza acciones como agregar, remover, promover o degradar participantes en un grupo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+                - action
+                - participants
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+                action:
+                  type: string
+                  enum: [add, remove, promote, demote]
+                  description: Acción a realizar (add, remove, promote, demote).
+                  example: "add"
+                participants:
+                  type: array
+                  items:
+                    type: string
+                  description: Lista de números de teléfono de participantes.
+                  example: ["51952487999"]
+      responses:
+        '201':
+          description: Participantes actualizados exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updateParticipants:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        status:
+                          type: string
+                        jid:
+                          type: string
+                        content:
+                          type: object
+
+  /api/group/toggle-ephemeral:
+    post:
+      tags:
+        - Groups
+      summary: Alternar mensajes temporales (ephemeral)
+      description: Configura la duración de los mensajes temporales en un grupo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+                - expiration
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+                expiration:
+                  type: integer
+                  enum: [0, 86400, 604800, 7776000]
+                  description: Duración en segundos (0 = Off, 86400 = 24h, 604800 = 7d, 7776000 = 90d).
+                  example: 86400
+      responses:
+        '201':
+          description: Configuración actualizada exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+
+  /api/group/invite/code:
+    post:
+      tags:
+        - Groups
+      summary: Obtener código de invitación
+      description: Obtiene el código de invitación para un grupo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+      responses:
+        '200':
+          description: Código de invitación obtenido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inviteUrl:
+                    type: string
+                    example: "https://chat.whatsapp.com/KoOUHDF7WO0BwP2YK04fT0"
+                  inviteCode:
+                    type: string
+                    example: "KoOUHDF7WO0BwP2YK04fT0"
+
+  /api/group/invite/revoke:
+    post:
+      tags:
+        - Groups
+      summary: Revocar código de invitación
+      description: Revoca y genera un nuevo código de invitación para un grupo. 
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+      responses:
+        '201':
+          description: Código revocado exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  revoked:
+                    type: boolean
+                    example: true
+                  inviteCode:
+                    type: string
+                    example: "C946MuBFCXIFvwy0TAZn5S"
+
+  /group/invite/send:
+    post:
+      tags:
+        - Groups
+      summary: Enviar URL de invitación
+      description: Envía la URL de invitación a números específicos vía mensaje.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+                - numbers
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+                description:
+                  type: string
+                  description: Descripción opcional para el mensaje.
+                  example: "Access this link to join my WhatsApp group:"
+                numbers:
+                  type: array
+                  items:
+                    type: string
+                  description: Lista de números a los que enviar la invitación.
+                  example: ["51904458227"]
+      responses:
+        '201':
+          description: Invitación enviada exitosamente.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  send:
+                    type: boolean
+                    example: true
+                  inviteUrl:
+                    type: string
+                    example: "https://chat.whatsapp.com/JlATAN2W8NRB2b8jEc81ri"
+
+  /api/group/update/setting:
+    post:
+      tags:
+        - Groups
+      summary: Actualizar configuraciones del grupo
+      description: Actualiza configuraciones como anuncios o edición de grupo.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - groupJid
+                - action
+              properties:
+                groupJid:
+                  type: string
+                  description: ID del grupo (JID).
+                  example: "120363404495022854@g.us"
+                action:
+                  type: string
+                  enum: [announcement, not_announcement, locked, unlocked]
+                  description: Acción de configuración (announcement = Solo admins envían mensajes, etc.).
+                  example: "announcement"
+      responses:
+        '201':
+          description: Configuración actualizada exitosamente.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object  # Basado en respuesta vacía en la colección, pero ajustado a array posible.
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT  # Asumiendo JWT, ajusta si es necesario.
+
+  schemas:
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID del grupo (JID).
+        subject:
+          type: string
+          description: Nombre del grupo.
+        # Agrega más propiedades basadas en respuestas reales si están disponibles.
+
+    Participant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID del participante.
+        # Agrega más propiedades como admin, etc.
+
+    GroupMetadata:
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        desc:
+          type: string
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+        # Agrega más propiedades de metadatos.
+
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: string
+        response:
+          type: object
+          properties:
+            message:
+              type: array
+              items:
+                type: string

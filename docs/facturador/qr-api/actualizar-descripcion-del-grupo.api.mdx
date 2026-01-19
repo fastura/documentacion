@@ -1,0 +1,71 @@
+---
+id: actualizar-descripcion-del-grupo
+title: "Actualizar descripción del grupo"
+description: "Actualiza la descripción de un grupo."
+sidebar_label: "Actualizar descripción del grupo"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVcFSIzcQ/RVVn6BqsIFlU8mcQiDZgkPCLqRyAB/aM81YZEYSrZbBcflj8g35hP2xVGsGbONNNhVfPKNpve73Wv20BMEmQnkLH9inEGFSQE2xYhvEegclnFaSsLV/oGnRDJ8q+/kvZ2oyyZmGU/AjKIDpMVGUH3y9gHKZXy1TDaVwogIq74Sc6CcMobUVaoLxQ9QsS4jVjDrUJ1kEghL89IEqGXB7oFtotMhLW8N2lZMCAvtALJaiYrzGrfGisHUNvKV3cW5qansWZu/y4nxfudAzdqHVbUfHh+++eXdyeHLy3fvD4+Nv359834xShNUboK/l+TnRfEe/dq3eOuMNRTFWhfUpmIoJhWozXZgGhZ5wAav8U2Fi8C72jI8Pj/RvO+n5Zjp8aWSNhp6t+IgdOSHN/r+bsy17CjUKfUmMNb2YqopiHFisCuhIZr6GEoKPGRJlBiWMMdhx1mDcw443uRUQiefEenSXkLiFEmYiIZbj8TKmae0766xfjR55NE0zP2pxpyXXxHNbezY35NCJ2etSK/ZA8ts+FDBHtjhte25r0F7ne0ytQAl9+C74a3ju8xC1Wq0mWnqV2Moi1z4lZOLTpKRvJ5ufr1X1Pvlm0Ku4yleFyGFQDkFQDA8/ee5QK7z87QZUaO3mp/WQ/vjSks1x+cfz/pbf109pAdbdZ7HESm79x0+nVxfmwPRWY06vLnZgNSAgZ7NpKMqL0eQ5iYacWg458ey82ezX6M7duSvizgqVd+7AnDEhD/vyu3cxtfK6ZhaaSGxlAzqhHPPqdWw6EqxRfNy0B+e7KVOxNcaFsR025PYzQK0tj8LI2+hmDxumBrkwTJ2fExcmsB+eamoYa+SM8UFpe4dsrJtbwcp6pwB+KuQoA8x9hTxmanRBMcnN7bD9zLt726Shgs9/diS8zSJ4NvRAXWh9YdAlV9ksR0cu4gNFI9QFz9hS3L/TUdM569tzNDocHQ5+gVX2C4f58F374FnI5B5D8WYkN6ZQT6JOeoduY/uG8l/2yLcnZbn2rP9+RQ2DI/Qs49CidXpKc6XLwXZuAYOFop8IpdE72s51M1OvKm9huZxipF+5Xa10+TER61hP1uaRp7qAGWFNnCf+d1pACWd9+Qc3WpOGt0lr27HfVfGy47SqKMi/xk427PTql+sbNYPhPu58rXsYn/ROxScoAQrwmVH2mLy2hBZdk7DR2B5Tf38D8Q/cfQ==
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Actualizar descripción del grupo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/group/update/description"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Actualiza la descripción de un grupo.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid","description"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"},"description":{"type":"string","description":"Nueva descripción del grupo.","example":"Test in group created by gateway"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Descripción actualizada exitosamente.","content":{"application/json":{"schema":{"type":"object","properties":{"update":{"type":"string","example":"success"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

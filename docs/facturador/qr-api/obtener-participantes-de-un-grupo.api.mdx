@@ -1,0 +1,71 @@
+---
+id: obtener-participantes-de-un-grupo
+title: "Obtener participantes de un grupo"
+description: "Retorna la lista de participantes de un grupo específico."
+sidebar_label: "Obtener participantes de un grupo"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVc1u20YQfpXFnGyAlhTHKRqeqjptYKNAHNtFD7IOI3JMrUvurmeHSlRBD9MH6CmP4BcrZklbtNy0aMsL92f+Z75vNyBYRchn8J59GyLMMygpFmyDWO8gh0sSzw5Njaa2UdCUZAKy2MIGdEJRD1pnKm6DNxQDFQ9/3NrCjyADpvuWonzvyzXkm7S1TCXkwi1lUHgn5ESvMITaFqhOx3dRPW8gFktqUFeyDgQ5+MUdFdLb7QzNoNLAz22poQf2gVgsRdV6utlZiMLWVbCf5Nk7U1Ld53BwfvbuUKOnz9iEWtVeHU9ef/P6ZHJy8vbN5Pj42zcn31WjNsI2fRpPDN7Fzu3xZKK/5x5++svaqZf/XITnyQ7sxoE0MuMaMrBCTfxnK/+iWMNERqBVECupWhe7m75CetuQLH0JOQQfk2OUJeQwxmDHqVPjW5JiOX6WSAaReEWsI7qBlmvIYSkSYj4eb2K7KH1jnfXb0T2PFu3Sj2p8Ee8V8cqWns01OXRiDpq2FnskaXcIGayQLS7qrgI7o10Tb7GtBXLoxF8afxJPRemlttvtXEMvWrayTrEvCJl42mrSs/nw+ko73DkfCj21QfPVQiQxyHshyPrFj54b1AjPf7lObdDJudwB74fHKR4C4usTnYF1tyn3x3Z+vJxenJkj0zGEmV6cvaiCCgTkxBIVRbEPX5wOewJUNOSUIcgpk3gzLP/oxt24C+LGCuU37sicMiH3emnvXWxreToz6+cIUplpIS3W9jdk05BgieLjEM/ONwumzPQxFxpdZmyDFbnDZKDUDkZh5D1uO8CKqULODFPjV8SZCez7VUkVY4mcbLzXtL1DNtatrGBhvVMDfiHkKBlY+QJ5zFTpgdokt7K9+ql3t7Zq+wgefm9I+HkWwbOhO2pC7TODrnWFTeVoyEW8o2iEmuAZa4qHN07Hmjh27Xk1mowmPdVgkajGYZqlKx88C5nUY8j2EDYAlQ6WArdBN1D/0CX39Qdhf1I2O7r7fy9Ljw2hzzIONVqnk5ui3/TMMgMMFrJu6CGDxC6Jdwb8Ms9gqXSUz2CzWWCkn7nebvX4viVW5M53/JCAm8GSsCROoP6V1pDDaZfS0bXGpOJ1m6h3n8232aPGtCgoyN/KzgeMefHh6lrx3j+jjS9Vh/GTPoX4CXKADHwqcaKRdLaBGl3VYqWynU39/gRpisac
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Obtener participantes de un grupo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/group/fetch/participants"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retorna la lista de participantes de un grupo específico.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de participantes.","content":{"application/json":{"schema":{"type":"object","properties":{"participants":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"ID del participante."}},"title":"Participant"}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

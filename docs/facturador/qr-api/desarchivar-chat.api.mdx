@@ -1,0 +1,71 @@
+---
+id: desarchivar-chat
+title: "Desarchivar chat"
+description: "Quita el estado de archivado de un chat."
+sidebar_label: "Desarchivar chat"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVc1u20YQfpXFnGKAJq206Q9PVVMXSJC0TuSiB0mH0e5EXJfcXe8O5QiEHqYPkFMfwS9WzFKyZBsIUJQXcmfn95v5hgMwrhPUc3jdICdYFmAo6WgDW++ghg+9ZVTUKkqMxitDCqNu7GZ/6J3SDXIJBUS67Snxz95soR7y0UYyUHPsqQDtHZNjucIQWqtRQlQ3SeIMkHRDHcoXbwNBDX51Q5r3fkdHc4jUeaa31kimIfpAkS2lMd7h6ugjcbRuDQXQZ+xCK6JXkx9/+P67V99+83LyUyrvpGoMoXTEsMuPBEzBuzS6fXlxIa/HqAhYylA6QqF9jKQZO3JM8D+qfVxU78YQdFrVyvuW0J2WJRDvDvl3xI03UEPwKbtEbqCGCoOtpFnVg1coIFHcUJQRGKCPLdTQMIdUV9WQ+pXxnXXW78rbWK76xpctwtMRmVHcWOOjuiaHjtWLrm/ZnnM+nUEBG4wWV+1Y0dHpCOsn7FuGGkb1584f1JWhVu21drvdUlLXfbS8zbmvCCPFaS+lzpen1zPBegx+qvQAp9QrQGQ1gTcrQbH/+NXHDiXDt39eg8ArPfx4nPXLQw8ejeBX56wA6z7l+tlynsoPH6dXb9S5yixU06s3z4CQ+4ARVYtqTYnt/T9OCKizhXXGbqzpsaWkXmjvpKeorXeU1KSenClywlVy7KPz6rRF5cIt3KUzwVuXXem2t8YnMaHEB8L7euHO1TubGGPlV0yO4hhd5NORCbE6suLk9j1GLWffedXS/RfjRXrZ2s66vZ4IXmO3shhPdk2IlMhpixVvg3VrSfU3z1irdznBQ9KGFLnN/Zds1JFLeCNAMH1mXyjb4ZpcoTbWkC8UsS7PJMj934KIIJpI64zoAmbkjHpPKeGaFqASCeoGy4UQTmAd+zEpL8qLPdFRZ6I7zPMz88FHJpV7CsUTVp0QSYZJKNqhOzH/5QmATydhOO6W/7Kd98MuiFShRetkDHNqw35BzAGDlYrGoMclsSygkU1Sz2EYVpjoj9judiK+7SkK/ZZHkmf2FdAQGoqZmX/RVlbmmPT5teQh6m0v+TxbjrviYDHVmgJ/VXd5suyufp9dC2n3v5/OG7GJeCe/ELyDGqAAn0Ec/xciG6BFt+5xLbqjT3n+BVmceIE=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-chats-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Desarchivar chat"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/chat/unarchive"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Quita el estado de archivado de un chat.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["remoteJid"],"properties":{"remoteJid":{"type":"string","example":"51987654321@s.whatsapp.net"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Chat desarchivado correctamente","content":{"application/json":{"schema":{"type":"object","properties":{"unarchived":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

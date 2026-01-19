@@ -1,0 +1,71 @@
+---
+id: enviar-encuesta-poll
+title: "Enviar encuesta (poll)"
+description: "Envía una encuesta interactiva con opciones."
+sidebar_label: "Enviar encuesta (poll)"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVc1uGzcQfpXBnCxgLVk97s0JXMABgrqxghxkAR4tJxIdLknzR7Eq7MP0AXLqrVe9WDHclSU7RoGie9ldcmY48803H3eYaBWxnuMtWwUfOUZaMS4qVByboH3SzmKNV3az/0GQLQHbJnNMBNomDtQkvSFonAXnG+0sxzFWGPhRjN45tcV6V351YIV1CpkrbJxNbJNskfdGNyTnTB6iHLbD2Ky5JflKW89Yo1s+cJOGuH2gOdrcLjlgheUoybNCVxKOUoAPznNImqMEGoyPIWMK2q6wO3F/a/MQ8LhHIdAWK9SJ2/iGT1dhZMNNoqXh9y73ZQ5GgtmqJK34K2WTsJ525ZHaonc29vn+cjGV1+suDNCz3WhShP8DyZfwxEQpn1azdM4wCaT8RK033LeuOyTbclo7hTV6F0s4SmuscUJeT9qeRZPIVt04Y1AQCRsOQrQd5mCwxnVKPtaTyS7mpXKtttp148cwXua1GxvC1wy85bDRygWYsSWb4KzNJunzVP5GWOGGghbI+3qeg/YoDlhjb/5z8GdzUGxgsOq6biGpNznotC25L5kCh8ssxc4Xp9u3gnR/+KnRM6BSrwBRzATgYoTV8PGrCy1Jhh++zAqHpIOfjlN0dejCkcoHxp0y+Lj2TNz5YW3xBjGnXYXafi0oJZ3kAPz90+XNNZzDqSLA5c31T6iJmadAwEYYuf8h6EHLNtIDR9BW6Y1WmQxHOGvWlCJM6+kI2EK2wDa5YB2c9nF8Z+/stW1M3jIkp1wE4yIk7V18ETs670IiMfAuwBcJful9fWfPYcZPyUHUgpf8X7f7P1dsOVaw0YpdrEC5JreSQKyAstIuTjbujwpi0s03DlHcPi91Q72iVaJviZpiH5iaw/JBCyOceWdMHInjxyMAB4F0Ec6MFsMKli6J80hKnT2XyFZ5p22KkCNZQdTu/245FEiVtNc6OLvve38PDu4Dty7xB63uR7CFIowc2AJlEYSS+/4vC+8KvcZ3Msoygn3rpuOL8cUgH9QU+bBUeHlbkGUoLMDq1bSeDKiQVIa/JXvifiXKFI6XRMFl9Jo6u6Nu/eerZZinxE9p4g1pKzJdstwNKjRH8hpFo/rbTHg/KNGiwrUIVj3H3W5JkT8H03Wy/Jg5yIwvjkpSRrzCNZOSeZvv8Btvscb3fe7nM8lEzE0uF8Nr/e2qg8dl07BP/2q7ONHUm99uZ6IMw+3ZOiU+gb7LDUjfsUZ8cTOVtR0asqssBdfYx5TnH2+Hxvo=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-send-message-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar encuesta (poll)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/message/sendPoll"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía una encuesta interactiva con opciones.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["number","question","options"],"properties":{"number":{"type":"string"},"question":{"type":"string"},"options":{"type":"array","items":{"type":"string"}},"selectableCount":{"type":"integer","default":1}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Encuesta enviada","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

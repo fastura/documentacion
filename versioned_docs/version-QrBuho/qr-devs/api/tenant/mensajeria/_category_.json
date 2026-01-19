@@ -1,0 +1,9 @@
+{
+    "label": "Operación de Mensajería",
+    "position": 1,
+    "link": {
+      "type": "generated-index",
+      "slug": "Mensajería",
+      "description": "Encuentra ayuda sobre la API del panel Tenant - Clientes"
+    }
+  }
