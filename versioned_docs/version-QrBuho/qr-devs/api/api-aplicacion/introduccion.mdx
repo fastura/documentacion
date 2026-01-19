@@ -1,0 +1,113 @@
+---
+id: introduction
+title: "QR Buho - API de Mensajería WhatsApp"
+description: "API para gestión multi-empresa y mensajería WhatsApp para Resellers y Clientes."
+sidebar_label: Introduction
+sidebar_position: 1
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"QR Buho - API de Mensajería WhatsApp"}
+>
+</Heading>
+
+Bienvenido a la documentación oficial de la **API de QR Buho**.  
+Esta API te permite integrar funcionalidades de **gestión multi-empresa** y **mensajería de WhatsApp** directamente en tus aplicaciones, bajo un modelo SaaS con separación clara de roles y responsabilidades.
+
+La API está organizada en dos grandes contextos según el rol del usuario:
+
+- **Reseller:** administración global del sistema.
+- **Cliente Final:** operación diaria de una empresa específica.
+
+---
+
+<div style={{"marginBottom":"2rem"}}>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading>
+
+  <SchemaTabs className={"openapi-tabs__security-schemes"}>
+
+    <TabItem label={"HTTP: Bearer Auth"} value={"bearerAuth"}>
+
+      Autenticación mediante **Bearer Token (JWT)**.  
+      La mayoría de los endpoints requieren un token válido.
+
+      **Obtención del token:**
+      - **Reseller:** `/auth/login`
+      - **Cliente:** `/api/auth/login`
+
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Security Scheme Type:</th>
+              <td>http</td>
+            </tr>
+            <tr>
+              <th>HTTP Authorization Scheme:</th>
+              <td>bearer</td>
+            </tr>
+            <tr>
+              <th>Bearer format:</th>
+              <td>JWT</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </TabItem>
+
+  </SchemaTabs>
+</div>
+
+### 📚 Módulos Disponibles
+
+**API Reseller**  
+Diseñada para la administración del sistema SaaS:
+
+- **Reseller (Auth):** gestión de sesión y registro de administradores.
+- **Cliente:** creación y administración de empresas clientes.
+- **Plans:** definición y mantenimiento de planes de suscripción.
+
+**API Cliente Final**  
+Utilizada por cada empresa para operar su servicio de WhatsApp:
+
+- **Devices:** vinculación y gestión de sesiones WhatsApp mediante QR.
+- **Campaigns:** campañas de mensajería masiva.
+- **Send Message:** envío individual de mensajes (texto y media).
+- **Chat / Group:** gestión de chats y grupos.
+- **Contacts / Label:** administración de contactos y etiquetas.
+
+### 🚀 Primeros Pasos
+
+Si estás integrando QR Buho, se recomienda comenzar por:
+
+1. **Devices:** conectar una sesión de WhatsApp mediante QR.
+2. **Send Message:** realizar pruebas de envío de mensajes.
+3. **Campaigns:** escalar a campañas de mensajería masiva.
+
+
+<div
+  style={{"display":"flex","flexDirection":"column","marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3 style={{"marginBottom":"0.25rem"}}>
+    Contact
+  </h3>
+  <span>Soporte QR Buho:</span>
+  <span>URL: https://qr.buho.la</span>
+</div>

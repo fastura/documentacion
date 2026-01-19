@@ -1,9 +1,9 @@
 {
-    "label": "Operación de Mensajería",
-    "position": 1,
-    "link": {
-      "type": "generated-index",
-      "slug": "Mensajería",
-      "description": "Encuentra ayuda sobre la API del panel Tenant - Clientes"
-    }
+  "label": "API de Mensajería",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "slug": "api/mensajeria",
+    "description": "Integración con el servicio externo de mensajería: envío de mensajes, gestión de chats, webhooks, grupos, llamadas y etiquetas."
   }
+}

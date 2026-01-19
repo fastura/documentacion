@@ -2,66 +2,83 @@
 sidebar_position: 1
 ---
 
-# API Documentation
+# Introducción a la API de QR Buho
 
-Bienvenido a la documentación de la API de **QR Búho**.
+Bienvenido a la **documentación oficial de la API de QR Buho** 🚀
 
-## Introducción
+Aquí encontrarás todo lo necesario para integrar nuestras potentes funcionalidades de **gestión multi-empresa (multitenant)** y **mensajería avanzada de WhatsApp** directamente en tus aplicaciones, CRMs, bots o sistemas internos.
 
-Esta documentación describe la **API pública de integración** de QR Búho, diseñada para permitir a sistemas externos operar **mensajería tipo WhatsApp** y **funcionalidades operativas del tenant** de forma programática, segura y escalable.
+Con QR Buho puedes automatizar campañas masivas, gestionar sesiones de WhatsApp mediante QR, enviar mensajes multimedia, etiquetar contactos, recibir eventos en tiempo real vía webhooks y mucho más — todo con una arquitectura SaaS segura, escalable y lista para producción.
 
-La API expone una capa **HTTP (REST)** orientada a integraciones *server-to-server*, permitiendo a aplicaciones backend **enviar mensajes, gestionar conversaciones, administrar grupos, etiquetas y dispositivos**, así como **recibir eventos** mediante webhooks, sin depender de interacciones manuales en una interfaz de usuario.
+## Categorías de APIs
 
-Esta documentación **no cubre funcionalidades de backoffice interno** ni operaciones exclusivas de administración de la plataforma.
+Nuestras APIs están organizadas en tres grandes grupos según su propósito:
 
-## Características principales
+- **API de Aplicación** → Core del sistema (nuestra propia API multitenant)  
+- **API de Mensajería** → Integración externa con Evolution API (funcionalidades avanzadas de WhatsApp)  
+- **APIs Externas** → Integraciones complementarias con servicios de terceros
 
-- **Mensajería programática**: envío de mensajes de texto, multimedia e interactivos desde sistemas propios.
-- **Gestión de conversaciones**: consulta, organización y control de chats y mensajes.
-- **Administración de contactos y grupos**: verificación de números, gestión de grupos, participantes e invitaciones.
-- **Clasificación operativa mediante etiquetas (labels)**.
-- **Integración por eventos**: recepción de notificaciones mediante webhooks.
-- **Soporte multi-tenant**: cada integración opera dentro del contexto de un tenant y sus dispositivos/instancias.
+## 🌍 URLs Base
 
-## Endpoints disponibles
+| Rol                | Descripción                                           | URL Base                        | Ejemplo                                           |
+|--------------------|-------------------------------------------------------|---------------------------------|---------------------------------------------------|
+| **Reseller** | Gestión global: planes, clientes, billing, etc.       | `https://qr.buho.la`           | `https://qr.buho.la/api/plan/list`               |
+| **Cliente** | Operaciones específicas de cada empresa              | `https://{cliente_id}.buho.la`  | `https://empresa1.buho.la/api/devices/list`      |
 
-### API del Tenant (Sistema)
+> **Tip dinámico**: En la documentación interactiva puedes cambiar `{cliente_id}` (por defecto `demo`) para probar contra tu propio subdominio.
 
-Endpoints orientados a la **operación del tenant** desde sistemas externos:
+## 🔐 Autenticación
 
-- Gestión de dispositivos e instancias
-- Configuración operativa
-- Campañas
-- Webhooks
-- Estados y control de sesión
+Todos los endpoints protegidos requieren autenticación mediante **Bearer Token** (JWT).
 
-### API de Mensajería
+**Pasos para obtener tu token:**
 
-Endpoints para operar mensajería y conversaciones:
+1. Realiza login según tu rol:
+   - **Reseller**: `POST https://qr.buho.la/auth/login`
+   - **Cliente**: `POST https://{cliente_id}.buho.la/api/auth/login`
 
-- **Mensajes**
-- **Chats**
-- **Contactos**
-- **Grupos**
-- **Labels**
-- **Presencia**
-- **Estados**
-- **Pruebas y simulaciones**
+2. Incluye el token en todas las peticiones:
 
-### API de Administración (limitada)
+```http
+Authorization: Bearer <tu_token_de_acceso>
+Content-Type: application/json
+```
 
-Endpoints administrativos **expuestos de forma controlada**, exclusivamente para:
+## 📚 Módulos Principales
 
-- Bloqueo y desbloqueo de tenants
-- Consulta de estado del tenant
+### API de Aplicación (Core propio)
 
-> Las operaciones de creación, configuración comercial, branding, planes y subdominios forman parte del **backoffice interno** y no están expuestas como API pública.
+**Reseller**
+- Gestión de administradores y sesión
+- Creación, edición y suspensión de clientes
+- Planes y suscripciones
+- Reportes globales y billing
 
-## Autenticación
+**Cliente**
+- **Devices** → Vinculación y control de sesiones WhatsApp (QR, reconexión, logout)
+- **Campaigns** → Mensajería masiva y programada
+- **Send Message** → Envío individual (texto, imágenes, audio, video, documentos, plantillas)
+- **Contacts & Labels** → Gestión de contactos y etiquetas
+- **Chats & Groups** → Interacción con conversaciones y grupos
 
-El acceso a la API requiere credenciales de autenticación válidas asociadas a un tenant.  
-Los detalles de generación, rotación y uso de tokens se describen en la sección de **Seguridad y Autenticación**.
+### API de Mensajería (Evolution API)
 
-## Soporte
+Funcionalidades avanzadas del proveedor externo:
+- Envío de mensajes
+- Gestión completa de chats
+- Webhooks en tiempo real
+- Administración de grupos
+- Llamadas (voice calls)
+- Etiquetas (labels)
 
-Para consultas técnicas, incidencias o soporte de integración, contacta con el equipo de soporte de QR Búho a través de los canales oficiales.
+### APIs Externas
+
+Integraciones adicionales disponibles (Stripe, Mercado Pago, Firebase, analytics, etc.).
+
+## 🚀 Primeros Pasos Recomendados
+
+**Si eres Reseller** → Ve a **API de Aplicación > Reseller** y crea tu primer cliente.  
+**Si eres Cliente** → Dirígete a **Mensajería > Devices**, escanea el QR y vincula tu número de WhatsApp.  
+**Luego** → Prueba el endpoint **Send Message** — es el más usado y el mejor para validar que todo funciona.
+
+¡Estás listo para construir integraciones increíbles!

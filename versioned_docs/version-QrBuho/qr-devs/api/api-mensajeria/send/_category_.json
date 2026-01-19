@@ -1,6 +1,6 @@
 {
     "label": "Envío de Mensajes",
-    "position": 5,
+    "position": 2,
     "link": {
       "type": "generated-index",
       "slug": "send-message",
