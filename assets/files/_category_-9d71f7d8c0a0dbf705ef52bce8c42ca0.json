@@ -1,9 +1,0 @@
-{
-    "label": "Clientes",
-    "position": 7,
-    "link": {
-      "type": "generated-index",
-      "slug": "clientes-api",
-      "description": "Encuentra información sobre acerca del modulo de Clientes via API."
-    }
-  }
