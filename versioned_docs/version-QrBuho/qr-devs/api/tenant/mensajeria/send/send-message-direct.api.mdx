@@ -1,0 +1,73 @@
+---
+id: send-message-direct
+title: "Enviar mensaje directo (API Key)"
+description: "Envía un mensaje directamente usando API Key en lugar de Bearer token."
+sidebar_label: "Enviar mensaje directo (API Key)"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVsFy2zYQ/RXMnpIZWrKdpHV4c2K3TdKkrq3WB1vTrIiVhIQEEAB0omr4BT31Czo99pBDp7dc9UP9hM4ClETJSpuZHtoLhySw2LdvF293DgEnHvIreE7e44Q8DDOQ5AunbFBGQw6n+mbxHkWtRUXa4ysSUjkqAlakA4nao5ZGHJ89Ec9oJkiLsp6gE5LEI0JHTgTzmnTvWl8Ya1xAIdWYHNt6EZQ1nre2R3vhabL4oAWVosDKGvEyzCy97F1ryMBYcsionkjIwZOWLeqTCAgy8ORuyHFAc6hdCTlMQ7A+7/fnvh5JUymtTAMZ3KBTOCrJQz6H9RJ/SRpjXQbIIZBGHXpvXG9UT02vRGiaZsheitqpMItu0KpnNDuuwxTyqyEvW3RYUVji0FgR5KDrakQOMlBMqsUwhQwcvamVIwl5cDVtM/9i8aEiZ5ifQOXit7HR/FEKqbw1XgV1YzjoYkoVMnTmipkJTukJZEDvsLIl/3pw8PDo888e3L93eAAxBvZMPjwycsaW20AKowPpwEtobamKyHv/lWdg89suzehVysD6oKu0xnzMSoOSK8s6zmFQifdkuwO2riu25wwP6F1KrJZPKpxQ+35iiprrr/08rqUy7fv3SpJhZ+voOwdtMjxQ1nTKT6AgfaPQQbOGvSPIzUNOMBgvyFsqFu/HqjDdKg6bHqBpMggqRFgXHEgs3fOUDXa7Qr3mZY2+g6mtp5jaw4f7R0cH944gg8Abc/jKlCgkeUkMYoKB3uJM/PnLzz9xDTMIR94a7VMmDvf3U+l343rekhIpkUbQOxWMT9ce/kWJbBaBr4uCfKceYGRMSai79ctF2WRQpev+g5K3y6bJwAcMtf+HiooISMu0MEZVkoRhzEpFPmBldx0wNq5CJlZioD3eupHJVofOW04hUXx//+A2qy+MwDoYp35kTvfEgNVRKH2z+LVU0ghe9v8BxWMsfYfjnQSTc8b5XQ5RSsXYsDzbccUBncMZa1+gakeCEl1LMk/Zy9ZVWIUQYXZQbvK5LO6KwtRwk7DGp3vD8gx9tKrP16k/T9engbWaXzCbCfUoNq6k6Sus3EmWahs5jJsga1++WFbI08vBbZ2JSX56ORBmFEhznlnHSzNRmiPtNpE1afHnsmNMCWV01/YTtOp1XN30tOzD3ISYGNJBFVioxR962bdj5XINna97wOmnqQ5bKj2OfXKZrm/P2eeeuFA+UMWqI1rlcDw3XE4x+GNrdyItDHsNmOBOyIcEdKWXG0eIwmjh4xRBoqrLoPbaFn2tr/XXGIcQS65SgdJhRqPLr/WeON5igsQ5eSpLcl7MxCCe4nnjWYma4kji64g2GvDKlx10rYG4U5QqTjJ3ecfJui37FWheiCNUtw1EV4+xsrj4HdMAhO41BaUncdLhISaxdNDb7+23UoBFlIK2AC5aIiL/kG3NOxtDSxbvQYW6Y34aG93WTGfEnbaA7m7na75Wo//RSNgWK3e9vi0x3abIxLy99Fd8U9rRADLI2745zGDK2pBfwXw+Qk/fubJp+PebmhyPdsP1lBjnOKk8v8uVBn2Unjvn7RB0V3ziCLczjKUM6FkcWMuavyADvvarebLh1tVqA6NMi48Tlr1BmsCWxreaSJMtLY6Lgmz4273Djq6efXPBKjdqx8fKSLZx+JZHQHybgJrITVTU+G8OJepJnXQ7ncm1ibdkLwlb+8JR7aRitTFFwE+OZ+fe+TypadOs9qelj1qs9Dbt5pQMm6b5C8Wanyw=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-sistema-de-mensajeria-whatsapp
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar mensaje directo (API Key)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/send/{number}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía un mensaje directamente usando API Key en lugar de Bearer token.
+Soporta diferentes tipos de mensajes según el campo `type`.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"number","in":"path","required":true,"description":"Número de teléfono del dispositivo","schema":{"type":"string","example":"51987654321"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["type","payload"],"properties":{"type":{"type":"string","enum":["sendText","sendImage","sendDocument","sendAudio","sendVideo"],"example":"sendText","description":"Tipo de mensaje a enviar"},"payload":{"type":"object","description":"Datos específicos según el tipo de mensaje"}},"title":"SendDirectRequest"},"example":{"type":"sendText","payload":{"number":"51929088138","text":"Hola desde el gateway 👋"}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Mensaje enviado exitosamente","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean","example":true},"message_id":{"type":"string"},"status":{"type":"string","enum":["sent","pending","failed"]},"timestamp":{"type":"string","format":"date-time"}},"title":"MessageResponse"}}}},"401":{"description":"No autorizado - Token inválido o ausente","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean","example":false},"message":{"type":"string"},"errors":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"}}}},"title":"Error"},"example":{"success":false,"message":"No autorizado"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

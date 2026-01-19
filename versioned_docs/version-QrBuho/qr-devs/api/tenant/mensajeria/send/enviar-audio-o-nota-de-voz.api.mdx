@@ -1,0 +1,71 @@
+---
+id: enviar-audio-o-nota-de-voz
+title: "Enviar audio o nota de voz"
+description: "Envía audio o PTT (push-to-talk)."
+sidebar_label: "Enviar audio o nota de voz"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVU1vG0cM/SsETxKwkqw0SdsFelAKF3DQoI4tIwdZgKldxhp7dziemVWsCPox/QE59Zar/1jAWX3GQVGgukg7Sz6Rj3xvVhjpNmA+wUu2JbzjEOiWcZphyaHwxkUjFnM8tYunLwTUlEZA4Hw8ho5rwrwXpRepuu/2MUPPDw2H+EbKJear9Gg8l5hH33CGhdjINuorcq4yBSn44C7oP6wwFHOuSX/FpWPMUWZ3XMQNbgs0QdvUM/aYYSpFC3VeHPtoOGju5v0eJURv7C1myI9Uu0qPXg1//eXn169e/vRiiOst0g8yjim4uvgTBGYU+PVLKLlqyVAAF+NB+kykYrIp/yM1Vdz2fwynZ/AbsF0Y8lBILWAlEpQMC/mM6/TR3oMTG9rmXpwM9esYaJRmknBKwf9B8zGRIVJswg/72jGpPay3ldYc51Jijk5CgqM4xxwH5MygbvdqENiWqV7MMLBfsNfdW2HjK8xxHqML+WCwCs2slNpYI+v+g+/Pmrn0K3o2kUv2C1OKhzFbshE6dVNF04vpqYsZLsgbmlWbhnagLYeb2WAb/hx8F56GvYlar9dTLb1ovInLVPuMybMfNdrtZHr4+lKpbv/8MGjHqParRKQwZTgFYbb58Yf4mrTCtx/GqAzrCC/2GjvdjmG/9Uervdvs/UanTU1Ty9DYj+3Wm5hU8f5idH4GPTg0Ahidnz1jRsMceQKudO2evihDULMNdMcBjC3NwpQNVRygU8wpBhjmwy6whcYC2yjeChzOqn9tr+2ZLapmyRCllACVBIjGSTjCDuLER9IAJx4+KPjIufza9mDMj1EgGOVEn8/qp79v2XLIYGFKlpBBKUVTawEha9UbBgv5nEGIprhnHzTtamYKKoykRNUSFSneMxXbY7aFDoECdJxUVehq4rs9AZE9FdEsJECnMhqYwUyiJne11fGuRbalE2NjgCaQVUbt09eafaK05BCNFejctPO9AYEbz7VEfmvKmy4sIVkje7ZAjao+1f70j4U3aYX616pXlVk7umH/pH+y8QgqkkdYSrt3mZhlSFuA2XeKPBChLqIqvCZ7kH7a2tj2fjh0su/WZ7U3qP92q2zEEvkxDlxFxqrlpvJWG4+ZIDmD6kDt7aUK3PrMNMO5+lE+wdVKzfvKV+u1Hj807FXB071PJAFnOGcqVU2TFd7zEnP8va24N9ZSNLxqtKRn9rrOthmjomAX/zV2emCZ539djlX3m5uzllJzPH3S248+YY6YoSQGk52ksxVWZG8b7TjHFlM/3wDY5rgR
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-send-message-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar audio o nota de voz"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/message/sendAudio"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía audio o PTT (push-to-talk).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["number","audio"],"properties":{"number":{"type":"string","example":"51987654321"},"audio":{"type":"string","description":"URL o base64 del audio"},"ptt":{"type":"boolean","default":true,"description":"true = enviar como nota de voz"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Audio enviado","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

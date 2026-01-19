@@ -1,0 +1,71 @@
+---
+id: eliminar-chat
+title: "Eliminar chat"
+description: "Elimina un chat (para mí o para todos, según configuración)."
+sidebar_label: "Eliminar chat"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVc1uGzcQfhViTjGwXtlp05891Q0cwEHSurGLHiwdRuRYosslaXJWtiDsw/QBfOqtV71YMVzJku3Al1YXLcnh/Hwz38cVMM4yNFfwfo6cYVKBoayTjWyDhwZOnW2tR9V5pefI6k3EhKpdP6igyicHE3KlMs3W/3ilg7+2sy6htuu//UENFSS67Sjzz8EsoVmVpU1koOHUUQU6eCbPcoQxOqtRIo9usoRfQdZzalG+eBkJGgjTG9K88Ts4uoJEbWD6aI0UEFOIlNhSHuJtj3Y+MifrZ1AB3WMbnWy9O/7xh++/e/ftN2+Pf8r1nYCBMdaeGHrBxBHTh5BOF5SWwdOes2kIjtDDc+TOSl2YFA0Qpj28lAtZlmy1jeiZsnqTrcJS/0FxdY2dY2iu0WXqy09KzjH4PBT29uhI/p4GlS5uA5oA/wHepygOAJivlv0IojS0r6ClnHFGr+P9NFFF95ZDxpY8E/TbelvieTDQQAy55IQ8hwZGGO1IpnE0pAUVZEoLSjLIK+iSgwbmzDE3o9Eqd1MTWutt6OvbVE+7eagdvmjXBaWFNSGpS/LoWb1pO8f2kMtKWrLAZHHqBjx2Tgd0Nt2Cwfyl80dzZcipjVXf9xNJXXfJ8rLkPiVMlE46qfNqsn98IZ0agu8bPWIs9QoQxUz6U4yg2nx8CKlFyfDjH5cg2MoEfNlR83TbmSeMeY0WX2XFMK4VWH9dkGHLpd2/fTk5P1OHqqiMOjk/ewGRnBeCOFQzyiz6oQwV1cnKemMX1nTohCo6eOk2ahs8ZXXcHB8o8qJR5DkkH9R+8+qxH/tTb2KwvrjSrrNCQvKKMpPCpOd2EZqxP1SfbGZMozBl8pSG6LJ/UmwwjQxl3HzvTj9j0rIObVCO1g8myO7plvhiJxvvsZ1aUYTMMvSGVEyUyWuLI15G62eS6i+BsVGfSoLbpA0p8ov1Q7nUks94I0Aw3XOolG1xRr5SC2soVIpY1wcSZP2XICKIZtJFkdUYLsgb9Xng6BhUJkHdYD0WLgusQz+O66P6aCMgqIuAeCyTdRFiSEyq9BSqZ3zbo5iMmTC3Rb93/Qkqz8dgtROs/+Hp2VBDUBpFh9aLlpd0VxstuQKMVqrc5lL0ZFLBXBSnuYLVaoqZfk+u72X7tqMkTJ3s9KAQtYI5oaFUSPwnLUXhhkIOLyUJMXedJPNChftqe+NEa4r8qu1kTxTPf724FH5vHtY2GLmT8E4eR7yDBqCCUIAdXkLZW4FDP+uKPsPgU37/AocN0VM=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-chats-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Eliminar chat"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/chat/delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Elimina un chat (para mí o para todos, según configuración).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["remoteJid"],"properties":{"remoteJid":{"type":"string","example":"51987654321@s.whatsapp.net"},"deleteForEveryone":{"type":"boolean","description":"Intentar eliminar para todos los participantes (si aplica)","default":false}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Chat eliminado","content":{"application/json":{"schema":{"type":"object","properties":{"deleted":{"type":"boolean","example":true},"message":{"type":"string","example":"Chat eliminado exitosamente"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

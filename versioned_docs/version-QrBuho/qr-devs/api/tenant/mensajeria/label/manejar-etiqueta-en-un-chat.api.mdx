@@ -1,0 +1,71 @@
+---
+id: manejar-etiqueta-en-un-chat
+title: "Manejar etiqueta en un chat"
+description: "Agrega o elimina una etiqueta en un chat/mensaje específico."
+sidebar_label: "Manejar etiqueta en un chat"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVcly4zYQ/RVUn+wqmrInmSw8RZlMqjTlJMrYyRwkHVpgW4IDAhAW2wpLn5RTbnP1j6UapCx6ySRVwwtJoPF6fQ8tRFwFqGZwjkvSsCigpiC9clFZAxWMV55WKKwgrRplUCSDgqLaJIooyIhkhFxjHDVkAl6ToOBI3v91paQtoQBPm0Qhfm/rLVRt/lWeaqiiT1SAtCaSibyFzmklkf2OrgM7byHINTXIX3HrCCqwy2uSscftgGZgUrMkDwVozmFSQwEoc/yLApy3jnxUFBimNz0AhuiVWcHTtH++/9iQt8KKd5MfRE06JymO6LoUr8++/ebrr15/+cWrs+9CebvGGNC50lA8hgLoDhunGfrf7WB3iPU/Q8n+hR5U/cguIxlVW94YXSlTP3Z8xvh9BV6AJ5MaLhvWdS5kY2/ohcZLqe7/NgKFJ9TqT/SPfPDhXX4YIjhrQlfhV6en/HoM9nYfOsqYMlqNgu5UtAEbMpHgM0bhcYdDkpJCGBgurdWEZhg+D9+ugORqjFT/D9t9qg3Fta2hAmdD9o1xDRWM0KlR7uhojabWnE8gf0OeudVC8hoqWMfoQjUatSEta9soo+yu3Phymda21Pis8xfkb1RtvbgkgyaKoybpqE5i/uOW36BXuNT7xPegXf2vMOkIFXTmz8EfzPN491a73W7BocvkVdzm2JeEnvw4caKzxXD7glvSOR8aPRST8+VCZDMubjaCov/40foGOcJ3Hy6Bi8utfn/Qi7f7Dhxo+ylODSgFZwcJ6Ee1AGWucmWiinmCf30/nk7EicjCJ8bTybMS8b5Dj0y+FYWY+VDTAxGDOMouwzELIQtEEFvRC2Fgyw+8NnaunJu5mZJvVKRqbk7EuQoRvYi2xiA0hgGmtOZKrZJH3iLDzpUJEY1UyEc7RfbCik1SDHI4ins1Fla8oMccxPkjX8Eacf8xKk2hy9T6FRomO4fB44tSWUOhU745TMnUigk7h0LM4Y3OP+L3yZQXKMryuJwzffhsV8Wz8rQ87fmNMvPbYJ6HC+usjyRyJ6B4wpIBMXg4mHANmsHxn9DQ9SD/wW30tJXtQV0++0brhzvSXRw5jcrwcOXQ214OZoBO7ecRCuglYVHAmlWjmkHbLjHQb17vdry8SeSZbIsDpTPXClgT1jz4sxb+oC1U8KbL4+SSo2BznbIcP1XMXbE/MZaSXPyk7WIgbNNfLi6Zov2F3diaz3i85bsCb6ECKMDmumbm57UWNJpVwhXbdpj8/AOjPOLU
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-label-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Manejar etiqueta en un chat"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/label/handle"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Agrega o elimina una etiqueta en un chat/mensaje específico.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["number","labelId","action"],"properties":{"number":{"type":"string","description":"Número o JID del chat (ej. 51987654321@s.whatsapp.net)","example":"51987654321@s.whatsapp.net"},"labelId":{"type":"string","description":"ID de la etiqueta (obtenido de /find)","example":"1"},"action":{"type":"string","enum":["add","remove"],"description":"Acción a realizar","example":"add"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Etiqueta actualizada exitosamente","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean","example":true},"updated":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
