@@ -1,0 +1,9 @@
+{
+    "label": "Chats",
+    "position": 3,
+    "link": {
+      "type": "generated-index",
+      "slug": "chats",
+      "description": "Operaciones sobre chats individuales: listar, consultar detalles, marcar como leídos, archivar/desarchivar y eliminar conversaciones."
+    }
+  }
