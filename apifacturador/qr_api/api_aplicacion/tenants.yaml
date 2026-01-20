@@ -1,0 +1,192 @@
+openapi: 3.0.3
+
+info:
+  title: QR Buho API - Tenants Management
+  description: |
+    Endpoints para la gestión de **tenants / clientes** en QR Buho (multi-tenant).
+
+    Estos endpoints permiten a los **Resellers / Administradores**:
+    - Listar todos los tenants (con filtros y paginación)
+    - Obtener detalles de un tenant específico por ID
+    - Registrar nuevos tenants
+    - Eliminar tenants
+
+    Todos requieren autenticación con token JWT de Reseller.
+  version: 1.0.0
+  contact:
+    name: Soporte QR Buho
+    url: https://qr.buho.la
+
+servers:
+  - url: https://qr.buho.la
+    description: Servidor principal para Resellers / Administradores
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Tenants
+    description: Gestión de tenants/clientes (solo Reseller)
+
+paths:
+  /api/tenant/list:
+    get:
+      tags:
+        - Tenants
+      summary: Listar tenants
+      description: Retorna la lista de tenants con soporte para filtros y paginación.
+      operationId: listTenants
+      parameters:
+        - name: id
+          in: query
+          description: Filtrar por ID de tenant (UUID)
+          required: false
+          schema:
+            type: string
+            format: uuid
+        - name: domain
+          in: query
+          description: Filtrar por subdominio
+          required: false
+          schema:
+            type: string
+        - name: active
+          in: query
+          description: Filtrar por estado activo/inactivo
+          required: false
+          schema:
+            type: boolean
+        - name: paginate
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Lista de tenants
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tenant'
+                  pagination:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      per_page:
+                        type: integer
+                      current_page:
+                        type: integer
+
+  /api/tenant/register:
+    post:
+      tags:
+        - Tenants
+      summary: Crear nuevo tenant
+      description: Registra un nuevo cliente/tenant en el sistema.
+      operationId: createTenant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantCreate'
+      responses:
+        '201':
+          description: Tenant creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tenant'
+        '422':
+          description: Error de validación (campos requeridos, dominio duplicado, etc.)
+
+  /api/tenant/delete/{id}:
+    delete:
+      tags:
+        - Tenants
+      summary: Eliminar tenant
+      description: Elimina permanentemente un tenant por su ID.
+      operationId: deleteTenant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del tenant (UUID)
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Tenant eliminado exitosamente
+        '404':
+          description: Tenant no encontrado
+        '403':
+          description: No autorizado
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Tenant:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: "f06586bf-d346-42b4-963a-38db98b8b5d2"
+        name:
+          type: string
+          example: "EmpresaDemo"
+        domain:
+          type: string
+          example: "demooooo"
+        email:
+          type: string
+          example: "admin@empresa.com"
+        plan_id:
+          type: integer
+          example: 1
+        active:
+          type: boolean
+          example: true
+        created_at:
+          type: string
+          format: date-time
+
+    TenantCreate:
+      type: object
+      required:
+        - name
+        - domain
+        - email
+        - password
+        - plan_id
+      properties:
+        name:
+          type: string
+          example: "EmpresaDemo"
+        domain:
+          type: string
+          example: "demooooo"
+        email:
+          type: string
+          format: email
+          example: "admin@empresa.com"
+        password:
+          type: string
+          example: "123456"
+        plan_id:
+          type: integer
+          example: 1

@@ -1,0 +1,165 @@
+openapi: 3.0.3
+
+info:
+  title: QR Buho API - Tenant Authentication
+  description: |
+    Endpoints de autenticación para **Tenants / Clientes Finales** en el sistema QR Buho (multi-tenant).
+
+    Estos endpoints permiten:
+    - Iniciar sesión como cliente/empresa (tenant)
+    - Verificar la validez del token JWT actual
+
+    La autenticación de tenant se realiza siempre en el subdominio correspondiente de la empresa.
+
+    El token JWT obtenido aquí se utiliza para todas las operaciones del tenant (dispositivos, mensajes, campañas, etc.).
+  version: 1.0.0
+  contact:
+    name: Soporte QR Buho
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor específico del tenant (cliente final)
+    variables:
+      subdominio:
+        default: demo
+        description: Subdominio único del tenant (ej. empresa1, demo, cliente123)
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Auth - Tenant
+    description: Autenticación y gestión de sesión para clientes/tenants
+
+paths:
+  /api/login:
+    post:
+      tags:
+        - Auth - Tenant
+      summary: Login de Tenant / Cliente
+      description: Autentica al usuario del tenant y devuelve un token JWT válido.
+      operationId: tenantLogin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "demo@gmail.com"
+                  description: Email del usuario del tenant
+                password:
+                  type: string
+                  format: password
+                  example: "123456"
+                  description: Contraseña del usuario
+      responses:
+        '200':
+          description: Login exitoso - Token JWT generado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...
+                  token_type:
+                    type: string
+                    example: "bearer"
+                  expires_in:
+                    type: integer
+                    example: 86400
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      email:
+                        type: string
+        '401':
+          description: Credenciales inválidas
+        '422':
+          description: Error de validación de campos
+
+  /api/verify_token:
+    post:
+      tags:
+        - Auth - Tenant
+      summary: Verificar validez del token del tenant
+      description: Comprueba si el token JWT actual es válido y aún no ha expirado.
+      operationId: verifyTenantToken
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - api_token
+              properties:
+                api_token:
+                  type: string
+                  description: El token JWT que se está verificando (el mismo del header Authorization)
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...
+      responses:
+        '200':
+          description: Token válido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                    example: true
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+                      tenant_id:
+                        type: string
+                        description: UUID o identificador del tenant
+        '401':
+          description: Token inválido, expirado o no pertenece a este tenant
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    TenantLoginResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        user:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            email:
+              type: string

@@ -1,0 +1,162 @@
+openapi: 3.0.3
+
+info:
+  title: QR Buho API - Campaigns Management
+  description: |
+    Endpoints para la gestión de **campañas de mensajería** en un tenant.
+
+    Estos endpoints permiten:
+    - Crear campañas manuales (envío programado a grupos/contactos)
+    - Crear campañas masivas desde Excel/CSV
+    - Listar todas las campañas del tenant
+    - Obtener detalles de una campaña específica
+
+    Requieren autenticación con token JWT del tenant.
+  version: 1.0.0
+  contact:
+    name: Soporte QR Buho
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor específico del tenant (cliente final)
+    variables:
+      subdominio:
+        default: demo
+        description: Subdominio único del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Campaigns
+    description: Gestión de campañas de mensajería masiva (Tenant)
+
+paths:
+  /api/campaigns/manual:
+    post:
+      tags:
+        - Campaigns
+      summary: Crear campaña manual
+      description: Crea una nueva campaña manual con mensaje y programación.
+      operationId: createManualCampaign
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - title
+                - groups
+                - message
+              properties:
+                title:
+                  type: string
+                  example: "Campaña de Bienvenida"
+                groups:
+                  type: array
+                  items:
+                    type: integer
+                  example: [1, 2, 5]
+                  description: IDs de grupos o listas de contactos
+                message:
+                  type: string
+                  example: "¡Hola! Bienvenido a nuestra promoción especial"
+                schedule_at:
+                  type: string
+                  format: date-time
+                  example: "2025-10-01 10:00:00"
+                attach_pdf:
+                  type: string
+                  nullable: true
+                  description: URL o path del PDF adjunto (opcional)
+      responses:
+        '201':
+          description: Campaña creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+
+  /api/campaigns/list:
+    get:
+      tags:
+        - Campaigns
+      summary: Listar campañas
+      description: Retorna todas las campañas del tenant.
+      operationId: listCampaigns
+      responses:
+        '200':
+          description: Lista de campañas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Campaign'
+
+  /api/campaigns/show/{id}:
+    get:
+      tags:
+        - Campaigns
+      summary: Detalles de una campaña
+      description: Obtiene información completa de una campaña específica.
+      operationId: getCampaign
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID de la campaña
+      responses:
+        '200':
+          description: Detalles de la campaña
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+        '404':
+          description: Campaña no encontrada
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 45
+        title:
+          type: string
+          example: "Campaña de Bienvenida"
+        groups:
+          type: array
+          items:
+            type: integer
+        message:
+          type: string
+        schedule_at:
+          type: string
+          format: date-time
+          nullable: true
+        status:
+          type: string
+          enum: [pending, sent, cancelled, failed]
+          example: "pending"
+        created_at:
+          type: string
+          format: date-time
+        total_recipients:
+          type: integer
+          example: 250
+        sent_count:
+          type: integer
+          example: 0

@@ -1,0 +1,73 @@
+---
+id: list-plans
+title: "Listar planes"
+description: "Obtiene la lista de planes disponibles."
+sidebar_label: "Listar planes"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VsluI0cM/ZVCnRKgLXly7JsRTwaeJXHGDnywBIPqpqSya5sqthBB6I/JB8whyC1X/VjA6pbUWtz2zCG6SKri8sgiH7mSBLMo83t5rcFGOc5kibEIypNyVubytwkptCg0CK0igShReA0WoyhV9M6qicY4ECN7XWGJYqo0BQgRhXdBXF1mwjozCZiJ1m6h1v9Y4YSHmbKQ/g1GVmbSeQzAXq9KmUt21kDKpIcABgkDA11JCwZlLlUpM6kY45cKw1IeIr+6FCXqBFZmMhZzNCDzlaSlT+qWcIZB1nW2NZm+eo3+moLpNRwpKDvbs9u10Wv+spujb3TSJJReCmD9r8Hg+BkDxkoTlC6mt/Lrv9hAX67Y2BQqTTJ/c17X40wG5BqIGFn6p/Nz/tp3+HG/amQmC2cJLbEoeK9VkV59+BhZfnXs3U0esSCug8A1QqrxVgJ1pSAE4HAVoYkva6vyVC1kbTKP8nyQxhP3Kj5MA3Z1J85pBMuXPqiie2UrM0n5nLpggGQup9oBsahWRtFDiQtVYDyNsRExGCPM+mU41VDQMzJFQCAsH4COI+pAK4HwjJRB1ql8+Y06dSZJkWY5buh0YJBe8cJFFQJaevAww9MRTIMzz8QPsU/RY+i5JffcOYE+zSG7GJs2VM5+4iDr5pNCnjtmthmmSIHmMpdD8GrInTFkwuPew7DYEF0VtMzlnMjnw+GqdEZZ5eqjlr7BsFClC+IzRtQ61dUCggJm5tQpjWbTm23/yi9hMKnmbqDhmIUa+URAcWM8bIzXiXR22CKDi9XkZXy3aMHSIbqd6j5AStKDHpw3W80EtVFgfGPOY1EFRcuUyAlCwHBRccrvx93rGyabBkdXaPvCHOCGEVNPJyGZtT9+2dT7+7vbI3i37gmteH93K9yE0KqygandTCVSAK8+4PLAYXO44fA5QpnctRwPXj3hMalfXF+JD7gUPCgFVMyuqoB2iqiARSpEtjltKrut1d8/s+aZuFGR0CSW/oQ2wiOG9VcQd3OgeOH9SX+FM14jQeN0hpHaoSXMCROicFZE510gFKbSpM7a9x3Zkf0Igk16DEYRNsachZCP7Jm4OIgHt3UexbKtqciC1+1agiJWuzHKN+866FoF8UOhFVrC+CNLXPIuExWphYtb0Hzx1i7WX10nrOTqZzAe1n9D8mYgPCEpO0trDHdvk6U3g/PBeTvvoEh82T7jTZuIlH+ZHTRTp+L50byLZMB21NNIDbuBejCatvP1f1ze2uol/JOYzpoCT2GtWqq75+Jl4ms2mkR340zOXSS+XK0mEPGPoOuaj5vlhXu3VJGpopT5FHTEnmj3F76TiLh52s1xAbpiAcls9nonxwtgj6N2n/xOV88tgz0O9xfN7w3xFStiD4bOHroDMN6RfqLgbENt/MSN3kVRoKeO1tFyyFa2Y/Td21tZ1/8BsqN0eQ==
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-sistema-de-mensajeria-whatsapp
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar planes"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/plan/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene la lista de planes disponibles. 
+Puede filtrarse por ID, nombre, descripción o paginación.
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"query","description":"ID del plan","schema":{"type":"integer"}},{"name":"name","in":"query","description":"Nombre del plan","schema":{"type":"string"}},{"name":"description","in":"query","description":"Descripción del plan","schema":{"type":"string"}},{"name":"paginate","in":"query","description":"Número de resultados por página","schema":{"type":"integer","default":10}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de planes","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","items":{"type":"object","properties":{"id":{"type":"integer"},"name":{"type":"string"},"description":{"type":"string"},"is_free":{"type":"boolean"},"price":{"type":"number","format":"float"},"limit_devices":{"type":"integer"},"limit_messages":{"type":"integer"},"limit_contacts":{"type":"integer"},"created_at":{"type":"string","format":"date-time"},"updated_at":{"type":"string","format":"date-time"}},"title":"Plan"}},"meta":{"type":"object","properties":{"current_page":{"type":"integer"},"from":{"type":"integer"},"last_page":{"type":"integer"},"per_page":{"type":"integer"},"to":{"type":"integer"},"total":{"type":"integer"}},"title":"PaginationMeta"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,177 @@
+openapi: 3.0.3
+
+info:
+  title: QR Buho API - Plans Management
+  description: |
+    Endpoints para la gestión de **planes de suscripción** en QR Buho.
+
+    Estos endpoints permiten a los **Resellers / Administradores**:
+    - Listar todos los planes (con filtros y paginación)
+    - Obtener detalles de un plan específico por ID
+    - Crear nuevos planes de suscripción
+
+    Todos requieren autenticación con token JWT de Reseller.
+  version: 1.0.0
+  contact:
+    name: Soporte QR Buho
+    url: https://qr.buho.la
+
+servers:
+  - url: https://qr.buho.la
+    description: Servidor principal para Resellers / Administradores
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Plans
+    description: Gestión de planes de suscripción (solo Reseller)
+
+paths:
+  /api/plan/list:
+    get:
+      tags:
+        - Plans
+      summary: Listar planes
+      description: Retorna la lista de planes con soporte para filtros y paginación.
+      operationId: listPlans
+      parameters:
+        - name: id
+          in: query
+          description: Filtrar por ID de plan específico
+          required: false
+          schema:
+            type: integer
+        - name: name
+          in: query
+          description: Filtrar por nombre del plan
+          required: false
+          schema:
+            type: string
+        - name: description
+          in: query
+          description: Filtrar por descripción
+          required: false
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          description: Número de elementos por página
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Lista de planes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plan'
+                  pagination:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      per_page:
+                        type: integer
+                      current_page:
+                        type: integer
+
+  /api/plan/register:
+    post:
+      tags:
+        - Plans
+      summary: Crear nuevo plan
+      description: Registra un nuevo plan de suscripción.
+      operationId: createPlan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanCreate'
+      responses:
+        '201':
+          description: Plan creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+        '422':
+          description: Error de validación (campos requeridos, duplicados, etc.)
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Plan:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Plan Premium"
+        is_free:
+          type: boolean
+          example: true
+        price:
+          type: number
+          format: float
+          example: 49.99
+        description:
+          type: string
+          example: "Plan con todas las funcionalidades"
+        limit_devices:
+          type: integer
+          example: 10
+        limit_messages:
+          type: integer
+          example: 5000
+        limit_contacts:
+          type: integer
+          example: 1000
+        created_at:
+          type: string
+          format: date-time
+
+    PlanCreate:
+      type: object
+      required:
+        - name
+        - is_free
+        - price
+        - description
+      properties:
+        name:
+          type: string
+          example: "Plan Premium"
+        is_free:
+          type: boolean
+          example: true
+        price:
+          type: number
+          example: 49.99
+        description:
+          type: string
+          example: "Plan con todas las funcionalidades"
+        limit_devices:
+          type: integer
+          example: 10
+        limit_messages:
+          type: integer
+          example: 5000
+        limit_contacts:
+          type: integer
+          example: 1000
