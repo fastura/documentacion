@@ -1,0 +1,9 @@
+{
+  "label": "Campañas",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "slug": "campaign",
+    "description": "Crea y gestiona campañas de mensajería masiva."
+  }
+}
