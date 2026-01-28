@@ -1,0 +1,137 @@
+openapi: 3.0.3
+
+info:
+  title: QR Buho API - Customizations Management
+  description: |
+    Endpoints para la gestión de **customizaciones de marca** (branding) en QR Buho.
+
+    Estos endpoints permiten a los **Resellers / Administradores**:
+    - Obtener la configuración actual de customización del reseller
+    - Actualizar o crear la configuración de branding (nombre de marca, logo, imagen frontal)
+
+    Las customizaciones se aplican como **marca de agua** / branding heredado a todos los tenants creados por el reseller.
+
+    Todos los endpoints requieren autenticación con token JWT de Reseller.
+  version: 1.0.0
+  contact:
+    name: Soporte QR Buho
+    url: https://qr.buho.la
+
+servers:
+  - url: https://qr.buho.la
+    description: Servidor principal para Resellers / Administradores
+
+security:
+  - bearerAuth: []
+
+tags:
+  - Customizations
+
+paths:
+  /api/v1/reseller/customization:
+    get:
+      tags:
+        - Customizations
+      summary: Obtener customización actual
+      description: Retorna la configuración de branding actual del reseller autenticado.
+      operationId: getResellerCustomization
+      responses:
+        '200':
+          description: Configuración de customización encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Customization'
+        '404':
+          description: No se encontró configuración de customización para este reseller
+
+  /api/v1/reseller/customization:
+    post:
+      tags:
+        - Customizations
+      summary: Crear o actualizar customización
+      description: |
+        Crea o actualiza la configuración de branding del reseller.
+        Soporta actualización parcial (solo enviar los campos que se desean cambiar).
+        Los archivos (logo e imagen frontal) se envían como multipart/form-data.
+      operationId: upsertResellerCustomization
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                brand_name:
+                  type: string
+                  example: "Mi Marca Pro Solutions"
+                  description: Nombre de marca que aparecerá en títulos y footer
+                logo:
+                  type: string
+                  format: binary
+                  description: Archivo de imagen del logo (PNG, JPG, SVG, WEBP, etc. ≤ 2MB)
+                front_image:
+                  type: string
+                  format: binary
+                  description: Imagen frontal para pantallas de login/register (≤ 2MB)
+      responses:
+        '200':
+          description: Customización actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Customization'
+        '201':
+          description: Customización creada exitosamente
+        '422':
+          description: Error de validación (tamaño de archivo excedido, formato inválido, etc.)
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Customization:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        reseller_id:
+          type: integer
+          example: 5
+        brand_name:
+          type: string
+          example: "Mi Marca Pro Solutions"
+          nullable: true
+        logo_url:
+          type: string
+          format: uri
+          example: "https://qr.buho.la/storage/reseller/5/logo-abc123.svg"
+          nullable: true
+        logo_path:
+          type: string
+          example: "reseller/5/logo-abc123.svg"
+          nullable: true
+        front_image_url:
+          type: string
+          format: uri
+          example: "https://qr.buho.la/storage/reseller/5/front-xyz789.jpg"
+          nullable: true
+        front_image_path:
+          type: string
+          example: "reseller/5/front-xyz789.jpg"
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          example: "2026-01-20T18:45:00-05:00"
