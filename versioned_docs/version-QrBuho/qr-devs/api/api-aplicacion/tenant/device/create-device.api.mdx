@@ -4,6 +4,7 @@ title: "Crear dispositivo"
 description: "Crea un nuevo dispositivo WhatsApp"
 sidebar_label: "Crear dispositivo"
 hide_title: true
+sidebar_position: "2"
 hide_table_of_contents: true
 api: eJytV/1OHDcQfxVrFOlAWo5AmzbdKJFIQqqQDyhchCqOkrn1cGfitRfbe+F62ofpA+SPqo/Ai1Vj38JyXKM2Kn/t2fPl38xvZphDwLGH/ARe0lQV5OE0A0m+cKoKyhrI4YUjFLURpqapFVL5ynoV1NSK4wkGv1NVkIGtyCErvJaQQ+EIAyWLkIEnNyXHXuZQOw05TEKofL65Off1SNpSGWUbyGCKTuFIk4d8DrdX/EvSOdY6QA6BDJrQv3T9UT2xfY3QNM1pBo4ua/LhuZUzVuCfypGEPLiaMiisCWQCX2FVaVXEcDcvPD9yDr6YUIn8FWYVQQ52dEFFgKxj6AQMlvygamINMVKV44cHlSKOt7cWfHDKjCEDusKy0nz0TomXtwBC05r6qtKjrZ8e//jDo++/295i3xgCOU7Mb8OhnG9tZVuPmgfQNBkEFaJCAv4w4cFObmy1MS4HchPHHWdNw1Yd+coan564/XArZaNbIR1LglMvraArFazHkkxgwL4Z/LsAK9mRUSbQmBy/bzXw/4xuk4EPGGq/EnhTl5zrwhpDRSAJGUjluz8rMpKFT5sMLt1ZYeXKFJpaay7nVIJNtuCFPMOwSvzcupJvQGKgjaBK4kDrSv5HnXuVsEjk99vb93O365x1QpKYolYSC3X9l/n/EubroiDfhXlkrSY03QI/R+0ZnZK8x/HqdBGH6Vc5RCkVx4b64I7rhRw6hzPIQAUqV6Q7IdPCFcFYIszNE2KYnSjhrfVCYrBe8KOtKzgKab3w1ghlptd/aCWth270VKLSXF27WhRYVlbEE0Fe2JFWYwzWKRtbC3r/2Tp5R7g9FJJGJAIZcgK1KMlYLx6LAh0WgRy38aZJb7va4PI8iu9JLVijGUMOFzjFVAmQgcYRcWN+RaGYcMu2tSv4kYU1PojaafFU9Nq2fa8Fb2KlNmWaIJupyntPhiYpB/uJDKv/uv/h8GzveHA22H+z+54FWhGJAcVTMR8aIZjMuejd7VC9jK8inXPR6zSp3tA00dA5R75WO50lMyWFiZW56B3sHw2S+oRQkvN5EhCit1OHiXXq91jcvVx8fE7oyIkH8xhz8zFrBYuCqtDLRW+ZDb1W5EVizMZgVtFKQZZrovTIylku9o723/dTGarz2RpDsD40zfrQ9MOEzFrbd8XTZ6L97rOltfUbmYTbM8EoWk19bcfJ0PqToQGeigkGyKGyPqTxMYEcViQsDuqidirMYpmMIhYMEeQnp2yrvT5i9ieWdYVuuMVlwtaiGHM+CkG2+HjV9qy94wEsbxuDWCx7xwNhR4GMklZI0kLbsTLMTKzUG5otOUyHzHI2kdIM7Vjg20/x9q6nnYPX4g3NRIUOBdacPFWkBiikclQEjL2UIT+83S12v3GWcnDncZVpu80vhxzChjhSPlCJ3ITfkfF4Qe76C3a3q/uBF5aDCJiiH5MPKW7iXnDPBNeH8NyjAomy1kFtLCjMzHmLgk1W5EoVKBmzBl0+NBtiZwkYEofkSWtyXszEIFrxLHig0ZBnAV/HaKMC3/zciW6hINYKrXg38Oss0YHP3wTNF7tmev3Fdp4VXb3AssLrPzF6K9F9oqDMeMhDhffMhNJW/2H/4WKSYRE6+TpaABHxh2xpJb2zV2aRNiWajjrvw667By8naH47Pf/d8ryo4kBXYbPSmAo9RjVf8PWEizj6SUt6u0rwoJgwsfMTmM9H6OmD003Dx5c1OSby6e1aHXmctfxgjjMvcui2rriF6zrxZmnwN1mrkfrhV2W7vYdbMNN/sZqXcV8Ch595vcbPkEP8F4K1Y1eJZ2lQ1WnWJpv89zdJxmL7
 sidebar_class_name: "post api-method"
@@ -12,29 +13,21 @@ custom_edit_url: null
 ---
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
-import ParamsDetails from "@theme/ParamsDetails";
 import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
-import OperationTabs from "@theme/OperationTabs";
-import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
 
 <Heading
   as={"h1"}
   className={"openapi__heading"}
   children={"Crear dispositivo"}
->
-</Heading>
+/>
 
 <MethodEndpoint
   method={"post"}
   path={"/api/devices/create"}
   context={"endpoint"}
->
-  
-</MethodEndpoint>
-
-
+/>
 
 Crea un nuevo dispositivo WhatsApp
 
@@ -43,29 +36,93 @@ Crea un nuevo dispositivo WhatsApp
   as={"h2"}
   className={"openapi-tabs__heading"}
   children={"Request"}
->
-</Heading>
-
-<ParamsDetails
-  parameters={undefined}
->
-  
-</ParamsDetails>
+/>
 
 <RequestSchema
   title={"Body"}
-  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["name","phone"],"properties":{"name":{"type":"string","example":"Mi Dispositivo"},"phone":{"type":"string","example":"51987654321","pattern":"^\\d{11,15}$"}},"title":"DeviceRequest"},"example":{"name":"Mi Dispositivo","phone":"51987654321"}}}}}
->
-  
-</RequestSchema>
+  body={{
+    "required": true,
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "object",
+          "required": ["name", "phone"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Mi Dispositivo"
+            },
+            "phone": {
+              "type": "string",
+              "example": "51987654321",
+              "pattern": "^\\d{11,15}$"
+            }
+          },
+          "title": "DeviceRequest"
+        },
+        "example": {
+          "name": "Mi Dispositivo",
+          "phone": "51987654321"
+        }
+      }
+    }
+  }}
+/>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"201":{"description":"Dispositivo creado exitosamente","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"integer"},"name":{"type":"string"},"phone":{"type":"string"},"status":{"type":"string","enum":["connected","disconnected","pending"]},"qr_code":{"type":"string","nullable":true},"created_at":{"type":"string","format":"date-time"},"updated_at":{"type":"string","format":"date-time"}},"title":"Device"}}}},"422":{"description":"Error de validación","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean","example":false},"message":{"type":"string"},"errors":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"}}}},"title":"Error"},"example":{"success":false,"message":"Los datos proporcionados son inválidos","errors":{"email":["El campo email es obligatorio"],"password":["El campo password debe tener al menos 8 caracteres"]}}}}}}}
->
-  
-</StatusCodes>
-
-
-      
+  responses={{
+    "201": {
+      "description": "Dispositivo creado exitosamente",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "integer" },
+              "name": { "type": "string" },
+              "phone": { "type": "string" },
+              "status": {
+                "type": "string",
+                "enum": ["connected", "disconnected", "pending"]
+              },
+              "qr_code": { "type": "string", "nullable": true },
+              "created_at": { "type": "string", "format": "date-time" },
+              "updated_at": { "type": "string", "format": "date-time" }
+            },
+            "title": "Device"
+          }
+        }
+      }
+    },
+    "422": {
+      "description": "Error de validación",
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "success": { "type": "boolean", "example": false },
+              "message": { "type": "string" },
+              "errors": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            },
+            "title": "Error"
+          },
+          "example": {
+            "success": false,
+            "message": "Los datos proporcionados son inválidos",
+            "errors": {
+              "name": ["El nombre es obligatorio"],
+              "phone": ["El teléfono debe tener entre 11 y 15 dígitos"]
+            }
+          }
+        }
+      }
+    }
+  }}
+/>

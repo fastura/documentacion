@@ -1,0 +1,68 @@
+---
+id: dispositivos
+title: "Dispositivos – Conectar WhatsApp"
+description: "Conecta tus números de WhatsApp escaneando un código QR y obtén tu clave de acceso para usar la API."
+sidebar_label: Conectar WhatsApp
+sidebar_position: "1"
+hide_title: true
+custom_edit_url: null
+---
+
+import Heading from "@theme/Heading";
+import Admonition from "@theme/Admonition";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Conectar tus números de WhatsApp"}
+/>
+
+En esta sección gestionas tus **dispositivos**, es decir, los **números de WhatsApp que conectas a la API**.
+
+Cada dispositivo representa **un número activo** que luego podrás usar para:
+- enviar mensajes,
+- ver chats,
+- crear grupos,
+- y consumir el resto de endpoints de la API.
+
+<Admonition type="info" title="Antes de empezar">
+  - **Crear un dispositivo NO requiere clave de acceso (Bearer Token)**.  
+    Este es el único caso.
+  - **Una vez conectado el dispositivo**, todos los demás endpoints **SÍ requieren el Bearer Token**.
+  - El token se envía siempre así:  
+    Authorization: Bearer TU_CLAVE_AQUÍ
+</Admonition>
+
+### Flujo para conectar un dispositivo (paso a paso)
+
+Este proceso se hace **una sola vez por número**.
+
+1. **Crear el dispositivo**  
+   Llama al endpoint `POST /devices/create`.  
+   Solo necesitas un nombre para identificar el número (ej. *"Tienda Principal"*).
+
+2. **Recibir el código QR**  
+   La API responde con la información del dispositivo y un **código QR**  
+   (en base64 o como enlace).
+
+3. **Escanear el QR desde WhatsApp**  
+   - Abre WhatsApp en tu celular.  
+   - Ve a **Ajustes → Dispositivos vinculados → Vincular dispositivo**.  
+   - Escanea el QR entregado por la API.
+
+4. **Dispositivo conectado**  
+   Al completar el escaneo:
+   - el número queda vinculado,
+   - se habilita el uso de la API,
+   - y se genera tu **clave de acceso (Bearer Token)**.
+
+   Guarda este token: lo necesitarás para todas las operaciones siguientes.
+
+**Ejemplo de respuesta al crear el dispositivo**:
+```json
+{
+  "id": "dev-12345",
+  "name": "Tienda Principal",
+  "qr": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+  "message": "Escanea este QR con WhatsApp"
+}
