@@ -1,0 +1,72 @@
+---
+id: obtener-informacion-de-un-chat-especifico
+title: "Obtener información de un chat específico"
+description: "Retorna los detalles de un chat por su JID remoto."
+sidebar_label: "Ver chat"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "4"
+api: eJydVc1yGzcMfhUOTvbMetdOm/7sqR7HzdgTp6ntTg+WDhAJS3R3SZrEKvFo9DB9AJ9661Uv1gF3ZSmWk85EF3FJAPzwEfiwAMZpgvoGTmbICcYFGEo62sDWO6jhkthHh6rxSRlibBqSheqc0jNkFXxUqVPnZ29UpNazL6GAgBFbYooSeQEOW4Ia8jmdWwMFWIkdkGdQQKT7zkYyUHPsqICkZ9Qi1AvghyCOiaN1U1g+xyaXGmoykEp7x6jZqz26K9Xro59/+vGH199/9+rol1R+lNwwhNIR70MB9Anb0EjoL9vBcizQUvAuURI0rw4P5e9zDG82nPRAVPKN1ZbReChAUJFj8cMQGqtR/Kq7JM6L3VT95I40C4XRB4ps+6ut2aXja2wIVz3r/+f13reTSKr1iSMar7zCxmKSADa9jb4LWzEm3jeETg47FwnNie/65AYD65imFHvvi47JvOzNtqXE2IYXfJ8jvF7b5uxW/zZsW69acgnvSIJh1DM7/9JVwTr38lnGwbkMTjJn8iugJZ55AzVMKT+EFGkNFQZb5UK7tc5Ui6diXkIBieJ8XexdbKCGGXNIdVUtUjcxvrXO+mV5H8tJN/NlgztJXlGcW+OjuiaHjtVe2zVsDzh/ScnOMVqcNH05bIL2BXmLXcNQQ2++G/zJPFM4WC2XUuGJdBctP2TsE8JI8biTjG/G28dXUqj95dtGT6RKvjC0biY5G0ExLH71sUVBeP7ndSbeutuMff0Av18efzhTByqrkDr+cLaThJyLrqgG1ZQS29U/ToRIZw/rjJ1b06G04p72Tt4DtfWOkjqqj/YVOdEsciJnXm3TW47cyJ06E7x1OZRuOmt8EhdKTKovMF+P3IF6ZxNjrPyEyVHsb5f942yDsTKUcFhvTi8wavn2rVcNrR6Nl93TxrbWDXaycYLtxGKUW6UXDakQKZHTFit+CNZNBep7z1irdxngGrQhRW6+esxOQ28ktcf0iX2hbItTcoWaW0O+UMS63JdLVn8LI8JoIq0zoyO4ImfUBaWEUxqBSiSsGyxHTsqQYurf46g8LA8HhUOdRWDQ+SsffGRS+U2heNYRW00ghRB84hbdlvtvA7VSIrFFvX7o9cShFEivHm+t9s+LZLHR228bXEM1C21VaND2Uif4F4MQ3AAGK2mLYhQgYgAF1JvZNi5g5hOL5WIxwUR/xGa5lO37jqL02XjTzbnrjE2yNlDfYpPoKzntXQ6jcl998+x7McVhE91Dlpqmky8o4C96+GxwL8fLAmaEhmKG3p8fa02Btzx3Rp1IyZOuvj0VDfgPjcbuJw==
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-chats-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Obtener información de un chat específico"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/chat/find/{remoteJid}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retorna los detalles de un chat por su JID remoto.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"remoteJid","in":"path","required":true,"schema":{"type":"string"},"description":"JID del chat/contacto (ej. 51987654321@s.whatsapp.net)","example":"51987654321@s.whatsapp.net"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Detalles del chat solicitado","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"JID del chat"},"name":{"type":"string","description":"Nombre mostrado o alias"},"isGroup":{"type":"boolean"},"unreadCount":{"type":"integer"},"isMuted":{"type":"boolean"},"timestamp":{"type":"integer","description":"Timestamp del último mensaje"},"archived":{"type":"boolean"},"pinned":{"type":"boolean"}},"title":"Chat"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

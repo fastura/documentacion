@@ -1,0 +1,9 @@
+{
+    "label": "Integraciones",
+    "position": 4,
+    "link": {
+      "type": "generated-index",
+      "slug": "integrations",
+      "description": "Configuración de integraciones externas, principalmente webhooks para recibir eventos en tiempo real de la instancia WhatsApp (mensajes, conexión, grupos, llamadas, etc.)."
+    }
+  }

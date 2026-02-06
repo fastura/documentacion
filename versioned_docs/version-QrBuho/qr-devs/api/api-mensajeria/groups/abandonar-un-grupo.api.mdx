@@ -1,0 +1,72 @@
+---
+id: abandonar-un-grupo
+title: "Abandonar un grupo"
+description: "Permite que la instancia abandone un grupo específico."
+sidebar_label: "Abandonar grupo"
+hide_title: true
+sidebar_position: "14"
+hide_table_of_contents: true
+api: eJytVdFS60YM/ZUdPcGMSQIXOq2fmnJvGXgpBTp9gDwotnCW2ruLVs4lzeRj+gF96ifwYx2tTWLgtp1p6xfbu1rp6Eg6uwbBKkJ+C2fs2xBhlkFJsWAbxHoHOVwSN1bIPLZkajTWRUFXWDQ4R1d6R6Z1puI2eEMxUPH8+70t/AgyYHpsKcp3vlxBvk6/lqmEXLilDArvhJzoFoZQ2wI14vghatg1xGJBDeqXrAJBDn7+QIX0fjtHt1Ap6gtbKu7APhCLpaintjs7D1HYugreZnj+0ZRU9znsXZx/3Ff09IRNqPXY4dHkw1cfjifHx9+cTI6Ovj45/rYatRE26VE8MXgXu7BHk0N9vY5wllz3hGHpDT1Z8REbckIa7F9z8TrnmnBJX0p4l0xsi4LiDvzJZPIe7ydmz8Y6IXY+kROJl7b0/D+CjYLSxoGdxquIYZMBKYD3iQzI/mf/DcWI1dAQmXEFGVihJn7Be8eIWElMJRKuXsL1mw3JwpeQQ/AxhURZQA5jDHacOm7c1SADZYxYR2sNLdeQw0IkxHw8Xsd2XvrGOus3o0cezduFH9X4ri+ve87NDTl0YvaathZ7IOlvHzJYIluc1z2dW6ddPe+xrQVy6MzfO9+ap/r2VpvNZqbQi5atrBL2OSETT1vN83Y23L7WQnfBh0ZbWjVfJSKZQd4bQdZ/fO+5QUV48fMNKLfaQFc7zfj00rPDWf7rYczAuvuU+0sBf7yaXp6bA9Mpm5lenr9jQQ0CMqqyVRTFPv/hTEmdFkRDTsWNnHidgyH9ozt353ppzO/cgTllQu7PpX/vYlvLds2sNJDYwgZ0QslmWkiLtf0V2TQkWKL4OJQi55s5U2Z6zIWiy4xtsCK3nxyUWsEojPzau9nDiqlCzgxT45fEmQns+6+SKsYSOfk407S9Q533pRUsrHfqwM+FHCUHS18gj5kqXVCf5Ja2P37q3b2t2h7B828NCb/OIng29EBNqH1m0LWusImOhlzEB4pGqAmesaa4f+e0rYljV57D0WQ06RUHi6Q4DlMvXfvgWcikGkP2ZsIGQ6WNpbPaoBscn/ZSzNvL621rrHcy9x+uwH4ShJ5kHGq0Tvs0YV330nELGCxkXYtD1kv4LIOFCkx+C+v1HCP9xPVmo8uPLbEO5mw3/mkuM1gQlsRpZn+hFeRw2iVwcKMg1Lxukwq+1exN9nJiWhQU5G9tZwMNvPzh+kbHub/gG1/qGcbPeknjZ8gBMvCJ0KQSaW0NNbqqTcoMnU99/gRlBvq5
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Abandonar un grupo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/group/leave"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Permite que la instancia abandone un grupo específico.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Grupo abandonado exitosamente.","content":{"application/json":{"schema":{"type":"object","properties":{"leave":{"type":"string","example":"success"}}}}}},"500":{"description":"Error interno del servidor.","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"integer"},"error":{"type":"string"},"response":{"type":"object","properties":{"message":{"type":"array","items":{"type":"string"}}}}},"title":"ErrorResponse"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

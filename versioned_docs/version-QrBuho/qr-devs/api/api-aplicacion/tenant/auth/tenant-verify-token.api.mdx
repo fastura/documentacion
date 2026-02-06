@@ -1,0 +1,71 @@
+---
+id: tenant-verify-token
+title: "Verificar token de Tenant"
+description: "Verifica la validez de un token JWT de tenant"
+sidebar_label: "Verificar token de Tenant"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVdtu20YQ/ZXFPLUAJbl55JuaJkUuRV1biR9sIRiSY3Ht5e56d6hEJfgx/YA8FP0E/VgwS+pixUgQVE/izu3M5cx0wLiKkF/DvOVaTdSCLFqGZQYVxTJoz9pZyOE9BX2rS1QG1RqNruhvVZFqrWJ3T1a9vlrINw/mGThPAcX2VQU5DM/Jx2Yh+pBBpLCmILE7aIOBHGpmH/PZrIttUblGW+16yGCNQWNhKELewUEkXxXdYmt4H2H6EKZFW7upQej7fplBoIeWIv/qqo0YyKcOVEHOoaUMSmeZLIsIvTe6TJhnd1GS7iCWNTUo/3jjCXJwxR2Vkt/B0TWg1x9SFaRsPkjqrAe4B9HBR+Sg7Urw9X0vnqJ3Ng76z87OhryOa58qptbbf4yuHPwP0I+xpTYeqRXOGUILfQZtpPB9B4+stWVaURBriw09kW8G1KA2X0syuHWhQWnjoNFnUAZCpuoD8jf1K2SasG4oofbVD9r0GbBmI3rvJOV+15SGuHYyud7FlDhyDTnM0OvZOo3x2FaZ47INmjdpkAvCQEG4BPn1UgZwJ76Urgx1O1ba45ThF29JTbqRlCAb/7zcoX99tYBTci72FHQFk9WVUxUZZdxKp3ai129ocxJweIQMtLioCasUbmieSO+T9HGk+fkr9YY2ymNAha2MoS6x1Nv/rKp0oJIxVVVm8eJAvRefsPGGThhxNBna3iZC77rx14VEmqhLHZkalNXyB9mIdxS2n1Fd1chx7v2T+EonsRgHkCuKPMAj1TzhQpXOqui8C0yqaQ3rybhLbuyNfYtKXHoKjWYanDmLIb+xEzU/yZ/UBUUyhkJUm3GTRlE8N2gpikJsE9pkIJLfj9CNBuqn0miyTPFn0fhNR++iZr12cQ9aBC/sevvZHaWVQj3HxuP2X0zRGgz3xNqubmRQZdsOVfplejY9GxcJloktY9svx0Kk+kN2spgfbdcscaNBe2S+uxJhvAr7rE4b1R2W2A+flnF+mT7xzBscRjwB7UaeppU8ZHxg6jKDWsicX0PXFRjpXTB9L88PLQWh7/JwaxJ7sx0rhNnChhyeD6gnC8Eg6qYd2HKyhvtsZzEvS/L8Td3l0b45//NS+F2M96pxldgE/Cg3Bz9CDum4inXaJemtA4N21eJKdAef8vsCKVnApA==
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-sistema-de-mensajeria-whatsapp
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Verificar token de Tenant"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/verify_token"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Verifica la validez de un token JWT de tenant
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["api_token"],"properties":{"api_token":{"type":"string"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Token válido","content":{"application/json":{"schema":{"type":"object","properties":{"valid":{"type":"boolean"},"user":{"type":"object","properties":{"id":{"type":"integer"},"name":{"type":"string"},"email":{"type":"string","format":"email"},"created_at":{"type":"string","format":"date-time"},"updated_at":{"type":"string","format":"date-time"}},"title":"User"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

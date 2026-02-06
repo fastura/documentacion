@@ -1,0 +1,117 @@
+openapi: 3.0.3
+
+info:
+  title: QRAPI - Label API
+  description: |
+    API para la gestión de etiquetas (labels) en chats y mensajes de WhatsApp.
+
+    Permite:
+    - Listar todas las etiquetas configuradas en la instancia
+    - Agregar o quitar etiquetas a un chat o mensaje específico
+
+    Las etiquetas son útiles para organizar conversaciones (ej. "Pendiente", "Cliente VIP", etc.).
+  version: 1.0.0
+  contact:
+    name: Soporte QRAPI
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor Tenant (multi-tenant)
+    variables:
+      subdominio:
+        default: tenant
+        description: Subdominio del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Label
+    description: Operaciones para gestionar etiquetas en WhatsApp
+
+paths:
+  /api/label/find:
+    get:
+      tags:
+        - Label
+      summary: Listar etiquetas
+      description: Retorna todas las etiquetas disponibles en la instancia de WhatsApp.
+      responses:
+        '200':
+          description: Lista de etiquetas
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Label'
+
+  /api/label/handle:
+    post:
+      tags:
+        - Label
+      summary: Manejar etiqueta en un chat
+      description: Agrega o elimina una etiqueta en un chat/mensaje específico.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - labelId
+                - action
+              properties:
+                number:
+                  type: string
+                  description: Número o JID del chat (ej. 51987654321@s.whatsapp.net)
+                  example: "51987654321@s.whatsapp.net"
+                labelId:
+                  type: string
+                  description: ID de la etiqueta (obtenido de /find)
+                  example: "1"
+                action:
+                  type: string
+                  enum: [add, remove]
+                  description: Acción a realizar
+                  example: "add"
+      responses:
+        '200':
+          description: Etiqueta actualizada exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  updated:
+                    type: boolean
+                    example: true
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Label:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único de la etiqueta
+        name:
+          type: string
+          example: "Pendiente"
+        color:
+          type: string
+          example: "#FF0000"
+        predefinedId:
+          type: string
+          nullable: true

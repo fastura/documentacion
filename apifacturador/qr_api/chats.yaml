@@ -1,0 +1,246 @@
+openapi: 3.0.3
+
+info:
+  title: QRAPI - Chats API
+  description: |
+    API para la gestión de chats individuales (conversaciones 1:1) en un entorno multi-tenant.
+
+    Endpoints incluidos en este archivo:
+    - Listar/obtener chats
+    - Archivar/desarchivar chats
+    - Marcar como leído
+    - Eliminar chat
+    - Cambiar estado de presencia/typing
+
+    Nota: Los endpoints de envío de mensajes (texto, imagen, video, etc.) están en la sección "Send Message" separada.
+  version: 1.0.0
+  contact:
+    name: Soporte QRAPI
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor Tenant (multi-tenant)
+    variables:
+      subdominio:
+        default: tenant
+        description: Subdominio del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Chats
+    description: Operaciones sobre chats individuales (excluye envío de mensajes)
+
+paths:
+  /api/chat/find:
+    get:
+      tags:
+        - Chats
+      summary: Listar todos los chats
+      description: Obtiene la lista de todos los chats individuales y grupos de la instancia.
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Cantidad máxima de chats a retornar
+          required: false
+        - name: offset
+          in: query
+          schema:
+            type: integer
+          description: Offset para paginación
+          required: false
+      responses:
+        '200':
+          description: Lista de chats
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Chat'
+
+  /api/chat/find/{remoteJid}:
+    get:
+      tags:
+        - Chats
+      summary: Obtener información de un chat específico
+      description: Retorna los detalles de un chat por su JID remoto.
+      parameters:
+        - name: remoteJid
+          in: path
+          required: true
+          schema:
+            type: string
+          description: JID del chat/contacto (ej. 51987654321@s.whatsapp.net)
+          example: "51987654321@s.whatsapp.net"
+      responses:
+        '200':
+          description: Detalles del chat solicitado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chat'
+
+  /api/chat/read:
+    post:
+      tags:
+        - Chats
+      summary: Marcar chat como leído
+      description: Marca todos los mensajes no leídos de un chat como leídos.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - remoteJid
+              properties:
+                remoteJid:
+                  type: string
+                  description: JID del chat/contacto
+                  example: "51987654321@s.whatsapp.net"
+      responses:
+        '200':
+          description: Mensajes marcados como leídos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+
+  /api/chat/archive:
+    post:
+      tags:
+        - Chats
+      summary: Archivar chat
+      description: Archiva un chat de la lista principal.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - remoteJid
+              properties:
+                remoteJid:
+                  type: string
+                  example: "51987654321@s.whatsapp.net"
+      responses:
+        '200':
+          description: Chat archivado correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  archived:
+                    type: boolean
+                    example: true
+
+  /api/chat/unarchive:
+    post:
+      tags:
+        - Chats
+      summary: Desarchivar chat
+      description: Quita el estado de archivado de un chat.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - remoteJid
+              properties:
+                remoteJid:
+                  type: string
+                  example: "51987654321@s.whatsapp.net"
+      responses:
+        '200':
+          description: Chat desarchivado correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  unarchived:
+                    type: boolean
+                    example: true
+
+  /api/chat/delete:
+    post:
+      tags:
+        - Chats
+      summary: Eliminar chat
+      description: Elimina un chat (para mí o para todos, según configuración).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - remoteJid
+              properties:
+                remoteJid:
+                  type: string
+                  example: "51987654321@s.whatsapp.net"
+                deleteForEveryone:
+                  type: boolean
+                  description: Intentar eliminar para todos los participantes (si aplica)
+                  default: false
+      responses:
+        '200':
+          description: Chat eliminado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: "Chat eliminado exitosamente"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Chat:
+      type: object
+      properties:
+        id:
+          type: string
+          description: JID del chat
+        name:
+          type: string
+          description: Nombre mostrado o alias
+        isGroup:
+          type: boolean
+        unreadCount:
+          type: integer
+        isMuted:
+          type: boolean
+        timestamp:
+          type: integer
+          description: Timestamp del último mensaje
+        archived:
+          type: boolean
+        pinned:
+          type: boolean
+        # Otras propiedades según tu implementación real

@@ -1,0 +1,103 @@
+---
+id: qrapi-send-message-api
+title: "QRAPI - Send Message API"
+description: "API para el envío de mensajes individuales (chats 1:1) en un entorno multi-tenant."
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 1.0.0"}
+>
+</span>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"QRAPI - Send Message API"}
+>
+</Heading>
+
+
+
+API para el envío de mensajes individuales (chats 1:1) en un entorno multi-tenant.
+
+Incluye todos los tipos de mensajes soportados por WhatsApp:
+- Texto simple
+- Imágenes, videos, documentos, audios/voz, stickers
+- Ubicaciones, contactos, reacciones, encuestas (polls)
+- Mensajes interactivos (listas, botones)
+
+Todos los endpoints usan el número de destino (`number` o `remoteJid`) y requieren autenticación Bearer.
+
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"bearerAuth"}
+    >
+      
+      
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                http
+              </td>
+            </tr><tr>
+              <th>
+                HTTP Authorization Scheme:
+              </th><td>
+                bearer
+              </td>
+            </tr><tr>
+              <th>
+                Bearer format:
+              </th><td>
+                JWT
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div><div
+  style={{"display":"flex","flexDirection":"column","marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3
+    style={{"marginBottom":"0.25rem"}}
+  >
+    Contact
+  </h3><span>
+    Soporte QRAPI: 
+  </span><span>
+    URL: [https://qr.buho.la](https://qr.buho.la)
+  </span>
+</div>
+      

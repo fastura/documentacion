@@ -1,0 +1,72 @@
+---
+id: enviar-video
+title: "Enviar video"
+description: "Envía un video por URL o base64 (con opción de gifPlayback)."
+sidebar_label: "Enviar video"
+hide_title: true
+sidebar_position: "4"
+hide_table_of_contents: true
+api: eJylVc1u4zYQfhViTjag2PF2d9vqli1SIIsumsZO9+AYyIic2EwkkiEpb1xBD9MH2FNvvebFiqHkv2TRy+oiiZwZznwz38cGIi4D5HOYklHiE4WAS4JFBoqC9NpFbQ3kcG7Wz19R1EastSIrnPXi+uo3YUWBgd6/FQNpjbBO6ud/jFAklvrussRNgfJhOIIMPD3WFOIHqzaQN+lXe1KQR19TBtKaSCbyFjpXaol88Pg+8OkNBLmiCvkrbhxBDra4Jxn7uF2gOZi6KshDBhUpjVyE89aRj5oC+/b7+yghem2WkAE9YeVKXno3+fmnH9+/e/vDmwm020jf8DiG5wgKRWWHEgeQ2Nu8DNFmcIDRwX5hbUlo0hl3WJcR8jssA7Xp4YqDsyZ0Jb05nfDrOJs/U4vIrDUqC98B7jF8IWKswzcz3eHH3Wy3mVYUV1ZBDs6GFA7jCnIYo9Pjqpu0cSCjUr6QQSC/Js/T2EDtS8hhFaML+XjchLpQttJG23b06EdFvbKjEl/1YUp+rZX1YkYGTRSDqi6jPonpbwgZrNFrLMq+oF3QDsMebejMXwffmacW91Zt2y44dVl7HTcp94LQkz+rudr54nB7ylB3hx8a7RDlehmIZMYIJyPI+o9fra+QM/z4eQaMMLfwas+s820b9rN+NNC7ed7P8W4+90tHY9mNXgba3CWUoo6JJ39cnV1eiBNxKBvi7PLiFWps5tCjoJJH8vkroycqMgHvKQhtlF5rVWNJQQzkCmMQk3wyFGRYbchE640Vh30c3Zgbc2FkWW9IRKtsEKUNImpnw1HsYJ31EdmA9eozBz9zLr8xJ2JGT9GKoBkv/r+onv9ekqGQddwNmVBW1hUnEDKBtdI2jNf2r0yEqOUD+cBu14WWKLVNjswzlMneE8rtMhnJDcIgBs6WZRiy46c9AJE8yqjXNohBqdkwE4WN7DzkUme7EskoZ7WJQdQBDSNqnv+tyCdIFYWojRWD2673t8KKW0+VjfRRq9uh2IgkluTJCKxZEVLuLNgf0niNbpjLTMGudZPR6ei01w+UST8MprmcJmRJpCmA7AVbDwjKQ8rsr9AcuJ+zNPleJF8MTLOXq++/dXpaRXqKY1eiNiy7KdmmV6M5oNOJGN3Nx1zdKtIigxUrVz6HpuETr33Ztrz8WJNnri/2ipKonsGKUDHv5g080AZy+KWr5mTGqbB5WXNKr4S4zbYeZ1KSi/9ruzgQ18vfpzNWiP5mraxiH49f+HbEL5ADZGATukl40loDJZplzRXn0MXk5z+QPs4X
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-send-message-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar video"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/message/sendVideo"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía un video por URL o base64 (con opción de gifPlayback).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["number","media"],"properties":{"number":{"type":"string","example":"51987654321"},"media":{"type":"string","description":"URL o base64 del video"},"caption":{"type":"string"},"gifPlayback":{"type":"boolean","default":false}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Video enviado","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -218,12 +218,12 @@ const config: Config = {
             baseUrl: "/facturador",
             sidebarOptions: {},
           },
-          gestion_tenants: {
+          /**gestion_tenants: {
             specPath: "apifacturador/gestion_tenants",
             outputDir: "docs/facturador/gestion_tenants",
             baseUrl: "/facturador",
             sidebarOptions: {},
-          },
+          },*/
           locked_admin: {
             specPath: "apifacturador/lockedAdmin",
             outputDir: "docs/facturador/locked-admin",

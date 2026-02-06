@@ -1,0 +1,71 @@
+---
+id: enviar-url-de-invitacion
+title: "Enviar URL de invitación"
+description: "Envía la URL de invitación a números específicos vía mensaje."
+sidebar_label: "Enviar URL de invitación"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVs1S40YQfpWpPi1VwjZeSFid4l3IFtTWhgBbHIwPbamRxyvNDD0jg+Pyw+QB9pRbrrxYqkfCFiY/lVR0sWbc03/f199oBQELD+kYPrKtnYdJAjn5jLUL2hpI4dQsnr6hKlF9ufykclLaLHTATD/9ZhQq8/R7RWy9Iu8oe/p2pzPrVTxSkfE4px4kwHRfkw/vbb6EdBWXmimHNHBNCWTWBDJB/kLnSp2hBO/PvWSwAp/NqEJ5C0tHkIKdzikLrd/G0RgKKeBc55CAqaspcSzGsXXEQZOX8xubrS8fWJsCdss+O1E5larg2ln15vzsZE/qoEesXCnHDoaDt9+9PRwcHr47GgyHx0eHPxS92sN6x9E/xTlpVk07rcu0NVgqh4yKym4Lt6FHWUbeqzDTXpXafFXBqrnVRlVLdTPD4EfOqVhpKuk8N2ObCjLjEhLQgSr/OsXdEuCT9gEF+g3YqErr1X1NisxCIws9Orx4ke8Yjg7eDQ4Pj46Hw+9hso6PQOedNb7BZTg4kJ8dCDpEi2FyVPSog/VYkQmxK/+ZOS954cl0OTG1tiQ03SqEqOsEYpH0hcs/Q3YL0SwE59N+P5th6D0IJuhcL7NV/7wcXY8+D2+OP1++H06P56fZ8QFrWD+3paIwszmk4KyPeWKYQQr9iGe/Cd+P6SbgiRcR2fEKaklpE3fl62luK220XffuuTetZ7ZX4iv2XREvdG5ZXZNBE9Sbqi6D3g9xtQcJLJA1Tsu2SxunDVh3WJcBUmjMXzvfmMdRaq3W6/VEUs9q1mEZc58SMvGolkrHk+7fV4JfE7xrtGm91CuNiGYCXDSCpH350XKFkuH5zTVId4UXl1stOn0GrKsMfznau/X9mznsjOHuPAip7mJHgw6RPT9fji7O1L5qJFmNLs5ex744a0SiRFWQD3FIcmr0yisyqpahCZaNVV1Qe7fm1lwQVzpQemv21Qcm5PZcXFvj6zJs9tRSAgWdaYcmULQZZaHGUv+CrCoKmGOwviuXxlZTpkTlHXFLlK6wILMXHeTCCx8Y+aV39QYLpgI5UUyVXRAnyrFt33IqGHPk6OOjlG0N8kZ5rBEHdhrIUHSwsBlyn6mQDfHZqNVeW+edLuo2g6dfKwr8sgpnWdGcKlfaRKGpTaZjO1pR9ipQ5SxjSX7vVsRChrGB56A36A1aecIsypPByNAr6ywHUhFjSHbmtjOqQlfRgApN5/hpI7evr+Jdhqy20vj/XOHtxAV6DH1XojZyT9SNEDYi1V7B8KySUaFMLrfwTMQsHcNqNUUv8rley/Z9TSwSMNkKTVSABGaEOXFUh6+0hBQ+NNXsX0saYl7W8SrbFf118nxCxtOFv7WddPT24qeraxGO9hOlsrmcYXyQzwx8gBQgARu7G/Uo7q2gRFPUWIht41OePwCA8kWN
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar URL de invitación"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/group/invite/send"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía la URL de invitación a números específicos vía mensaje.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid","numbers"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"},"description":{"type":"string","description":"Descripción opcional para el mensaje.","example":"Access this link to join my WhatsApp group:"},"numbers":{"type":"array","items":{"type":"string"},"description":"Lista de números a los que enviar la invitación.","example":["51904458227"]}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Invitación enviada exitosamente.","content":{"application/json":{"schema":{"type":"object","properties":{"send":{"type":"boolean","example":true},"inviteUrl":{"type":"string","example":"https://chat.whatsapp.com/JlATAN2W8NRB2b8jEc81ri"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

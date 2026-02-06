@@ -1,0 +1,203 @@
+openapi: 3.0.3
+
+info:
+  title: QRAPI - Integrations API
+  description: |
+    API para la gestión de integraciones externas, principalmente webhooks.
+
+    Permite:
+    - Configurar un webhook global o por eventos para recibir notificaciones en tiempo real de la instancia WhatsApp.
+    - Eventos soportados incluyen: conexión, QR, mensajes (upsert, update, delete), contactos, presencia, grupos, llamadas, etc.
+    - Opciones avanzadas: envío por evento individual, base64 para multimedia, headers personalizados.
+
+    Esta sección es clave para integrar la API con sistemas externos como n8n, Zapier, Make.com, Node-RED, etc.
+  version: 1.0.0
+  contact:
+    name: Soporte QRAPI
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor Tenant (multi-tenant)
+    variables:
+      subdominio:
+        default: tenant
+        description: Subdominio del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Integrations
+    description: Configuración de integraciones externas (principalmente webhooks)
+
+paths:
+  /webhook/set:
+    post:
+      tags:
+        - Integrations
+      summary: Configurar webhook
+      description: |
+        Establece o actualiza la configuración del webhook para la instancia.
+
+        - `enabled`: Activa/desactiva el webhook.
+        - `url`: URL destino donde se enviarán los eventos (POST).
+        - `headers`: Headers personalizados (ej. Authorization Bearer).
+        - `byEvents`: Si true, genera URLs separadas por cada evento.
+        - `base64`: Si true, envía multimedia en base64 en lugar de URL.
+        - `events`: Lista de eventos a escuchar (ver descripción completa abajo).
+
+        Eventos disponibles (selecciona los que necesites):
+        - APPLICATION_STARTUP
+        - QRCODE_UPDATED
+        - MESSAGES_SET
+        - MESSAGES_UPSERT
+        - MESSAGES_UPDATE
+        - MESSAGES_DELETE
+        - SEND_MESSAGE
+        - CONTACTS_SET / CONTACTS_UPSERT / CONTACTS_UPDATE
+        - PRESENCE_UPDATE
+        - CHATS_SET / CHATS_UPSERT / CHATS_UPDATE / CHATS_DELETE
+        - GROUPS_UPSERT / GROUP_UPDATE / GROUP_PARTICIPANTS_UPDATE
+        - CONNECTION_UPDATE
+        - LABELS_EDIT / LABELS_ASSOCIATION
+        - CALL
+        - TYPEBOT_START / TYPEBOT_CHANGE_STATUS
+        - REMOVE_INSTANCE
+        - LOGOUT_INSTANCE
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webhook:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                      example: true
+                    url:
+                      type: string
+                      example: "https://n8n.fastura.co/webhook-test/evolution"
+                    headers:
+                      type: object
+                      additionalProperties:
+                        type: string
+                      example:
+                        autorization: "Bearer TOKEN"
+                        Content-Type: "application/json"
+                    byEvents:
+                      type: boolean
+                      example: false
+                    base64:
+                      type: boolean
+                      example: false
+                    events:
+                      type: array
+                      items:
+                        type: string
+                      example:
+                        - "MESSAGES_UPSERT"
+                        - "CONNECTION_UPDATE"
+                        - "CALL"
+      responses:
+        '200':
+          description: Webhook configurado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Webhook configurado exitosamente"
+                  data:
+                    type: object
+                    description: Detalles de la configuración creada/actualizada (id, url, events, etc.)
+        '500':
+          description: Error al configurar (ej. URL inválida, permisos)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 500
+                  error:
+                    type: string
+                    example: "Internal Server Error"
+                  response:
+                    type: object
+                    properties:
+                      message:
+                        type: array
+                        items:
+                          type: string
+
+  /webhook/find:
+    get:
+      tags:
+        - Integrations
+      summary: Obtener configuración de webhook actual
+      description: Retorna la configuración activa del webhook para la instancia (si existe).
+      responses:
+        '200':
+          description: Configuración del webhook encontrada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                  url:
+                    type: string
+                  headers:
+                    type: object
+                  byEvents:
+                    type: boolean
+                  base64:
+                    type: boolean
+                  events:
+                    type: array
+                    items:
+                      type: string
+        '404':
+          description: No hay webhook configurado
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    WebhookConfig:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        headers:
+          type: object
+        enabled:
+          type: boolean
+        events:
+          type: array
+          items:
+            type: string
+        webhookByEvents:
+          type: boolean
+        webhookBase64:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time

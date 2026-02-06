@@ -1,0 +1,9 @@
+{
+    "label": "Etiquetas",
+    "position": 7,
+    "link": {
+      "type": "generated-index",
+      "slug": "Etiquetas",
+      "description": "Gestión de etiquetas en conversaciones de WhatsApp: listar etiquetas disponibles y asignar/quitar etiquetas a chats o mensajes específicos."
+    }
+  }

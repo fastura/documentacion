@@ -1,0 +1,72 @@
+---
+id: enviar-tarjeta-de-contacto
+title: "Enviar tarjeta de contacto"
+description: "Envía vCard con nombre y número."
+sidebar_label: "Enviar contacto"
+hide_title: true
+sidebar_position: "9"
+hide_table_of_contents: true
+api: eJylVcFu20YQ/ZXBnGyAlqy0aVPelMAFHCCoGyvIQRbgIXdirUPurHeXilVCH9MPyKm3XPVjxZC0JNtpUaC8SFzOvJ15++Zti4luIuZzvGRn4B3HSDeMiwwNxzJYn6w4zPHMrbZfCVZvKBgoxYGTuggMa3DbbzUHGWGGge8ajum1mDXmbfdqAxvMU2g4w1JcYpf0E3lf2ZIUfHwbdYcWY7nkmvRfWnvGHKW45TINuD3QHF1TFxywR6Myaak+iOeQLEfNHiL2ODEF624wQ76n2le69HLyy6uff3r54w8vJrjZY31n7yfYVPNz5E32j5tuhkebiF5c7HFenE705zHHb/oqBNitLBnB/0HZ47JjotTEg7hCpGJyh5zoGe2KrTktxWCOXmIHR2mJOY7J23Hda2Qc2ZmhZMwwclhxUCW12IQKc1ym5GM+HrexKYzU1lnZjO7CqGiWMqoIn0rsksPKGgkwY0cuwVHdVMmepO7tGDNcUbBUVENLO9CeyE/UVAlz7MOfg+/CwXAFQ9Rms1lo6WUTbFp3tRdMgcO00X7ni8PPl0p2v/lh0I5T7VeJ6MKU4y4Is+HPrxJq0grffpyhcqyH+H4/MWcPB7FX8COZPlJpr8O9sncZO9llaN2njptkU6f5399PL87hBA4HHaYX58+40jBPgYArleL2q3IGNbtItxzBOmNX1jRUcYSjckkpwiSfHAM7aBywSxKcwOHpja7clTt3ZdWsGZIYiVBJhGS9xEfYUbyERBrgJcBHBZ96n1+5E5jxfRKIVlnS9/N6++cNO44ZrKxhiRkYKZtaC4gZUGOsxPFK/sggJlt+5hA17UNhSyqtdIkDpRofmMqHZXalHgtFOPJSVfFYE9/tCUgcqEx2JRGOKquBGRSSNPlYW53tWmRnvFiXIjSRnDI6+KW2bTgm6wSOrvvzuwaB68C1JH5rzfUxrKGzPg7sgBp1gq727V8OXneiGl3pDOvg9Uc3GZ2OTr8rlcuOWYZOBZg9mdGDsVTp6NTX5A7Sz9SSAiQKt5xIi3+g7ql82r1p/bdbYxifxPdp7CuyTv20K68dfGeO5C2qK/W3k87k3nsWGS7VpfI5tm1BkT+EarPR5buGg071Yu8d3VBnuGQyOi/zFj/zevBedulkpsVoeNVoUc9Md5M9ZEzLkn3619jFgZFe/HY5Uy8Y7sZajOYE+qL3G33BHDFD6TjsLKZba7Eid9Nozzn2mPr8Ddctst8=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-send-message-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar tarjeta de contacto"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/message/sendContact"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía vCard con nombre y número.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["number","contact"],"properties":{"number":{"type":"string","example":"51987654321"},"contact":{"type":"object","properties":{"name":{"type":"string"},"number":{"type":"string"}}}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Contacto enviado","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

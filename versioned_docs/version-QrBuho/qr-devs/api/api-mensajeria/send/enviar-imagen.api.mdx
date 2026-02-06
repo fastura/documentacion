@@ -1,0 +1,72 @@
+---
+id: enviar-imagen
+title: "Enviar imagen"
+description: "Envía una imagen por URL o base64 con caption opcional."
+sidebar_label: "Enviar imagen"
+hide_title: true
+sidebar_position: "3"
+hide_table_of_contents: true
+api: eJylVcFuG0cM/RWCJxtYS1aapO3enMIFHDRoasvIQRZgaoeWxtkdjmdmFSuCPqYfkFNvuerHCs5KllQXvmQvuzNLcsjHxzdLTDSNWI7wip2BDxwjTRnHBRqOVbA+WXFY4rmbr78RtI7ANjRlB14CXF/+AQITivz2NVTioKLsAOIrK47qHhYY+KHlmN6JWWC5zEsb2GCZQssFVuISu6S/yPvaVqQR+vdRz11irGbckH6lhWcsUSb3XKVN3C7QCF3bTDhggQ0bS5q+D+I5JMtRfTf/d1FiCtZNsUB+pMbXuvVm8OsvP7998/qnVwNcbSP9j8chMAqBX3+faOI7LAxDvUXq4JBZSj6W/f5mp1dJ07+TJL17P9VTNwC+nOl5TAQcobGgvnBHcwk2Ea7yo9BELy52tb86HejrMO2Lrons5pYM4Q+04RDomCi1cc9uIlIzHYCgfV9tU204zcRgiV5iDkdphiX2ydt+07GxH9mZnDAWGDnMOShjl9iGeg/SZWwnRhrrrKx6D6E3aWfSq+lZx644zK2RAEN25BIcNW2d7EnKq2MscE7B0qTeFPQUtAPxjto6YYmd+fPgT+ZguIaN1Wq1GmvqVRtsWuTcJ0yBw1mr1Y7G+7+vFOru8H2jJ0S1XgUimynC2QiLzcfvEhrSDN9/GqIirC283M3g+bYNu6k4oP4T81/m6h5VX+BjgdbdZeSSTZm7f12efbyAE9iXGzj7ePEMSTXzFAi4Vpquvymi0LCLdM8RrDN2bk1LNUc4qmaUIgzKwTGwg1aJnSQ4gf3e9m7cjbtwVd0uGJIYiVBLhGS9xIPYUbyERGqgKvdJg595X964ExjyYxKIVhHR9UWz/nvKjmMBc2tYYgFGqrbRBGIB1BorsT+XrwXEZKvPHKK6XU9sRaqR6qizR1W2D0zVdptdpU2jCEde6joeq+OHHQCJA1XJziXCUW3VsICJJHU+1lKHTyWyM16sSxHaSE4RdevvDYcMqeGYrBM4uu34cAsCt4EbSfzemttjWECWWg7sgFpViZz7+h8H7zLlejc63zqWXesGvdPe6UZTqMqa4ihz9Sojy5BZgMV/JnhvaJW4qggNuT33c5WrsNPVA8Ysdxr2I9fVZsoSP6a+r8k6ZXHOc7kRpxGSt3lOustSR3crUOMCZypk5QiXSz3pOtSrlW4/tBx09Mc7gcmTX+CMyegYjpb4mRdY4m9dHSdDTUXN61ZTeqbLq2LrcVZV7NOLtuM9rf3459VQBWNzJTdi1CfQF71W6QuWiAVKxibrUN5bYk1u2mqVJXYx9fkX/P/gMQ==
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-send-message-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar imagen"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/message/sendImage"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía una imagen por URL o base64 con caption opcional.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["number","media"],"properties":{"number":{"type":"string","example":"51987654321"},"media":{"type":"string","description":"URL pública o base64 de la imagen","example":"https://example.com/foto.jpg"},"caption":{"type":"string","example":"Esta es mi foto favorita"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Imagen enviada","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

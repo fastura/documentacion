@@ -1,0 +1,64 @@
+---
+id: obtener-todos-los-grupos
+title: "Obtener todos los grupos"
+description: "Retorna una lista de todos los grupos en los que participa la instancia."
+sidebar_label: "Listar grupos"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "13"
+api: eJytVMFuIzcM/RWBpwRQPGmPcwt22yCLok03W/SQ+EDPMGOlGkqhKKOuMR/Tb+gn7I8V0szGTnLopb6MJD8+kdTjO4DikKC9h2sJOSZYW+gpdeKiusDQwmfSIIwmMxrvkqLpyWjoQzI+JDNIjiEZ4rp7zmQiirrORTQejeOkyJ3DFVgQSjFwogTtAb6/vCyf15f99O2CmbYEdYGVWAsWY/Suw4JtnlIJOEDqtjRiWek+ErSAIrgHC05pTCfnYfNEnYKFKCGSqJvTcP0JJqk4HuBtC24+mp78nJM5+3Tz8XwFk4WUZ8r/jP85jBuhI8cKpsmCOvUlqDYepvqzMJJuQw8tDFSTRd1CCw1G1wwF2Dw67hv0Hiwkkh1Jeb0DZPHQwlY1prZpDilv+jA6dmFaPctqk7dh5fFdZnckO9cHMV+IkdWcjdmru9C6OwcLOxSHGz/36kg6v9wjZq/Qwgx/T/4Cr6UvqGma1iX1LovTfc19QygkV7mUer8+/fuuvO58+SnopeGl3tKICoN2AYFdFj8GGbFk+On3L7Xnjh9r7t96/+vnq9sbc2Fm8Zur25t3VRRARKlqHiip+/oPHxVahJ/ZEJchCea0fasHfuBbktEptQ98YT4IoSxxdR84Za8vZ2Z/nB1WqpirTjN69xeKGUmxRw3pVIxcpWXNknNXsrPGjTgQn1eCvrxAUkF5zW7OcBAaUKwRGsOOxJooYVn1NAj2KJXjupQdGMU43jnFzgUuBGGjxFQJdqFDaYSGclA4iXduCf8Q+NENecng698jqbyuIgYx9ERj9MEa5Mydq+0YiRM+UTJKYwyCntL5AxdZkqT5eb5bXa4uF5vAeRgZqxbuQgyiZOobg30zISdDUYQRQ9IR+ST8l7m4d1b3ViCHo0P9n165CFzpT22iR8fFcWoJh8UU7gGjAwvVFsBCMQawUKxhbWEbkhbM4bDBRL+Jn6Zy/JxJytCtj6NdZ87ClrAnqfP4B+2L8LuOolYP8Lk661v7LZP64lfXP5QR+xcSeDYI
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Obtener todos los grupos"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/group/find/all"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retorna una lista de todos los grupos en los que participa la instancia.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de grupos.","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"ID del grupo (JID)."},"subject":{"type":"string","description":"Nombre del grupo."}},"title":"Group"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

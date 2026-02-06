@@ -1,0 +1,171 @@
+openapi: 3.0.3
+
+info:
+  title: QR Buho API - Devices Management
+  description: |
+    Endpoints para la gestión de **dispositivos WhatsApp** en un tenant/cliente.
+
+    Estos endpoints permiten:
+    - Crear y vincular un nuevo dispositivo (escaneo de QR)
+    - Listar todos los dispositivos conectados del tenant
+    - Eliminar un dispositivo
+    - Obtener información detallada del dispositivo actual
+
+    Requieren autenticación con token JWT del tenant.
+  version: 1.0.0
+  contact:
+    name: Soporte QR Buho
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor específico del tenant (cliente final)
+    variables:
+      subdominio:
+        default: demo
+        description: Subdominio único del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Devices
+    description: Gestión de dispositivos WhatsApp (Tenant)
+
+paths:
+  /api/devices/create:
+    post:
+      tags:
+        - Devices
+      summary: Crear y vincular nuevo dispositivo
+      description: Registra un nuevo dispositivo WhatsApp y genera el QR para vinculación.
+      operationId: createDevice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - phone
+              properties:
+                name:
+                  type: string
+                  description: Nombre descriptivo del dispositivo
+                  example: "Mi WhatsApp Principal"
+                phone:
+                  type: string
+                  description: Número de teléfono en formato internacional
+                  example: "51987654321"
+      responses:
+        '201':
+          description: Dispositivo creado y QR generado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  phone:
+                    type: string
+                  qr_code:
+                    type: string
+                    description: URL o data URI del código QR para escanear
+                  status:
+                    type: string
+                    enum: [pending, connected, disconnected]
+        '422':
+          description: Error de validación
+
+  /api/devices/list:
+    get:
+      tags:
+        - Devices
+      summary: Listar dispositivos
+      description: Retorna todos los dispositivos WhatsApp vinculados al tenant.
+      operationId: listDevices
+      responses:
+        '200':
+          description: Lista de dispositivos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+
+  /api/devices/delete/{id}:
+    delete:
+      tags:
+        - Devices
+      summary: Eliminar dispositivo
+      description: Desconecta y elimina un dispositivo por su ID.
+      operationId: deleteDevice
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID del dispositivo
+      responses:
+        '200':
+          description: Dispositivo eliminado exitosamente
+        '404':
+          description: Dispositivo no encontrado
+
+  /api/devices/fetch:
+    get:
+      tags:
+        - Devices
+      summary: Obtener información del dispositivo actual
+      description: Retorna detalles del dispositivo WhatsApp actualmente activo o principal.
+      operationId: fetchDevice
+      responses:
+        '200':
+          description: Información del dispositivo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Device:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Mi WhatsApp Principal"
+        phone:
+          type: string
+          example: "51987654321"
+        status:
+          type: string
+          enum: [pending, connected, disconnected]
+          example: "connected"
+        qr_code:
+          type: string
+          nullable: true
+          description: Solo presente si el estado es 'pending'
+        connected_at:
+          type: string
+          format: date-time
+          nullable: true
+        last_activity:
+          type: string
+          format: date-time
+          nullable: true

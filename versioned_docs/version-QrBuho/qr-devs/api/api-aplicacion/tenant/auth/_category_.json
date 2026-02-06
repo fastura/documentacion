@@ -1,0 +1,9 @@
+{
+  "label": "Autenticación",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "slug": "auth",
+    "description": "Login y verificación de token para tenants"
+  }
+}

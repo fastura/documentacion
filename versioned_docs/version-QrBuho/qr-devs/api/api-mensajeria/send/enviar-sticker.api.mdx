@@ -1,0 +1,72 @@
+---
+id: enviar-sticker
+title: "Enviar sticker"
+description: "Envía un sticker estático o animado."
+sidebar_label: "Enviar sticker"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "11"
+api: eJylVU1v20YQ/SuLOUkALVlpkra8OYULOGhQ15KRgyzAQ+7EWofcWe8uZSsEf0x+QE699ao/VsxSX46LokB5kbicGc68ee+xhYh3AfI5TMlq9YFCwDuCRQaaQumNi4Yt5HBuV5tvqBqrQjTlZ/KKQtx8jaZkxQqtqVHzCDLw9NBQiO9YryFv063xpCGPvqEMSraRbJRH6FxlSpQXjO+DvKWFUC6pRvkX144gBy7uqYzbun2hOdimLshDBjVpg9Ks8+zIR0NBcrfPD1VC9MbeQQb0hLWr5OjN5Oeffnz75vUPrybQ7Sr9Q8ZzGK6vflOsCgz09rXSVO3RGDxScTmELl3SbXBsQ9/Oq9OJ/DyvNN3BaFcGNcP/gOb58CFibMJRXMFcEdrj6WUX3a7XmuKSNeTgOKRyGJeQwxidGdc9H8aBrN52DBkE8ivywpoWGl9BDssYXcjH4zY0hebaWMPd6MGPimbJowpf4DglvzKavZqRRRvVoG6qaE5iuhtCBiv0BotqO9K+aI/jJ2yqCDn04S+L78PTirZRXdctpPWy8SauU+8FoSd/1si888Xx46mA3b/8OGiPqcwrQKQwwTgFQbb98yv7GqXD9x9nIBjLEq8OyjjfLeLA1WeE3PNxx8MuA2M/pfGjiYnAf1ydXV6oE3WsW3V2efECDglz6FFRJWzbfBNYVE024D0FZaw2K6MbrCioQbnEGNQknwwVWZE72cjesjpe0OjG3tgLW1bNmlRkzUFVHFQ0jsOz2oEd+4gS4Nirj1L8zLn8xp6oGT1FVsEIEHJ/UW++3pGlkKmV0cQhU5rLppYGQqaw0YbDeMVfsp3ogqRdF6bE0nBKFAlhmeI9Ybk7JlsK8hjUwHFVhaEkfjgAEMljGc2KgxpURgIzVXCU5KGMOtuPSFY7NjYG1QS0gqjd/FWTT5BqCtFYVoPbfqm3itWtp5ojvTf6dqjWKrkYebIKGxF76n3zp1XvEm9GNyJT0Va/usnodHS6tQYskzVYTISbJmRJJRZA9p0Mj5Qn7BNh12iP0s/FdfwOyO8p0x686L8b/1YZkZ7i2FVorJA2tdVuLWUO6Ezidv+REbkdbGWRwVIMKJ9D24rDXvuq6+T4oSEvgl0cbCHpNYMloRbxzFv4TGvI4Ze+75OZNCPhVSNNvfDTLttlnJUlufivsYsjj7z8fToTmW8/bzVryfH4KJ8ofIQcIANOOCb3SGctVGjvGpk5h76mXH8D/FWeDQ==
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-send-message-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enviar sticker"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/message/sendSticker"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Envía un sticker estático o animado.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["number","media"],"properties":{"number":{"type":"string","example":"51987654321"},"media":{"type":"string","description":"URL o base64 del sticker (webP)"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Sticker enviado","content":{"application/json":{"schema":{"type":"object","properties":{"status":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

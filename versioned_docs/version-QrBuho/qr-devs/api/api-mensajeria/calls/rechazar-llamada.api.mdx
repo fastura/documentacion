@@ -1,0 +1,71 @@
+---
+id: rechazar-llamada
+title: "Rechazar llamada"
+description: "Rechaza una llamada entrante activa (si la instancia está en llamada)."
+sidebar_label: "Rechazar llamada"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVc1y2zYQfhXMnqwZWrLTpj88VU3bGXkyjWM7k4OtwxJci3BAgAaWshUNHyYP0FMfwS+WWZCKGKuT6SG8ECR2F99+u99iC4yrCPk1vEJrYZlBSVEH07DxDnK4IF3hR1StQ2Ut1liiIscBHZNCzWaN6igaZVEZFxmdNqgo8tMnRW7nMZlCBoHuW4r8uy83kG/TpwlUQs6hpQy0d0yOZQubxhqNgmB2FwXGFqKuqEZZ8aYhyMEXd6QZMmiCbyiwodiHrT3TmSlHppGDcSt4ntrZ4g9VklVyMmr26r6lHjFkQI9YN1a8X57++svPP7388YcXp7/F6UOFHLFppo4Yugw0Wrv4H4els4SlHYlCGqY8J9ClRyiKjXexz+TFyYm8vg7zevAOfVmkGI+GfcSaHBN8NxpjqzXFODIsvLeEbkyNFK7LoKYYcUX/xcGexQPgQ9LJnytfQg6NjwkJcgU5zLAxM6F3FmjAGCmsKUi3bqENFnKomJuYz2bb2Balr40zvpveh2nRVn5q8aAMlxTWpvRBXZFDx+qobi2bY05fE8hgjcFgYXcs7IL2lbjF1jLk0JsfBv9invpqsOq6binQdRsMbxL2gjBQmLeS5/VyvH0p9ekPHxt9YVbyFSKSmVQlGUE2LP7yoUZBePb+CoRbqfvFXnh/7urxlVC+1eL7Dt9VtcvAuNvECBtOxX17MT9fqGMlI0TNzxcHzMh2gwFFACuKbJ7+dWojyoutZUzS6BskqqO1/zhbm5L8REbIe0Ezb5rpjbtxC6dtu6H8xh2rNwWTo6AETKhRp5jRF2EUqx9QUXlVmcg+GLTiOtfaeEdRFU+fotEYlfa13/VmUF7dGofWyHqP6/mUs15F3/jAOBFsf3vGXL1GVePGh6d/Ula0Jsc+jhJUkVSNju7QqbVYPVBRef9BEqegIuk+k4VjWoWk3jiZ3ojwpPd7Pk+nJ9OTQe2ok9odpoa4TIhIpZJA9kwmI2VId4jganQj94sdBQPa55Xc7gfMd7wahuZmeuRZY9E4abKEfDtMg2vAxgzNmO6SNBGWGVQyM/Jr2G4LjPQu2K6T3/ctBdHacq/oJLUMKsKSQpLhB9pADq/6hI6vBISY21bAHEzPLtt5zLWmhr9puxyNtfM3l1ei0OHiq30pPgEfJBF8gBwgA58I7q8w+bcFi27VprkKfUx5PgPe7q1i
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-call-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Rechazar llamada"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/call/reject"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Rechaza una llamada entrante activa (si la instancia está en llamada).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"remoteJid":{"type":"string","description":"JID del contacto que llama","example":"51987654321@s.whatsapp.net"},"callId":{"type":"string","description":"ID de la llamada (si aplica)"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Llamada rechazada exitosamente","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean","example":true},"message":{"type":"string","example":"Llamada rechazada"}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

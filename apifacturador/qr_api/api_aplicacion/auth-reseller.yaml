@@ -1,0 +1,193 @@
+openapi: 3.0.3
+
+info:
+  title: QR Buho API - Reseller Authentication
+  description: |
+    Endpoints de autenticación para **Resellers / Administradores** del sistema QR Buho.
+
+    Estos endpoints permiten:
+    - Iniciar sesión como administrador
+    - Registrar nuevos administradores (si está permitido)
+    - Verificar validez de token JWT
+    - Cerrar sesión
+
+    Todos los endpoints posteriores que requieren permisos de Reseller deben usar el token JWT obtenido aquí.
+  version: 1.0.0
+  contact:
+    name: Soporte QR Buho
+    url: https://qr.buho.la
+
+servers:
+  - url: https://qr.buho.la
+    description: Servidor principal para Resellers / Administradores
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Auth - Reseller
+    description: Autenticación y gestión de sesión para administradores/resellers
+
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth - Reseller
+      summary: Login de Reseller / Administrador
+      description: Autentica al administrador y devuelve un token JWT válido.
+      operationId: resellerLogin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "admin@qr.buho.la"
+                password:
+                  type: string
+                  format: password
+                  example: "bh0yJj2C"
+      responses:
+        '200':
+          description: Login exitoso - Token JWT generado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...
+                  token_type:
+                    type: string
+                    example: "bearer"
+                  expires_in:
+                    type: integer
+                    example: 86400
+        '401':
+          description: Credenciales inválidas
+        '422':
+          description: Error de validación de campos
+
+  /api/auth/verify_token:
+    post:
+      tags:
+        - Auth - Reseller
+      summary: Verificar validez del token
+      description: Valida si el token JWT actual sigue siendo válido.
+      operationId: verifyResellerToken
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - api_token
+              properties:
+                api_token:
+                  type: string
+                  description: El mismo token JWT que se envía en el header Authorization
+                  example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...
+      responses:
+        '200':
+          description: Token válido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                    example: true
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      email:
+                        type: string
+        '401':
+          description: Token inválido o expirado
+
+  /api/auth/register:
+    post:
+      tags:
+        - Auth - Reseller
+      summary: Registro de nuevo administrador/Reseller
+      description: Crea una nueva cuenta de administrador (puede estar restringido según configuración).
+      operationId: resellerRegister
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - name
+                - password
+                - password_confirmation
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: "nuevoadmin@qr.buho.la"
+                name:
+                  type: string
+                  example: "Nuevo Admin"
+                password:
+                  type: string
+                  example: "12345678"
+                password_confirmation:
+                  type: string
+                  example: "12345678"
+      responses:
+        '201':
+          description: Cuenta creada exitosamente
+        '422':
+          description: Error de validación (campos faltantes, email duplicado, contraseñas no coinciden)
+        '403':
+          description: Registro no permitido en esta instancia
+
+  /api/auth/logout:
+    get:
+      tags:
+        - Auth - Reseller
+      summary: Cerrar sesión
+      description: Invalida el token actual del usuario.
+      operationId: resellerLogout
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Sesión cerrada exitosamente
+        '401':
+          description: Token inválido
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    LoginResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer

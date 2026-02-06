@@ -1,0 +1,71 @@
+---
+id: listar-llamadas
+title: "Listar llamadas"
+description: "Obtiene la lista de llamadas activas o historial de llamadas de la instancia."
+sidebar_label: "Listar llamadas"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVcFuIzcM/RVBJxuY2GmPczOabuFg0d02W+whyYGjYTzKasSJyHHrGP6YfkBPvfWaHyuosb0Te7so0PpiWyKp98hHcmsFVmzLW/sdhGDvC1sju+Q78RRtad9V4jGiCWCCZwFTowkBWqiBDTjxa2BDpvEslDyEV/d19vORBaLzMLOF7SBBi4JJ39zaCC3a0uZAaAvr9c2nHtPGFpZdgy3Ycmtl06lZRRQQot2donzjgyRIhinQObyJpB6nhoyQHk8eIDDOqfXi09QWNuFT7xPWtsw3u3s94o4iI+vr315e6tfrJ9+eZsMW1lEUjKLG0HXBO1Dj+SOrx/acD6QEStQLtjw6p+oRnWi2EnWYxA84fD2yYUk+ruxpJpZX5uWv6B3tk79HpylL2JLg9b+Jcr28MjUGo4TACak7C0jPX/LF2LeqIB8dtcMR9bKi4eexthhrrHO6lR3W9n5X7GP9c8w1eafOa18jDR6+RRZou5Gbj4IrTFkYfYKBxdntKcurPoHzL39Gg9EwrvpYE5sJe/PgIwT/DDVM7S6/KUEj5R7Z5U9hW5SGalvaFeZagTS2tHPo/NxBCPMHH5UuY1of5N6nYEvbiHRczudb7qtaM+ZpN3tKs6pvaBbgDOcNprWvKZkPGCGKmbR9EH8h+Z8KeA3JQxUGlXwOOoj2AfogtrSD+Xnwo3mu+N5qt9MuYHR98rLJ2CuEhGnRK8vb+/H1jep6eHxsdMy/8j20c27jbGSL/Y83lFpQhNcfP+Rs+/iQsR+y/tPPi/dLc2E0+2bxfnnGQa91sKjgV8iSa7pR9XIfTmbWZE3P86ymqZb9YwPCi66b3cW7uIwu9Bss7+KFeVcJRkxGwaR2rxOmKn19/qnrwjlPEdlUL7+zd8DGUUsmoWvgGZKho77SCBf7V8PSBDJMHSWBqWL7kQRK8xZMCxtKL39kVrjGKMQjgobRtBDxEaJZq9WvWDVEn5Q4JsPoBiZL7YmhU3g6u4uqIkw85POb2eXscj/PwOV5th/UNxkRmlwSW5wIeqRhrWNHLC3EkXsemmk8Ml8Vcvt5gv7vi2evRcHfZN4F8HmLZPjbfeveWui8stYmL2xu3/vCNsSil9ttBYy/pLDb6fGwpLQxas/afIf18RVO/21NfZHBJ9yM9+caQq9GVvvzMBZyvxa2QagxZciD18I57GTkdba0NMpxzP3wvbbn30SU2kI=
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-call-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar llamadas"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/call/find"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene la lista de llamadas activas o historial de llamadas de la instancia.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"active","in":"query","schema":{"type":"boolean"},"description":"Filtrar solo llamadas activas (true) o todas (false/omitir)","required":false}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de llamadas","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"ID único de la llamada"},"remoteJid":{"type":"string","description":"JID del contacto"},"status":{"type":"string","enum":["incoming","outgoing","active","ended","rejected"]},"type":{"type":"string","enum":["voice","video"]},"timestamp":{"type":"integer"},"duration":{"type":"integer","description":"Duración en segundos (si finalizada)"}},"title":"Call"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

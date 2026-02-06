@@ -1,0 +1,72 @@
+---
+id: actualizar-participantes-del-grupo
+title: "Gestionar participantes del grupo"
+description: "Realiza acciones como agregar, remover, promover o degradar participantes en un grupo."
+sidebar_label: "Gestionar participantes"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "3"
+api: eJy1VkFv6zYM/isCTy3gJmlfu736tK5ve2gxYFnbYYc0B8ZmHXW2pFJ0XrPAP2bHnXfbtX9skOwmcdIO2ID5ElmmqI8fyY9ZgWDhIZ3AZ7a18zBNICefsXairYEUbghL/RsqzDJtDXmV2coqLJgK5EQxVXZBnCjHNq6UVTkVjDmycsiiM+3QCHlFRtVGFVw7O4AEmJ5q8vKtzZeQruKrZsohFa4pgcwaISPhEzpX6gwDoOGjD6hW4LM5VRhWsnQEKdjZI2XS+W0dTaAIQV3rHBLALAaUwBaoGK5j64hFkw/e1ic2nr2wNgXsEnP1SeVUtvGog+urT4chKnrGypXh2PHJ6MNXH05Hp6fnZ6OTk49np98Ug9pDs8byxhVk6ioAxzyPoQRKIWKsrFDEEBd7abrIMv3yp1GouE0YqwPM89cEdfkRSlTrYQdsuK/Z4WYDD5lxCQloocrvw252wfygvaDKSZmXvypi68NaqHz548GaUB/9yuhBmcDZ8fnZyenHr8/Pz2HaxCdQ4Z01vk3Syeg4/PQvHfeKDTOpIw+59YqetViPFRmhcNl/rq1+rdQuR6Hxv+PsHV9eUOq3uX18qxqbXhR93836SaAimdscUnDWx1tR5pDCEJ0exlofbqVi2EYECXjiBXEQhhXUXEIKcxHn0+Fw5etZbitttG0GTzyY1XM7KHGvPW6JFzq3rO7IoBF1UNWl6COJb4eQwAJZ46zswl87bRP7gHUpkEJrvu98bR57sLNqmmYaoGc1a1lG7DNCJr6oQ9CT6fbn25Dk9vJtozWXId5ARDSDtDOCpFt8b7nCgPD6lzsIRIfiudlI2nev9bwtKe9qwkYSus7vN+JuTySgzUNkSrTE/v3p5mJ8pY5Uq+LqYny1x1kwcMioSlQFeYlykVMrYK/qTEYsG6u2kzW4N/dmTFxpofTeHKlLJuTuXHy3xtelrPfUst/fwebitR9ZVSSYo0RVWOunsdWMozpFzFHMEqUrLMgcRgd5yLcX3psrB+8Po2Q9i6KPzyFsa5CVNgst2E20AzsTMhQdLGyGPGQqwkbwSWahu+OX1jzoou4QvPxekXA/CmdZ0SNVrrSJQlObTEc6KjIeH8krocpZxpL84X0YRqHJ2vQcD0aDUadNmMWuNhgr79Y6y0Iq5hiSnX7casFQhqHNKzRbx7eY7/O2xr1bKquNtPx/479rM6FnGboStQmSFkNbdSI1AXQakrZ/+j0RWGilaprAPChbOoHVaoaefuayacL2U00cRGC6kZqoAQnMCXPiqA+/0hJSuGzDPboLmIJ5WUcJ350NTfJ64iLLyMk/2k63xHf84+1dkI7uv05l83CG8UsY8vgFUoAEbKQ/KlLcW0GJpqixCLatz/D8DQFyYU4=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Actualizar participantes del grupo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/group/participant/update"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Realiza acciones como agregar, remover, promover o degradar participantes en un grupo.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid","action","participants"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"},"action":{"type":"string","enum":["add","remove","promote","demote"],"description":"Acción a realizar (add, remove, promote, demote).","example":"add"},"participants":{"type":"array","items":{"type":"string"},"description":"Lista de números de teléfono de participantes.","example":["51952487999"]}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Participantes actualizados exitosamente.","content":{"application/json":{"schema":{"type":"object","properties":{"updateParticipants":{"type":"array","items":{"type":"object","properties":{"status":{"type":"string"},"jid":{"type":"string"},"content":{"type":"object"}}}}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

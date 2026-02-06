@@ -1,0 +1,71 @@
+---
+id: archivar-chat
+title: "Archivar chat"
+description: "Archiva un chat de la lista principal."
+sidebar_label: "Archivar chat"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVc2O2zYQfhViTllAK63TJG11qhtsgQT52cZb9GD7MCYnFrcUySUpbwzBD9MHyKmPsC9WDCXH2l0gKFBdJA3n95v5hj0k3Eaol/C6wRRhXYCiKIP2STsLNcyDbPQORWeFbDAJRcKgMDomFD5oK7VHU0IBgW47iulXp/ZQ9/lXB1JQp9BRAdLZRDbxEXpvtEQOUN1EjtJDlA21yF9p7wlqcJsbkmn0OzhaQqDWJXqrFefpg/MUkqY4xDsenXzEFLTdQgH0BVtvWPRy9vNPP756+eKH57NfYnnHNaP3paUEh/xwwOidjYPb5xcX/HqICUMlcABGOSFdCCQTtmQTwf8o9WFFQwCaFrRxzhDaaUWM7uGYekupcQpq8C5mh5gaqKFCryvuXjX6hAIihR0F7nwPXTBQQ5OSj3VV9bHbKNdqq92hvA3lpmtcaRAeT8aCwk4rF8Q1WbRJPGs7k/R5yn9nUMAOg8aNGao5OR3w/IydSVDDoP7U+Td1ociIUetwOKw5ddkFnfY59w1hoDDvuNDlenq8YJyH4FOlb2ByvQxEVmNwsxIU48dvLrTIGb798xoYXO7fp9OQXx478GD2vjtgBWj7OdefdMrj+Pun+dUbcS4y+cT86s0TIPjcY0Bm3ZZi0vf/WCahzBbaKr3TqkNDUTyTznJPUWpnKYpZPTsTZJm6ZJML1olpi8qVXdlLq7zTNruSptPKRTahmGiccFev7Ll4x4QPldskshSG6Cwf10OoFMWREZPT9xgk/7vWCUP3X5Vj6aXRrbajHgteY7vRGDgq80mR8IEiWamxSnuv7ZZT/eAS1uJdTvCYtCJBdnf/NRu1ZCPeMBCJviRXCN3ilmwhdlqRKwQlWZ5xkPu/GRFGNJKUGdEVLMgq8Z5ixC2tQERi1BWWK6Ybwzr0Y1ZelBcjyVFmklvM87Nw3oVEIvcUikesmhCJh4kJ2qKdmM+n6D0eg/60VP77Rh7nnMGovEFteQJzVv24GZaAXnMxQ8jjdlgX0PACqZfQ9xuM9EcwhwOLbzsKzLv1id2ZdgU0hIpCpuRftOclOSR8fs1ZsLrpOJsnG/FQHC3mUpJP39VdT3bc1cfFNbN1vHBap9gm4B1fGngHNUABLgM43BAs68Gg3Xa4Zd3BJz//ArbGclY=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-chats-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Archivar chat"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/chat/archive"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Archiva un chat de la lista principal.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["remoteJid"],"properties":{"remoteJid":{"type":"string","example":"51987654321@s.whatsapp.net"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Chat archivado correctamente","content":{"application/json":{"schema":{"type":"object","properties":{"archived":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

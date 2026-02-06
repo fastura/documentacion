@@ -1,0 +1,64 @@
+---
+id: list-devices
+title: "Listar dispositivos"
+description: "Obtiene la lista de dispositivos del tenant"
+sidebar_label: "Listar dispositivos"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "3"
+api: eJyVVM1uGzcQfhViTi1AS06PexOaNMgfmsYqfLCFYESOJdpckiZnhQrCPlIORR7BL1YMdxWvVV1y2+X8fPPzzXcAxk2B5gZe084ZKrDSYKmY7BK7GKCBP9fsKJDyqLwrjMqSsq6kWBy7XSzKkldMAQODhpgoo0S+s9CABBwTayiUd5QF7QBd9tDAljmVZj4/lG5tY+uCiz1o2GF2uPZUoDnAs0n+LN1h5xkaGCBnj3m27rZx5hH6vl9pyFRSDGUI/u3ycoiadvTxXBugwcTAFFgCMCXvTG1kfl8k6gDFbKlF+eJ9ImgAc8Y9aHBMbZm8x/U9GRlGyjIOdkMtzk58XGDaUIZeQ8CWJpbC2YWNGNI2hvOWwshd+b9JA4WulXWaGAIZJgsarCvT30TBivOq1/CYv5poz4BoCJ33sgRoOHfUazCZkMl+RT7nfhdzKxawyHTBriUptEv2J2N6DexYYEdKylp7eW6Jt1FYtaE6XOQtNDDH5OZ24Nhc+FaJZrrseF+ZtibMlBedeN+shCFH85UsdNjN1OlHncJOyVbdoBmdQI8ffxyrf3+9hNOrWcYHCur99VLFNVNwNtY78XHjggwGk/tA+xPA4VEYJSm2hLbCDQQR60O1vkRafH6nPtBeJcyosBMGO4PGPX0PyrpMhrFO1YW7ekHH6f71RSIv1JUrTG29h08UCt5TfvqG6nqLXBYpncUzsU2eGAfQDRUe4Ei1Z1IoE4MqMcXMpNrOs7sYj/c23IaPqCRlotw6piFZDJib23ChFif9kPpChbynXNReLWuWIo6fPQYSLVKlq9XWALG8nVQ3BqhfjHcUmMqv4vF6qmbHosXwJuyevsVJWxXqd2wTPv2LFa3F/EDswuY2iHBRLsOUXs0uZ5ejpqCp7B/XeDUOos4f9IkSvpAzDSkWbjFMwqt45VPperGiw7OS/aR6jzxk+ofnyeNA1VrgYby3G6FhBTyqer25lYZtLCz2w2GNhf7Ovu/l+bGjLIe4epb1eof6yG+5UeF1AwtjKHHVf98NjD9RYbneHzLw9s0S+v4/Z/5d1A==
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-sistema-de-mensajeria-whatsapp
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar dispositivos"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/devices/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Obtiene la lista de dispositivos del tenant
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de dispositivos","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"integer"},"name":{"type":"string"},"phone":{"type":"string"},"status":{"type":"string","enum":["connected","disconnected","pending"]},"qr_code":{"type":"string","nullable":true},"created_at":{"type":"string","format":"date-time"},"updated_at":{"type":"string","format":"date-time"}},"title":"Device"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

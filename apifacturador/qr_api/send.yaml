@@ -1,0 +1,446 @@
+openapi: 3.0.3
+
+info:
+  title: QRAPI - Send Message API
+  description: |
+    API para el envío de mensajes individuales (chats 1:1) en un entorno multi-tenant.
+
+    Incluye todos los tipos de mensajes soportados por WhatsApp:
+    - Texto simple
+    - Imágenes, videos, documentos, audios/voz, stickers
+    - Ubicaciones, contactos, reacciones, encuestas (polls)
+    - Mensajes interactivos (listas, botones)
+
+    Todos los endpoints usan el número de destino (`number` o `remoteJid`) y requieren autenticación Bearer.
+  version: 1.0.0
+  contact:
+    name: Soporte QRAPI
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor Tenant (multi-tenant)
+    variables:
+      subdominio:
+        default: tenant
+        description: Subdominio del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Send Message
+    description: Operaciones para enviar diferentes tipos de mensajes a chats individuales
+
+paths:
+  /api/message/sendText:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar mensaje de texto
+      description: Envía un mensaje de texto simple con opciones de delay (simular escritura) y mention.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - text
+              properties:
+                number:
+                  type: string
+                  example: "51987654321"
+                  description: Número de destino (sin @s.whatsapp.net)
+                text:
+                  type: string
+                  example: "¡Hola! ¿Cómo estás hoy?"
+                delay:
+                  type: integer
+                  example: 1500
+                  description: Retraso en ms para simular escritura
+                mention:
+                  type: array
+                  items:
+                    type: string
+                  description: Números a mencionar (@)
+      responses:
+        '201':
+          description: Mensaje enviado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  sendResult:
+                    type: object
+                    description: Detalles del mensaje enviado (key, messageTimestamp, etc.)
+
+  /api/message/sendImage:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar imagen
+      description: Envía una imagen por URL o base64 con caption opcional.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - media
+              properties:
+                number:
+                  type: string
+                  example: "51987654321"
+                media:
+                  type: string
+                  description: URL pública o base64 de la imagen
+                  example: "https://example.com/foto.jpg"
+                caption:
+                  type: string
+                  example: "Esta es mi foto favorita"
+      responses:
+        '201':
+          description: Imagen enviada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+  /api/message/sendVideo:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar video
+      description: Envía un video por URL o base64 (con opción de gifPlayback).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - media
+              properties:
+                number:
+                  type: string
+                  example: "51987654321"
+                media:
+                  type: string
+                  description: URL o base64 del video
+                caption:
+                  type: string
+                gifPlayback:
+                  type: boolean
+                  default: false
+      responses:
+        '201':
+          description: Video enviado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+  /api/message/sendDocument:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar documento/archivo
+      description: Envía cualquier archivo (PDF, ZIP, DOC, etc.) con filename y caption.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - media
+                - fileName
+              properties:
+                number:
+                  type: string
+                  example: "51987654321"
+                media:
+                  type: string
+                  description: URL o base64 del archivo
+                fileName:
+                  type: string
+                  example: "contrato.pdf"
+                caption:
+                  type: string
+      responses:
+        '201':
+          description: Documento enviado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+  /api/message/sendAudio:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar audio o nota de voz
+      description: Envía audio o PTT (push-to-talk).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - audio
+              properties:
+                number:
+                  type: string
+                  example: "51987654321"
+                audio:
+                  type: string
+                  description: URL o base64 del audio
+                ptt:
+                  type: boolean
+                  default: true
+                  description: true = enviar como nota de voz
+      responses:
+        '201':
+          description: Audio enviado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+  /api/message/sendSticker:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar sticker
+      description: Envía un sticker estático o animado.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - media
+              properties:
+                number:
+                  type: string
+                  example: "51987654321"
+                media:
+                  type: string
+                  description: URL o base64 del sticker (webP)
+      responses:
+        '201':
+          description: Sticker enviado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+  /api/message/sendLocation:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar ubicación
+      description: Envía una ubicación con nombre y dirección opcionales.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - latitude
+                - longitude
+              properties:
+                number:
+                  type: string
+                  example: "51987654321"
+                latitude:
+                  type: number
+                  example: -12.0464
+                longitude:
+                  type: number
+                  example: -77.0428
+                name:
+                  type: string
+                address:
+                  type: string
+      responses:
+        '201':
+          description: Ubicación enviada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+  /api/message/sendContact:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar tarjeta de contacto
+      description: Envía vCard con nombre y número.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - contact
+              properties:
+                number:
+                  type: string
+                  example: "51987654321"
+                contact:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    number:
+                      type: string
+      responses:
+        '201':
+          description: Contacto enviado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+  /api/message/sendReaction:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar reacción (emoji)
+      description: Agrega una reacción a un mensaje específico.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - key
+                - reaction
+              properties:
+                key:
+                  type: object
+                  properties:
+                    remoteJid:
+                      type: string
+                    id:
+                      type: string
+                reaction:
+                  type: string
+                  example: "🔥"
+      responses:
+        '201':
+          description: Reacción enviada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+  /api/message/sendPoll:
+    post:
+      tags:
+        - Send Message
+      summary: Enviar encuesta (poll)
+      description: Envía una encuesta interactiva con opciones.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - number
+                - question
+                - options
+              properties:
+                number:
+                  type: string
+                question:
+                  type: string
+                options:
+                  type: array
+                  items:
+                    type: string
+                selectableCount:
+                  type: integer
+                  default: 1
+      responses:
+        '201':
+          description: Encuesta enviada
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    SendResult:
+      type: object
+      properties:
+        key:
+          type: object
+        message:
+          type: object
+        messageTimestamp:
+          type: integer

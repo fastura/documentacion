@@ -1,0 +1,9 @@
+{
+    "label": "Envío de Mensajes",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "slug": "send-message",
+      "description": "Envío de todo tipo de mensajes individuales: texto, imágenes, videos, documentos, audios/voz, stickers, ubicaciones, contactos, reacciones, encuestas y mensajes interactivos."
+    }
+  }

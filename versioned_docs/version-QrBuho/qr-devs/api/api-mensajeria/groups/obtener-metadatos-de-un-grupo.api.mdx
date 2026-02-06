@@ -1,0 +1,72 @@
+---
+id: obtener-metadatos-de-un-grupo
+title: "Obtener metadatos de un grupo"
+description: "Retorna los metadatos detallados de un grupo específico."
+sidebar_label: "Ver metadatos"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "11"
+api: eJylVc1y2zYQfhXMnuwZWlIcp9PyVNVpM/ZMJ4rtTg+yDityTcElAXgBKFE1fJg+QE99BL9YZ0Faomynh1QXgdi/b/8+bCFg5SGfwwe20XlYZFCSL1i7oK2BHK4oWDaoautVQwFLDNarkgLWNZbpqKJRFUdnFXlHxePfd7qwI8iA6SGSDz/ZcgP5Nn1qphLywJEyKKwJZIKI0LlaFygxx/deAm/BFytqUE5h4whysMt7KkLvt3M0h0pwX+pSkDu2jjho8mK1k+w9+MDaVPA8x4v3qqS6z+Ho8uL9saCnL9i4WszenE7efvf2bHJ29sO7yenp9+/OfqxG0UObfoLHO2t8F/Z0MpG/wwi/DirXB5IQ31yBw0xfy7HNwMdO/TWZwHtV4JCDLrRDE/xAAZlxAxnoQI3/NkRfqfogII1Ayhl0SGWf7SXQDgVpVvuSIvRNaCisbAk5OOsTIAwryGGMTo/TKIybJ4sMPPGaWAZ/C5FryGEVgvP5eLz1cVnaRhtt29EDj5ZxZUc1vkB/TbzWpWV1QwZNUEdNrIM+CenrGDJYI2tc1l099k672bjDWAfIoVN/6XynnkrUa7VtuxDoRWQdNgn7kpCJp1FSnS+G4muZnS74UGnXFMlXCpHUIO+VIOsPv1huUBBe/n6TmiIzebXf55+flmO4Z19flAy0uUu5P/Xw09V0dqFOVMc7ajq7eFEFUXDIqGpUFfmgH/8xQjdpfbwiI8RDRvjJqmH5R7fm1syIGx0ovzUn6pwJubdL39b4WIfdndocjGHSmRYhYq3/RD7gvR1NGNssmTLVYy4EXaZ0gxWZ4+SglA76wMiH3tURVkwVcqaYGrsmzpRj259KqhhL5OTjg6RtDbLSZq0DFtoacWCXgQwlB2tbII+ZKrkQn2TWujc/t+ZOV7FH8PhXQ4EPs3CWFd1T42qbKTTRFDqVoyHj8Z68CtQ4y1iTP741MtbEvmvPm9FkNOlJDDuaMZhm6do6y4FU6jFkzzZssFQyWLKuDZqB+ccuuYOy796Y51Oy3ZPo/3qr+rUI9CWMXY3ayNAm4NueSuaATkPWzTskwunoZJHBSjgnn8N2u0RPv3HdtnL9EIllURd7Okh7msGKsCROO/wHbSCH8y6LkxvBIep1TLz7/FlosyeLaVGQC/+puxjQ4uzj9Y2sd/8YN7YUG8bP8qDiZ8gBMrCpqok10t0WajRVxEp0O5/y+xcNrtzw
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Obtener metadatos de un grupo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/group/metadata"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retorna los metadatos detallados de un grupo específico.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Metadatos del grupo.","content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string"},"subject":{"type":"string"},"desc":{"type":"string"},"participants":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"ID del participante."}},"title":"Participant"}}},"title":"GroupMetadata"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

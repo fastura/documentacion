@@ -1,0 +1,103 @@
+---
+id: qrapi-groups-api
+title: "QRAPI - Groups API"
+description: "API para la gestión de grupos en un entorno multi-tenant."
+sidebar_label: Introduction
+sidebar_position: 1
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiExplorer/Export";
+
+<span
+  className={"theme-doc-version-badge badge badge--secondary"}
+  children={"Version: 2.0"}
+>
+</span>
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"QRAPI - Groups API"}
+>
+</Heading>
+
+
+
+API para la gestión de grupos en un entorno multi-tenant.
+
+Permite:
+- Crear grupos
+- Consultar grupos y participantes
+- Actualizar metadatos del grupo (nombre, descripción, imagen)
+- Administrar participantes (agregar, remover, promover, degradar)
+- Gestionar invitaciones (obtener, revocar/regenerar, enviar)
+- Configurar parámetros del grupo (por ejemplo, anuncios y mensajes temporales)
+
+
+<div
+  style={{"marginBottom":"2rem"}}
+>
+  <Heading
+    id={"authentication"}
+    as={"h2"}
+    className={"openapi-tabs__heading"}
+    children={"Authentication"}
+  >
+  </Heading><SchemaTabs
+    className={"openapi-tabs__security-schemes"}
+  >
+    <TabItem
+      label={"HTTP: Bearer Auth"}
+      value={"bearerAuth"}
+    >
+      
+      
+      
+      
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>
+                Security Scheme Type:
+              </th><td>
+                http
+              </td>
+            </tr><tr>
+              <th>
+                HTTP Authorization Scheme:
+              </th><td>
+                bearer
+              </td>
+            </tr><tr>
+              <th>
+                Bearer format:
+              </th><td>
+                JWT
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </TabItem>
+  </SchemaTabs>
+</div><div
+  style={{"display":"flex","flexDirection":"column","marginBottom":"var(--ifm-paragraph-margin-bottom)"}}
+>
+  <h3
+    style={{"marginBottom":"0.25rem"}}
+  >
+    Contact
+  </h3><span>
+    Soporte QRAPI: 
+  </span><span>
+    URL: [https://qr.buho.la](https://qr.buho.la)
+  </span>
+</div>
+      

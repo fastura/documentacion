@@ -45,6 +45,8 @@ tags:
     description: Envío de mensajes
   - name: Campaigns
     description: Gestión de campañas de marketing
+  - name: Groups
+    description: Gestión de grupos de contactos
 
 security:
   - bearerAuth: []

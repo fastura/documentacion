@@ -1,0 +1,72 @@
+---
+id: delete-device
+title: "Eliminar dispositivo"
+description: "Elimina dispositivo"
+sidebar_label: "Eliminar dispositivo"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "5"
+api: eJytVcFu4zYQ/RViTruAErvFnnQzarfI7hZIExc5JD6MxYnNhCIZcmTEMPRJeyj6CfmxxVByrDgO0ENvkjic9+Zp3swOGFcJyluY0sZUlGBRgKZURRPYeAclzKypjUPVOKVNCj4ZNhuvgo8qNepiCgX4QBEl/EJDCZosMXX5oIBEcUNRMHbQRAslrJlDKkejXWqW2tfGGd9CARuMBpeWEpQ7OBzJm6Z7bCxDCUwOHZ8/xfNls/bnFqFt20UBASPWxHsghzVBCUZDAUaqCMhrKCDSU2MiaSg5NnRc6sVUabLDMoV/taYahQVvQ07qmFYUIeNGSsG71JH+dTzu2A6TTgeiUaellryVd0yO5QKGYE2VFRw9JLm1ew/rlw9UMRQQoujNpsOsKSVc0SAwcTRuBQXQM9bB0kccFD0b9glrckwiY9u2BXwZf3lfwxVVTUxeOa/ICfH4v9aQmqqilAaBS+8toRsWcY82UVt8XHBbAMXoYzoFiFob4Yb28g10H4cx4lZ6halOJ1JnadhwVnMmKBluz21QQqY5YPmBdr3aNfHaH0wjykijljDCYEa68+SoOxztjG6zoaomGt7mRl8SRoqTRi7dLqQj98fXIn5X5DDotTRx4b69s+Q5CIr+4XcfaxTHfb2Zw7FR5v6RnPp6M1d+yeSM9tk41q+ME2EwmG+0PQLsPu4NuSbUGa63KgbzmE/fIk0uL9Q32irxt8JGus1UWJmXf2UcRapYJoDkvM+TYv+P/rqSm2fq2iSmGpUm9Se5hA8UX36gulkjp0kIJ/EqL3+VsQNdUeIOjlR9IoWqvFPJBx+ZVN1YNmf9kLpzd+47KkkZKNaGqUvmHcbyzp2pyVE9pK4okbUUk9qqec6SJPDSoqMkAanJbPMFOfljwK6/oD5V1oin02eJGHg/vZKWg5nbvPzwg7Iy1G9YB3z5BzNajfGR2LjVnVhRxnin0i/n4/Nx73+ssv/733jdC5H1h+Jo4r8Z2wUEn7hGN7jeL5t4NIPf/KPdYez8l+XUdx/TM4+Cxa5BM61db7Zbab6M0q3A4uDG0mjZiGufWOJ2uyUm+jvatpXPTw1FseHisLyyKbVJ8qxfp8GH/D9d9Qvpszq5fE6S3/vJbfPWtI28QQHin7zz2kVb7A0mfLqDSVVR4MGVdyNbxsfrRJrOvs/mM2jbn3qo2c8=
+sidebar_class_name: "delete api-method"
+info_path: facturador/qr-api/qrapi-sistema-de-mensajeria-whatsapp
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Eliminar dispositivo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/api/devices/delete/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Elimina un dispositivo por su ID
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"path","required":true,"description":"ID del dispositivo","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Dispositivo eliminado","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","example":"Dispositivo eliminado exitosamente"}}}}}},"404":{"description":"Recurso no encontrado","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean","example":false},"message":{"type":"string"},"errors":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"}}}},"title":"Error"},"example":{"success":false,"message":"Recurso no encontrado"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

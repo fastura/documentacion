@@ -1,0 +1,72 @@
+---
+id: alternar-mensajes-temporales-ephemeral
+title: "Alternar mensajes temporales (ephemeral)"
+description: "Configura la duración de los mensajes temporales en un grupo."
+sidebar_label: "Mensajes temporales"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "7"
+api: eJylVcFu4zYQ/RViTgnA2ErWm2QFBKi7aRfJZdNNih4cH8bSRGYqkcyQ8iY1/DH9hn7C/lgxlOzYcbeHVhdL9PBx5s28xyVErALkE/jErvUBphpKCgUbH42zkMNHZx9M1TKqGlXZMhbm219WlaRqF1RDNuAjBRWp8Y6xpqDIqtaqilvvBqCB6amlEH905Qvky/RpmErII7ekoXA2ko3yF3pfmwLl4OFjkNOXEIo5NShv8cUT5OBmj1TEHrcDmkAlyV+bEjTQszecMKQWz84TR0NBIDZhr3AhsrEVvK366lKVVHdFqIPrq8vDQcLGxtey7fgke3f6bpSNRh/eZycn5+9HP1SDNsBqJ4HXY4yNVBELhm0byCeZPj8dZZk+zUbnWabPzs5OsyzbY/9yQzhZFahqbemCOsjUhfr88KBVAlEX6mQ016rDUhfqrNSqR1QX6kNW7mafNq3SIzQG72zoCDrJjuXnOxPQJYJFbLE2f2CJip5NdAEbspHkiP/czN0+hbYoKIStwJlzNaHdrkLGZ7WuoqE4dyXk4F1IeBjnkMMQvRmmrg+jq6qajsjPqSHGGjQE4gWxTP8SWq4hh3mMPuTD4TK0s9I1xhq3GjzxYNbO3aDGvTG5JV6Y0rG6I4s2qoOmraM5iunrEDQskA3O6nVZa9CO5Ads6wg5dOH74JvwNIt91Gq1mkrqRcsmvqTcZ4RMPG6l5Ml0++9bIbw7fDtoQ6vUK0SkMKE5BYHuX3523KBkeP3bHQjN0sgvr3r+ad2LbWl9Vxu70uiGUIOxD4mOaGJS1i9fxjdX6kh1fqTGN1d7xEiAx86RKgpxbUhJrWv/IRsdW6e2OzK4t/f2hrgxkfJ7e6Q+MiH3+9K3s6Gt42ZNvchB0RTGo42UYsbr+WfVUMQSowvbZmFdM2PSqs85iUYr02BF9jABlNLUEBl5F10dYMVUIWvF1LgFsVaeXf9WUsVYIieMT1K2s8jK2IWJWBhnBcDNIllKAAtXIA+ZKlkQTLIL02/fSDpl8O3PhiLvVuEdK3qkxtdOK7StLUyi4x8M//BedClK6tpzPMgGWW8GWCQzsJjG69Z5x5FU6jHoN6Lb0pnMmii5Qbu1fVxHYpt43791DjbKPnw7MMtXX/r/11mvnEjPcehrNFY8PxWy7F1nAugN6E4SsuOt80w1zMWm8gkslzMM9CvXq5UsP7XEounpq3MkSWuYE5bESe6/00tXiJR0dCf5SHjdSl57trvS6x3joiAf/zV2uuWkN59v78QJ+nu7caXsYfwqdy9+hRxAg0sUJ4NJa0uo0VYtVhLbYcrzN7165iQ=
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Alternar mensajes temporales (ephemeral)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/group/toggle-ephemeral"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Configura la duración de los mensajes temporales en un grupo.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid","expiration"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"},"expiration":{"type":"integer","enum":[0,86400,604800,7776000],"description":"Duración en segundos (0 = Off, 86400 = 24h, 604800 = 7d, 7776000 = 90d).","example":86400}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Configuración actualizada exitosamente.","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean","example":true}}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

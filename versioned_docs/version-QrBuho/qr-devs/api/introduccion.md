@@ -2,50 +2,83 @@
 sidebar_position: 1
 ---
 
-# API Documentation
+# Introducción a la API de QR Buho
 
-Bienvenido a la documentación de la API del Facturador Pro 7.
+Bienvenido a la **documentación oficial de la API de QR Buho** 🚀
 
-## Introducción
+Aquí encontrarás todo lo necesario para integrar nuestras potentes funcionalidades de **gestión multi-empresa (multitenant)** y **mensajería avanzada de WhatsApp** directamente en tus aplicaciones, CRMs, bots o sistemas internos.
 
-Esta sección contiene toda la documentación necesaria para integrar tu aplicación con nuestro sistema de facturación electrónica.
+Con QR Buho puedes automatizar campañas masivas, gestionar sesiones de WhatsApp mediante QR, enviar mensajes multimedia, etiquetar contactos, recibir eventos en tiempo real vía webhooks y mucho más — todo con una arquitectura SaaS segura, escalable y lista para producción.
 
-## Características principales
+## Categorías de APIs
 
-- **Facturación electrónica**: Genera facturas, boletas y otros comprobantes electrónicos
-- **Gestión de productos**: Administra tu catálogo de productos y servicios
-- **Clientes**: Gestiona la información de tus clientes
-- **Inventario**: Controla el stock de tus productos
-- **Reportes**: Obtén información detallada de tus ventas
+Nuestras APIs están organizadas en tres grandes grupos según su propósito:
 
-## Endpoints disponibles
+- **API de Aplicación** → Core del sistema (nuestra propia API multitenant)  
+- **API de Mensajería** → Integración externa con Evolution API (funcionalidades avanzadas de WhatsApp)  
+- **APIs Externas** → Integraciones complementarias con servicios de terceros
 
-### Administración
-- [Gestión de Tenants](./admin/api-spec/api-reseller-gestion-de-tenants.info.mdx)
-- [Bloqueo de Administrador](./admin/locked-admin/locked-admin.api.mdx)
-- [Bloqueo de Tenants](./admin/locked-tenant/locked-tenant.api.mdx)
+## 🌍 URLs Base
 
-### Facturación
-- [Facturas](./tenant/Factura/introduccion.info.mdx)
-- [Boletas](./tenant/Boleta/introduccion.info.mdx)
-- [Notas de Crédito y Débito](./tenant/Notas/introduccion.info.mdx)
+| Rol                | Descripción                                           | URL Base                        | Ejemplo                                           |
+|--------------------|-------------------------------------------------------|---------------------------------|---------------------------------------------------|
+| **Reseller** | Gestión global: planes, clientes, billing, etc.       | `https://qr.buho.la`           | `https://qr.buho.la/api/plan/list`               |
+| **Cliente** | Operaciones específicas de cada empresa              | `https://{cliente_id}.buho.la`  | `https://empresa1.buho.la/api/devices/list`      |
 
-### Productos y Clientes
-- [Productos](./tenant/productos/introduccion.info.mdx)
-- [Clientes](./tenant/clientes/_category_.json)
+> **Tip dinámico**: En la documentación interactiva puedes cambiar `{cliente_id}` (por defecto `demo`) para probar contra tu propio subdominio.
 
-### Inventario
-- [Gestión de Inventario](./tenant/inventario/introduccion.info.mdx)
+## 🔐 Autenticación
 
-### Otros
-- [Cotizaciones](./tenant/Cotizacion/introduccion.info.mdx)
-- [Guías de Remisión](./tenant/Guia-remision/introduccion.info.mdx)
-- [Retenciones](./tenant/retencion/introduccion.info.mdx)
+Todos los endpoints protegidos requieren autenticación mediante **Bearer Token** (JWT).
 
-## Autenticación
+**Pasos para obtener tu token:**
 
-Para usar la API, necesitarás obtener un token de autenticación. Contacta con nuestro equipo de soporte para obtener las credenciales necesarias.
+1. Realiza login según tu rol:
+   - **Reseller**: `POST https://qr.buho.la/auth/login`
+   - **Cliente**: `POST https://{cliente_id}.buho.la/api/auth/login`
 
-## Soporte
+2. Incluye el token en todas las peticiones:
 
-Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos a través de nuestro sistema de soporte.
+```http
+Authorization: Bearer <tu_token_de_acceso>
+Content-Type: application/json
+```
+
+## 📚 Módulos Principales
+
+### API de Aplicación (Core propio)
+
+**Reseller**
+- Gestión de administradores y sesión
+- Creación, edición y suspensión de clientes
+- Planes y suscripciones
+- Reportes globales y billing
+
+**Cliente**
+- **Devices** → Vinculación y control de sesiones WhatsApp (QR, reconexión, logout)
+- **Campaigns** → Mensajería masiva y programada
+- **Send Message** → Envío individual (texto, imágenes, audio, video, documentos, plantillas)
+- **Contacts & Labels** → Gestión de contactos y etiquetas
+- **Chats & Groups** → Interacción con conversaciones y grupos
+
+### API de Mensajería (Evolution API)
+
+Funcionalidades avanzadas del proveedor externo:
+- Envío de mensajes
+- Gestión completa de chats
+- Webhooks en tiempo real
+- Administración de grupos
+- Llamadas (voice calls)
+- Etiquetas (labels)
+
+### APIs Externas
+
+Integraciones adicionales disponibles (Stripe, Mercado Pago, Firebase, analytics, etc.).
+
+## 🚀 Primeros Pasos Recomendados
+
+**Si eres Reseller** → Ve a **API de Aplicación > Reseller** y crea tu primer cliente.  
+**Si eres Cliente** → Dirígete a **Mensajería > Devices**, escanea el QR y vincula tu número de WhatsApp.  
+**Luego** → Prueba el endpoint **Send Message** — es el más usado y el mejor para validar que todo funciona.
+
+¡Estás listo para construir integraciones increíbles!

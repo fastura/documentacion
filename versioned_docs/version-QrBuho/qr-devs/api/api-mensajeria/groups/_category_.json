@@ -1,0 +1,9 @@
+{
+    "label": "Grupos",
+    "position": 5,
+    "link": {
+      "type": "generated-index",
+      "slug": "groups",
+      "description": "Gestión completa de grupos de WhatsApp: creación, actualización de nombre/descripción/imagen, administración de participantes, invitaciones y configuración de mensajes temporales."
+    }
+  }

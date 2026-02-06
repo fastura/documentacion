@@ -1,0 +1,63 @@
+---
+id: listar-etiquetas
+title: "Listar etiquetas"
+description: "Retorna todas las etiquetas disponibles en la instancia de WhatsApp."
+sidebar_label: "Listar etiquetas"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVD1vIzcQ/SvEpLGB9UpJuZ2QxAcFLpTzJVdYKkbckTQOl6TJWeMUYX9SqnTX+o8FQ+n0YRupTo12yTezj4/vzQ4E1xmaB7jDJTlYVNBStomjcPDQwEeSkDwaCS1m4zAbEn7qSTCblnMMnpeOsiFvHBr2WdBbRtOS+bxByZMYa6ggkUIzZWh28NN4rH+XH7rjLKXs2B8qsMELeVE0xujYoqJHj1lLdpDthjrUJ9lGggYwJdxCBSzU5bP1sHwkK1BBTCFSEt4T4fYMkyWxX8NrAaa/mJevnm1Qbg6P9GCowGNH73WgL9hFp0sz8i2TF1K4DS6k/8f/cHs7Ho/Hio6JWlqxp3b6Lk3fO4dLrZLU0zBUICylyf4qh/KroCPZhBYaWFNRAGUDDYww8sgpcLRi30IFmdIzJfXCDvrkoIGNSMzNaLTL/bINHXsOQ/2U6mW/CbXDN1LdU3rmNiTziTx6MVdd74RvpLxdQwXPmFgpF/FPTfdmWGHvBBrYw982P8JNS84cUMMwLJS67RPLtnBfEiZKk16P+bA4375Xu+w/fg46SqvnVSEKDJoDCKrDw21IHSrD3z5/AlWW/apw/6b77x8ns6m5MUV/M5lN3xxC9yMmVCOtKQu//OsvPG+uyp3kaw2U1QCZrenIZ3ykfBGquZ/7GaWOhZq5vzElP+ndnNrgV7zuE+rWq6Bq6WSdaI3JBPPUszY5laLp9zxM+EbDUI5kX/5ZsQ1K4u7iWzl48/JVWGdCOWlIa/T8NyaloQZDy8FTNlf0WJv5KSFzqMwcfnblxfw5nekCia2v67lX81DKexV/rMf1+DAd0JbpsE8i3IcYkpApNwHVKx+fWVevL4YsHfqz8oOG5xPo4v52p4H0vQbjwXpCX2QUHbLX6Bfau0NUHwAjQwXFGFBBieuigk3Ioru73RIz/ZHcMOjyU09Jg7A4xa3koIINYUupZOQv2qobraUoJZeuL+Pz9YzV9Bznx4df1fb/AcYnJhI=
+sidebar_class_name: "get api-method"
+info_path: facturador/qr-api/qrapi-label-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Listar etiquetas"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/label/find"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retorna todas las etiquetas disponibles en la instancia de WhatsApp.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Lista de etiquetas","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","description":"ID único de la etiqueta"},"name":{"type":"string","example":"Pendiente"},"color":{"type":"string","example":"#FF0000"},"predefinedId":{"type":"string","nullable":true}},"title":"Label"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

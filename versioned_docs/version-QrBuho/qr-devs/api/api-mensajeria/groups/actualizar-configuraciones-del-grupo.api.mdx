@@ -1,0 +1,72 @@
+---
+id: actualizar-configuraciones-del-grupo
+title: "Actualizar configuraciones del grupo"
+description: "Actualiza configuraciones como anuncios o edición de grupo."
+sidebar_label: "Actualizar configuraciones del grupo"
+hide_title: true
+hide_table_of_contents: true
+sidebar_position: "9"
+api: eJylVc1u5DYMfhWBpwRwZpJstmgNFGi62y6SS9NNih6SQcGxGY+ytqRQ1Gymg3mYPkBPfYS8WEHZmb9sCxT1xbJMUuRHfp+WINhEKG/hA/sUIkwKqClWbINY76CE80oStvZ3NJV397ZJjJX1jqKpfOcNuuQq66Pxhmpb2ee/nKnJNJyCH0EBTI+Jonzv6wWUy/xpmWoohRMVUHkn5ER/YQitrVCPHT9EPXsJsZpRh7qSRSAowU8fqJIhbh/oFhpN/dLWUABWOe1JAYF9IBZLUd3XJptQUdi6BvbrvXhvamr7AszB5cX7Qy2DnrALrbqdnB6/+erN2fHZ2Tdvj09Pv3579l0zShFW68O/cAS51Gmm6JxPrqJOay7Aefltb6v11SfSSpIbll/oyBrmrZbozsF2MPOtufatN1h31kVDbv78JzrTkYv4QLEwJNVor7idZFb5Uahj8C72QJ4en+hrN6N3u2ngy8jUaOjJio+oAUnP+q8NR2ZcQAFWqIuvB+Elx45k5msoIfioMAaUGZQwxmDHuffjFGoUGkcS6XsSiefEOvtLSNxCCTOREMvxeBnTtPadddavRo88mqaZH7X4alSuiee29mxuyKETc9ClVuyR5K9DKGCObHHa9shtgvYA3mNqBUrozV8HX5vneRysVqvVRFOvEltZ5NynhEx8nrTg28n272sFsz9822iNodarQGQzKAcjKIbFj5471Awvf70BBVmb9HHD5x9exmabXv/Ijw099qasAOvuMyZiJU/hzx/Pry7MkeklyZxfXbxCRw0CMpoWTUNRdnRHh90kZ8iJZ+fNdltGd+7OXRF3Vqi8c0fmHRPy4Je/vYuplfWeWehBYisb0Allm7UmsulIsEbxcVs1nO+mTIUZcs6sKIztsCF3mAMoJ20URt6Nbg6wYWqQC8PU+TlxYQL7YVVTw1gj5xgftGzvkI11cysvqnzgp0KOcoC5r5DHTI1uaExyczu4rzmbM3j+oyPh3SqCZ0MP1IXWFxudX6wVxAh1wTO2FA/vnI47cezbczI6Hh0PbMcqs91hnrFrHzwLmdxjlbkd5m2RTQdOydyh23LfQn7/Olpnvj8sy43o/N/bbCCO0JOMQ4vW6fjmEpaD5NwCBgtFzwitL8tOlpteeCYFzFSjyltYLqcY6RduVyvdfkzESunJRjgyowuYEdbEme2faNELrhZ0dKP5qHmbsljuK+qqePE4ryoK8q+2ky0Zvfrp+kaFYLi2O1+rD+NnvXrxM5QABfgMcNaXvLeEFl2TsFHbPqY+fwMcsPLj
+sidebar_class_name: "post api-method"
+info_path: facturador/qr-api/qrapi-groups-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Actualizar configuraciones del grupo"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/group/update/setting"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Actualiza configuraciones como anuncios o edición de grupo.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["groupJid","action"],"properties":{"groupJid":{"type":"string","description":"ID del grupo (JID).","example":"120363404495022854@g.us"},"action":{"type":"string","enum":["announcement","not_announcement","locked","unlocked"],"description":"Acción de configuración (announcement = Solo admins envían mensajes, etc.).","example":"announcement"}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Configuración actualizada exitosamente.","content":{"application/json":{"schema":{"type":"array","items":{"type":"object"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

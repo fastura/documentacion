@@ -1,0 +1,72 @@
+---
+id: introduction
+title: "QR Buho – Plataforma de Gestión Multi-Empresa para WhatsApp"
+description: "API para la administración global del sistema SaaS (resellers) y operación diaria de empresas clientes."
+sidebar_label: Introducción
+sidebar_position: 1
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Heading from "@theme/Heading";
+import SchemaTabs from "@theme/SchemaTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"QR Buho – Plataforma de Gestión Multi-Empresa para WhatsApp"}
+>
+</Heading>
+
+¡Bienvenido a la documentación oficial de **QR Buho**!  
+
+Esta API te permite administrar un sistema completo para ofrecer servicios de WhatsApp a múltiples empresas, con roles claros: resellers gestionan el sistema global, y clientes finales operan su propio servicio.
+
+La API está organizada en dos contextos principales:
+
+- **Reseller:** administración global (autenticación, creación de empresas, planes y personalización).
+- **Cliente Final:** operación diaria (autenticación, vinculación de dispositivos y creación de campañas).
+
+### Autenticación (cómo acceder)
+
+Usamos **clave de acceso segura (Bearer Token)**.  
+La necesitas en casi todos los pedidos.
+
+**Cómo obtenerla:**
+- Para resellers: usa `/auth/login`
+- Para clientes finales: usa `/api/auth/login`
+
+<SchemaTabs className={"openapi-tabs__security-schemes"}>
+  <TabItem label={"Clave de acceso (Bearer)"} value={"bearerAuth"}>
+    - Tipo: HTTP Bearer
+    - Formato: JWT
+    - Siempre envíala en el header:  
+      `Authorization: Bearer TU_CLAVE_AQUÍ`
+  </TabItem>
+</SchemaTabs>
+
+### ¿Qué puedes hacer con QR Buho?
+
+**Para Resellers (administración global del sistema):**
+- Autenticarte y gestionar sesiones.
+- Crear, actualizar o eliminar empresas clientes (tenants).
+- Definir, actualizar o eliminar planes de suscripción.
+- Personalizar configuraciones del sistema.
+
+**Para Clientes Finales (uso diario del negocio):**
+- Autenticarte y gestionar sesiones.
+- Vincular o desconectar dispositivos WhatsApp (mediante QR).
+- Crear, actualizar o eliminar campañas de mensajería.
+
+### Primeros pasos recomendados
+
+1. Para resellers: autentícate y crea una empresa cliente.
+2. Para clientes: autentícate y vincula un dispositivo WhatsApp.
+3. Escala a campañas: crea y lanza una campaña simple.
+
+¿Necesitas ayuda?  
+**Soporte QR Buho** → https://qr.buho.la
+
+¡Comienza a construir tu sistema multi-empresa con QR Buho hoy!
