@@ -77,7 +77,7 @@ module.exports = function (context, options) {
                   
                   // Remover enlaces si no estamos en una versión compatible
                   if (!activeVersion) {
-                    ['api-navbar-link', 'mozo-navbar-link', 'vendeya-navbar-link', 'app-navbar-link'].forEach(linkId => {
+                    ['api-navbar-link', 'mozo-navbar-link', 'vendeya-navbar-link', 'app-navbar-link', 'pro8-navbar-link'].forEach(linkId => {
                       const link = document.getElementById(linkId);
                       if (link) {
                         link.remove();
@@ -106,6 +106,13 @@ module.exports = function (context, options) {
                         url: '/QrBuho/Api/api-introduccion',
                         color: '#20c997',
                         hoverColor: '#17a2b8'
+                      },
+                      {
+                        id: 'pro8-navbar-link',
+                        text: 'Pro 8',
+                        url: 'https://manual.pro8.uio.la/',
+                        color: '#dc3545',
+                        hoverColor: '#c82333'
                       }
                     ];
                   } else if (activeVersion === 'Pro7') {
@@ -137,6 +144,13 @@ module.exports = function (context, options) {
                         url: '/Pro7/app-para-facturacion/introduccion',
                         color: '#fd7e14',
                         hoverColor: '#e8650e'
+                      },
+                      {
+                        id: 'pro8-navbar-link',
+                        text: 'Pro 8',
+                        url: 'https://manual.pro8.uio.la/',
+                        color: '#dc3545',
+                        hoverColor: '#c82333'
                       }
                     ];
                   } else if (activeVersion === 'ProX') {
@@ -168,6 +182,13 @@ module.exports = function (context, options) {
                         url: '/ProX/app-para-facturacion/introduccion',
                         color: '#fd7e14',
                         hoverColor: '#e8650e'
+                      },
+                      {
+                        id: 'pro8-navbar-link',
+                        text: 'Pro 8',
+                        url: 'https://manual.pro8.uio.la/',
+                        color: '#dc3545',
+                        hoverColor: '#c82333'
                       }
                     ];
                   }
