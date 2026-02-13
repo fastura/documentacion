@@ -1,9 +1,9 @@
 ---
-id: qrapi-chats-api
-title: "QRAPI - Chats API"
-description: "API para la gestión de chats individuales (conversaciones 1:1) en un entorno multi-tenant."
+id: qrapi-chats
+title: "QRAPI - Chats"
+description: "API Gateway para operaciones de chat en WhatsApp."
 sidebar_label: Introduction
-sidebar_position: "1"
+sidebar_position: 0
 hide_title: true
 custom_edit_url: null
 ---
@@ -16,29 +16,26 @@ import Export from "@theme/ApiExplorer/Export";
 
 <span
   className={"theme-doc-version-badge badge badge--secondary"}
-  children={"Version: 2.0"}
+  children={"Version: 1.0.0"}
 >
 </span>
 
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"QRAPI - Chats API"}
+  children={"QRAPI - Chats"}
 >
 </Heading>
 
 
 
-API para la gestión de chats individuales (conversaciones 1:1) en un entorno multi-tenant.
+API Gateway para operaciones de chat en WhatsApp.
 
-Endpoints incluidos en este archivo:
-- Listar/obtener chats
+Incluye:
+- Extraer contactos de una instancia
+- Buscar mensajes y chats
+- Marcar mensajes como leídos
 - Archivar/desarchivar chats
-- Marcar como leído
-- Eliminar chat
-- Cambiar estado de presencia/typing
-
-Nota: Los endpoints de envío de mensajes (texto, imagen, video, etc.) están en la sección "Send Message" separada.
 
 
 <div

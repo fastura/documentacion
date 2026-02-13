@@ -1,0 +1,162 @@
+openapi: 3.0.3
+
+info:
+  title: QRAPI - Chats
+  description: |
+    API Gateway para operaciones de chat en WhatsApp.
+    
+    Incluye:
+    - Extraer contactos de una instancia
+    - Buscar mensajes y chats
+    - Marcar mensajes como leídos
+    - Archivar/desarchivar chats
+  version: 1.0.0
+  contact:
+    name: Soporte QRAPI
+    url: https://qr.buho.la
+
+servers:
+  - url: https://{subdominio}.qr.buho.la
+    description: Servidor Tenant (multi-tenant)
+    variables:
+      subdominio:
+        default: tenant
+        description: Subdominio del tenant
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Chats
+    description: Operaciones de chats y contactos
+
+paths:
+  /api/chat/findContacts/{instance}:
+    post:
+      tags:
+        - Chats
+      summary: Extraer contactos
+      description: |
+        Obtiene la lista de contactos de una instancia de WhatsApp.
+        
+        **Requisitos previos:**
+        - La instancia debe existir y estar conectada
+        - Token válido con permisos
+        
+        **Tipos de identificadores (remoteJid):**
+        - Contactos: `{numero}@s.whatsapp.net`
+        - Grupos: `{id}@g.us`
+        - Canales: `{id}@lid` (no son números reales)
+      operationId: findContacts
+      parameters:
+        - name: instance
+          in: path
+          required: true
+          description: Número de la instancia de WhatsApp
+          schema:
+            type: string
+          example: "51960516116"
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                where:
+                  type: object
+                  properties:
+                    isGroup:
+                      type: boolean
+                      description: "Filtrar por tipo (false: contactos, true: grupos)"
+                      default: false
+            example:
+              where:
+                isGroup: false
+      responses:
+        '200':
+          description: Contactos obtenidos correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+              example:
+                - id: "cmkxc5gak0gl0o85p6wf0t66e"
+                  remoteJid: "51986775563@s.whatsapp.net"
+                  pushName: "Juan Perez"
+                  name: "Juan"
+                  profilePicUrl: "https://pps.whatsapp.net/..."
+                  createdAt: "2026-01-28T01:17:30.190Z"
+                  updatedAt: "2026-01-28T01:17:31.165Z"
+                  instanceId: "0ce30b32-ba41-4b95-838b-46383ba337c8"
+                  isGroup: false
+                  isSaved: true
+                  type: "contact"
+                - id: "cmkxc5gaz0glho85pdi8fwfq0"
+                  remoteJid: "51926095780@s.whatsapp.net"
+                  pushName: "Maria Lopez"
+                  name: null
+                  profilePicUrl: null
+                  createdAt: "2026-01-28T01:17:30.235Z"
+                  updatedAt: "2026-01-28T01:17:31.203Z"
+                  instanceId: "0ce30b32-ba41-4b95-838b-46383ba337c8"
+                  isGroup: false
+                  isSaved: true
+                  type: "contact"
+        '401':
+          description: Token inválido o faltante
+        '404':
+          description: Instancia no encontrada
+        '500':
+          description: Error interno del servidor
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID único del contacto
+        remoteJid:
+          type: string
+          description: "Identificador de WhatsApp ({numero}@s.whatsapp.net)"
+        pushName:
+          type: string
+          description: Nombre del contacto en WhatsApp
+        name:
+          type: string
+          nullable: true
+          description: Nombre alternativo/guardado
+        profilePicUrl:
+          type: string
+          nullable: true
+          description: URL de foto de perfil
+        createdAt:
+          type: string
+          format: date-time
+          description: Fecha de creación
+        updatedAt:
+          type: string
+          format: date-time
+          description: Última actualización
+        instanceId:
+          type: string
+          description: ID de la instancia
+        isGroup:
+          type: boolean
+          description: "false = contacto, true = grupo"
+        isSaved:
+          type: boolean
+          description: Si el contacto está guardado
+        type:
+          type: string
+          description: Tipo de entidad

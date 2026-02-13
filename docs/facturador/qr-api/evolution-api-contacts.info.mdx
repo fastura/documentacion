@@ -1,9 +1,9 @@
 ---
-id: qrapi-chats-api
-title: "QRAPI - Chats API"
-description: "API para la gestión de chats individuales (conversaciones 1:1) en un entorno multi-tenant."
+id: evolution-api-contacts
+title: "Evolution API - Contacts"
+description: "API para la extracción y gestión de contactos de WhatsApp."
 sidebar_label: Introduction
-sidebar_position: "1"
+sidebar_position: 0
 hide_title: true
 custom_edit_url: null
 ---
@@ -16,29 +16,32 @@ import Export from "@theme/ApiExplorer/Export";
 
 <span
   className={"theme-doc-version-badge badge badge--secondary"}
-  children={"Version: 2.0"}
+  children={"Version: 2.0.0"}
 >
 </span>
 
 <Heading
   as={"h1"}
   className={"openapi__heading"}
-  children={"QRAPI - Chats API"}
+  children={"Evolution API - Contacts"}
 >
 </Heading>
 
 
 
-API para la gestión de chats individuales (conversaciones 1:1) en un entorno multi-tenant.
+API para la extracción y gestión de contactos de WhatsApp.
 
-Endpoints incluidos en este archivo:
-- Listar/obtener chats
-- Archivar/desarchivar chats
-- Marcar como leído
-- Eliminar chat
-- Cambiar estado de presencia/typing
+Incluye:
+- Obtener lista completa de contactos de una instancia
+- Filtrar entre contactos individuales y grupos
+- Acceso a información de perfil (nombre, foto, etc.)
 
-Nota: Los endpoints de envío de mensajes (texto, imagen, video, etc.) están en la sección "Send Message" separada.
+**Tipos de identificadores (remoteJid):**
+- Contactos: `{numero}@s.whatsapp.net`
+- Grupos: `{id_grupo}@g.us`
+- Canales: `{id}@lid` (no son números reales)
+
+⚠️ El endpoint retorna TODOS los contactos sin paginación.
 
 
 <div
@@ -54,12 +57,12 @@ Nota: Los endpoints de envío de mensajes (texto, imagen, video, etc.) están en
     className={"openapi-tabs__security-schemes"}
   >
     <TabItem
-      label={"HTTP: Bearer Auth"}
-      value={"bearerAuth"}
+      label={"API Key: apiKeyAuth"}
+      value={"apiKeyAuth"}
     >
       
       
-      
+      API Key para autenticación con Evolution API
       
       <div>
         <table>
@@ -68,19 +71,13 @@ Nota: Los endpoints de envío de mensajes (texto, imagen, video, etc.) están en
               <th>
                 Security Scheme Type:
               </th><td>
-                http
+                apiKey
               </td>
             </tr><tr>
               <th>
-                HTTP Authorization Scheme:
+                Header parameter name:
               </th><td>
-                bearer
-              </td>
-            </tr><tr>
-              <th>
-                Bearer format:
-              </th><td>
-                JWT
+                apikey
               </td>
             </tr>
           </tbody>
@@ -96,9 +93,9 @@ Nota: Los endpoints de envío de mensajes (texto, imagen, video, etc.) están en
   >
     Contact
   </h3><span>
-    Soporte QRAPI: 
+    Soporte Evolution API: 
   </span><span>
-    URL: [https://qr.buho.la](https://qr.buho.la)
+    URL: [https://evochat.buho.xyz](https://evochat.buho.xyz)
   </span>
 </div>
       
