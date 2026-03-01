@@ -1,9 +1,0 @@
-{
-  "label": "Generador de Link de Pago",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "slug": "generador-link-pago-x",
-    "description": "Documentación del módulo para la generación de links de pago"
-  }
-}

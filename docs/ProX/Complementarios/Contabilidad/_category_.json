@@ -1,9 +1,0 @@
-{
-  "label": "Contabilidad",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "slug": "contabilidad-x",
-    "description": "Documentación del módulo Contabilidad para la gestión financiera y contable."
-  }
-}

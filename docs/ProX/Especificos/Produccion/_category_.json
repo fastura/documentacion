@@ -1,9 +1,0 @@
-{
-  "label": "Produccion",
-  "position": 20,
-  "link": {
-    "type": "generated-index",
-    "slug": "produccion-x",
-    "description": "Encuentra ayuda sobre el módulo de Producción."
-  }
-}

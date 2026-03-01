@@ -1,9 +1,0 @@
-{
-  "label": "Configuración",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "slug": "configuracion-x",
-    "description": "Documentacion del módulo Configuración del Pro-X"
-  }
-}

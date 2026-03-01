@@ -1,9 +1,0 @@
-{
-  "label": "Hoteles",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "slug": "hoteles-x",
-    "description": "Documentación del módulo Hoteles para la gestión de habitaciones, reservas y servicios."
-  }
-}

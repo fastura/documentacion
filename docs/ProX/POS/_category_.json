@@ -1,9 +1,0 @@
-{
-  "label": "POS",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "slug": "pos-x",
-    "description": "Documentación del módulo de punto de venta (POS)"
-  }
-}
