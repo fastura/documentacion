@@ -1,9 +1,0 @@
-{
-  "label": "Dispositivos",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "slug": "device",
-    "description": "Gestión de dispositivos WhatsApp: vincula sesiones QR, lista y elimina."
-  }
-}

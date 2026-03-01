@@ -1,9 +1,0 @@
-{
-  "label": "Planes",
-  "position": 2,
-  "link": {
-    "type": "generated-index",
-    "slug": "planes",
-    "description": "Documentacion del modulo de Planes"
-  }
-}

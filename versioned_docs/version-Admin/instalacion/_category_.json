@@ -1,9 +1,0 @@
-{
-  "label": "Instalaciones",
-  "position": 3,
-  "link": {
-    "type": "generated-index",
-    "slug": "api",
-    "description": "Encuentra ayuda sobre las instalaciones de nuestros software "
-  }
-}

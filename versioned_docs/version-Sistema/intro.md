@@ -21,7 +21,7 @@ Aquí encontrarás todo lo que necesitas para configurar, emitir y gestionar tus
 
 - **ChatBúho**: Centro de mensajería omnicanal que integra WhatsApp, Messenger, Instagram y otros canales en una sola interfaz. Permite trabajo colaborativo entre agentes, chatbot integrado con IA, distribución inteligente de conversaciones y métricas detalladas de atención.
 
-- **API QR Buho**: Sistema de automatización para envío masivo de comprobantes por WhatsApp, con capacidad para gestionar múltiples dispositivos, programar campañas de mensajería y obtener confirmaciones de entrega, todo bajo una arquitectura multitenant para gestionar múltiples empresas.
+- **API Waya**: Sistema de automatización para envío masivo de comprobantes por WhatsApp, con capacidad para gestionar múltiples dispositivos, programar campañas de mensajería y obtener confirmaciones de entrega, todo bajo una arquitectura multitenant para gestionar múltiples empresas.
 
 <DocsCards>
   <DocsCard header="Pro 6 – Facturación Simplificada" href="/Pro6" >
@@ -36,9 +36,15 @@ Aquí encontrarás todo lo que necesitas para configurar, emitir y gestionar tus
   <DocsCard header="ChatBúho – Omnicanalidad" href="/ChatBuho" >
     <p>Centraliza todas tus conversaciones en una plataforma colaborativa con automatizaciones inteligentes.</p>
   </DocsCard>
-  <DocsCard header="API QR Buho – Distribución Masiva" href="/QrBuho">
-    <p>Automatiza el envío y seguimiento de comprobantes por WhatsApp con confirmación de entrega.</p>
-  </DocsCard>
+  <DocsCard 
+  header="Waya – Envío y Campañas Masivas por WhatsApp"
+  href="https://manual.waya.uio.la"
+>
+  <p>
+    Optimiza la comunicación con tus clientes mediante el envío automatizado de 
+    comprobantes, mensajes y campañas masivas por WhatsApp.
+  </p>
+</DocsCard>
 </DocsCards>
 
 ## Guía de Inicio Rápido

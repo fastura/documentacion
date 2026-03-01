@@ -1,9 +1,0 @@
-{
-    "label": "Campañas",
-    "position": 2,
-    "link": {
-      "type": "generated-index",
-      "slug": "Campañas",
-      "description": "Crea campañas mediante la carga de un archivo Excel con la lista de contactos o creándola manualmente."
-    }
-  }

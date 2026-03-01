@@ -1,9 +1,0 @@
-{
-  "label": "Configuracion",
-  "position": 4,
-  "link": {
-    "type": "generated-index",
-    "slug": "configuracion",
-    "description": "Documentacion del modulo de Configuracion"
-  }
-}

@@ -64,15 +64,6 @@ const config: Config = {
     /* Comentado el buscador anterior
     require.resolve('docusaurus-lunr-search'),
     */
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'demo',
-        path: 'Demo',
-        routeBasePath: 'demo',
-        sidebarPath: './demo.ts',
-      }
-    ],
 
     [
       "docusaurus-plugin-openapi-docs",

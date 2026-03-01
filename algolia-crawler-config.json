@@ -25,11 +25,6 @@
         "url": "https://manual.uio.la/chatbuho/",
         "tags": ["version:chatbuho"],
         "page_rank": 2
-      },
-      {
-        "url": "https://manual.uio.la/qrbuho/",
-        "tags": ["version:qrbuho"],
-        "page_rank": 2
       }
     ],
     "sitemap_urls": [
