@@ -127,7 +127,7 @@ module.exports = function (context, options) {
                       {
                         id: 'mozo-navbar-link',
                         text: 'Mozo',
-                        url: '/Pro7/Mozo.pe/introduccion',
+                        url: '/Pro7/mozo/introduccion',
                         color: '#28a745',
                         hoverColor: '#218838'
                       },
