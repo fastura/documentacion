@@ -23,7 +23,17 @@ const config: Config = {
   projectName: "documentacion",
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    format: "mdx",
+    mdx1Compat: {
+      comments: true,
+      admonitions: true,
+      headingIds: true,
+    },
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
   trailingSlash: false,
   // Even if you don't use internationalization, you can use this field to set
@@ -284,7 +294,20 @@ const config: Config = {
         src: "img/manual.svg",
       },
       items: [
-        { type: "docsVersionDropdown", position: "left" },
+        {
+          type: "docsVersionDropdown",
+          position: "left",
+          dropdownItemsAfter: [
+            {
+              href: "https://manual.pro8.uio.la/",
+              label: "Pro 8",
+            },
+            {
+              href: "https://manual.waya.uio.la/",
+              label: "WaYa",
+            },
+          ],
+        },
         //{ to: "/demo", label: "demo", position: "left" },
       ],
     },
